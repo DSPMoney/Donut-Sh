@@ -3,479 +3,1731 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DonutSMP Shop</title>
+<title>Donut Community Shop</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root{
+    --bg:#07040d;
+    --bg2:#10071a;
+    --card:#160b22;
+    --card2:#1d0d2b;
+    --purple:#9d4edd;
+    --purple2:#c77dff;
+    --pink:#e056fd;
+    --white:#fff;
+    --muted:#aaa0b8;
+    --green:#38d17b;
+    --red:#ff4d6d;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Inter,Arial,sans-serif;
     background:
-        radial-gradient(circle at top, #39166b 0%, #12051f 45%, #08030d 100%);
-    color: white;
-    min-height: 100vh;
+        radial-gradient(circle at 15% 0%,rgba(157,78,221,.22),transparent 30%),
+        radial-gradient(circle at 85% 20%,rgba(224,86,253,.12),transparent 28%),
+        var(--bg);
+    color:white;
+    overflow-x:hidden;
 }
 
-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(8, 3, 13, 0.9);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,.1);
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
-.nav {
-    max-width: 1200px;
-    margin: auto;
-    height: 75px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
+button{
+    font-family:inherit;
 }
 
-.logo {
-    font-size: 25px;
-    font-weight: 900;
-    color: #c77dff;
-    text-shadow: 0 0 20px #9d4edd;
+/* TOP BAR */
+
+.topbar{
+    background:#050308;
+    border-bottom:1px solid rgba(255,255,255,.07);
+    text-align:center;
+    padding:9px;
+    color:#cdbbdd;
+    font-size:13px;
 }
 
-nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 25px;
-    font-weight: bold;
+.topbar span{
+    color:#d59aff;
+    font-weight:800;
 }
 
-nav a:hover {
-    color: #d8a5ff;
+/* HEADER */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(7,4,13,.88);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.cart {
-    background: #9d4edd;
-    border: none;
-    color: white;
-    padding: 11px 17px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-left: 20px;
+.nav{
+    max-width:1400px;
+    height:78px;
+    margin:auto;
+    padding:0 25px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-.hero {
-    max-width: 1200px;
-    margin: auto;
-    padding: 100px 20px 70px;
-    text-align: center;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    font-size:22px;
+    font-weight:900;
 }
 
-.hero h1 {
-    font-size: clamp(45px, 8vw, 85px);
-    font-weight: 1000;
-    background: linear-gradient(90deg, #fff, #d0a3ff, #9d4edd);
-    -webkit-background-clip: text;
-    color: transparent;
+.logo-icon{
+    width:43px;
+    height:43px;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    background:linear-gradient(135deg,#9d4edd,#e056fd);
+    box-shadow:0 0 30px rgba(157,78,221,.45);
 }
 
-.hero p {
-    margin: 20px auto;
-    max-width: 650px;
-    color: #cfc4da;
-    font-size: 19px;
+.logo-text span{
+    color:#c77dff;
 }
 
-.button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 15px 28px;
-    background: linear-gradient(135deg, #9d4edd, #7b2cbf);
-    border-radius: 14px;
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 10px 35px rgba(157,78,221,.35);
-    border: none;
-    cursor: pointer;
+.navlinks{
+    display:flex;
+    gap:30px;
+    align-items:center;
 }
 
-.section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 20px 100px;
+.navlinks a{
+    color:#c7bccf;
+    font-size:14px;
+    font-weight:700;
+    transition:.2s;
 }
 
-.section-title {
-    font-size: 35px;
-    margin-bottom: 30px;
+.navlinks a:hover{
+    color:white;
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 22px;
+.cart-btn{
+    border:0;
+    color:white;
+    background:linear-gradient(135deg,#9d4edd,#7b2cbf);
+    padding:12px 18px;
+    border-radius:12px;
+    font-weight:800;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(157,78,221,.25);
 }
 
-.product {
-    background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.1);
-    border-radius: 20px;
-    padding: 25px;
-    transition: .25s;
-    box-shadow: 0 10px 40px rgba(0,0,0,.2);
+.cart-btn:hover{
+    transform:translateY(-2px);
 }
 
-.product:hover {
-    transform: translateY(-7px);
-    border-color: #9d4edd;
+/* HERO */
+
+.hero{
+    min-height:650px;
+    max-width:1400px;
+    margin:auto;
+    padding:100px 25px 80px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:50px;
+    align-items:center;
 }
 
-.product-icon {
-    height: 130px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 70px;
-    background: linear-gradient(135deg, #26103d, #160922);
-    border-radius: 15px;
-    margin-bottom: 20px;
+.badge{
+    display:inline-flex;
+    gap:8px;
+    align-items:center;
+    padding:9px 14px;
+    border-radius:100px;
+    border:1px solid rgba(199,125,255,.25);
+    background:rgba(157,78,221,.1);
+    color:#d8adfa;
+    font-size:13px;
+    font-weight:800;
+    margin-bottom:25px;
 }
 
-.product h3 {
-    font-size: 23px;
-    margin-bottom: 8px;
+.hero h1{
+    font-size:clamp(48px,7vw,88px);
+    line-height:.95;
+    letter-spacing:-5px;
+    font-weight:900;
 }
 
-.product p {
-    color: #aaa0b6;
-    min-height: 45px;
+.hero h1 .gradient{
+    background:linear-gradient(90deg,#fff,#c77dff,#e056fd);
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
-.price {
-    font-size: 25px;
-    color: #d09aff;
-    font-weight: bold;
-    margin: 18px 0;
+.hero p{
+    margin-top:28px;
+    max-width:650px;
+    color:#aaa0b8;
+    line-height:1.8;
+    font-size:17px;
 }
 
-.buy {
-    width: 100%;
-    border: none;
-    padding: 13px;
-    border-radius: 12px;
-    color: white;
-    background: #9d4edd;
-    font-weight: bold;
-    cursor: pointer;
+.hero-buttons{
+    margin-top:35px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
 }
 
-.buy:hover {
-    background: #b866f5;
+.primary{
+    border:0;
+    cursor:pointer;
+    padding:15px 24px;
+    border-radius:13px;
+    color:white;
+    font-weight:800;
+    background:linear-gradient(135deg,#9d4edd,#e056fd);
+    box-shadow:0 12px 35px rgba(157,78,221,.3);
 }
 
-footer {
-    text-align: center;
-    color: #8e8496;
-    border-top: 1px solid rgba(255,255,255,.08);
-    padding: 35px 20px;
+.secondary{
+    padding:15px 24px;
+    border-radius:13px;
+    border:1px solid rgba(255,255,255,.1);
+    color:white;
+    background:rgba(255,255,255,.04);
+    font-weight:800;
 }
 
-/* Warenkorb */
-
-.overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.7);
-    display: none;
-    z-index: 200;
+.hero-stats{
+    display:flex;
+    gap:35px;
+    margin-top:45px;
 }
 
-.overlay.active {
-    display: block;
+.stat strong{
+    display:block;
+    font-size:24px;
 }
 
-.cart-panel {
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    width: min(430px, 100%);
-    background: #110718;
-    z-index: 201;
-    padding: 25px;
-    transform: translateX(100%);
-    transition: .3s;
-    overflow-y: auto;
+.stat span{
+    color:#857a90;
+    font-size:12px;
 }
 
-.cart-panel.active {
-    transform: translateX(0);
+/* HERO CARD */
+
+.hero-card{
+    min-height:450px;
+    position:relative;
+    border:1px solid rgba(199,125,255,.2);
+    border-radius:30px;
+    padding:35px;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 20%,rgba(199,125,255,.25),transparent 35%),
+        linear-gradient(145deg,#1c0b2b,#0e0615);
+    box-shadow:0 30px 100px rgba(0,0,0,.4);
 }
 
-.cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
+.hero-card:before{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    background:#9d4edd;
+    filter:blur(120px);
+    opacity:.3;
+    right:-70px;
+    top:-70px;
 }
 
-.close {
-    border: none;
-    background: #2a1537;
-    color: white;
-    border-radius: 10px;
-    padding: 10px 14px;
-    cursor: pointer;
+.money-icon{
+    position:relative;
+    width:210px;
+    height:210px;
+    margin:35px auto;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:90px;
+    background:linear-gradient(145deg,#e8baff,#8e44c9);
+    box-shadow:
+        inset 0 0 30px rgba(255,255,255,.4),
+        0 0 70px rgba(157,78,221,.45);
+    animation:float 4s ease-in-out infinite;
 }
 
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #1b0d25;
-    padding: 15px;
-    border-radius: 13px;
-    margin-bottom: 10px;
+@keyframes float{
+    0%,100%{transform:translateY(0) rotate(-2deg)}
+    50%{transform:translateY(-15px) rotate(2deg)}
 }
 
-.remove {
-    background: #5d183b;
-    border: none;
-    color: white;
-    padding: 7px 10px;
-    border-radius: 8px;
-    cursor: pointer;
+.hero-card h3{
+    text-align:center;
+    font-size:25px;
 }
 
-.total {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 25px 0;
+.hero-card p{
+    text-align:center;
+    margin-top:10px;
+    color:#93879d;
 }
 
-.checkout {
-    width: 100%;
-    padding: 15px;
-    background: #35b86b;
-    color: white;
-    border: none;
-    border-radius: 13px;
-    font-size: 17px;
-    font-weight: bold;
-    cursor: pointer;
+/* SECTION */
+
+.section{
+    max-width:1400px;
+    margin:auto;
+    padding:100px 25px;
 }
 
-.notice {
-    margin-top: 15px;
-    font-size: 13px;
-    color: #95889f;
-    line-height: 1.5;
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:end;
+    margin-bottom:35px;
+}
+
+.section-head h2{
+    font-size:40px;
+    letter-spacing:-2px;
+}
+
+.section-head p{
+    color:#8e8298;
+    max-width:500px;
+    line-height:1.6;
+}
+
+/* SEARCH */
+
+.shop-tools{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+}
+
+.search{
+    flex:1;
+    min-width:220px;
+    padding:15px 18px;
+    border-radius:13px;
+    border:1px solid rgba(255,255,255,.08);
+    background:#110817;
+    color:white;
+    outline:none;
+}
+
+.search:focus{
+    border-color:#9d4edd;
+}
+
+.filter{
+    border:1px solid rgba(255,255,255,.08);
+    background:#110817;
+    color:#cfc4d5;
+    border-radius:13px;
+    padding:0 18px;
+    cursor:pointer;
+}
+
+/* PRODUCTS */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.product{
+    position:relative;
+    padding:18px;
+    border:1px solid rgba(255,255,255,.07);
+    background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.018));
+    border-radius:22px;
+    transition:.25s;
+    overflow:hidden;
+}
+
+.product:hover{
+    transform:translateY(-7px);
+    border-color:rgba(199,125,255,.45);
+    box-shadow:0 25px 60px rgba(0,0,0,.3);
+}
+
+.product-image{
+    height:170px;
+    border-radius:16px;
+    display:grid;
+    place-items:center;
+    font-size:65px;
+    background:
+        radial-gradient(circle,rgba(157,78,221,.3),transparent 60%),
+        #100719;
+    margin-bottom:18px;
+}
+
+.product h3{
+    font-size:19px;
+}
+
+.product-desc{
+    color:#887c93;
+    font-size:13px;
+    line-height:1.6;
+    margin-top:8px;
+    min-height:42px;
+}
+
+.product-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:20px;
+}
+
+.price{
+    font-size:20px;
+    font-weight:900;
+    color:#d09aff;
+}
+
+.add{
+    border:0;
+    background:#9d4edd;
+    color:white;
+    width:42px;
+    height:42px;
+    border-radius:11px;
+    cursor:pointer;
+    font-size:20px;
+}
+
+.add:hover{
+    background:#b866f5;
+}
+
+.tag{
+    position:absolute;
+    top:28px;
+    left:28px;
+    background:#e056fd;
+    color:white;
+    padding:5px 9px;
+    border-radius:8px;
+    font-size:10px;
+    font-weight:900;
+}
+
+/* FEATURES */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    padding:30px;
+    background:#100817;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:20px;
+}
+
+.feature-icon{
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.feature h3{
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:#8d8195;
+    line-height:1.7;
+    font-size:14px;
+}
+
+/* FAQ */
+
+.faq{
+    max-width:900px;
+}
+
+.faq-item{
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.faq-question{
+    width:100%;
+    border:0;
+    background:none;
+    color:white;
+    padding:23px 0;
+    display:flex;
+    justify-content:space-between;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:800;
+    text-align:left;
+}
+
+.faq-answer{
+    display:none;
+    color:#92869c;
+    padding:0 0 22px;
+    line-height:1.7;
+}
+
+.faq-item.open .faq-answer{
+    display:block;
+}
+
+/* SUPPORT */
+
+.support{
+    border-radius:30px;
+    padding:55px;
+    background:
+        radial-gradient(circle at 80% 20%,rgba(224,86,253,.2),transparent 30%),
+        linear-gradient(135deg,#1b0a2a,#0f0616);
+    border:1px solid rgba(199,125,255,.18);
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+    align-items:center;
+}
+
+.support h2{
+    font-size:35px;
+}
+
+.support p{
+    color:#94889e;
+    margin-top:12px;
+    line-height:1.6;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid rgba(255,255,255,.07);
+    padding:60px 25px 30px;
+    background:#050308;
+}
+
+.footer-inner{
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr 1fr;
+    gap:50px;
+}
+
+.footer-title{
+    font-size:20px;
+    font-weight:900;
+}
+
+.footer-title span{
+    color:#c77dff;
+}
+
+footer p,
+footer a{
+    color:#756a7d;
+    font-size:13px;
+    line-height:1.8;
+}
+
+footer h4{
+    margin-bottom:15px;
+}
+
+.copyright{
+    max-width:1400px;
+    margin:50px auto 0;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,.06);
+    color:#5f5666;
+    font-size:12px;
+}
+
+/* CART */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(5px);
+    z-index:200;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+}
+
+.overlay.active{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.cart{
+    position:fixed;
+    right:0;
+    top:0;
+    bottom:0;
+    width:min(480px,100%);
+    background:#0d0613;
+    z-index:201;
+    padding:25px;
+    transform:translateX(100%);
+    transition:.35s;
+    overflow-y:auto;
+    border-left:1px solid rgba(255,255,255,.08);
+}
+
+.cart.active{
+    transform:translateX(0);
+}
+
+.cart-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:25px;
+}
+
+.close{
+    border:0;
+    background:#21102c;
+    color:white;
+    width:40px;
+    height:40px;
+    border-radius:11px;
+    cursor:pointer;
+}
+
+.cart-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    padding:15px;
+    background:#160a20;
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:13px;
+    margin-bottom:10px;
+}
+
+.cart-item small{
+    color:#8d8194;
+}
+
+.remove{
+    border:0;
+    color:#ff7b91;
+    background:#32101e;
+    padding:8px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.cart-total{
+    display:flex;
+    justify-content:space-between;
+    padding:25px 0;
+    font-size:22px;
+    font-weight:900;
+}
+
+.checkout-box{
+    padding-top:15px;
+    border-top:1px solid rgba(255,255,255,.07);
+}
+
+.checkout-box label{
+    display:block;
+    color:#9c90a5;
+    font-size:12px;
+    margin-bottom:8px;
+}
+
+.username{
+    width:100%;
+    background:#150a1e;
+    color:white;
+    border:1px solid rgba(255,255,255,.1);
+    padding:14px;
+    border-radius:11px;
+    outline:none;
+    margin-bottom:12px;
+}
+
+.checkout-btn{
+    width:100%;
+    padding:15px;
+    border:0;
+    border-radius:12px;
+    background:var(--green);
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.empty{
+    text-align:center;
+    color:#766b7e;
+    padding:60px 20px;
+}
+
+/* MOBILE */
+
+.mobile-menu{
+    display:none;
+}
+
+@media(max-width:1000px){
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero p{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons,
+    .hero-stats{
+        justify-content:center;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:700px){
+    .nav{
+        height:68px;
+    }
+
+    .navlinks{
+        display:none;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .logo-icon{
+        width:38px;
+        height:38px;
+    }
+
+    .hero{
+        padding-top:65px;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    .hero-card{
+        min-height:370px;
+    }
+
+    .section{
+        padding:70px 18px;
+    }
+
+    .section-head{
+        display:block;
+    }
+
+    .section-head h2{
+        font-size:32px;
+        margin-bottom:10px;
+    }
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .support{
+        padding:35px 25px;
+        display:block;
+    }
+
+    .support .primary{
+        margin-top:25px;
+    }
+
+    .footer-inner{
+        grid-template-columns:1fr;
+    }
+
+    .hero-stats{
+        gap:20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<div class="topbar">
+    🍩 <span>Community Shop</span> · Dies ist eine inoffizielle Community-Webseite
+</div>
+
 <header>
     <div class="nav">
-        <div class="logo">🍩 DONUT SMP</div>
+
+        <a class="logo" href="#">
+            <div class="logo-icon">🍩</div>
+            <div class="logo-text">DONUT <span>SHOP</span></div>
+        </a>
+
+        <nav class="navlinks">
+            <a href="#home">Startseite</a>
+            <a href="#shop">Shop</a>
+            <a href="#vorteile">Vorteile</a>
+            <a href="#faq">FAQ</a>
+            <a href="#support">Support</a>
+        </nav>
 
         <div>
-            <nav style="display:inline;">
-                <a href="#shop">Shop</a>
-                <a href="#info">Info</a>
-            </nav>
-
-            <button class="cart" onclick="openCart()">
-                🛒 Warenkorb (<span id="cartCount">0</span>)
+            <button class="cart-btn" onclick="openCart()">
+                🛒 Warenkorb <span id="cartCount">0</span>
             </button>
         </div>
+
     </div>
 </header>
 
-<section class="hero">
-    <h1>DONUT SMP</h1>
-    <p>
-        Willkommen im Community-Shop. Kaufe deine Lieblingsprodukte
-        und unterstütze den Server.
-    </p>
-    <a href="#shop" class="button">Zum Shop</a>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div>
+
+        <div class="badge">
+            🟣 COMMUNITY SHOP
+        </div>
+
+        <h1>
+            DEIN
+            <span class="gradient">MONEY.</span><br>
+            DEIN
+            <span class="gradient">GAME.</span>
+        </h1>
+
+        <p>
+            Kaufe deine gewünschten Money-Pakete in unserem modernen
+            Community-Shop. Wähle dein Paket, lege es in den Warenkorb
+            und bereite deinen Einkauf vor.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#shop" class="primary">
+                🛒 Shop entdecken
+            </a>
+
+            <a href="#vorteile" class="secondary">
+                Mehr erfahren
+            </a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <strong>8+</strong>
+                <span>Money-Pakete</span>
+            </div>
+
+            <div class="stat">
+                <strong>24/7</strong>
+                <span>Online-Shop</span>
+            </div>
+
+            <div class="stat">
+                <strong>CHF</strong>
+                <span>Preise</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+
+        <div class="money-icon">
+            💰
+        </div>
+
+        <h3>1 BILLION MONEY</h3>
+
+        <p>
+            Dein Einstiegspaket
+        </p>
+
+        <div style="text-align:center;margin-top:20px;">
+            <span class="price" style="font-size:28px;">
+                15 CHF
+            </span>
+        </div>
+
+    </div>
+
 </section>
+
+
+<!-- SHOP -->
 
 <section class="section" id="shop">
 
-    <h2 class="section-title">🛒 Shop</h2>
-
-    <div class="products">
-
-        <div class="product">
-            <div class="product-icon">💎</div>
-            <h3>500.000 Coins</h3>
-            <p>Ein großes Coin-Paket für deinen Server-Account.</p>
-            <div class="price">4,99 €</div>
-            <button class="buy" onclick="addToCart('500.000 Coins', 4.99)">
-                In den Warenkorb
-            </button>
+    <div class="section-head">
+        <div>
+            <div class="badge">SHOP</div>
+            <h2>Money-Pakete</h2>
         </div>
 
-        <div class="product">
-            <div class="product-icon">👑</div>
-            <h3>VIP Rang</h3>
-            <p>Ein exklusiver Rang mit zusätzlichen Vorteilen.</p>
-            <div class="price">9,99 €</div>
-            <button class="buy" onclick="addToCart('VIP Rang', 9.99)">
-                In den Warenkorb
-            </button>
+        <p>
+            Wähle aus verschiedenen Paketen. Mit der Suche kannst du
+            schnell das gewünschte Paket finden.
+        </p>
+    </div>
+
+    <div class="shop-tools">
+
+        <input
+            class="search"
+            id="search"
+            placeholder="🔎 Paket suchen..."
+            oninput="searchProducts()"
+        >
+
+        <select class="filter" id="sort" onchange="sortProducts()">
+            <option value="default">Sortierung</option>
+            <option value="low">Preis aufsteigend</option>
+            <option value="high">Preis absteigend</option>
+        </select>
+
+    </div>
+
+    <div class="products" id="products"></div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section class="section" id="vorteile">
+
+    <div class="section-head">
+        <div>
+            <div class="badge">WARUM UNS?</div>
+            <h2>Einfach einkaufen.</h2>
+        </div>
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>Schneller Einkauf</h3>
+            <p>
+                Paket auswählen, Minecraft-Username eintragen und
+                Bestellung vorbereiten.
+            </p>
         </div>
 
-        <div class="product">
-            <div class="product-icon">🔥</div>
-            <h3>Premium Rang</h3>
-            <p>Für Spieler, die noch mehr Vorteile möchten.</p>
-            <div class="price">19,99 €</div>
-            <button class="buy" onclick="addToCart('Premium Rang', 19.99)">
-                In den Warenkorb
-            </button>
+        <div class="feature">
+            <div class="feature-icon">🔒</div>
+            <h3>Sicherer Checkout</h3>
+            <p>
+                Die Webseite ist über HTTPS erreichbar und für
+                verschiedene Geräte optimiert.
+            </p>
         </div>
 
-        <div class="product">
-            <div class="product-icon">⚡</div>
-            <h3>1.500.000 Coins</h3>
-            <p>Das große Coin-Paket für deinen Minecraft-Account.</p>
-            <div class="price">12,99 €</div>
-            <button class="buy" onclick="addToCart('1.500.000 Coins', 12.99)">
-                In den Warenkorb
-            </button>
+        <div class="feature">
+            <div class="feature-icon">📱</div>
+            <h3>Mobile optimiert</h3>
+            <p>
+                Egal ob Smartphone, Tablet oder Computer – der Shop
+                passt sich an deine Bildschirmgröße an.
+            </p>
         </div>
 
     </div>
+
 </section>
 
-<section class="section" id="info">
-    <h2 class="section-title">ℹ️ Informationen</h2>
 
-    <p style="color:#aaa0b6;line-height:1.8;max-width:750px;">
-        Dies ist eine Demo-Shop-Webseite. Die Produkte, Preise und
-        Namen kannst du frei verändern. Für echte Käufe muss noch ein
-        echtes Zahlungssystem und eine Verbindung zum Minecraft-Server
-        eingerichtet werden.
-    </p>
+<!-- FAQ -->
+
+<section class="section" id="faq">
+
+    <div class="section-head">
+        <div>
+            <div class="badge">FAQ</div>
+            <h2>Häufige Fragen</h2>
+        </div>
+    </div>
+
+    <div class="faq">
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                Wie funktioniert der Shop?
+                <span>+</span>
+            </button>
+            <div class="faq-answer">
+                Wähle ein Paket aus und füge es deinem Warenkorb hinzu.
+                Anschließend kannst du deinen Minecraft-Username
+                eingeben und den Checkout starten.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                Welche Zahlungsmethoden gibt es?
+                <span>+</span>
+            </button>
+            <div class="faq-answer">
+                Der aktuelle Checkout ist eine Demo. Ein echter
+                Zahlungsanbieter muss noch eingerichtet werden.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                Sind das offizielle DonutSMP-Produkte?
+                <span>+</span>
+            </button>
+            <div class="faq-answer">
+                Nein. Diese Webseite ist als inoffizieller Community-Shop
+                gedacht und steht nicht automatisch mit dem offiziellen
+                Serverbetreiber in Verbindung.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFAQ(this)">
+                Kann ich meinen Minecraft-Namen angeben?
+                <span>+</span>
+            </button>
+            <div class="faq-answer">
+                Ja. Im Warenkorb kannst du deinen Minecraft-Username
+                für den Checkout eingeben.
+            </div>
+        </div>
+
+    </div>
+
 </section>
+
+
+<!-- SUPPORT -->
+
+<section class="section" id="support">
+
+    <div class="support">
+
+        <div>
+            <div class="badge">SUPPORT</div>
+            <h2>Brauchst du Hilfe?</h2>
+            <p>
+                Bei Fragen zu deiner Bestellung kannst du später hier
+                einen Discord- oder Support-Link hinterlegen.
+            </p>
+        </div>
+
+        <a class="primary" href="#">
+            💬 Support öffnen
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
 
 <footer>
-    © 2026 Donut SMP Shop · Community Website
+
+    <div class="footer-inner">
+
+        <div>
+            <div class="footer-title">
+                🍩 DONUT <span>SHOP</span>
+            </div>
+
+            <p style="margin-top:15px;max-width:380px;">
+                Moderner Community-Shop für Money-Pakete.
+                Diese Webseite ist ein unabhängiges Community-Projekt.
+            </p>
+        </div>
+
+        <div>
+            <h4>Shop</h4>
+            <p><a href="#shop">Money-Pakete</a></p>
+            <p><a href="#shop">Warenkorb</a></p>
+        </div>
+
+        <div>
+            <h4>Information</h4>
+            <p><a href="#faq">FAQ</a></p>
+            <p><a href="#support">Support</a></p>
+        </div>
+
+        <div>
+            <h4>Rechtliches</h4>
+            <p>Impressum</p>
+            <p>Datenschutz</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Donut Community Shop · Inoffizielles Community-Projekt
+    </div>
+
 </footer>
+
+
+<!-- CART OVERLAY -->
 
 <div class="overlay" id="overlay" onclick="closeCart()"></div>
 
-<div class="cart-panel" id="cartPanel">
 
-    <div class="cart-header">
+<!-- CART -->
+
+<aside class="cart" id="cart">
+
+    <div class="cart-head">
         <h2>🛒 Warenkorb</h2>
-        <button class="close" onclick="closeCart()">✕</button>
+
+        <button class="close" onclick="closeCart()">
+            ✕
+        </button>
     </div>
 
-    <div id="cartItems">
-        <p style="color:#988ca1;">Dein Warenkorb ist leer.</p>
+    <div id="cartItems"></div>
+
+    <div class="cart-total">
+        <span>Gesamt</span>
+        <span id="total">0.00 CHF</span>
     </div>
 
-    <div class="total">
-        Gesamt: <span id="total">0.00</span> €
+    <div class="checkout-box">
+
+        <label for="username">
+            Minecraft Username
+        </label>
+
+        <input
+            class="username"
+            id="username"
+            placeholder="z.B. DeinMinecraftName"
+        >
+
+        <button class="checkout-btn" onclick="checkout()">
+            💳 Zur Kasse
+        </button>
+
+        <p style="color:#675c6f;font-size:11px;line-height:1.6;margin-top:14px;">
+            Der Checkout ist aktuell eine Demo. Für echte Zahlungen
+            muss ein Zahlungsanbieter und ein Backend eingerichtet werden.
+        </p>
+
     </div>
 
-    <button class="checkout" onclick="checkout()">
-        Zur Kasse
-    </button>
+</aside>
 
-    <p class="notice">
-        Hinweis: Der Checkout ist in dieser Demo noch nicht mit einem
-        echten Zahlungsanbieter verbunden.
-    </p>
-
-</div>
 
 <script>
-let cart = [];
 
-function addToCart(name, price) {
-    cart.push({
-        name: name,
-        price: price
-    });
+/* PRODUCTS */
 
-    updateCart();
+const products = [
 
-    document.getElementById("cartPanel").classList.add("active");
-    document.getElementById("overlay").classList.add("active");
-}
+    {
+        id:1,
+        name:"1 Billion",
+        amount:"1B",
+        price:15,
+        icon:"💰",
+        tag:"START"
+    },
 
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    updateCart();
-}
+    {
+        id:2,
+        name:"10 Billion",
+        amount:"10B",
+        price:100,
+        icon:"💎",
+        tag:"BELIEBT"
+    },
 
-function updateCart() {
+    {
+        id:3,
+        name:"25 Billion",
+        amount:"25B",
+        price:225,
+        icon:"💎",
+        tag:""
+    },
 
-    const items = document.getElementById("cartItems");
-    const count = document.getElementById("cartCount");
-    const total = document.getElementById("total");
+    {
+        id:4,
+        name:"50 Billion",
+        amount:"50B",
+        price:400,
+        icon:"💎",
+        tag:""
+    },
 
-    count.innerText = cart.length;
+    {
+        id:5,
+        name:"100 Billion",
+        amount:"100B",
+        price:750,
+        icon:"👑",
+        tag:"TOP"
+    },
 
-    if (cart.length === 0) {
-        items.innerHTML =
-            '<p style="color:#988ca1;">Dein Warenkorb ist leer.</p>';
-    } else {
+    {
+        id:6,
+        name:"250 Billion",
+        amount:"250B",
+        price:1750,
+        icon:"🔥",
+        tag:""
+    },
 
-        items.innerHTML = cart.map((item, index) => `
-            <div class="cart-item">
-                <div>
-                    <strong>${item.name}</strong><br>
-                    <span style="color:#c99cff;">
-                        ${item.price.toFixed(2)} €
-                    </span>
-                </div>
+    {
+        id:7,
+        name:"500 Billion",
+        amount:"500B",
+        price:3000,
+        icon:"⚡",
+        tag:""
+    },
 
-                <button class="remove"
-                    onclick="removeFromCart(${index})">
-                    Entfernen
-                </button>
-            </div>
-        `).join("");
+    {
+        id:8,
+        name:"1 Trillion",
+        amount:"1T",
+        price:5000,
+        icon:"🌌",
+        tag:"MEGA"
+    },
+
+    {
+        id:9,
+        name:"2 Trillion",
+        amount:"2T",
+        price:9500,
+        icon:"🚀",
+        tag:"ULTRA"
+    },
+
+    {
+        id:10,
+        name:"5 Trillion",
+        amount:"5T",
+        price:22000,
+        icon:"🌟",
+        tag:"ULTIMATE"
+    },
+
+    {
+        id:11,
+        name:"10 Trillion",
+        amount:"10T",
+        price:40000,
+        icon:"👑",
+        tag:""
+    },
+
+    {
+        id:12,
+        name:"25 Trillion",
+        amount:"25T",
+        price:90000,
+        icon:"💜",
+        tag:"MAX"
     }
 
-    let sum = cart.reduce((a, b) => a + b.price, 0);
-    total.innerText = sum.toFixed(2);
-}
+];
 
-function openCart() {
-    document.getElementById("cartPanel").classList.add("active");
-    document.getElementById("overlay").classList.add("active");
-}
 
-function closeCart() {
-    document.getElementById("cartPanel").classList.remove("active");
-    document.getElementById("overlay").classList.remove("active");
-}
+let cart = [];
+let currentProducts = [...products];
 
-function checkout() {
 
-    if (cart.length === 0) {
-        alert("Dein Warenkorb ist leer.");
+/* RENDER PRODUCTS */
+
+function renderProducts(list=currentProducts){
+
+    const container = document.getElementById("products");
+
+    if(list.length === 0){
+
+        container.innerHTML = `
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                padding:70px;
+                color:#81758b;
+            ">
+                <div style="font-size:50px;">🔎</div>
+                <h3 style="color:white;margin-top:15px;">
+                    Kein Paket gefunden
+                </h3>
+                <p style="margin-top:8px;">
+                    Versuche einen anderen Suchbegriff.
+                </p>
+            </div>
+        `;
+
         return;
     }
 
+    container.innerHTML = list.map(product => `
+
+        <article class="product">
+
+            ${product.tag
+                ? `<div class="tag">${product.tag}</div>`
+                : ""
+            }
+
+            <div class="product-image">
+                ${product.icon}
+            </div>
+
+            <h3>${product.name}</h3>
+
+            <div class="product-desc">
+                ${product.amount} Money-Paket
+            </div>
+
+            <div class="product-bottom">
+
+                <div class="price">
+                    ${formatPrice(product.price)}
+                </div>
+
+                <button
+                    class="add"
+                    onclick="addToCart(${product.id})"
+                    aria-label="In Warenkorb"
+                >
+                    +
+                </button>
+
+            </div>
+
+        </article>
+
+    `).join("");
+
+}
+
+
+function formatPrice(price){
+
+    return price.toLocaleString("de-CH",{
+        minimumFractionDigits:2,
+        maximumFractionDigits:2
+    }) + " CHF";
+
+}
+
+
+/* SEARCH */
+
+function searchProducts(){
+
+    const query =
+        document.getElementById("search").value.toLowerCase().trim();
+
+    currentProducts = products.filter(product =>
+        product.name.toLowerCase().includes(query) ||
+        product.amount.toLowerCase().includes(query)
+    );
+
+    renderProducts(currentProducts);
+
+}
+
+
+/* SORT */
+
+function sortProducts(){
+
+    const sort =
+        document.getElementById("sort").value;
+
+    if(sort === "low"){
+
+        currentProducts.sort((a,b) =>
+            a.price - b.price
+        );
+
+    }else if(sort === "high"){
+
+        currentProducts.sort((a,b) =>
+            b.price - a.price
+        );
+
+    }else{
+
+        currentProducts = [...products];
+
+    }
+
+    renderProducts(currentProducts);
+
+}
+
+
+/* ADD TO CART */
+
+function addToCart(id){
+
+    const product =
+        products.find(item => item.id === id);
+
+    if(!product) return;
+
+    const existing =
+        cart.find(item => item.id === id);
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            ...product,
+            quantity:1
+        });
+
+    }
+
+    updateCart();
+    openCart();
+
+}
+
+
+/* REMOVE */
+
+function removeFromCart(id){
+
+    cart =
+        cart.filter(item => item.id !== id);
+
+    updateCart();
+
+}
+
+
+/* CHANGE QUANTITY */
+
+function changeQuantity(id,change){
+
+    const item =
+        cart.find(item => item.id === id);
+
+    if(!item) return;
+
+    item.quantity += change;
+
+    if(item.quantity <= 0){
+
+        removeFromCart(id);
+        return;
+
+    }
+
+    updateCart();
+
+}
+
+
+/* UPDATE CART */
+
+function updateCart(){
+
+    const items =
+        document.getElementById("cartItems");
+
+    const count =
+        document.getElementById("cartCount");
+
+    const total =
+        document.getElementById("total");
+
+    const quantity =
+        cart.reduce((sum,item) =>
+            sum + item.quantity,0
+        );
+
+    count.textContent = quantity;
+
+
+    if(cart.length === 0){
+
+        items.innerHTML = `
+            <div class="empty">
+                <div style="font-size:50px;">🛒</div>
+                <h3 style="margin-top:15px;color:white;">
+                    Dein Warenkorb ist leer
+                </h3>
+                <p style="margin-top:8px;">
+                    Füge ein Paket aus dem Shop hinzu.
+                </p>
+            </div>
+        `;
+
+    }else{
+
+        items.innerHTML = cart.map(item => `
+
+            <div class="cart-item">
+
+                <div style="flex:1;">
+
+                    <strong>
+                        ${item.icon} ${item.name}
+                    </strong>
+
+                    <br>
+
+                    <small>
+                        ${formatPrice(item.price)}
+                    </small>
+
+                    <div style="
+                        display:flex;
+                        align-items:center;
+                        gap:8px;
+                        margin-top:10px;
+                    ">
+
+                        <button
+                            class="remove"
+                            onclick="changeQuantity(${item.id},-1)"
+                        >
+                            −
+                        </button>
+
+                        <strong>
+                            ${item.quantity}
+                        </strong>
+
+                        <button
+                            class="remove"
+                            onclick="changeQuantity(${item.id},1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="remove"
+                    onclick="removeFromCart(${item.id})"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+        `).join("");
+
+    }
+
+
+    const sum =
+        cart.reduce(
+            (total,item) =>
+            total + item.price * item.quantity,
+            0
+        );
+
+    total.textContent = formatPrice(sum);
+
+}
+
+
+/* OPEN CART */
+
+function openCart(){
+
+    document
+        .getElementById("cart")
+        .classList.add("active");
+
+    document
+        .getElementById("overlay")
+        .classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+/* CLOSE CART */
+
+function closeCart(){
+
+    document
+        .getElementById("cart")
+        .classList.remove("active");
+
+    document
+        .getElementById("overlay")
+        .classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+/* CHECKOUT */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        alert("Dein Warenkorb ist leer.");
+
+        return;
+
+    }
+
+
+    const username =
+        document
+        .getElementById("username")
+        .value.trim();
+
+
+    if(!username){
+
+        alert(
+            "Bitte gib zuerst deinen Minecraft-Username ein."
+        );
+
+        document
+            .getElementById("username")
+            .focus();
+
+        return;
+
+    }
+
+
+    let total =
+        cart.reduce(
+            (sum,item) =>
+            sum + item.price * item.quantity,
+            0
+        );
+
+
     alert(
         "Checkout-Demo\n\n" +
-        "Der Warenkorb funktioniert bereits.\n" +
-        "Für echte Zahlungen muss jetzt noch ein Zahlungsanbieter angeschlossen werden."
+        "Minecraft-Username: " +
+        username +
+        "\n\n" +
+        "Gesamt: " +
+        formatPrice(total) +
+        "\n\n" +
+        "Der echte Zahlungs-Checkout wird später angeschlossen."
     );
+
 }
+
+
+/* FAQ */
+
+function toggleFAQ(button){
+
+    const item =
+        button.parentElement;
+
+    const isOpen =
+        item.classList.contains("open");
+
+
+    document
+        .querySelectorAll(".faq-item")
+        .forEach(element =>
+            element.classList.remove("open")
+        );
+
+
+    if(!isOpen){
+
+        item.classList.add("open");
+
+    }
+
+}
+
+
+/* START */
+
+renderProducts();
+updateCart();
+
 </script>
 
 </body>
