@@ -1,1 +1,482 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DonutSMP Shop</title>
 
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at top, #39166b 0%, #12051f 45%, #08030d 100%);
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(8, 3, 13, 0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.1);
+}
+
+.nav {
+    max-width: 1200px;
+    margin: auto;
+    height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    color: #c77dff;
+    text-shadow: 0 0 20px #9d4edd;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #d8a5ff;
+}
+
+.cart {
+    background: #9d4edd;
+    border: none;
+    color: white;
+    padding: 11px 17px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.hero {
+    max-width: 1200px;
+    margin: auto;
+    padding: 100px 20px 70px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: clamp(45px, 8vw, 85px);
+    font-weight: 1000;
+    background: linear-gradient(90deg, #fff, #d0a3ff, #9d4edd);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    margin: 20px auto;
+    max-width: 650px;
+    color: #cfc4da;
+    font-size: 19px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 15px 28px;
+    background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+    border-radius: 14px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 10px 35px rgba(157,78,221,.35);
+    border: none;
+    cursor: pointer;
+}
+
+.section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px 100px;
+}
+
+.section-title {
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+}
+
+.product {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 20px;
+    padding: 25px;
+    transition: .25s;
+    box-shadow: 0 10px 40px rgba(0,0,0,.2);
+}
+
+.product:hover {
+    transform: translateY(-7px);
+    border-color: #9d4edd;
+}
+
+.product-icon {
+    height: 130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 70px;
+    background: linear-gradient(135deg, #26103d, #160922);
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.product h3 {
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+.product p {
+    color: #aaa0b6;
+    min-height: 45px;
+}
+
+.price {
+    font-size: 25px;
+    color: #d09aff;
+    font-weight: bold;
+    margin: 18px 0;
+}
+
+.buy {
+    width: 100%;
+    border: none;
+    padding: 13px;
+    border-radius: 12px;
+    color: white;
+    background: #9d4edd;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.buy:hover {
+    background: #b866f5;
+}
+
+footer {
+    text-align: center;
+    color: #8e8496;
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding: 35px 20px;
+}
+
+/* Warenkorb */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.7);
+    display: none;
+    z-index: 200;
+}
+
+.overlay.active {
+    display: block;
+}
+
+.cart-panel {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: min(430px, 100%);
+    background: #110718;
+    z-index: 201;
+    padding: 25px;
+    transform: translateX(100%);
+    transition: .3s;
+    overflow-y: auto;
+}
+
+.cart-panel.active {
+    transform: translateX(0);
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.close {
+    border: none;
+    background: #2a1537;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1b0d25;
+    padding: 15px;
+    border-radius: 13px;
+    margin-bottom: 10px;
+}
+
+.remove {
+    background: #5d183b;
+    border: none;
+    color: white;
+    padding: 7px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.total {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 25px 0;
+}
+
+.checkout {
+    width: 100%;
+    padding: 15px;
+    background: #35b86b;
+    color: white;
+    border: none;
+    border-radius: 13px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.notice {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #95889f;
+    line-height: 1.5;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="nav">
+        <div class="logo">🍩 DONUT SMP</div>
+
+        <div>
+            <nav style="display:inline;">
+                <a href="#shop">Shop</a>
+                <a href="#info">Info</a>
+            </nav>
+
+            <button class="cart" onclick="openCart()">
+                🛒 Warenkorb (<span id="cartCount">0</span>)
+            </button>
+        </div>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>DONUT SMP</h1>
+    <p>
+        Willkommen im Community-Shop. Kaufe deine Lieblingsprodukte
+        und unterstütze den Server.
+    </p>
+    <a href="#shop" class="button">Zum Shop</a>
+</section>
+
+<section class="section" id="shop">
+
+    <h2 class="section-title">🛒 Shop</h2>
+
+    <div class="products">
+
+        <div class="product">
+            <div class="product-icon">💎</div>
+            <h3>500.000 Coins</h3>
+            <p>Ein großes Coin-Paket für deinen Server-Account.</p>
+            <div class="price">4,99 €</div>
+            <button class="buy" onclick="addToCart('500.000 Coins', 4.99)">
+                In den Warenkorb
+            </button>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">👑</div>
+            <h3>VIP Rang</h3>
+            <p>Ein exklusiver Rang mit zusätzlichen Vorteilen.</p>
+            <div class="price">9,99 €</div>
+            <button class="buy" onclick="addToCart('VIP Rang', 9.99)">
+                In den Warenkorb
+            </button>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">🔥</div>
+            <h3>Premium Rang</h3>
+            <p>Für Spieler, die noch mehr Vorteile möchten.</p>
+            <div class="price">19,99 €</div>
+            <button class="buy" onclick="addToCart('Premium Rang', 19.99)">
+                In den Warenkorb
+            </button>
+        </div>
+
+        <div class="product">
+            <div class="product-icon">⚡</div>
+            <h3>1.500.000 Coins</h3>
+            <p>Das große Coin-Paket für deinen Minecraft-Account.</p>
+            <div class="price">12,99 €</div>
+            <button class="buy" onclick="addToCart('1.500.000 Coins', 12.99)">
+                In den Warenkorb
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section class="section" id="info">
+    <h2 class="section-title">ℹ️ Informationen</h2>
+
+    <p style="color:#aaa0b6;line-height:1.8;max-width:750px;">
+        Dies ist eine Demo-Shop-Webseite. Die Produkte, Preise und
+        Namen kannst du frei verändern. Für echte Käufe muss noch ein
+        echtes Zahlungssystem und eine Verbindung zum Minecraft-Server
+        eingerichtet werden.
+    </p>
+</section>
+
+<footer>
+    © 2026 Donut SMP Shop · Community Website
+</footer>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<div class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+        <h2>🛒 Warenkorb</h2>
+        <button class="close" onclick="closeCart()">✕</button>
+    </div>
+
+    <div id="cartItems">
+        <p style="color:#988ca1;">Dein Warenkorb ist leer.</p>
+    </div>
+
+    <div class="total">
+        Gesamt: <span id="total">0.00</span> €
+    </div>
+
+    <button class="checkout" onclick="checkout()">
+        Zur Kasse
+    </button>
+
+    <p class="notice">
+        Hinweis: Der Checkout ist in dieser Demo noch nicht mit einem
+        echten Zahlungsanbieter verbunden.
+    </p>
+
+</div>
+
+<script>
+let cart = [];
+
+function addToCart(name, price) {
+    cart.push({
+        name: name,
+        price: price
+    });
+
+    updateCart();
+
+    document.getElementById("cartPanel").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+function updateCart() {
+
+    const items = document.getElementById("cartItems");
+    const count = document.getElementById("cartCount");
+    const total = document.getElementById("total");
+
+    count.innerText = cart.length;
+
+    if (cart.length === 0) {
+        items.innerHTML =
+            '<p style="color:#988ca1;">Dein Warenkorb ist leer.</p>';
+    } else {
+
+        items.innerHTML = cart.map((item, index) => `
+            <div class="cart-item">
+                <div>
+                    <strong>${item.name}</strong><br>
+                    <span style="color:#c99cff;">
+                        ${item.price.toFixed(2)} €
+                    </span>
+                </div>
+
+                <button class="remove"
+                    onclick="removeFromCart(${index})">
+                    Entfernen
+                </button>
+            </div>
+        `).join("");
+    }
+
+    let sum = cart.reduce((a, b) => a + b.price, 0);
+    total.innerText = sum.toFixed(2);
+}
+
+function openCart() {
+    document.getElementById("cartPanel").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+}
+
+function closeCart() {
+    document.getElementById("cartPanel").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+}
+
+function checkout() {
+
+    if (cart.length === 0) {
+        alert("Dein Warenkorb ist leer.");
+        return;
+    }
+
+    alert(
+        "Checkout-Demo\n\n" +
+        "Der Warenkorb funktioniert bereits.\n" +
+        "Für echte Zahlungen muss jetzt noch ein Zahlungsanbieter angeschlossen werden."
+    );
+}
+</script>
+
+</body>
+</html>
