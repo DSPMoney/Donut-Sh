@@ -7,51 +7,42 @@
 <title>DonutShop — Minecraft Community Store</title>
 
 <meta name="description"
-content="Moderner Minecraft Community Shop für Money und wertvolle Items.">
+content="DonutShop – Minecraft Spawner, Elytra und seltene Items.">
 
 <style>
 
 /* =========================================================
    DONUTSHOP
-   COMPLETE SINGLE PAGE SHOP
+   MODERN MINECRAFT COMMUNITY SHOP
    ========================================================= */
 
 :root {
     --bg: #05030a;
-    --bg-2: #090510;
-    --bg-3: #100817;
-
-    --card: rgba(255,255,255,.045);
-    --card-hover: rgba(255,255,255,.075);
+    --bg2: #0a0611;
+    --panel: rgba(255,255,255,.045);
+    --panel2: rgba(255,255,255,.07);
 
     --border: rgba(255,255,255,.09);
-    --border-purple: rgba(170,80,255,.35);
 
     --purple: #8b3dff;
-    --purple-light: #b66cff;
-    --purple-dark: #5e18c9;
-
+    --purple2: #b76cff;
     --pink: #ef4cff;
-    --blue: #6d7cff;
 
-    --green: #31df88;
-    --yellow: #ffc857;
-    --red: #ff4e70;
+    --green: #35e58d;
+    --red: #ff5475;
+    --gold: #ffc857;
+    --blue: #5c9dff;
 
-    --text: #ffffff;
-    --text-2: #c5b9ce;
-    --text-3: #80738c;
+    --text: #fff;
+    --muted: #95899f;
 
-    --shadow:
-        0 30px 80px rgba(0,0,0,.45);
-
-    --radius: 22px;
+    --radius: 20px;
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html {
@@ -60,25 +51,6 @@ html {
 
 body {
     min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at 10% 0%,
-            rgba(139,61,255,.18),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 90% 10%,
-            rgba(239,76,255,.11),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 50% 100%,
-            rgba(109,124,255,.08),
-            transparent 30%
-        ),
-        var(--bg);
-
     color: var(--text);
 
     font-family:
@@ -86,6 +58,19 @@ body {
         Arial,
         Helvetica,
         sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(139,61,255,.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(239,76,255,.12),
+            transparent 25%
+        ),
+        var(--bg);
 
     overflow-x: hidden;
 }
@@ -100,43 +85,28 @@ button {
     cursor: pointer;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
-
 ::-webkit-scrollbar {
-    width: 9px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #06030a;
+    background: #05030a;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #3a185a;
+    background: #4a2070;
     border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #6e2bb0;
 }
 
 /* =========================================================
    BACKGROUND
    ========================================================= */
 
-.background-grid {
+.grid-bg {
     position: fixed;
     inset: 0;
-
-    pointer-events: none;
-
-    opacity: .20;
+    z-index: -5;
+    opacity: .18;
 
     background-image:
         linear-gradient(
@@ -150,242 +120,167 @@ a {
         );
 
     background-size: 55px 55px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            black,
-            transparent 85%
-        );
-
-    z-index: -2;
 }
 
 .glow {
     position: fixed;
-
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
 
     border-radius: 50%;
+    filter: blur(120px);
 
-    filter: blur(100px);
-
-    opacity: .08;
-
+    opacity: .09;
     pointer-events: none;
-
-    z-index: -1;
+    z-index: -4;
 }
 
 .glow.one {
-    top: 10%;
-    left: -250px;
     background: var(--purple);
+    left: -220px;
+    top: 20%;
 }
 
 .glow.two {
-    right: -250px;
-    top: 40%;
     background: var(--pink);
+    right: -220px;
+    top: 50%;
 }
 
 /* =========================================================
    HEADER
    ========================================================= */
 
-.header {
+header {
     position: fixed;
-
+    top: 0;
     left: 0;
     right: 0;
-    top: 0;
 
-    height: 82px;
-
+    height: 76px;
     z-index: 1000;
 
     background:
         rgba(5,3,10,.78);
 
-    border-bottom:
-        1px solid rgba(255,255,255,.07);
+    backdrop-filter: blur(20px);
 
-    backdrop-filter:
-        blur(24px);
+    border-bottom:
+        1px solid var(--border);
 }
 
 .header-inner {
-    width: min(1500px, 94%);
-
+    width: min(1450px, 94%);
     height: 100%;
-
     margin: auto;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 20px;
 }
 
-/* =========================================================
-   LOGO
-   ========================================================= */
-
 .logo {
     display: flex;
-
     align-items: center;
+    gap: 10px;
 
-    gap: 12px;
+    text-decoration: none;
+    color: white;
 
-    flex-shrink: 0;
+    font-weight: 1000;
 }
 
 .logo-icon {
-    width: 48px;
-    height: 48px;
-
-    border-radius: 15px;
+    width: 44px;
+    height: 44px;
 
     display: grid;
-
     place-items: center;
 
-    font-size: 26px;
+    border-radius: 13px;
 
     background:
         linear-gradient(
             135deg,
-            #a957ff,
-            #6821d4
+            var(--purple2),
+            var(--purple)
         );
 
     box-shadow:
-        0 0 35px rgba(139,61,255,.35);
+        0 0 35px
+        rgba(139,61,255,.3);
+
+    font-size: 24px;
 }
 
-.logo-text {
-    font-size: 18px;
-
-    font-weight: 1000;
-
-    letter-spacing: -.5px;
+.logo span {
+    color: var(--purple2);
 }
 
-.logo-text span {
-    color: var(--purple-light);
-}
-
-/* =========================================================
-   NAVIGATION
-   ========================================================= */
-
-.nav {
+nav {
     display: flex;
-
-    align-items: center;
-
-    gap: 5px;
+    gap: 4px;
 }
 
-.nav-button {
+.nav-btn {
+    padding: 10px 13px;
+
     border: 0;
+    border-radius: 10px;
 
     background: transparent;
+    color: var(--muted);
 
-    color: var(--text-3);
-
-    padding:
-        11px 13px;
-
-    border-radius: 11px;
-
-    font-weight: 800;
+    font-size: 12px;
+    font-weight: 900;
 
     transition: .2s;
 }
 
-.nav-button:hover {
+.nav-btn:hover,
+.nav-btn.active {
     color: white;
-
     background:
-        rgba(255,255,255,.045);
+        rgba(139,61,255,.13);
 }
 
-.nav-button.active {
-    color: white;
-
-    background:
-        rgba(139,61,255,.15);
-
-    box-shadow:
-        inset 0 0 0 1px
-        rgba(139,61,255,.12);
-}
-
-/* =========================================================
-   HEADER ACTIONS
-   ========================================================= */
-
-.header-actions {
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-}
-
-.header-cart {
+.cart-button {
     position: relative;
 
-    border: 1px solid var(--border);
+    width: 44px;
+    height: 44px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 12px;
 
     background:
-        rgba(255,255,255,.045);
+        rgba(255,255,255,.04);
 
     color: white;
 
-    width: 46px;
-    height: 46px;
-
-    border-radius: 13px;
-
-    font-size: 19px;
-}
-
-.header-cart:hover {
-    border-color:
-        var(--border-purple);
-
-    background:
-        rgba(139,61,255,.12);
+    font-size: 18px;
 }
 
 .cart-count {
     position: absolute;
 
-    right: -5px;
-    top: -6px;
+    top: -7px;
+    right: -6px;
 
     min-width: 20px;
     height: 20px;
 
-    padding: 0 5px;
-
     display: grid;
-
     place-items: center;
 
     border-radius: 50px;
 
     background: var(--purple);
 
-    font-size: 10px;
-
+    font-size: 9px;
     font-weight: 1000;
 }
 
@@ -393,41 +288,33 @@ a {
    MAIN
    ========================================================= */
 
-.main {
-    width: min(1500px, 94%);
-
+main {
+    width: min(1450px, 94%);
     margin: auto;
 
-    padding-top: 120px;
-
+    padding-top: 115px;
     padding-bottom: 80px;
 }
 
 .view {
     display: none;
-
-    animation:
-        viewIn .4s ease;
+    animation: fadeIn .35s ease;
 }
 
 .view.active {
     display: block;
 }
 
-@keyframes viewIn {
-
+@keyframes fadeIn {
     from {
         opacity: 0;
-        transform:
-            translateY(14px);
+        transform: translateY(12px);
     }
 
     to {
         opacity: 1;
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
-
 }
 
 /* =========================================================
@@ -435,61 +322,49 @@ a {
    ========================================================= */
 
 .hero {
-    min-height: 720px;
+    min-height: 670px;
 
     display: grid;
-
     grid-template-columns:
-        minmax(0, 1.1fr)
-        minmax(400px, .9fr);
+        1.05fr
+        .95fr;
 
     align-items: center;
-
-    gap: 80px;
+    gap: 70px;
 }
 
-.hero-label {
+.badge {
     display: inline-flex;
-
     align-items: center;
+    gap: 7px;
 
-    gap: 8px;
-
-    padding:
-        8px 13px;
+    padding: 8px 13px;
 
     border-radius: 50px;
+
+    color: #d5b9ff;
 
     background:
         rgba(139,61,255,.10);
 
     border:
         1px solid
-        rgba(139,61,255,.22);
+        rgba(139,61,255,.25);
 
-    color:
-        #cfabff;
-
-    font-size: 11px;
-
+    font-size: 10px;
     font-weight: 1000;
-
     letter-spacing: 1px;
-
-    text-transform: uppercase;
 }
 
-.hero-title {
-    margin-top: 25px;
+.hero h1 {
+    margin-top: 22px;
 
     font-size:
-        clamp(55px, 7vw, 105px);
+        clamp(55px, 7vw, 100px);
 
-    line-height: .91;
+    line-height: .9;
 
-    letter-spacing:
-        -7px;
-
+    letter-spacing: -7px;
     font-weight: 1000;
 }
 
@@ -497,71 +372,55 @@ a {
     background:
         linear-gradient(
             100deg,
-            #ffffff 5%,
-            #b86cff 45%,
-            #ef4cff 100%
+            #fff,
+            #b76cff,
+            #ef4cff
         );
 
-    -webkit-background-clip:
-        text;
+    -webkit-background-clip: text;
+    background-clip: text;
 
-    background-clip:
-        text;
-
-    color:
-        transparent;
+    color: transparent;
 }
 
-.hero-description {
-    max-width: 720px;
+.hero p {
+    max-width: 680px;
 
     margin-top: 28px;
 
-    color: var(--text-2);
-
-    font-size: 18px;
+    color: #bcb1c5;
 
     line-height: 1.8;
+    font-size: 16px;
 }
 
 .hero-buttons {
     display: flex;
-
     flex-wrap: wrap;
 
-    gap: 12px;
+    gap: 10px;
 
-    margin-top: 34px;
+    margin-top: 30px;
 }
 
-/* =========================================================
-   BUTTONS
-   ========================================================= */
-
 .btn {
+    padding: 14px 20px;
+
+    border-radius: 12px;
+
     border: 0;
 
-    border-radius: 13px;
-
-    padding:
-        15px 22px;
-
+    color: white;
     font-weight: 1000;
 
-    transition:
-        transform .2s,
-        box-shadow .2s,
-        background .2s;
+    transition: .2s;
 }
 
 .btn:hover {
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 }
 
-.btn-primary {
-    color: white;
-
+.primary {
     background:
         linear-gradient(
             135deg,
@@ -570,19 +429,11 @@ a {
         );
 
     box-shadow:
-        0 18px 45px
+        0 15px 40px
         rgba(139,61,255,.25);
 }
 
-.btn-primary:hover {
-    box-shadow:
-        0 22px 55px
-        rgba(139,61,255,.38);
-}
-
-.btn-secondary {
-    color: white;
-
+.secondary {
     background:
         rgba(255,255,255,.045);
 
@@ -590,81 +441,63 @@ a {
         1px solid var(--border);
 }
 
-.btn-secondary:hover {
-    background:
-        rgba(255,255,255,.075);
-}
-
-/* =========================================================
-   HERO STATS
-   ========================================================= */
-
 .hero-stats {
     display: flex;
-
     flex-wrap: wrap;
 
-    gap: 45px;
+    gap: 35px;
 
-    margin-top: 50px;
+    margin-top: 45px;
 }
 
-.hero-stat strong {
+.stat strong {
     display: block;
-
-    font-size: 25px;
-
-    font-weight: 1000;
+    font-size: 23px;
 }
 
-.hero-stat span {
-    display: block;
-
-    margin-top: 5px;
-
-    color: var(--text-3);
-
-    font-size: 12px;
+.stat span {
+    color: var(--muted);
+    font-size: 11px;
 }
 
 /* =========================================================
    HERO VISUAL
    ========================================================= */
 
-.hero-visual {
-    min-height: 550px;
+.hero-card {
+    min-height: 500px;
 
     position: relative;
 
     display: grid;
-
     place-items: center;
 
     overflow: hidden;
 
-    border-radius: 35px;
+    border-radius: 32px;
 
     border:
         1px solid
-        rgba(181,108,255,.18);
+        rgba(183,108,255,.2);
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(139,61,255,.22),
-            transparent 50%
+            circle,
+            rgba(139,61,255,.25),
+            transparent 55%
         ),
         linear-gradient(
             145deg,
-            #180a25,
+            #180a26,
             #08040d
         );
 
     box-shadow:
-        var(--shadow);
+        0 35px 90px
+        rgba(0,0,0,.45);
 }
 
-.hero-visual::before {
+.hero-card::before {
     content: "";
 
     position: absolute;
@@ -676,102 +509,67 @@ a {
 
     border:
         1px solid
-        rgba(255,255,255,.08);
-
-    box-shadow:
-        0 0 100px
-        rgba(139,61,255,.2);
+        rgba(255,255,255,.10);
 
     animation:
-        spin 20s linear infinite;
+        rotate 18s linear infinite;
 }
 
-.hero-visual::after {
+.hero-card::after {
     content: "";
 
     position: absolute;
 
-    width: 280px;
-    height: 280px;
+    width: 260px;
+    height: 260px;
 
     border-radius: 50%;
 
     border:
         1px dashed
-        rgba(199,125,255,.3);
+        rgba(183,108,255,.35);
 
     animation:
-        spinReverse 14s linear infinite;
+        rotate 11s linear infinite reverse;
 }
 
-@keyframes spin {
-
-    from {
-        transform: rotate(0deg);
-    }
-
+@keyframes rotate {
     to {
         transform: rotate(360deg);
     }
-
 }
 
-@keyframes spinReverse {
+.hero-item {
+    position: relative;
+    z-index: 5;
 
-    from {
-        transform: rotate(360deg);
-    }
-
-    to {
-        transform: rotate(0deg);
-    }
-
-}
-
-.hero-coin {
-    width: 230px;
-    height: 230px;
-
-    border-radius: 50%;
+    width: 210px;
+    height: 210px;
 
     display: grid;
-
     place-items: center;
 
-    position: relative;
-
-    z-index: 3;
+    border-radius: 50%;
 
     font-size: 90px;
 
     background:
         radial-gradient(
             circle at 35% 25%,
-            #fff2b0,
-            #d99c28 45%,
-            #7d4b0a 100%
+            #fff,
+            #c982ff 35%,
+            #6719bd 100%
         );
 
-    border:
-        7px solid
-        rgba(255,220,100,.35);
-
     box-shadow:
-        inset 0 10px 25px
-        rgba(255,255,255,.5),
-
-        inset 0 -20px 30px
-        rgba(0,0,0,.25),
-
-        0 0 80px
-        rgba(255,190,50,.28);
+        0 0 100px
+        rgba(139,61,255,.4);
 
     animation:
-        coinFloat 4s ease-in-out infinite;
+        floating 4s ease-in-out infinite;
 }
 
-@keyframes coinFloat {
-
+@keyframes floating {
     0%,100% {
         transform:
             translateY(0)
@@ -783,71 +581,61 @@ a {
             translateY(-18px)
             rotate(2deg);
     }
-
 }
 
 /* =========================================================
-   SECTION
+   SECTIONS
    ========================================================= */
 
 .section {
-    padding:
-        100px 0;
+    padding: 80px 0;
 }
 
-.section-heading {
-    max-width: 800px;
-
-    margin-bottom: 35px;
+.heading {
+    margin-bottom: 30px;
 }
 
-.section-heading .small {
-    color: var(--purple-light);
+.heading small {
+    color: var(--purple2);
 
-    font-size: 11px;
-
+    font-size: 10px;
     font-weight: 1000;
-
     letter-spacing: 2px;
-
-    text-transform: uppercase;
 }
 
-.section-heading h2 {
-    margin-top: 12px;
+.heading h2 {
+    margin-top: 10px;
 
     font-size:
         clamp(35px, 5vw, 58px);
 
-    line-height: 1;
-
     letter-spacing: -3px;
 }
 
-.section-heading p {
-    margin-top: 15px;
+.heading p {
+    margin-top: 12px;
 
-    color: var(--text-3);
+    max-width: 700px;
+
+    color: var(--muted);
 
     line-height: 1.7;
 }
 
 /* =========================================================
-   FEATURE CARDS
+   FEATURE GRID
    ========================================================= */
 
-.features {
+.feature-grid {
     display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
-    gap: 16px;
+    gap: 15px;
 }
 
 .feature {
-    min-height: 210px;
-
     padding: 25px;
 
     border:
@@ -857,421 +645,154 @@ a {
         var(--radius);
 
     background:
-        var(--card);
+        var(--panel);
 
     transition: .25s;
 }
 
 .feature:hover {
-    transform:
-        translateY(-5px);
-
-    background:
-        var(--card-hover);
+    transform: translateY(-5px);
 
     border-color:
-        var(--border-purple);
+        rgba(139,61,255,.4);
+
+    background:
+        var(--panel2);
 }
 
 .feature-icon {
-    width: 52px;
-    height: 52px;
-
-    display: grid;
-
-    place-items: center;
-
-    border-radius: 15px;
-
-    background:
-        rgba(139,61,255,.12);
-
-    font-size: 24px;
-
-    margin-bottom: 20px;
+    font-size: 28px;
+    margin-bottom: 18px;
 }
 
 .feature h3 {
-    font-size: 17px;
+    font-size: 16px;
 }
 
 .feature p {
-    margin-top: 9px;
+    margin-top: 8px;
 
-    color: var(--text-3);
+    color: var(--muted);
 
-    font-size: 13px;
-
+    font-size: 12px;
     line-height: 1.7;
 }
 
 /* =========================================================
-   MONEY VIEW
+   SHOP TOOLBAR
    ========================================================= */
 
-.money-layout {
-    display: grid;
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
 
-    grid-template-columns:
-        minmax(0, 1fr)
-        420px;
+    gap: 10px;
 
-    gap: 20px;
-}
+    padding: 13px;
 
-.panel {
-    padding: 30px;
+    margin-bottom: 22px;
 
     border:
         1px solid var(--border);
 
-    border-radius:
-        var(--radius);
+    border-radius: 17px;
 
     background:
-        var(--card);
-
-    box-shadow:
-        0 20px 60px
-        rgba(0,0,0,.16);
+        rgba(255,255,255,.025);
 }
 
-.panel-title {
-    display: flex;
+.search {
+    flex: 1;
+    min-width: 230px;
 
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 15px;
-
-    margin-bottom: 25px;
-}
-
-.panel-title h3 {
-    font-size: 22px;
-}
-
-.panel-title span {
-    color: var(--text-3);
-
-    font-size: 12px;
-}
-
-/* =========================================================
-   MONEY INPUT
-   ========================================================= */
-
-.money-input-wrap {
     position: relative;
 }
 
-.money-input {
+.search input {
     width: 100%;
 
     padding:
-        22px 20px;
-
-    border-radius: 15px;
+        14px 15px 14px 42px;
 
     border:
         1px solid var(--border);
+
+    border-radius: 11px;
+
+    outline: none;
 
     background:
         rgba(0,0,0,.25);
 
     color: white;
-
-    outline: none;
-
-    font-size: 27px;
-
-    font-weight: 1000;
-}
-
-.money-input:focus {
-    border-color:
-        var(--purple);
-
-    box-shadow:
-        0 0 0 4px
-        rgba(139,61,255,.08);
-}
-
-.money-help {
-    margin-top: 9px;
-
-    color: var(--text-3);
-
-    font-size: 12px;
-}
-
-/* =========================================================
-   SLIDER
-   ========================================================= */
-
-.money-slider {
-    width: 100%;
-
-    margin-top: 30px;
-
-    accent-color:
-        var(--purple);
-
-    cursor: pointer;
-}
-
-.slider-labels {
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-top: 7px;
-
-    color: var(--text-3);
-
-    font-size: 11px;
-}
-
-/* =========================================================
-   QUICK MONEY
-   ========================================================= */
-
-.quick-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 9px;
-
-    margin-top: 25px;
-}
-
-.quick {
-    padding: 13px 5px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 11px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    color: var(--text-2);
-
-    font-weight: 900;
-}
-
-.quick:hover {
-    color: white;
-
-    border-color:
-        var(--border-purple);
-
-    background:
-        rgba(139,61,255,.1);
-}
-
-/* =========================================================
-   MONEY PREVIEW
-   ========================================================= */
-
-.money-preview {
-    margin-top: 30px;
-
-    padding: 28px;
-
-    border-radius: 20px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(139,61,255,.14),
-            rgba(239,76,255,.06)
-        );
-
-    border:
-        1px solid
-        rgba(139,61,255,.15);
-}
-
-.preview-money {
-    color:
-        var(--purple-light);
-
-    font-size:
-        clamp(40px, 6vw, 68px);
-
-    font-weight: 1000;
-
-    letter-spacing: -3px;
-}
-
-.preview-price {
-    margin-top: 8px;
-
-    font-size: 23px;
-
-    font-weight: 1000;
-}
-
-.preview-note {
-    margin-top: 7px;
-
-    color: var(--text-3);
-
-    font-size: 11px;
-}
-
-/* =========================================================
-   PRICE TABLE
-   ========================================================= */
-
-.price-list {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-}
-
-.price-row {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    padding: 15px;
-
-    border-radius: 12px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    border:
-        1px solid transparent;
-}
-
-.price-row:hover {
-    border-color:
-        var(--border-purple);
-}
-
-.price-row strong {
-    color:
-        var(--purple-light);
-}
-
-.price-row.highlight {
-    background:
-        rgba(139,61,255,.11);
-
-    border-color:
-        rgba(139,61,255,.2);
-}
-
-/* =========================================================
-   ITEMS
-   ========================================================= */
-
-.shop-toolbar {
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    margin-bottom: 25px;
-}
-
-.search-box {
-    flex: 1;
-
-    min-width: 240px;
-
-    position: relative;
-}
-
-.search-input {
-    width: 100%;
-
-    padding:
-        15px 18px 15px 45px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 13px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    color: white;
-
-    outline: none;
 }
 
 .search-icon {
     position: absolute;
 
-    left: 17px;
+    left: 15px;
     top: 50%;
 
     transform:
         translateY(-50%);
 
-    color:
-        var(--text-3);
+    color: var(--muted);
 }
 
-.category-buttons {
+.categories {
     display: flex;
-
-    gap: 7px;
+    gap: 6px;
 
     overflow-x: auto;
 }
 
-.category-button {
+.category {
     white-space: nowrap;
+
+    padding: 12px 14px;
 
     border:
         1px solid var(--border);
 
+    border-radius: 10px;
+
     background:
-        rgba(255,255,255,.03);
+        rgba(255,255,255,.025);
 
-    color:
-        var(--text-3);
+    color: var(--muted);
 
-    padding:
-        12px 14px;
-
-    border-radius: 11px;
-
-    font-size: 12px;
-
+    font-size: 11px;
     font-weight: 900;
 }
 
-.category-button.active,
-.category-button:hover {
+.category:hover,
+.category.active {
     color: white;
+
+    background:
+        rgba(139,61,255,.13);
 
     border-color:
         rgba(139,61,255,.35);
+}
 
-    background:
-        rgba(139,61,255,.12);
+.sort {
+    padding: 12px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 10px;
+
+    background: #100817;
+
+    color: white;
+
+    outline: none;
 }
 
 /* =========================================================
-   PRODUCT GRID
+   PRODUCTS
    ========================================================= */
 
 .product-grid {
@@ -1284,6 +805,8 @@ a {
 }
 
 .product {
+    position: relative;
+
     overflow: hidden;
 
     border:
@@ -1293,39 +816,37 @@ a {
         var(--radius);
 
     background:
-        var(--card);
+        var(--panel);
 
     transition: .25s;
 }
 
 .product:hover {
-    transform:
-        translateY(-6px);
+    transform: translateY(-6px);
 
     border-color:
-        rgba(181,108,255,.35);
+        rgba(183,108,255,.35);
 
     box-shadow:
         0 25px 60px
-        rgba(0,0,0,.25);
+        rgba(0,0,0,.3);
 }
 
 .product-image {
-    height: 185px;
+    height: 190px;
 
     position: relative;
 
     display: grid;
-
     place-items: center;
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(139,61,255,.18),
-            transparent 62%
+            circle,
+            rgba(139,61,255,.22),
+            transparent 60%
         ),
-        #0d0614;
+        #0c0612;
 }
 
 .product-emoji {
@@ -1337,69 +858,92 @@ a {
             rgba(0,0,0,.5)
         );
 
-    transition:
-        transform .25s;
+    transition: .25s;
 }
 
-.product:hover
-.product-emoji {
+.product:hover .product-emoji {
     transform:
-        scale(1.08)
+        scale(1.1)
         rotate(-3deg);
 }
 
 .product-tag {
     position: absolute;
 
-    left: 12px;
-    top: 12px;
+    top: 11px;
+    left: 11px;
 
-    padding:
-        6px 9px;
+    padding: 6px 8px;
 
     border-radius: 7px;
 
     background:
         rgba(0,0,0,.45);
 
-    color:
-        #d8c9df;
+    color: #cfc3d6;
 
-    font-size: 9px;
-
+    font-size: 8px;
     font-weight: 1000;
-
-    text-transform: uppercase;
 }
 
-.product-favorite {
+.favorite {
     position: absolute;
 
-    right: 10px;
     top: 10px;
+    right: 10px;
 
     width: 34px;
     height: 34px;
 
-    display: grid;
-
-    place-items: center;
-
     border:
-        1px solid rgba(255,255,255,.07);
+        1px solid rgba(255,255,255,.08);
 
     border-radius: 9px;
 
     background:
-        rgba(0,0,0,.3);
+        rgba(0,0,0,.35);
 
-    color:
-        #827587;
+    color: #8d8094;
+
+    z-index: 5;
 }
 
-.product-favorite.active {
-    color:
-        #ff5f9d;
+.favorite.active {
+    color: #ff5d9e;
+}
+
+.rarity {
+    position: absolute;
+
+    bottom: 10px;
+    right: 10px;
+
+    padding: 5px 8px;
+
+    border-radius: 7px;
+
+    font-size: 8px;
+    font-weight: 1000;
+}
+
+.common {
+    color: #ccc;
+    background: rgba(255,255,255,.08);
+}
+
+.rare {
+    color: #68aaff;
+    background: rgba(80,140,255,.13);
+}
+
+.epic {
+    color: #c76cff;
+    background: rgba(180,70,255,.13);
+}
+
+.legendary {
+    color: var(--gold);
+    background: rgba(255,200,87,.13);
 }
 
 .product-body {
@@ -1407,55 +951,43 @@ a {
 }
 
 .product-name {
-    font-size: 16px;
-
     font-weight: 1000;
+    font-size: 15px;
 }
 
 .product-description {
-    min-height: 37px;
+    min-height: 38px;
 
     margin-top: 7px;
 
-    color: var(--text-3);
+    color: var(--muted);
 
     font-size: 11px;
-
     line-height: 1.6;
 }
 
 .product-bottom {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    gap: 10px;
-
-    margin-top: 17px;
+    margin-top: 16px;
 }
 
-.product-price {
-    color:
-        var(--purple-light);
+.price {
+    color: var(--purple2);
 
     font-size: 18px;
-
     font-weight: 1000;
 }
 
-.add-product {
-    width: 42px;
-    height: 42px;
-
-    display: grid;
-
-    place-items: center;
+.add {
+    width: 40px;
+    height: 40px;
 
     border: 0;
 
-    border-radius: 11px;
+    border-radius: 10px;
 
     color: white;
 
@@ -1463,35 +995,171 @@ a {
         linear-gradient(
             135deg,
             var(--purple),
-            var(--purple-dark)
+            var(--pink)
         );
 
     font-size: 20px;
+
+    transition: .2s;
+}
+
+.add:hover {
+    transform: scale(1.08);
+
+    box-shadow:
+        0 10px 25px
+        rgba(139,61,255,.35);
 }
 
 /* =========================================================
-   EMPTY
+   MONEY
    ========================================================= */
 
-.empty {
-    padding: 80px 20px;
+.money-layout {
+    display: grid;
 
-    text-align: center;
+    grid-template-columns:
+        1fr 390px;
+
+    gap: 18px;
+}
+
+.panel {
+    padding: 28px;
 
     border:
-        1px dashed
-        var(--border);
+        1px solid var(--border);
 
     border-radius:
         var(--radius);
 
-    color: var(--text-3);
+    background:
+        var(--panel);
 }
 
-.empty-icon {
-    font-size: 50px;
+.money-input {
+    width: 100%;
 
-    margin-bottom: 15px;
+    margin-top: 15px;
+
+    padding: 20px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 14px;
+
+    background:
+        rgba(0,0,0,.25);
+
+    color: white;
+
+    outline: none;
+
+    font-size: 25px;
+    font-weight: 1000;
+}
+
+.money-input:focus {
+    border-color: var(--purple);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(139,61,255,.08);
+}
+
+.quick {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+.quick button {
+    padding: 12px 5px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.025);
+
+    color: #c8bdcf;
+
+    font-weight: 900;
+}
+
+.quick button:hover {
+    color: white;
+
+    border-color:
+        var(--purple);
+
+    background:
+        rgba(139,61,255,.12);
+}
+
+.money-preview {
+    margin-top: 22px;
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,61,255,.15),
+            rgba(239,76,255,.06)
+        );
+}
+
+.money-value {
+    color: var(--purple2);
+
+    font-size: 50px;
+    font-weight: 1000;
+}
+
+/* =========================================================
+   DEAL BANNER
+   ========================================================= */
+
+.deal {
+    margin: 30px 0;
+
+    padding: 22px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    border-radius: 18px;
+
+    border:
+        1px solid
+        rgba(255,200,87,.18);
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(255,200,87,.10),
+            rgba(139,61,255,.08)
+        );
+}
+
+.deal strong {
+    color: var(--gold);
 }
 
 /* =========================================================
@@ -1502,50 +1170,42 @@ a {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
-    gap: 17px;
+    gap: 15px;
 }
 
 .info-card {
-    padding: 30px;
+    padding: 25px;
 
     border:
         1px solid var(--border);
 
-    border-radius:
-        var(--radius);
+    border-radius: var(--radius);
 
     background:
-        var(--card);
+        var(--panel);
 }
 
 .info-number {
-    color:
-        var(--purple-light);
+    color: var(--purple2);
 
-    font-size: 11px;
-
+    font-size: 10px;
     font-weight: 1000;
-
     letter-spacing: 2px;
 }
 
 .info-card h3 {
-    margin-top: 18px;
-
-    font-size: 20px;
+    margin-top: 15px;
 }
 
 .info-card p {
-    margin-top: 10px;
+    margin-top: 9px;
 
-    color:
-        var(--text-3);
+    color: var(--muted);
 
-    line-height: 1.8;
-
-    font-size: 13px;
+    font-size: 12px;
+    line-height: 1.7;
 }
 
 /* =========================================================
@@ -1553,7 +1213,7 @@ a {
    ========================================================= */
 
 .faq {
-    max-width: 1000px;
+    max-width: 900px;
 }
 
 .faq-item {
@@ -1564,16 +1224,10 @@ a {
 .faq-question {
     width: 100%;
 
+    padding: 22px 0;
+
     display: flex;
-
     justify-content: space-between;
-
-    align-items: center;
-
-    gap: 20px;
-
-    padding:
-        24px 0;
 
     border: 0;
 
@@ -1586,149 +1240,59 @@ a {
     font-weight: 900;
 }
 
-.faq-plus {
-    color:
-        var(--purple-light);
-
-    font-size: 22px;
-
-    transition:
-        transform .25s;
-}
-
-.faq-item.open
-.faq-plus {
-    transform:
-        rotate(45deg);
-}
-
 .faq-answer {
     display: none;
 
-    padding:
-        0 0 23px;
+    padding-bottom: 20px;
 
-    color:
-        var(--text-3);
-
-    line-height: 1.8;
+    color: var(--muted);
 
     font-size: 13px;
+    line-height: 1.8;
 }
 
-.faq-item.open
-.faq-answer {
+.faq-item.open .faq-answer {
     display: block;
 }
 
 /* =========================================================
-   SUPPORT
-   ========================================================= */
-
-.support-grid {
-    display: grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap: 18px;
-}
-
-.support-card {
-    padding: 32px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        var(--radius);
-
-    background:
-        var(--card);
-}
-
-.support-card h3 {
-    font-size: 22px;
-}
-
-.support-card p {
-    margin-top: 10px;
-
-    color: var(--text-3);
-
-    line-height: 1.7;
-}
-
-.support-list {
-    margin-top: 20px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-}
-
-.support-option {
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 14px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 12px;
-
-    color: var(--text-2);
-}
-
-/* =========================================================
-   CART DRAWER
+   CART
    ========================================================= */
 
 .overlay {
     position: fixed;
-
     inset: 0;
 
     background:
         rgba(0,0,0,.72);
 
     opacity: 0;
-
     pointer-events: none;
 
     z-index: 2000;
 
-    transition:
-        opacity .3s;
+    transition: .3s;
 }
 
 .overlay.active {
     opacity: 1;
-
     pointer-events: auto;
 }
 
-.cart-drawer {
+.cart {
     position: fixed;
 
     right: 0;
     top: 0;
     bottom: 0;
 
-    width:
-        min(510px, 100%);
-
-    z-index: 2100;
+    width: min(500px,100%);
 
     padding: 25px;
 
     overflow-y: auto;
+
+    z-index: 2100;
 
     background:
         #09050e;
@@ -1743,25 +1307,22 @@ a {
         transform .35s;
 }
 
-.cart-drawer.active {
+.cart.active {
     transform:
         translateX(0);
 }
 
 .cart-header {
     display: flex;
-
-    align-items: center;
-
     justify-content: space-between;
 
-    padding-bottom: 20px;
+    padding-bottom: 18px;
 
     border-bottom:
         1px solid var(--border);
 }
 
-.close-button {
+.close {
     width: 40px;
     height: 40px;
 
@@ -1773,13 +1334,6 @@ a {
         rgba(255,255,255,.05);
 
     color: white;
-
-    font-size: 18px;
-}
-
-.cart-list {
-    padding:
-        20px 0;
 }
 
 .cart-item {
@@ -1788,29 +1342,28 @@ a {
     grid-template-columns:
         55px 1fr auto;
 
-    align-items: center;
-
     gap: 12px;
+
+    align-items: center;
 
     padding: 12px;
 
-    margin-bottom: 9px;
+    margin-top: 9px;
 
     border:
         1px solid var(--border);
 
-    border-radius: 14px;
+    border-radius: 13px;
 
     background:
         rgba(255,255,255,.025);
 }
 
-.cart-item-icon {
+.cart-icon {
     width: 55px;
     height: 55px;
 
     display: grid;
-
     place-items: center;
 
     border-radius: 12px;
@@ -1818,52 +1371,38 @@ a {
     background:
         rgba(139,61,255,.1);
 
-    font-size: 27px;
+    font-size: 26px;
 }
 
-.cart-item-name {
-    font-size: 13px;
-
+.cart-name {
+    font-size: 12px;
     font-weight: 900;
 }
 
-.cart-item-price {
-    margin-top: 5px;
+.cart-price {
+    margin-top: 4px;
 
-    color:
-        var(--purple-light);
+    color: var(--purple2);
 
-    font-size: 12px;
+    font-size: 11px;
 }
 
-.cart-remove {
-    border: 0;
-
-    background: transparent;
-
-    color:
-        #ff5575;
-
-    font-size: 15px;
-}
-
-.quantity-controls {
+.qty {
     display: flex;
-
     align-items: center;
 
-    gap: 7px;
+    gap: 6px;
 
-    margin-top: 8px;
+    margin-top: 7px;
 }
 
-.quantity-controls button {
-    width: 25px;
-    height: 25px;
+.qty button {
+    width: 24px;
+    height: 24px;
 
     border: 0;
 
-    border-radius: 7px;
+    border-radius: 6px;
 
     background:
         rgba(139,61,255,.15);
@@ -1871,61 +1410,46 @@ a {
     color: white;
 }
 
-.quantity-controls span {
-    min-width: 22px;
+.remove {
+    border: 0;
 
-    text-align: center;
+    background: transparent;
 
-    font-size: 12px;
+    color: var(--red);
 }
 
-.cart-summary {
+.cart-total {
+    margin-top: 22px;
+
     padding-top: 20px;
 
     border-top:
         1px solid var(--border);
 }
 
-.summary-row {
+.total {
     display: flex;
-
     justify-content: space-between;
 
-    margin-bottom: 10px;
-
-    color: var(--text-3);
-
-    font-size: 13px;
-}
-
-.summary-total {
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-top: 17px;
-
-    font-size: 24px;
-
+    font-size: 23px;
     font-weight: 1000;
 }
 
-.summary-total strong {
-    color:
-        var(--purple-light);
+.total strong {
+    color: var(--purple2);
 }
 
-.username-input {
+.username {
     width: 100%;
 
-    margin-top: 20px;
+    margin-top: 18px;
 
-    padding: 15px;
+    padding: 14px;
 
     border:
         1px solid var(--border);
 
-    border-radius: 12px;
+    border-radius: 11px;
 
     background:
         rgba(255,255,255,.035);
@@ -1935,25 +1459,25 @@ a {
     outline: none;
 }
 
-.checkout-button {
+.checkout {
     width: 100%;
 
-    margin-top: 10px;
+    margin-top: 9px;
 
-    padding: 16px;
+    padding: 15px;
 
     border: 0;
 
-    border-radius: 13px;
-
-    color: white;
+    border-radius: 12px;
 
     background:
         linear-gradient(
             135deg,
-            #22c976,
-            #14945a
+            #24d982,
+            #138b55
         );
+
+    color: white;
 
     font-weight: 1000;
 }
@@ -1965,44 +1489,39 @@ a {
 .toast {
     position: fixed;
 
-    right: 25px;
-    bottom: 25px;
+    right: 22px;
+    bottom: 22px;
 
     z-index: 5000;
 
-    max-width: 350px;
-
-    padding: 15px 18px;
+    padding: 14px 17px;
 
     border:
         1px solid
-        rgba(139,61,255,.25);
+        rgba(139,61,255,.3);
 
-    border-radius: 13px;
+    border-radius: 12px;
 
     background:
-        rgba(20,10,30,.95);
+        rgba(18,8,28,.95);
 
     box-shadow:
         0 20px 50px
         rgba(0,0,0,.4);
 
     transform:
-        translateY(120px);
+        translateY(100px);
 
     opacity: 0;
 
     transition: .3s;
 
-    font-size: 13px;
-
-    font-weight: 800;
+    font-size: 12px;
+    font-weight: 900;
 }
 
 .toast.show {
-    transform:
-        translateY(0);
-
+    transform: translateY(0);
     opacity: 1;
 }
 
@@ -2010,291 +1529,215 @@ a {
    FOOTER
    ========================================================= */
 
-.footer {
-    margin-top: 70px;
+footer {
+    margin-top: 50px;
 
-    padding:
-        40px 0;
+    padding: 35px 0;
 
     border-top:
         1px solid var(--border);
 
-    color:
-        var(--text-3);
-
     text-align: center;
 
-    font-size: 12px;
+    color: var(--muted);
+
+    font-size: 11px;
 }
 
-.footer-logo {
+footer strong {
     color: white;
-
     font-size: 18px;
-
-    font-weight: 1000;
-
-    margin-bottom: 10px;
 }
 
-.footer-logo span {
-    color:
-        var(--purple-light);
+footer strong span {
+    color: var(--purple2);
 }
 
 /* =========================================================
-   RESPONSIVE
+   MOBILE
    ========================================================= */
 
-@media (max-width: 1200px) {
+@media(max-width:1150px) {
 
     .hero {
         grid-template-columns: 1fr;
-
-        gap: 35px;
     }
 
-    .hero-visual {
-        min-height: 420px;
+    .hero-card {
+        min-height: 400px;
     }
 
     .product-grid {
         grid-template-columns:
-            repeat(3, 1fr);
+            repeat(3,1fr);
     }
 
-    .features {
+    .feature-grid {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
     .money-layout {
         grid-template-columns: 1fr;
     }
-
 }
 
-@media (max-width: 900px) {
+@media(max-width:800px) {
 
-    .nav {
-        overflow-x: auto;
-    }
-
-    .nav-button {
-        white-space: nowrap;
-    }
-
-    .info-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .support-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-@media (max-width: 700px) {
-
-    .header {
+    header {
         height: auto;
     }
 
     .header-inner {
-        padding:
-            10px 0;
-
         flex-wrap: wrap;
+        padding: 9px 0;
     }
 
-    .nav {
+    nav {
         width: 100%;
-
         order: 3;
 
-        padding-bottom: 4px;
+        overflow-x: auto;
     }
 
-    .main {
-        padding-top: 145px;
+    .nav-btn {
+        white-space: nowrap;
     }
 
-    .hero {
-        min-height: auto;
-
-        padding-top: 35px;
-    }
-
-    .hero-title {
-        letter-spacing: -4px;
-    }
-
-    .hero-description {
-        font-size: 15px;
-    }
-
-    .hero-visual {
-        min-height: 340px;
-    }
-
-    .hero-coin {
-        width: 180px;
-        height: 180px;
-
-        font-size: 65px;
+    main {
+        padding-top: 135px;
     }
 
     .product-grid {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
+    .info-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+}
+
+@media(max-width:550px) {
+
+    main {
+        width: 92%;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+        letter-spacing: -4px;
+    }
+
+    .hero-card {
+        min-height: 320px;
+    }
+
+    .hero-item {
+        width: 170px;
+        height: 170px;
+        font-size: 65px;
+    }
+
+    .feature-grid,
+    .product-grid,
     .info-grid {
         grid-template-columns: 1fr;
     }
 
-}
-
-@media (max-width: 500px) {
-
-    .main {
-        width: 92%;
-    }
-
-    .hero-title {
-        font-size: 52px;
-    }
-
-    .hero-stats {
-        gap: 25px;
-    }
-
-    .features {
-        grid-template-columns: 1fr;
-    }
-
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .quick-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-    .hero-buttons {
+    .toolbar {
         flex-direction: column;
     }
 
-    .hero-buttons .btn {
+    .search {
         width: 100%;
     }
 
-}
+    .sort {
+        width: 100%;
+    }
 
-/* =========================================================
-   END CSS
-   ========================================================= */
+    .quick {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .deal {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
 
 </style>
 </head>
 
 <body>
 
-<div class="background-grid"></div>
-
+<div class="grid-bg"></div>
 <div class="glow one"></div>
 <div class="glow two"></div>
 
-<!-- =======================================================
+<!-- =====================================================
      HEADER
-     ======================================================= -->
+     ===================================================== -->
 
-<header class="header">
+<header>
 
 <div class="header-inner">
 
-<a
-    href="#"
-    class="logo"
-    onclick="showView('home'); return false;"
->
+<a class="logo" href="#" onclick="showView('home');return false">
 
-<div class="logo-icon">
-🍩
-</div>
+    <div class="logo-icon">🍩</div>
 
-<div class="logo-text">
-DONUT<span>SHOP</span>
-</div>
+    <div>
+        DONUT<span>SHOP</span>
+    </div>
 
 </a>
 
-<nav class="nav">
+<nav>
 
-<button
-    class="nav-button active"
-    data-view="home"
-    onclick="showView('home')"
->
+<button class="nav-btn active"
+onclick="showView('home')">
 🏠 Start
 </button>
 
-<button
-    class="nav-button"
-    data-view="money"
-    onclick="showView('money')"
->
+<button class="nav-btn"
+onclick="showView('shop')">
+🧟 Spawner
+</button>
+
+<button class="nav-btn"
+onclick="showView('special')">
+💎 Special
+</button>
+
+<button class="nav-btn"
+onclick="showView('money')">
 💰 Money
 </button>
 
-<button
-    class="nav-button"
-    data-view="items"
-    onclick="showView('items')"
->
-⛏️ Items
-</button>
-
-<button
-    class="nav-button"
-    data-view="info"
-    onclick="showView('info')"
->
+<button class="nav-btn"
+onclick="showView('info')">
 📖 Infos
 </button>
 
-<button
-    class="nav-button"
-    data-view="faq"
-    onclick="showView('faq')"
->
+<button class="nav-btn"
+onclick="showView('faq')">
 ❓ FAQ
-</button>
-
-<button
-    class="nav-button"
-    data-view="support"
-    onclick="showView('support')"
->
-💬 Support
 </button>
 
 </nav>
 
-<div class="header-actions">
+<button class="cart-button"
+onclick="openCart()">
 
-<button
-    class="header-cart"
-    onclick="openCart()"
->
 🛒
 
 <span
-    class="cart-count"
-    id="cartCount"
->
+class="cart-count"
+id="cartCount">
 0
 </span>
 
@@ -2302,37 +1745,41 @@ DONUT<span>SHOP</span>
 
 </div>
 
-</div>
-
 </header>
 
 
-<main class="main">
+<main>
 
-
-<!-- =======================================================
+<!-- =====================================================
      HOME
-     ======================================================= -->
+     ===================================================== -->
 
 <section
-    class="view active"
-    id="view-home"
->
+class="view active"
+id="view-home">
 
 <div class="hero">
 
 <div>
 
-<div class="hero-label">
-🟣 COMMUNITY SHOP
+<div class="badge">
+🟣 MINECRAFT COMMUNITY SHOP
 </div>
 
-<h1 class="hero-title">
+<h1>
 
 DEIN
 
 <span class="gradient">
-MONEY.
+SHOP.
+</span>
+
+<br>
+
+DEINE
+
+<span class="gradient">
+SPAWNER.
 </span>
 
 <br>
@@ -2343,212 +1790,159 @@ DEINE
 ITEMS.
 </span>
 
-<br>
-
-DEIN
-
-<span class="gradient">
-SHOP.
-</span>
-
 </h1>
 
-<p class="hero-description">
+<p>
 
 Willkommen im DonutShop.
 
-Ein moderner Community-Shop für
-Minecraft-Spieler mit Money-Paketen,
-wertvollen Items, Warenkorb,
-Favoriten und einer übersichtlichen
-Bestellansicht.
+Entdecke wertvolle Minecraft-Spawner,
+seltene Items und Money-Pakete in einem
+modernen und schnellen Community-Shop.
 
 </p>
 
 <div class="hero-buttons">
 
 <button
-    class="btn btn-primary"
-    onclick="showView('money')"
->
-💰 Money kaufen
+class="btn primary"
+onclick="showView('shop')">
+🧟 Spawner entdecken
 </button>
 
 <button
-    class="btn btn-secondary"
-    onclick="showView('items')"
->
-⛏️ Items entdecken
+class="btn secondary"
+onclick="showView('special')">
+💎 Special Items
 </button>
 
 </div>
 
 <div class="hero-stats">
 
-<div class="hero-stat">
-
-<strong>
-1M – 10B
-</strong>
-
-<span>
-Money-Auswahl
-</span>
-
+<div class="stat">
+<strong>20+</strong>
+<span>Spawner</span>
 </div>
 
-<div class="hero-stat">
-
-<strong>
-24+
-</strong>
-
-<span>
-Items
-</span>
-
+<div class="stat">
+<strong>4</strong>
+<span>Special Items</span>
 </div>
 
-<div class="hero-stat">
-
-<strong>
-CHF
-</strong>
-
-<span>
-Preise
-</span>
-
+<div class="stat">
+<strong>10B</strong>
+<span>Max. Money</span>
 </div>
 
-<div class="hero-stat">
-
-<strong>
-100%
-</strong>
-
-<span>
-Responsive
-</span>
-
+<div class="stat">
+<strong>24/7</strong>
+<span>Shop</span>
 </div>
 
 </div>
 
 </div>
 
+<div class="hero-card">
 
-<div class="hero-visual">
-
-<div class="hero-coin">
-💰
+<div class="hero-item">
+🧟
 </div>
 
 </div>
 
 </div>
 
-
-<!-- FEATURE SECTION -->
 
 <div class="section">
 
-<div class="section-heading">
+<div class="heading">
 
-<div class="small">
-WARUM DONUTSHOP?
-</div>
+<small>SHOP FEATURES</small>
 
 <h2>
-Alles an einem
-<span class="gradient">
-Ort.
-</span>
+Alles, was du
+<span class="gradient">brauchst.</span>
 </h2>
 
 <p>
-Schnell auswählen, in den Warenkorb
-legen und deine Bestellung vorbereiten.
+Ein moderner Shop mit Funktionen,
+die das Einkaufen einfacher machen.
 </p>
 
 </div>
 
-
-<div class="features">
-
+<div class="feature-grid">
 
 <div class="feature">
 
-<div class="feature-icon">
-💰
-</div>
+<div class="feature-icon">🧟</div>
 
-<h3>
-Flexible Money-Beträge
-</h3>
+<h3>Spawner Shop</h3>
 
 <p>
-Wähle deinen gewünschten Betrag
-zwischen 1M und 10B.
+Viele verschiedene Mob-Spawner
+übersichtlich an einem Ort.
 </p>
 
 </div>
-
 
 <div class="feature">
 
-<div class="feature-icon">
-⛏️
-</div>
+<div class="feature-icon">❤️</div>
 
-<h3>
-Item-Katalog
-</h3>
+<h3>Favoriten</h3>
 
 <p>
-Durchsuche wertvolle Minecraft-Items
-und finde schnell das richtige Produkt.
+Markiere deine Lieblingsprodukte
+und finde sie später schneller.
 </p>
 
 </div>
-
 
 <div class="feature">
 
-<div class="feature-icon">
-🛒
-</div>
+<div class="feature-icon">💾</div>
 
-<h3>
-Intelligenter Warenkorb
-</h3>
+<h3>Speicherfunktion</h3>
 
 <p>
-Ändere Mengen, entferne Produkte
-und sieh sofort deinen Gesamtpreis.
+Warenkorb und Favoriten werden
+lokal im Browser gespeichert.
 </p>
 
 </div>
-
 
 <div class="feature">
 
-<div class="feature-icon">
-📱
-</div>
+<div class="feature-icon">🎁</div>
 
-<h3>
-PC & Smartphone
-</h3>
+<h3>Rabattcodes</h3>
 
 <p>
-Das Design passt sich automatisch
-an deinen Bildschirm an.
+Aktiviere Rabattcodes direkt
+im Warenkorb.
 </p>
 
 </div>
 
+</div>
 
+</div>
+
+<div class="deal">
+
+<div>
+<strong>🔥 WEEKEND DEAL</strong>
+
+<div style="margin-top:5px;color:#aaa">
+10% Rabatt auf deine erste Bestellung
+</div>
+</div>
+
+<div style="color:#ffc857;font-weight:1000">
+Code: DONUT10
 </div>
 
 </div>
@@ -2556,599 +1950,382 @@ an deinen Bildschirm an.
 </section>
 
 
-<!-- =======================================================
-     MONEY
-     ======================================================= -->
+<!-- =====================================================
+     SHOP
+     ===================================================== -->
 
 <section
-    class="view"
-    id="view-money"
->
+class="view"
+id="view-shop">
 
 <div class="section">
 
-<div class="section-heading">
+<div class="heading">
 
-<div class="small">
-MONEY SHOP
-</div>
+<small>SPAWNER SHOP</small>
 
 <h2>
-Wähle deinen
-<span class="gradient">
-Betrag.
-</span>
+Minecraft
+<span class="gradient">Spawner.</span>
 </h2>
 
 <p>
-Von 1M bis 10B. Du kannst einen
-eigenen Betrag eingeben oder eine
-Schnellauswahl verwenden.
+Finde den passenden Spawner für deine
+Farm oder dein Server-Projekt.
 </p>
 
 </div>
 
+<div class="toolbar">
 
-<div class="money-layout">
+<div class="search">
 
-
-<div class="panel">
-
-<div class="panel-title">
-
-<h3>
-💰 Money konfigurieren
-</h3>
-
-<span>
-1M – 10B
-</span>
-
-</div>
-
+<span class="search-icon">🔎</span>
 
 <input
-    class="money-input"
-    id="moneyInput"
-    value="1B"
-    placeholder="z.B. 750M"
-    oninput="updateMoney()"
->
-
-
-<div class="money-help">
-
-Erlaubte Eingaben:
-1M, 250M, 1B, 2.5B, 10B
+id="search"
+placeholder="Spawner suchen..."
+oninput="filterProducts()">
 
 </div>
 
-
-<input
-    class="money-slider"
-    id="moneySlider"
-    type="range"
-    min="1"
-    max="10000"
-    value="1000"
-    oninput="sliderChanged()"
->
-
-
-<div class="slider-labels">
-
-<span>
-1M
-</span>
-
-<span>
-5B
-</span>
-
-<span>
-10B
-</span>
-
-</div>
-
-
-<div class="quick-grid">
+<div class="categories">
 
 <button
-    class="quick"
-    onclick="setMoney('1M')"
->
-1M
-</button>
-
-<button
-    class="quick"
-    onclick="setMoney('100M')"
->
-100M
-</button>
-
-<button
-    class="quick"
-    onclick="setMoney('250M')"
->
-250M
-</button>
-
-<button
-    class="quick"
-    onclick="setMoney('500M')"
->
-500M
-</button>
-
-<button
-    class="quick"
-    onclick="setMoney('1B')"
->
-1B
-</button>
-
-<button
-    class="quick"
-    onclick="setMoney('2B')"
->
-2B
-</button>
-
-<button
-    class="quick"
-    onclick="setMoney('5B')"
->
-5B
-</button>
-
-<button
-    class="quick"
-    onclick="setMoney('10B')"
->
-10B
-</button>
-
-</div>
-
-
-<div class="money-preview">
-
-<div
-    class="preview-money"
-    id="moneyPreview"
->
-1B
-</div>
-
-<div
-    class="preview-price"
-    id="moneyPrice"
->
-15.00 CHF
-</div>
-
-<div class="preview-note">
-aktueller Warenkorbpreis
-</div>
-
-</div>
-
-
-<button
-    class="btn btn-primary"
-    style="width:100%; margin-top:20px"
-    onclick="addMoneyToCart()"
->
-🛒 Money in den Warenkorb
-</button>
-
-</div>
-
-
-<!-- PRICE PANEL -->
-
-<div class="panel">
-
-<div class="panel-title">
-
-<h3>
-💵 Preisübersicht
-</h3>
-
-</div>
-
-
-<div class="price-list">
-
-
-<div class="price-row">
-
-<span>
-1M
-</span>
-
-<strong>
-0.02 CHF
-</strong>
-
-</div>
-
-
-<div class="price-row">
-
-<span>
-100M
-</span>
-
-<strong>
-1.50 CHF
-</strong>
-
-</div>
-
-
-<div class="price-row">
-
-<span>
-500M
-</span>
-
-<strong>
-7.50 CHF
-</strong>
-
-</div>
-
-
-<div class="price-row highlight">
-
-<span>
-1B
-</span>
-
-<strong>
-15 CHF
-</strong>
-
-</div>
-
-
-<div class="price-row">
-
-<span>
-2B
-</span>
-
-<strong>
-23.00 CHF
-</strong>
-
-</div>
-
-
-<div class="price-row">
-
-<span>
-5B
-</span>
-
-<strong>
-51.67 CHF
-</strong>
-
-</div>
-
-
-<div class="price-row highlight">
-
-<span>
-10B
-</span>
-
-<strong>
-100 CHF
-</strong>
-
-</div>
-
-</div>
-
-
-<div
-    style="
-        margin-top:25px;
-        padding:18px;
-        border-radius:15px;
-        background:rgba(139,61,255,.07);
-        color:#81758c;
-        font-size:12px;
-        line-height:1.8;
-    "
->
-
-<strong
-    style="
-        display:block;
-        color:white;
-        margin-bottom:7px;
-    "
->
-Preislogik
-</strong>
-
-1B kostet 15 CHF.
-
-10B kostet 100 CHF.
-
-Zwischen 1B und 10B wird
-der Preis automatisch berechnet.
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     ITEMS
-     ======================================================= -->
-
-<section
-    class="view"
-    id="view-items"
->
-
-<div class="section">
-
-<div class="section-heading">
-
-<div class="small">
-ITEM SHOP
-</div>
-
-<h2>
-Wertvolle
-<span class="gradient">
-Items.
-</span>
-</h2>
-
-<p>
-Durchsuche den Katalog und füge
-Produkte direkt in deinen Warenkorb.
-</p>
-
-</div>
-
-
-<div class="shop-toolbar">
-
-<div class="search-box">
-
-<span class="search-icon">
-🔎
-</span>
-
-<input
-    class="search-input"
-    id="itemSearch"
-    placeholder="Item suchen..."
-    oninput="filterProducts()"
->
-
-</div>
-
-
-<div class="category-buttons">
-
-<button
-    class="category-button active"
-    data-category="all"
-    onclick="setCategory('all')"
->
+class="category active"
+data-category="all"
+onclick="setCategory('all')">
 Alle
 </button>
 
 <button
-    class="category-button"
-    data-category="combat"
-    onclick="setCategory('combat')"
->
-⚔️ Combat
+class="category"
+data-category="spawner"
+onclick="setCategory('spawner')">
+🧟 Spawner
 </button>
 
 <button
-    class="category-button"
-    data-category="rare"
-    onclick="setCategory('rare')"
->
-💎 Selten
-</button>
-
-<button
-    class="category-button"
-    data-category="blocks"
-    onclick="setCategory('blocks')"
->
-🧱 Blöcke
-</button>
-
-<button
-    class="category-button"
-    data-category="utility"
-    onclick="setCategory('utility')"
->
-🛠️ Utility
+class="category"
+data-category="special"
+onclick="setCategory('special')">
+💎 Special
 </button>
 
 </div>
 
-</div>
+<select
+class="sort"
+id="sort"
+onchange="filterProducts()">
 
+<option value="default">
+Sortierung
+</option>
+
+<option value="low">
+Preis niedrig
+</option>
+
+<option value="high">
+Preis hoch
+</option>
+
+<option value="name">
+Name A-Z
+</option>
+
+<option value="rarity">
+Seltenheit
+</option>
+
+</select>
+
+</div>
 
 <div
-    class="product-grid"
-    id="productGrid"
-></div>
+class="product-grid"
+id="products">
+</div>
 
 </div>
 
 </section>
 
 
-<!-- =======================================================
-     INFO
-     ======================================================= -->
+<!-- =====================================================
+     SPECIAL
+     ===================================================== -->
 
 <section
-    class="view"
-    id="view-info"
->
+class="view"
+id="view-special">
 
 <div class="section">
 
-<div class="section-heading">
+<div class="heading">
 
-<div class="small">
-ÜBER DEN SHOP
-</div>
+<small>SPECIAL ITEMS</small>
 
 <h2>
-Wie funktioniert
-<span class="gradient">
-alles?
-</span>
+Seltene
+<span class="gradient">Items.</span>
 </h2>
 
 <p>
-Alle Bereiche sind in dieser einen
-Webseite integriert.
+Besondere Minecraft-Items für deine Sammlung.
 </p>
 
 </div>
 
+<div
+class="product-grid"
+id="specialProducts">
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     MONEY
+     ===================================================== -->
+
+<section
+class="view"
+id="view-money">
+
+<div class="section">
+
+<div class="heading">
+
+<small>MONEY SHOP</small>
+
+<h2>
+Dein
+<span class="gradient">Money.</span>
+</h2>
+
+<p>
+Wähle deinen gewünschten Betrag.
+</p>
+
+</div>
+
+<div class="money-layout">
+
+<div class="panel">
+
+<h3>💰 Money auswählen</h3>
+
+<input
+class="money-input"
+id="moneyInput"
+value="1B"
+oninput="updateMoney()">
+
+<div style="
+margin-top:8px;
+color:#777;
+font-size:11px">
+Erlaubt: 1M bis 10B
+</div>
+
+<div class="quick">
+
+<button onclick="setMoney('1M')">
+1M
+</button>
+
+<button onclick="setMoney('100M')">
+100M
+</button>
+
+<button onclick="setMoney('250M')">
+250M
+</button>
+
+<button onclick="setMoney('500M')">
+500M
+</button>
+
+<button onclick="setMoney('1B')">
+1B
+</button>
+
+<button onclick="setMoney('2B')">
+2B
+</button>
+
+<button onclick="setMoney('5B')">
+5B
+</button>
+
+<button onclick="setMoney('10B')">
+10B
+</button>
+
+</div>
+
+<div class="money-preview">
+
+<div
+class="money-value"
+id="moneyValue">
+1B
+</div>
+
+<div
+id="moneyPrice"
+style="
+margin-top:5px;
+font-size:20px;
+font-weight:1000">
+15.00 CHF
+</div>
+
+</div>
+
+<button
+class="btn primary"
+style="
+width:100%;
+margin-top:15px"
+onclick="addMoney()">
+
+🛒 Money hinzufügen
+
+</button>
+
+</div>
+
+<div class="panel">
+
+<h3>💵 Preise</h3>
+
+<div style="
+margin-top:20px;
+display:flex;
+flex-direction:column;
+gap:8px">
+
+<div class="cart-item">
+1M
+<strong>0.02 CHF</strong>
+</div>
+
+<div class="cart-item">
+100M
+<strong>1.50 CHF</strong>
+</div>
+
+<div class="cart-item">
+500M
+<strong>7.50 CHF</strong>
+</div>
+
+<div class="cart-item">
+1B
+<strong>15.00 CHF</strong>
+</div>
+
+<div class="cart-item">
+2B
+<strong>23.00 CHF</strong>
+</div>
+
+<div class="cart-item">
+5B
+<strong>51.67 CHF</strong>
+</div>
+
+<div class="cart-item">
+10B
+<strong>100.00 CHF</strong>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     INFO
+     ===================================================== -->
+
+<section
+class="view"
+id="view-info">
+
+<div class="section">
+
+<div class="heading">
+
+<small>SO FUNKTIONIERT ES</small>
+
+<h2>
+Einfach.
+<span class="gradient">Schnell.</span>
+</h2>
+
+</div>
 
 <div class="info-grid">
 
+<div class="info-card">
+<div class="info-number">01</div>
+<h3>Produkt wählen</h3>
+<p>
+Wähle einen Spawner oder ein Special Item.
+</p>
+</div>
 
 <div class="info-card">
-
-<div class="info-number">
-01
-</div>
-
-<h3>
-Money auswählen
-</h3>
-
+<div class="info-number">02</div>
+<h3>In den Warenkorb</h3>
 <p>
-Gehe zum Money-Shop und gib deinen
-gewünschten Betrag zwischen 1M und
-10B ein.
+Klicke auf + und das Produkt wird hinzugefügt.
 </p>
-
 </div>
-
 
 <div class="info-card">
-
-<div class="info-number">
-02
-</div>
-
-<h3>
-Items auswählen
-</h3>
-
+<div class="info-number">03</div>
+<h3>Username</h3>
 <p>
-Im Item-Shop kannst du verschiedene
-Minecraft-Items durchsuchen und
-in den Warenkorb legen.
+Gib deinen Minecraft-Namen im Checkout ein.
 </p>
-
 </div>
-
 
 <div class="info-card">
-
-<div class="info-number">
-03
-</div>
-
-<h3>
-Warenkorb öffnen
-</h3>
-
+<div class="info-number">04</div>
+<h3>Rabattcode</h3>
 <p>
-Oben rechts findest du deinen
-Warenkorb. Dort kannst du Mengen
-ändern oder Produkte entfernen.
+Nutze beispielsweise DONUT10 für 10% Rabatt.
 </p>
-
 </div>
-
 
 <div class="info-card">
-
-<div class="info-number">
-04
-</div>
-
-<h3>
-Minecraft-Name
-</h3>
-
+<div class="info-number">05</div>
+<h3>Bestellung prüfen</h3>
 <p>
-Vor dem Checkout kann der
-Minecraft-Username eingetragen werden.
+Kontrolliere Produkte, Mengen und Gesamtpreis.
 </p>
-
 </div>
-
 
 <div class="info-card">
-
-<div class="info-number">
-05
-</div>
-
-<h3>
-Bestellung prüfen
-</h3>
-
+<div class="info-number">06</div>
+<h3>Checkout</h3>
 <p>
-Der Warenkorb zeigt alle Produkte,
-Mengen und den Gesamtpreis an.
+Die aktuelle Version besitzt einen Demo-Checkout.
 </p>
-
 </div>
-
-
-<div class="info-card">
-
-<div class="info-number">
-06
-</div>
-
-<h3>
-Zahlung
-</h3>
-
-<p>
-Der aktuelle Checkout ist eine Demo.
-Eine echte Zahlungsabwicklung benötigt
-noch einen Zahlungsanbieter und Backend.
-</p>
-
-</div>
-
 
 </div>
 
@@ -3157,227 +2334,95 @@ noch einen Zahlungsanbieter und Backend.
 </section>
 
 
-<!-- =======================================================
+<!-- =====================================================
      FAQ
-     ======================================================= -->
+     ===================================================== -->
 
 <section
-    class="view"
-    id="view-faq"
->
+class="view"
+id="view-faq">
 
 <div class="section">
 
-<div class="section-heading">
+<div class="heading">
 
-<div class="small">
-FAQ
-</div>
+<small>FAQ</small>
 
 <h2>
 Häufige
-<span class="gradient">
-Fragen.
-</span>
+<span class="gradient">Fragen.</span>
 </h2>
 
 </div>
-
 
 <div class="faq">
 
+<div class="faq-item">
+
+<button
+class="faq-question"
+onclick="toggleFAQ(this)">
+Was kann ich kaufen?
+<span>+</span>
+</button>
+
+<div class="faq-answer">
+Im Shop findest du verschiedene Spawner
+sowie Elytra, Dragon Head, Ancient Debris
+und Gilded Blackstone.
+</div>
+
+</div>
 
 <div class="faq-item">
 
 <button
-    class="faq-question"
-    onclick="toggleFAQ(this)"
->
-
-<span>
-Wie viel Money kann ich kaufen?
-</span>
-
-<span class="faq-plus">
-+
-</span>
-
+class="faq-question"
+onclick="toggleFAQ(this)">
+Kann ich mehrere Produkte kaufen?
+<span>+</span>
 </button>
 
 <div class="faq-answer">
-
-Du kannst einen Betrag von
-1M bis maximal 10B auswählen.
-
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<button
-    class="faq-question"
-    onclick="toggleFAQ(this)"
->
-
-<span>
-Was kostet 1B?
-</span>
-
-<span class="faq-plus">
-+
-</span>
-
-</button>
-
-<div class="faq-answer">
-
-1B kostet in dieser Shop-Konfiguration
-15 CHF.
-
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<button
-    class="faq-question"
-    onclick="toggleFAQ(this)"
->
-
-<span>
-Was kostet 10B?
-</span>
-
-<span class="faq-plus">
-+
-</span>
-
-</button>
-
-<div class="faq-answer">
-
-10B kostet 100 CHF.
-
-</div>
-
-</div>
-
-
-<div class="faq-item">
-
-<button
-    class="faq-question"
-    onclick="toggleFAQ(this)"
->
-
-<span>
-Kann ich mehrere Items kaufen?
-</span>
-
-<span class="faq-plus">
-+
-</span>
-
-</button>
-
-<div class="faq-answer">
-
 Ja. Du kannst beliebig viele Produkte
-in deinen Warenkorb legen und die
-Menge jedes Produkts verändern.
-
+und Mengen in deinen Warenkorb legen.
 </div>
 
 </div>
-
 
 <div class="faq-item">
 
 <button
-    class="faq-question"
-    onclick="toggleFAQ(this)"
->
-
-<span>
-Kann ich meinen Minecraft-Namen angeben?
-</span>
-
-<span class="faq-plus">
-+
-</span>
-
+class="faq-question"
+onclick="toggleFAQ(this)">
+Werden meine Favoriten gespeichert?
+<span>+</span>
 </button>
 
 <div class="faq-answer">
-
-Ja. Der Username wird beim Checkout
-abgefragt.
-
+Ja. Die Website verwendet localStorage,
+damit Favoriten und Warenkorb nach
+einem Neuladen erhalten bleiben.
 </div>
 
 </div>
-
 
 <div class="faq-item">
 
 <button
-    class="faq-question"
-    onclick="toggleFAQ(this)"
->
-
-<span>
-Sind die Zahlungen schon echt?
-</span>
-
-<span class="faq-plus">
-+
-</span>
-
+class="faq-question"
+onclick="toggleFAQ(this)">
+Gibt es echte Zahlungen?
+<span>+</span>
 </button>
 
 <div class="faq-answer">
-
-Noch nicht. Diese Version besitzt
-einen funktionierenden Demo-Warenkorb.
-Für echte Zahlungen muss später ein
-Zahlungsanbieter mit einem Backend
-verbunden werden.
-
+Der Checkout ist aktuell eine Demo.
+Für echte Zahlungen brauchst du später
+ein Backend und einen Zahlungsanbieter.
 </div>
 
 </div>
-
-
-<div class="faq-item">
-
-<button
-    class="faq-question"
-    onclick="toggleFAQ(this)"
->
-
-<span>
-Ist das der offizielle Donut-Shop?
-</span>
-
-<span class="faq-plus">
-+
-</span>
-
-</button>
-
-<div class="faq-answer">
-
-Nein. Diese Webseite ist als
-inoffizielles Community-Projekt gedacht.
-
-</div>
-
-</div>
-
 
 </div>
 
@@ -3386,326 +2431,123 @@ inoffizielles Community-Projekt gedacht.
 </section>
 
 
-<!-- =======================================================
-     SUPPORT
-     ======================================================= -->
+<footer>
 
-<section
-    class="view"
-    id="view-support"
->
-
-<div class="section">
-
-<div class="section-heading">
-
-<div class="small">
-SUPPORT
-</div>
-
-<h2>
-Brauchst du
-<span class="gradient">
-Hilfe?
-</span>
-</h2>
-
-<p>
-Hier kannst du später verschiedene
-Support-Möglichkeiten hinterlegen.
-</p>
-
-</div>
-
-
-<div class="support-grid">
-
-
-<div class="support-card">
-
-<h3>
-💬 Community
-</h3>
-
-<p>
-Verbinde deinen Community-Support
-später beispielsweise mit Discord.
-</p>
-
-<div class="support-list">
-
-<div class="support-option">
-🟣 Discord
-<span>
-Community
-</span>
-</div>
-
-<div class="support-option">
-📖 FAQ
-<span>
-Antworten
-</span>
-</div>
-
-<div class="support-option">
-🛒 Bestellung
-<span>
-Bestellhilfe
-</span>
-</div>
-
-</div>
-
-</div>
-
-
-<div class="support-card">
-
-<h3>
-📩 Kontakt
-</h3>
-
-<p>
-Für den echten Betrieb kannst du
-hier später deine Support-Adresse
-oder dein Ticketsystem eintragen.
-</p>
-
-<div
-    style="
-        margin-top:25px;
-        padding:20px;
-        border-radius:15px;
-        background:rgba(139,61,255,.08);
-        color:#bbaec4;
-        line-height:1.7;
-        font-size:13px;
-    "
->
-
-<strong
-    style="
-        color:white;
-        display:block;
-        margin-bottom:5px;
-    "
->
-Support-Zentrum
+<strong>
+🍩 DONUT<span>SHOP</span>
 </strong>
 
-Bestellungen · Fragen · Probleme
-
+<div style="margin-top:8px">
+Minecraft Community Store
 </div>
 
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     FOOTER
-     ======================================================= -->
-
-<footer class="footer">
-
-<div class="footer-logo">
-🍩 DONUT<span>SHOP</span>
-</div>
-
-<div>
-Minecraft Community Shop
-</div>
-
-<div style="margin-top:8px;">
+<div style="margin-top:5px">
 Inoffizielles Community-Projekt · 2026
 </div>
 
 </footer>
 
-
 </main>
 
 
-<!-- =======================================================
-     CART OVERLAY
-     ======================================================= -->
+<!-- =====================================================
+     CART
+     ===================================================== -->
 
 <div
-    class="overlay"
-    id="overlay"
-    onclick="closeCart()"
-></div>
-
-
-<!-- =======================================================
-     CART
-     ======================================================= -->
+class="overlay"
+id="overlay"
+onclick="closeCart()">
+</div>
 
 <aside
-    class="cart-drawer"
-    id="cartDrawer"
->
+class="cart"
+id="cart">
 
 <div class="cart-header">
 
 <div>
+<h2>🛒 Warenkorb</h2>
 
-<h2>
-🛒 Warenkorb
-</h2>
-
-<div
-    style="
-        color:#80738c;
-        font-size:11px;
-        margin-top:4px;
-    "
->
-Deine ausgewählten Produkte
+<div style="
+margin-top:4px;
+color:#777;
+font-size:10px">
+Deine Produkte
 </div>
-
 </div>
 
 <button
-    class="close-button"
-    onclick="closeCart()"
->
+class="close"
+onclick="closeCart()">
 ✕
 </button>
 
 </div>
 
+<div id="cartItems"></div>
+
+<div class="cart-total">
+
+<div style="
+display:flex;
+justify-content:space-between;
+color:#777;
+font-size:12px">
+<span>Produkte</span>
+<span id="cartProducts">0</span>
+</div>
 
 <div
-    class="cart-list"
-    id="cartList"
-></div>
-
-
-<div class="cart-summary">
-
-<div class="summary-row">
-
-<span>
-Produkte
-</span>
-
-<span id="summaryItems">
-0
-</span>
-
+style="
+display:flex;
+justify-content:space-between;
+margin-top:8px;
+color:#777;
+font-size:12px">
+<span>Rabatt</span>
+<span id="discount">0%</span>
 </div>
 
+<div class="total" style="margin-top:15px">
 
-<div class="summary-row">
+<span>Gesamt</span>
 
-<span>
-Zwischensumme
-</span>
-
-<span id="summarySubtotal">
-0.00 CHF
-</span>
-
-</div>
-
-
-<div class="summary-row">
-
-<span>
-Service
-</span>
-
-<span>
-0.00 CHF
-</span>
-
-</div>
-
-
-<div class="summary-total">
-
-<span>
-Gesamt
-</span>
-
-<strong id="summaryTotal">
+<strong id="total">
 0.00 CHF
 </strong>
 
 </div>
 
+<input
+class="username"
+id="username"
+placeholder="🎮 Minecraft Username">
 
 <input
-    class="username-input"
-    id="minecraftUsername"
-    placeholder="🎮 Minecraft Username"
->
-
+class="username"
+id="coupon"
+placeholder="🎁 Rabattcode">
 
 <button
-    class="checkout-button"
-    onclick="checkout()"
->
+class="checkout"
+onclick="checkout()">
 💳 Bestellung vorbereiten
 </button>
-
-
-<div
-    style="
-        margin-top:12px;
-        color:#62586b;
-        font-size:10px;
-        line-height:1.6;
-        text-align:center;
-    "
->
-
-Demo-Checkout.
-Noch keine echte Zahlung.
-
-</div>
 
 </div>
 
 </aside>
 
 
-<!-- =======================================================
-     TOAST
-     ======================================================= -->
-
 <div
-    class="toast"
-    id="toast"
->
-Produkt wurde hinzugefügt.
+class="toast"
+id="toast">
+Produkt hinzugefügt.
 </div>
 
 
 <script>
-
-/* =========================================================
-   DONUTSHOP JAVASCRIPT
-   ========================================================= */
-
-
-/* =========================================================
-   STATE
-   ========================================================= */
-
-let cart = [];
-
-let selectedCategory = "all";
-
-let favorites = new Set();
-
 
 /* =========================================================
    PRODUCTS
@@ -3713,765 +2555,406 @@ let favorites = new Set();
 
 const products = [
 
-    {
-        id: "elytra",
-        name: "Elytra",
-        icon: "🪽",
-        price: 35,
-        category: "rare",
-        description: "Seltenes Flug-Item für schnelle Reisen."
-    },
+/* SPAWNERS */
 
-    {
-        id: "dragon-egg",
-        name: "Dragon Egg",
-        icon: "🥚",
-        price: 100,
-        category: "rare",
-        description: "Extrem seltenes End-Item."
-    },
+{
+id:"zombie",
+name:"Zombie Spawner",
+icon:"🧟",
+price:45,
+category:"spawner",
+rarity:"common",
+description:"Spawner für Zombies."
+},
 
-    {
-        id: "nether-star",
-        name: "Nether Star",
-        icon: "⭐",
-        price: 40,
-        category: "rare",
-        description: "Legendäres Item vom Wither."
-    },
+{
+id:"skeleton",
+name:"Skeleton Spawner",
+icon:"💀",
+price:55,
+category:"spawner",
+rarity:"common",
+description:"Spawner für Skelette."
+},
 
-    {
-        id: "beacon",
-        name: "Beacon",
-        icon: "🔦",
-        price: 20,
-        category: "utility",
-        description: "Verleiht Spielern mächtige Effekte."
-    },
+{
+id:"spider",
+name:"Spider Spawner",
+icon:"🕷️",
+price:50,
+category:"spawner",
+rarity:"common",
+description:"Spawner für Spinnen."
+},
 
-    {
-        id: "netherite-block",
-        name: "Netherite Block",
-        icon: "⬛",
-        price: 25,
-        category: "blocks",
-        description: "Extrem wertvoller Netherite-Block."
-    },
+{
+id:"cave-spider",
+name:"Cave Spider Spawner",
+icon:"🕸️",
+price:70,
+category:"spawner",
+rarity:"rare",
+description:"Spawner für Cave Spiders."
+},
 
-    {
-        id: "netherite-ingot",
-        name: "Netherite Ingot",
-        icon: "🔳",
-        price: 8,
-        category: "rare",
-        description: "Hochwertiges Material für Ausrüstung."
-    },
+{
+id:"creeper",
+name:"Creeper Spawner",
+icon:"💚",
+price:120,
+category:"spawner",
+rarity:"epic",
+description:"Perfekt für Gunpowder-Farmen."
+},
 
-    {
-        id: "diamond-block",
-        name: "Diamond Block",
-        icon: "💎",
-        price: 10,
-        category: "blocks",
-        description: "Komprimierte Diamanten."
-    },
+{
+id:"enderman",
+name:"Enderman Spawner",
+icon:"👾",
+price:180,
+category:"spawner",
+rarity:"epic",
+description:"Enderman-Spawner für Ender Pearls."
+},
 
-    {
-        id: "emerald-block",
-        name: "Emerald Block",
-        icon: "🟩",
-        price: 8,
-        category: "blocks",
-        description: "Wertvoller Emerald-Block."
-    },
+{
+id:"blaze",
+name:"Blaze Spawner",
+icon:"🔥",
+price:200,
+category:"spawner",
+rarity:"epic",
+description:"Starker Nether-Spawner."
+},
 
-    {
-        id: "gold-block",
-        name: "Gold Block",
-        icon: "🟨",
-        price: 6,
-        category: "blocks",
-        description: "Glänzender Goldblock."
-    },
+{
+id:"magma",
+name:"Magma Cube Spawner",
+icon:"🟥",
+price:175,
+category:"spawner",
+rarity:"epic",
+description:"Spawner für Magma Cubes."
+},
 
-    {
-        id: "diamond",
-        name: "Diamond",
-        icon: "💠",
-        price: 2,
-        category: "rare",
-        description: "Klassisches wertvolles Material."
-    },
+{
+id:"slime",
+name:"Slime Spawner",
+icon:"🟢",
+price:150,
+category:"spawner",
+rarity:"rare",
+description:"Perfekt für Slime-Farmen."
+},
 
-    {
-        id: "enchanted-apple",
-        name: "Enchanted Golden Apple",
-        icon: "🍎",
-        price: 12,
-        category: "combat",
-        description: "Sehr starkes Verbrauchsitem."
-    },
+{
+id:"witch",
+name:"Witch Spawner",
+icon:"🧙",
+price:160,
+category:"spawner",
+rarity:"rare",
+description:"Spawner für Hexen."
+},
 
-    {
-        id: "totem",
-        name: "Totem of Undying",
-        icon: "🗿",
-        price: 10,
-        category: "combat",
-        description: "Kann den Tod verhindern."
-    },
+{
+id:"guardian",
+name:"Guardian Spawner",
+icon:"👁️",
+price:300,
+category:"spawner",
+rarity:"legendary",
+description:"Extrem wertvoller Guardian-Spawner."
+},
 
-    {
-        id: "trident",
-        name: "Trident",
-        icon: "🔱",
-        price: 18,
-        category: "combat",
-        description: "Seltene Waffe für Nah- und Fernkampf."
-    },
+{
+id:"iron-golem",
+name:"Iron Golem Spawner",
+icon:"🤖",
+price:350,
+category:"spawner",
+rarity:"legendary",
+description:"Starker Spawner für Eisenfarmen."
+},
 
-    {
-        id: "sword",
-        name: "Netherite Sword",
-        icon: "⚔️",
-        price: 22,
-        category: "combat",
-        description: "Starke Netherite-Waffe."
-    },
+{
+id:"pig",
+name:"Pig Spawner",
+icon:"🐷",
+price:35,
+category:"spawner",
+rarity:"common",
+description:"Spawner für Schweine."
+},
 
-    {
-        id: "armor",
-        name: "Netherite Armor",
-        icon: "🛡️",
-        price: 60,
-        category: "combat",
-        description: "Komplettes Netherite-Rüstungsset."
-    },
+{
+id:"cow",
+name:"Cow Spawner",
+icon:"🐄",
+price:40,
+category:"spawner",
+rarity:"common",
+description:"Spawner für Kühe."
+},
 
-    {
-        id: "shulker",
-        name: "Shulker Box",
-        icon: "📦",
-        price: 7,
-        category: "utility",
-        description: "Mobiler Speicher für deine Items."
-    },
+{
+id:"sheep",
+name:"Sheep Spawner",
+icon:"🐑",
+price:40,
+category:"spawner",
+rarity:"common",
+description:"Spawner für Schafe."
+},
 
-    {
-        id: "heart",
-        name: "Heart of the Sea",
-        icon: "💙",
-        price: 15,
-        category: "rare",
-        description: "Seltenes Schatz-Item."
-    },
+{
+id:"chicken",
+name:"Chicken Spawner",
+icon:"🐔",
+price:35,
+category:"spawner",
+rarity:"common",
+description:"Spawner für Hühner."
+},
 
-    {
-        id: "conduit",
-        name: "Conduit",
-        icon: "🔮",
-        price: 20,
-        category: "utility",
-        description: "Nützliches Unterwasser-Item."
-    },
+{
+id:"piglin",
+name:"Piglin Spawner",
+icon:"🐗",
+price:225,
+category:"spawner",
+rarity:"epic",
+description:"Seltener Nether-Spawner."
+},
 
-    {
-        id: "ancient-debris",
-        name: "Ancient Debris",
-        icon: "🪨",
-        price: 10,
-        category: "rare",
-        description: "Seltenes Material aus dem Nether."
-    },
+{
+id:"zombified-piglin",
+name:"Zombified Piglin Spawner",
+icon:"🧟‍♂️",
+price:250,
+category:"spawner",
+rarity:"epic",
+description:"Gold- und XP-Farm Spawner."
+},
 
-    {
-        id: "skull",
-        name: "Wither Skeleton Skull",
-        icon: "💀",
-        price: 15,
-        category: "rare",
-        description: "Seltenes Wither-Skelett-Item."
-    },
+{
+id:"wither-skeleton",
+name:"Wither Skeleton Spawner",
+icon:"☠️",
+price:500,
+category:"spawner",
+rarity:"legendary",
+description:"Extrem seltener Spawner."
+},
 
-    {
-        id: "dragon-head",
-        name: "Ender Dragon Head",
-        icon: "🐉",
-        price: 30,
-        category: "rare",
-        description: "Dekoratives End-Item."
-    },
+{
+id:"shulker",
+name:"Shulker Spawner",
+icon:"📦",
+price:650,
+category:"spawner",
+rarity:"legendary",
+description:"Legendärer Shulker-Spawner."
+},
 
-    {
-        id: "sponge",
-        name: "Sponge",
-        icon: "🟨",
-        price: 5,
-        category: "utility",
-        description: "Nützlich zum Entfernen von Wasser."
-    },
+/* SPECIAL */
 
-    {
-        id: "ender-pearl",
-        name: "Ender Pearl",
-        icon: "🟣",
-        price: 1.5,
-        category: "utility",
-        description: "Teleportations-Item."
-    },
+{
+id:"elytra",
+name:"Elytra",
+icon:"🪽",
+price:35,
+category:"special",
+rarity:"epic",
+description:"Fliege durch deine Minecraft-Welt."
+},
 
-    {
-        id: "golden-carrot",
-        name: "Golden Carrot",
-        icon: "🥕",
-        price: 1,
-        category: "utility",
-        description: "Hochwertige Nahrung."
-    }
+{
+id:"dragon-head",
+name:"Dragon Head",
+icon:"🐉",
+price:30,
+category:"special",
+rarity:"rare",
+description:"Kopf des Enderdrachen."
+},
+
+{
+id:"ancient-debris",
+name:"Ancient Debris",
+icon:"🪨",
+price:10,
+category:"special",
+rarity:"rare",
+description:"Seltenes Nether-Material."
+},
+
+{
+id:"gilded-blackstone",
+name:"Gilded Blackstone",
+icon:"🟨",
+price:8,
+category:"special",
+rarity:"rare",
+description:"Goldhaltiger Blackstone."
+}
 
 ];
+
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let cart =
+    JSON.parse(
+        localStorage.getItem("donut_cart")
+    ) || [];
+
+let favorites =
+    new Set(
+        JSON.parse(
+            localStorage.getItem("donut_favorites")
+        ) || []
+    );
+
+let category = "all";
+
+
+/* =========================================================
+   SAVE
+   ========================================================= */
+
+function save() {
+
+    localStorage.setItem(
+        "donut_cart",
+        JSON.stringify(cart)
+    );
+
+    localStorage.setItem(
+        "donut_favorites",
+        JSON.stringify(
+            [...favorites]
+        )
+    );
+}
 
 
 /* =========================================================
    NAVIGATION
    ========================================================= */
 
-function showView(viewName) {
+function showView(name) {
 
     document
         .querySelectorAll(".view")
-        .forEach(view => {
-            view.classList.remove("active");
-        });
-
-
-    const target =
-        document.getElementById(
-            "view-" + viewName
+        .forEach(v =>
+            v.classList.remove("active")
         );
 
-
-    if (target) {
-        target.classList.add("active");
-    }
-
+    document
+        .getElementById(
+            "view-" + name
+        )
+        .classList.add("active");
 
     document
-        .querySelectorAll(".nav-button")
-        .forEach(button => {
-
-            button.classList.remove("active");
-
-            if (
-                button.dataset.view === viewName
-            ) {
-                button.classList.add("active");
-            }
-
-        });
-
+        .querySelectorAll(".nav-btn")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
 
     window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        top:0,
+        behavior:"smooth"
     });
 
+    if(name === "shop") {
+        document
+            .querySelectorAll(".nav-btn")[1]
+            .classList.add("active");
+    }
+
+    if(name === "special") {
+        document
+            .querySelectorAll(".nav-btn")[2]
+            .classList.add("active");
+    }
+
+    if(name === "money") {
+        document
+            .querySelectorAll(".nav-btn")[3]
+            .classList.add("active");
+    }
+
+    if(name === "info") {
+        document
+            .querySelectorAll(".nav-btn")[4]
+            .classList.add("active");
+    }
+
+    if(name === "faq") {
+        document
+            .querySelectorAll(".nav-btn")[5]
+            .classList.add("active");
+    }
+
+    if(name === "home") {
+        document
+            .querySelectorAll(".nav-btn")[0]
+            .classList.add("active");
+    }
 }
 
 
 /* =========================================================
-   MONEY PARSER
+   RENDER
    ========================================================= */
 
-function parseMoney(value) {
+function renderProducts(list, target="products") {
 
-    if (!value) {
-        return 0;
-    }
+    const element =
+        document.getElementById(target);
 
-
-    let text =
-        String(value)
-            .toUpperCase()
-            .replace(/\s/g, "")
-            .replace(",", ".");
-
-
-    let number =
-        parseFloat(
-            text.replace(
-                /[^0-9.]/g,
-                ""
-            )
-        );
-
-
-    if (
-        Number.isNaN(number)
-    ) {
-        return 0;
-    }
-
-
-    if (text.includes("T")) {
-        return number *
-            1000000000000;
-    }
-
-
-    if (text.includes("B")) {
-        return number *
-            1000000000;
-    }
-
-
-    if (text.includes("M")) {
-        return number *
-            1000000;
-    }
-
-
-    if (text.includes("K")) {
-        return number *
-            1000;
-    }
-
-
-    return number;
-
-}
-
-
-/* =========================================================
-   MONEY FORMATTER
-   ========================================================= */
-
-function formatMoney(amount) {
-
-    if (
-        amount >=
-        1000000000000
-    ) {
-
-        return (
-            amount /
-            1000000000000
-        )
-        .toFixed(2)
-        .replace(/\.00$/, "")
-        + "T";
-
-    }
-
-
-    if (
-        amount >=
-        1000000000
-    ) {
-
-        return (
-            amount /
-            1000000000
-        )
-        .toFixed(2)
-        .replace(/\.00$/, "")
-        + "B";
-
-    }
-
-
-    if (
-        amount >=
-        1000000
-    ) {
-
-        return (
-            amount /
-            1000000
-        )
-        .toFixed(2)
-        .replace(/\.00$/, "")
-        + "M";
-
-    }
-
-
-    if (
-        amount >=
-        1000
-    ) {
-
-        return (
-            amount /
-            1000
-        )
-        .toFixed(2)
-        .replace(/\.00$/, "")
-        + "K";
-
-    }
-
-
-    return String(
-        Math.round(amount)
-    );
-
-}
-
-
-/* =========================================================
-   MONEY PRICE
-   ========================================================= */
-
-function moneyPrice(amount) {
-
-    const oneB =
-        1000000000;
-
-    const tenB =
-        10000000000;
-
-
-    if (
-        amount <= 0
-    ) {
-        return 0;
-    }
-
-
-    if (
-        amount <= oneB
-    ) {
-
-        return (
-            amount /
-            oneB
-        ) * 15;
-
-    }
-
-
-    if (
-        amount <= tenB
-    ) {
-
-        return 15 +
-            (
-                (
-                    amount -
-                    oneB
-                ) /
-                (
-                    tenB -
-                    oneB
-                )
-            ) * 85;
-
-    }
-
-
-    return 100;
-
-}
-
-
-/* =========================================================
-   UPDATE MONEY
-   ========================================================= */
-
-function updateMoney() {
-
-    const input =
-        document.getElementById(
-            "moneyInput"
-        );
-
-
-    let amount =
-        parseMoney(
-            input.value
-        );
-
-
-    const minimum =
-        1000000;
-
-    const maximum =
-        10000000000;
-
-
-    if (
-        amount < minimum
-    ) {
-        amount = minimum;
-    }
-
-
-    if (
-        amount > maximum
-    ) {
-        amount = maximum;
-    }
-
-
-    const price =
-        moneyPrice(amount);
-
-
-    document
-        .getElementById(
-            "moneyPreview"
-        )
-        .textContent =
-        formatMoney(amount);
-
-
-    document
-        .getElementById(
-            "moneyPrice"
-        )
-        .textContent =
-        price.toFixed(2)
-        + " CHF";
-
-}
-
-
-/* =========================================================
-   SET MONEY
-   ========================================================= */
-
-function setMoney(value) {
-
-    document
-        .getElementById(
-            "moneyInput"
-        )
-        .value = value;
-
-
-    updateMoney();
-
-}
-
-
-/* =========================================================
-   SLIDER
-   ========================================================= */
-
-function sliderChanged() {
-
-    const slider =
-        document.getElementById(
-            "moneySlider"
-        );
-
-
-    const amount =
-        Number(slider.value)
-        * 1000000;
-
-
-    document
-        .getElementById(
-            "moneyInput"
-        )
-        .value =
-        formatMoney(amount);
-
-
-    updateMoney();
-
-}
-
-
-/* =========================================================
-   ADD MONEY
-   ========================================================= */
-
-function addMoneyToCart() {
-
-    const input =
-        document.getElementById(
-            "moneyInput"
-        );
-
-
-    let amount =
-        parseMoney(
-            input.value
-        );
-
-
-    if (
-        amount < 1000000 ||
-        amount > 10000000000
-    ) {
-
-        showToast(
-            "Bitte zwischen 1M und 10B auswählen."
-        );
-
-        return;
-
-    }
-
-
-    const display =
-        formatMoney(amount);
-
-
-    const price =
-        moneyPrice(amount);
-
-
-    const existing =
-        cart.find(
-            item =>
-                item.type === "money" &&
-                item.amount === amount
-        );
-
-
-    if (existing) {
-
-        existing.quantity++;
-
-    } else {
-
-        cart.push({
-
-            id:
-                "money-" +
-                Date.now(),
-
-            type:
-                "money",
-
-            amount:
-                amount,
-
-            name:
-                display +
-                " Money",
-
-            icon:
-                "💰",
-
-            price:
-                price,
-
-            quantity:
-                1
-
-        });
-
-    }
-
-
-    updateCart();
-
-    openCart();
-
-    showToast(
-        display +
-        " wurde hinzugefügt."
-    );
-
-}
-
-
-/* =========================================================
-   RENDER PRODUCTS
-   ========================================================= */
-
-function renderProducts(list) {
-
-    const grid =
-        document.getElementById(
-            "productGrid"
-        );
-
-
-    if (
-        !list.length
-    ) {
-
-        grid.innerHTML = `
-
-            <div class="empty"
-                 style="grid-column:1/-1">
-
-                <div class="empty-icon">
-                    🔎
-                </div>
-
-                <strong>
-                    Kein Item gefunden
-                </strong>
-
-                <p style="margin-top:8px">
-                    Versuche einen anderen Suchbegriff.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    grid.innerHTML =
-        list.map(
-            product =>
-            createProductHTML(product)
-        ).join("");
-
-}
-
-
-/* =========================================================
-   PRODUCT HTML
-   ========================================================= */
-
-function createProductHTML(product) {
-
-    const favorite =
-        favorites.has(
-            product.id
-        );
-
-
-    return `
+    element.innerHTML =
+        list.map(product => `
 
         <article class="product">
 
             <div class="product-image">
 
                 <div class="product-tag">
-                    ${categoryName(product.category)}
+                    ${product.category === "spawner"
+                        ? "SPAWNER"
+                        : "SPECIAL"}
                 </div>
 
                 <button
-                    class="
-                        product-favorite
-                        ${favorite ? "active" : ""}
-                    "
+                    class="favorite
+                    ${favorites.has(product.id)
+                        ? "active"
+                        : ""}"
                     onclick="
                         toggleFavorite('${product.id}')
-                    "
-                >
-                    ${favorite ? "♥" : "♡"}
+                    ">
+                    ${favorites.has(product.id)
+                        ? "♥"
+                        : "♡"}
                 </button>
 
                 <div class="product-emoji">
                     ${product.icon}
                 </div>
 
-            </div>
+                <div class="
+                    rarity
+                    ${product.rarity}
+                ">
+                    ${product.rarity}
+                </div>
 
+            </div>
 
             <div class="product-body">
 
@@ -4483,20 +2966,18 @@ function createProductHTML(product) {
                     ${product.description}
                 </div>
 
-
                 <div class="product-bottom">
 
-                    <div class="product-price">
+                    <div class="price">
                         ${product.price.toFixed(2)}
                         CHF
                     </div>
 
                     <button
-                        class="add-product"
+                        class="add"
                         onclick="
                             addProduct('${product.id}')
-                        "
-                    >
+                        ">
                         +
                     </button>
 
@@ -4506,89 +2987,84 @@ function createProductHTML(product) {
 
         </article>
 
-    `;
-
+    `).join("");
 }
 
 
 /* =========================================================
-   CATEGORY NAME
-   ========================================================= */
-
-function categoryName(category) {
-
-    const names = {
-
-        combat:
-            "Combat",
-
-        rare:
-            "Selten",
-
-        blocks:
-            "Block",
-
-        utility:
-            "Utility"
-
-    };
-
-
-    return (
-        names[category]
-        || category
-    );
-
-}
-
-
-/* =========================================================
-   FILTER PRODUCTS
+   FILTER
    ========================================================= */
 
 function filterProducts() {
 
     const search =
         document
-            .getElementById(
-                "itemSearch"
-            )
+            .getElementById("search")
             .value
-            .toLowerCase()
-            .trim();
+            .toLowerCase();
 
+    let list =
+        products.filter(p => {
 
-    let result =
-        products.filter(
-            product => {
+            const matchesSearch =
+                p.name
+                    .toLowerCase()
+                    .includes(search);
 
-                const matchesSearch =
-                    product.name
-                        .toLowerCase()
-                        .includes(search) ||
-                    product.description
-                        .toLowerCase()
-                        .includes(search);
+            const matchesCategory =
+                category === "all" ||
+                p.category === category;
 
+            return (
+                matchesSearch &&
+                matchesCategory
+            );
+        });
 
-                const matchesCategory =
-                    selectedCategory ===
-                    "all" ||
-                    product.category ===
-                    selectedCategory;
+    const sort =
+        document.getElementById("sort").value;
 
+    if(sort === "low") {
 
-                return (
-                    matchesSearch &&
-                    matchesCategory
-                );
-
-            }
+        list.sort(
+            (a,b) =>
+                a.price-b.price
         );
+    }
 
+    if(sort === "high") {
 
-    renderProducts(result);
+        list.sort(
+            (a,b) =>
+                b.price-a.price
+        );
+    }
 
+    if(sort === "name") {
+
+        list.sort(
+            (a,b) =>
+                a.name.localeCompare(b.name)
+        );
+    }
+
+    if(sort === "rarity") {
+
+        const order = {
+            common:1,
+            rare:2,
+            epic:3,
+            legendary:4
+        };
+
+        list.sort(
+            (a,b) =>
+                order[b.rarity] -
+                order[a.rarity]
+        );
+    }
+
+    renderProducts(list);
 }
 
 
@@ -4596,39 +3072,21 @@ function filterProducts() {
    CATEGORY
    ========================================================= */
 
-function setCategory(category) {
+function setCategory(value) {
 
-    selectedCategory =
-        category;
-
+    category = value;
 
     document
-        .querySelectorAll(
-            ".category-button"
-        )
-        .forEach(button => {
+        .querySelectorAll(".category")
+        .forEach(btn => {
 
-            button.classList.remove(
-                "active"
+            btn.classList.toggle(
+                "active",
+                btn.dataset.category === value
             );
-
-
-            if (
-                button.dataset.category ===
-                category
-            ) {
-
-                button.classList.add(
-                    "active"
-                );
-
-            }
-
         });
 
-
     filterProducts();
-
 }
 
 
@@ -4638,29 +3096,29 @@ function setCategory(category) {
 
 function toggleFavorite(id) {
 
-    if (
-        favorites.has(id)
-    ) {
+    if(favorites.has(id)) {
 
         favorites.delete(id);
 
-        showToast(
-            "Aus Favoriten entfernt."
-        );
+        toast("Aus Favoriten entfernt.");
 
     } else {
 
         favorites.add(id);
 
-        showToast(
-            "Zu Favoriten hinzugefügt."
-        );
-
+        toast("Zu Favoriten hinzugefügt.");
     }
 
+    save();
 
     filterProducts();
 
+    renderProducts(
+        products.filter(
+            p => p.category === "special"
+        ),
+        "specialProducts"
+    );
 }
 
 
@@ -4672,366 +3130,172 @@ function addProduct(id) {
 
     const product =
         products.find(
-            item =>
-                item.id === id
+            p => p.id === id
         );
 
-
-    if (!product) {
-        return;
-    }
-
+    if(!product) return;
 
     const existing =
         cart.find(
-            item =>
-                item.type === "item" &&
-                item.productId === id
+            item => item.id === id
         );
 
-
-    if (existing) {
+    if(existing) {
 
         existing.quantity++;
 
     } else {
 
         cart.push({
-
-            id:
-                "cart-" +
-                Date.now(),
-
-            type:
-                "item",
-
-            productId:
-                id,
-
-            name:
-                product.name,
-
-            icon:
-                product.icon,
-
-            price:
-                product.price,
-
-            quantity:
-                1
-
+            id:id,
+            name:product.name,
+            icon:product.icon,
+            price:product.price,
+            quantity:1
         });
-
     }
 
-
+    save();
     updateCart();
 
     openCart();
 
-    showToast(
+    toast(
         product.name +
-        " hinzugefügt."
+        " wurde hinzugefügt."
     );
-
 }
 
 
 /* =========================================================
-   OPEN CART
-   ========================================================= */
-
-function openCart() {
-
-    document
-        .getElementById(
-            "cartDrawer"
-        )
-        .classList.add(
-            "active"
-        );
-
-
-    document
-        .getElementById(
-            "overlay"
-        )
-        .classList.add(
-            "active"
-        );
-
-
-    document.body.style.overflow =
-        "hidden";
-
-}
-
-
-/* =========================================================
-   CLOSE CART
-   ========================================================= */
-
-function closeCart() {
-
-    document
-        .getElementById(
-            "cartDrawer"
-        )
-        .classList.remove(
-            "active"
-        );
-
-
-    document
-        .getElementById(
-            "overlay"
-        )
-        .classList.remove(
-            "active"
-        );
-
-
-    document.body.style.overflow =
-        "";
-
-}
-
-
-/* =========================================================
-   UPDATE CART
+   CART
    ========================================================= */
 
 function updateCart() {
 
     const list =
         document.getElementById(
-            "cartList"
+            "cartItems"
         );
-
 
     const count =
         cart.reduce(
-            (
-                total,
-                item
-            ) =>
-                total +
-                item.quantity,
+            (sum,item) =>
+                sum + item.quantity,
             0
         );
 
-
-    const subtotal =
-        cart.reduce(
-            (
-                total,
-                item
-            ) =>
-                total +
-                (
-                    item.price *
-                    item.quantity
-                ),
-            0
-        );
-
+    document
+        .getElementById("cartCount")
+        .textContent = count;
 
     document
-        .getElementById(
-            "cartCount"
-        )
-        .textContent =
-        count;
+        .getElementById("cartProducts")
+        .textContent = count;
 
-
-    document
-        .getElementById(
-            "summaryItems"
-        )
-        .textContent =
-        count;
-
-
-    document
-        .getElementById(
-            "summarySubtotal"
-        )
-        .textContent =
-        subtotal.toFixed(2)
-        + " CHF";
-
-
-    document
-        .getElementById(
-            "summaryTotal"
-        )
-        .textContent =
-        subtotal.toFixed(2)
-        + " CHF";
-
-
-    if (
-        cart.length === 0
-    ) {
+    if(!cart.length) {
 
         list.innerHTML = `
-
-            <div class="empty">
-
-                <div class="empty-icon">
-                    🛒
-                </div>
-
-                <strong>
-                    Dein Warenkorb ist leer
-                </strong>
-
-                <p style="margin-top:8px">
-                    Füge Money oder Items hinzu.
-                </p>
-
+            <div style="
+                padding:60px 10px;
+                text-align:center;
+                color:#777">
+                🛒
+                <br><br>
+                Dein Warenkorb ist leer.
             </div>
-
         `;
 
+        updateTotal();
+
         return;
-
     }
-
 
     list.innerHTML =
         cart.map(
-            (
-                item,
-                index
-            ) =>
-            createCartItemHTML(
-                item,
-                index
-            )
-        ).join("");
+            (item,index) => `
 
-}
+            <div class="cart-item">
 
-
-/* =========================================================
-   CART ITEM HTML
-   ========================================================= */
-
-function createCartItemHTML(
-    item,
-    index
-) {
-
-    return `
-
-        <div class="cart-item">
-
-            <div class="cart-item-icon">
-                ${item.icon}
-            </div>
-
-
-            <div>
-
-                <div class="cart-item-name">
-                    ${item.name}
+                <div class="cart-icon">
+                    ${item.icon}
                 </div>
 
-                <div class="cart-item-price">
-                    ${(
-                        item.price *
-                        item.quantity
-                    ).toFixed(2)}
-                    CHF
-                </div>
+                <div>
 
+                    <div class="cart-name">
+                        ${item.name}
+                    </div>
 
-                <div class="quantity-controls">
+                    <div class="cart-price">
+                        ${(
+                            item.price *
+                            item.quantity
+                        ).toFixed(2)}
+                        CHF
+                    </div>
 
-                    <button
+                    <div class="qty">
+
+                        <button
                         onclick="
                             changeQuantity(
                                 ${index},
                                 -1
-                            )
-                        "
-                    >
-                        −
-                    </button>
+                            )">
+                            −
+                        </button>
 
-                    <span>
-                        ${item.quantity}
-                    </span>
+                        <span>
+                            ${item.quantity}
+                        </span>
 
-                    <button
+                        <button
                         onclick="
                             changeQuantity(
                                 ${index},
                                 1
-                            )
-                        "
-                    >
-                        +
-                    </button>
+                            )">
+                            +
+                        </button>
+
+                    </div>
 
                 </div>
 
-            </div>
-
-
-            <button
-                class="cart-remove"
+                <button
+                class="remove"
                 onclick="
-                    removeCartItem(
-                        ${index}
-                    )
-                "
-            >
-                ✕
-            </button>
+                    removeItem(${index})
+                ">
+                    ✕
+                </button>
 
-        </div>
+            </div>
+        `
+        ).join("");
 
-    `;
-
+    updateTotal();
 }
 
 
 /* =========================================================
-   CHANGE QUANTITY
+   QUANTITY
    ========================================================= */
 
-function changeQuantity(
-    index,
-    change
-) {
+function changeQuantity(index, amount) {
 
-    if (
-        !cart[index]
-    ) {
-        return;
+    if(!cart[index]) return;
+
+    cart[index].quantity += amount;
+
+    if(cart[index].quantity <= 0) {
+
+        cart.splice(index,1);
     }
 
-
-    cart[index].quantity +=
-        change;
-
-
-    if (
-        cart[index].quantity <= 0
-    ) {
-
-        cart.splice(
-            index,
-            1
-        );
-
-    }
-
-
+    save();
     updateCart();
-
 }
 
 
@@ -5039,33 +3303,297 @@ function changeQuantity(
    REMOVE
    ========================================================= */
 
-function removeCartItem(index) {
-
-    if (
-        !cart[index]
-    ) {
-        return;
-    }
-
+function removeItem(index) {
 
     const name =
-        cart[index].name;
+        cart[index]?.name;
 
+    cart.splice(index,1);
 
-    cart.splice(
-        index,
-        1
-    );
-
-
+    save();
     updateCart();
 
-
-    showToast(
+    toast(
         name +
         " entfernt."
     );
+}
 
+
+/* =========================================================
+   DISCOUNT
+   ========================================================= */
+
+function getDiscount() {
+
+    const code =
+        document
+            .getElementById("coupon")
+            .value
+            .trim()
+            .toUpperCase();
+
+    if(code === "DONUT10") {
+        return 10;
+    }
+
+    return 0;
+}
+
+
+/* =========================================================
+   TOTAL
+   ========================================================= */
+
+function updateTotal() {
+
+    let total =
+        cart.reduce(
+            (sum,item) =>
+                sum +
+                item.price *
+                item.quantity,
+            0
+        );
+
+    const discount =
+        getDiscount();
+
+    total *=
+        (1 - discount / 100);
+
+    document
+        .getElementById("discount")
+        .textContent =
+        discount + "%";
+
+    document
+        .getElementById("total")
+        .textContent =
+        total.toFixed(2) +
+        " CHF";
+}
+
+
+/* =========================================================
+   CART OPEN/CLOSE
+   ========================================================= */
+
+function openCart() {
+
+    document
+        .getElementById("cart")
+        .classList.add("active");
+
+    document
+        .getElementById("overlay")
+        .classList.add("active");
+
+    document.body.style.overflow =
+        "hidden";
+}
+
+function closeCart() {
+
+    document
+        .getElementById("cart")
+        .classList.remove("active");
+
+    document
+        .getElementById("overlay")
+        .classList.remove("active");
+
+    document.body.style.overflow =
+        "";
+}
+
+
+/* =========================================================
+   MONEY
+   ========================================================= */
+
+function parseMoney(value) {
+
+    let text =
+        value
+            .toUpperCase()
+            .replace(",", ".")
+            .replace(/\s/g,"");
+
+    let number =
+        parseFloat(
+            text.replace(
+                /[^0-9.]/g,
+                ""
+            )
+        );
+
+    if(isNaN(number)) return 0;
+
+    if(text.includes("B"))
+        return number * 1000000000;
+
+    if(text.includes("M"))
+        return number * 1000000;
+
+    if(text.includes("K"))
+        return number * 1000;
+
+    return number;
+}
+
+
+function formatMoney(value) {
+
+    if(value >= 1000000000)
+        return (
+            value /
+            1000000000
+        )
+        .toFixed(2)
+        .replace(".00","") +
+        "B";
+
+    if(value >= 1000000)
+        return (
+            value /
+            1000000
+        )
+        .toFixed(2)
+        .replace(".00","") +
+        "M";
+
+    return value;
+}
+
+
+function moneyPrice(value) {
+
+    const oneB = 1000000000;
+    const tenB = 10000000000;
+
+    if(value <= oneB)
+        return (
+            value /
+            oneB
+        ) * 15;
+
+    if(value <= tenB)
+        return 15 +
+            (
+                (value-oneB) /
+                (tenB-oneB)
+            ) * 85;
+
+    return 100;
+}
+
+
+function updateMoney() {
+
+    let amount =
+        parseMoney(
+            document
+                .getElementById(
+                    "moneyInput"
+                )
+                .value
+        );
+
+    amount =
+        Math.max(
+            1000000,
+            Math.min(
+                amount,
+                10000000000
+            )
+        );
+
+    document
+        .getElementById("moneyValue")
+        .textContent =
+        formatMoney(amount);
+
+    document
+        .getElementById("moneyPrice")
+        .textContent =
+        moneyPrice(amount)
+            .toFixed(2) +
+        " CHF";
+}
+
+
+function setMoney(value) {
+
+    document
+        .getElementById("moneyInput")
+        .value = value;
+
+    updateMoney();
+}
+
+
+function addMoney() {
+
+    let amount =
+        parseMoney(
+            document
+                .getElementById(
+                    "moneyInput"
+                )
+                .value
+        );
+
+    if(
+        amount < 1000000 ||
+        amount > 10000000000
+    ) {
+
+        toast(
+            "Money muss zwischen 1M und 10B liegen."
+        );
+
+        return;
+    }
+
+    const name =
+        formatMoney(amount) +
+        " Money";
+
+    const price =
+        moneyPrice(amount);
+
+    const existing =
+        cart.find(
+            item =>
+                item.money === amount
+        );
+
+    if(existing) {
+
+        existing.quantity++;
+
+    } else {
+
+        cart.push({
+            id:"money-" + amount,
+            name:name,
+            icon:"💰",
+            price:price,
+            quantity:1,
+            money:amount
+        });
+    }
+
+    save();
+    updateCart();
+
+    openCart();
+
+    toast(
+        name +
+        " hinzugefügt."
+    );
 }
 
 
@@ -5075,78 +3603,75 @@ function removeCartItem(index) {
 
 function checkout() {
 
-    if (
-        cart.length === 0
-    ) {
+    if(!cart.length) {
 
-        showToast(
-            "Der Warenkorb ist leer."
+        toast(
+            "Dein Warenkorb ist leer."
         );
 
         return;
-
     }
-
 
     const username =
         document
-            .getElementById(
-                "minecraftUsername"
-            )
+            .getElementById("username")
             .value
             .trim();
 
+    if(!username) {
 
-    if (!username) {
-
-        showToast(
+        toast(
             "Bitte Minecraft-Username eingeben."
         );
 
-        document
-            .getElementById(
-                "minecraftUsername"
-            )
-            .focus();
-
         return;
-
     }
 
+    const code =
+        document
+            .getElementById("coupon")
+            .value
+            .trim()
+            .toUpperCase();
 
-    const total =
+    const discount =
+        code === "DONUT10"
+            ? 10
+            : 0;
+
+    let total =
         cart.reduce(
-            (
-                sum,
-                item
-            ) =>
+            (sum,item) =>
                 sum +
                 item.price *
                 item.quantity,
             0
         );
 
+    total *=
+        1 - discount / 100;
+
+    const order =
+        "DONUT-" +
+        Math.floor(
+            100000 +
+            Math.random() *
+            899999
+        );
 
     alert(
-
-        "BESTELLÜBERSICHT\n\n" +
-
-        "Minecraft-Username:\n" +
+        "🍩 DONUTSHOP\n\n" +
+        "Bestellung: " +
+        order +
+        "\n\n" +
+        "Minecraft: " +
         username +
         "\n\n" +
-
-        "Produkte: " +
-        cart.length +
-        "\n\n" +
-
-        "Gesamt:\n" +
+        "Gesamt: " +
         total.toFixed(2) +
         " CHF\n\n" +
-
-        "Dies ist momentan ein Demo-Checkout."
-
+        "Demo-Checkout."
     );
-
 }
 
 
@@ -5156,14 +3681,9 @@ function checkout() {
 
 function toggleFAQ(button) {
 
-    const item =
-        button.parentElement;
-
-
-    item.classList.toggle(
-        "open"
-    );
-
+    button
+        .parentElement
+        .classList.toggle("open");
 }
 
 
@@ -5173,41 +3693,26 @@ function toggleFAQ(button) {
 
 let toastTimer;
 
+function toast(message) {
 
-function showToast(message) {
+    const element =
+        document.getElementById("toast");
 
-    const toast =
-        document.getElementById(
-            "toast"
-        );
-
-
-    toast.textContent =
+    element.textContent =
         message;
 
+    element.classList.add("show");
 
-    toast.classList.add(
-        "show"
-    );
-
-
-    clearTimeout(
-        toastTimer
-    );
-
+    clearTimeout(toastTimer);
 
     toastTimer =
         setTimeout(
-            () => {
-
-                toast.classList.remove(
-                    "show"
-                );
-
-            },
+            () =>
+                element
+                    .classList
+                    .remove("show"),
             2500
         );
-
 }
 
 
@@ -5219,14 +3724,8 @@ document.addEventListener(
     "keydown",
     event => {
 
-        if (
-            event.key ===
-            "Escape"
-        ) {
-
+        if(event.key === "Escape")
             closeCart();
-
-        }
 
     }
 );
@@ -5236,18 +3735,24 @@ document.addEventListener(
    INITIALIZE
    ========================================================= */
 
+renderProducts(products);
+
 renderProducts(
-    products
+    products.filter(
+        p => p.category === "special"
+    ),
+    "specialProducts"
 );
 
 updateCart();
-
 updateMoney();
 
-
-/* =========================================================
-   END JAVASCRIPT
-   ========================================================= */
+document
+    .getElementById("coupon")
+    .addEventListener(
+        "input",
+        updateTotal
+    );
 
 </script>
 
