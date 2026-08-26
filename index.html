@@ -10,7 +10,6 @@
 html{scroll-behavior:smooth;}
 body{background:#040208;color:white;overflow-x:hidden;}
 
-/* Background Glow Effects */
 body::before{content:"";position:fixed;top:-20%;left:-10%;width:50vw;height:50vw;background:radial-gradient(circle, rgba(139,61,255,0.18), transparent 70%);z-index:-2;pointer-events:none;}
 body::after{content:"";position:fixed;bottom:-20%;right:-10%;width:50vw;height:50vw;background:radial-gradient(circle, rgba(239,76,255,0.12), transparent 70%);z-index:-2;pointer-events:none;}
 
@@ -33,7 +32,6 @@ main{width:92%;max-width:1300px;margin:auto;padding-top:120px;padding-bottom:80p
 .view.active{display:block;animation:fadeIn 0.3s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
-/* Hero Section */
 .hero{min-height:560px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:50px;align-items:center;}
 .badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:50px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.3);color:#d8b4fe;font-size:11px;font-weight:800;letter-spacing:1px;}
 h1{margin-top:20px;font-size:clamp(45px,6vw,80px);line-height:0.95;letter-spacing:-3px;font-weight:800;}
@@ -44,8 +42,6 @@ h1{margin-top:20px;font-size:clamp(45px,6vw,80px);line-height:0.95;letter-spacin
 .btn-primary{background:linear-gradient(135deg,#7c3aed,#d946ef);box-shadow:0 8px 25px rgba(124,58,237,0.35);}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(124,58,237,0.5);}
 .btn-secondary{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);}
-.btn-secondary:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);}
-
 .hero-stats{display:flex;gap:40px;margin-top:40px;border-top:1px solid rgba(255,255,255,0.06);padding-top:30px;}
 .stat strong{display:block;font-size:24px;color:white;}
 .stat span{color:#6b7280;font-size:12px;font-weight:600;}
@@ -54,19 +50,15 @@ h1{margin-top:20px;font-size:clamp(45px,6vw,80px);line-height:0.95;letter-spacin
 .hero-visual::before{content:"🍩";font-size:130px;filter:drop-shadow(0 20px 40px rgba(124,58,237,0.6));animation:float 4s ease-in-out infinite;}
 @keyframes float{0%,100%{transform:translateY(0) rotate(0deg);}50%{transform:translateY(-15px) rotate(5deg);}}
 
-/* Sections & Headings */
 .section-header{margin-bottom:35px;}
 .section-header small{color:#c084fc;font-size:11px;font-weight:800;letter-spacing:2px;}
 .section-header h2{margin-top:8px;font-size:38px;letter-spacing:-1.5px;font-weight:800;}
 .section-header p{margin-top:6px;color:#9ca3af;font-size:14px;}
 
-/* Product Grid */
 .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
 .product-card{border-radius:22px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);overflow:hidden;transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);}
 .product-card:hover{transform:translateY(-6px);border-color:rgba(168,85,247,0.4);background:rgba(255,255,255,0.035);box-shadow:0 20px 40px rgba(0,0,0,0.5);}
-.product-img-box{height:180px;display:grid;place-items:center;position:relative;background:radial-gradient(circle, rgba(124,58,237,0.12), transparent 70%);}
-.product-img{width:90px;height:90px;object-fit:contain;filter:drop-shadow(0 12px 18px rgba(0,0,0,0.6));transition:transform 0.3s;}
-.product-card:hover .product-img{transform:scale(1.1);}
+.product-img-box{height:180px;display:grid;place-items:center;position:relative;background:radial-gradient(circle, rgba(124,58,237,0.12), transparent 70%);font-size:65px;}
 .product-tag{position:absolute;top:12px;left:12px;padding:5px 10px;border-radius:8px;background:rgba(0,0,0,0.6);backdrop-filter:blur(5px);font-size:9px;font-weight:800;border:1px solid rgba(255,255,255,0.08);}
 .product-content{padding:20px;}
 .product-title{font-weight:800;font-size:15px;}
@@ -76,7 +68,6 @@ h1{margin-top:20px;font-size:clamp(45px,6vw,80px);line-height:0.95;letter-spacin
 .add-btn{width:38px;height:38px;border:0;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#d946ef);color:white;font-size:18px;cursor:pointer;display:grid;place-items:center;transition:0.2s;}
 .add-btn:hover{transform:scale(1.08);}
 
-/* Spawner Shop Layout */
 .shop-layout{display:grid;grid-template-columns:1fr 380px;gap:24px;}
 .panel{padding:28px;border-radius:24px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);}
 .panel h3{font-size:18px;font-weight:800;margin-bottom:16px;}
@@ -90,12 +81,10 @@ h1{margin-top:20px;font-size:clamp(45px,6vw,80px);line-height:0.95;letter-spacin
 .total-sum{margin-top:8px;font-size:26px;font-weight:800;}
 .discount-hint{margin-top:8px;color:#10b981;font-size:11px;font-weight:700;}
 
-/* Money Shop */
 .money-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px;}
 .money-grid button{padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:white;cursor:pointer;font-weight:800;font-size:14px;transition:0.2s;}
 .money-grid button:hover{border-color:#a855f7;background:rgba(124,58,237,0.2);}
 
-/* Info & FAQ */
 .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 .info-card{padding:25px;border-radius:20px;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);}
 .info-num{color:#c084fc;font-size:12px;font-weight:800;margin-bottom:10px;}
@@ -108,7 +97,6 @@ h1{margin-top:20px;font-size:clamp(45px,6vw,80px);line-height:0.95;letter-spacin
 .faq-answer{max-height:0;overflow:hidden;transition:max-height 0.3s ease;color:#9ca3af;font-size:13px;line-height:1.7;}
 .faq-card.open .faq-answer{max-height:150px;padding-bottom:20px;}
 
-/* Cart Sidebar */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(5px);opacity:0;pointer-events:none;z-index:2000;transition:0.3s;}
 .overlay.active{opacity:1;pointer-events:auto;}
 .cart-sidebar{position:fixed;top:0;right:0;bottom:0;width:min(450px, 100%);background:#07030e;border-left:1px solid rgba(255,255,255,0.08);z-index:2100;padding:30px;display:flex;flex-direction:column;transform:translateX(100%);transition:transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);}
@@ -117,7 +105,7 @@ h1{margin-top:20px;font-size:clamp(45px,6vw,80px);line-height:0.95;letter-spacin
 .close-cart{width:38px;height:38px;border:0;border-radius:10px;background:rgba(255,255,255,0.05);color:white;cursor:pointer;display:grid;place-items:center;}
 .cart-items-container{flex:1;overflow-y:auto;padding:15px 0;}
 .cart-item-row{display:grid;grid-template-columns:50px 1fr auto;gap:14px;align-items:center;padding:12px;margin-bottom:10px;border-radius:14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);}
-.cart-item-img{width:50px;height:50px;object-fit:contain;background:rgba(124,58,237,0.1);border-radius:10px;padding:4px;}
+.cart-item-img{width:50px;height:50px;display:grid;place-items:center;background:rgba(124,58,237,0.1);border-radius:10px;font-size:24px;}
 .cart-item-title{font-size:13px;font-weight:800;}
 .cart-item-price{color:#c084fc;font-size:12px;margin-top:2px;font-weight:700;}
 .cart-item-qty{display:flex;align-items:center;gap:8px;margin-top:6px;}
@@ -129,7 +117,6 @@ h1{margin-top:20px;font-size:clamp(45px,6vw,80px);line-height:0.95;letter-spacin
 .username-input{width:100%;padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);background:#040208;color:white;outline:none;margin-bottom:10px;font-weight:700;}
 .checkout-btn{width:100%;padding:16px;border:0;border-radius:12px;background:linear-gradient(135deg,#10b981,#059669);color:white;font-weight:800;cursor:pointer;font-size:15px;box-shadow:0 8px 20px rgba(16,185,129,0.3);}
 
-/* Footer & Toast */
 footer{margin-top:60px;padding:40px 0;text-align:center;border-top:1px solid rgba(255,255,255,0.06);color:#6b7280;font-size:12px;}
 footer strong{color:white;font-size:16px;}
 .toast{position:fixed;bottom:25px;right:25px;padding:14px 20px;border-radius:14px;background:#0f091a;border:1px solid rgba(168,85,247,0.4);color:white;font-weight:800;font-size:13px;z-index:3000;box-shadow:0 10px 30px rgba(0,0,0,0.6);opacity:0;transform:translateY(30px);transition:0.3s cubic-bezier(0.16, 1, 0.3, 1);}
@@ -170,7 +157,6 @@ footer strong{color:white;font-size:16px;}
 </header>
 
 <main>
-<!-- HOME -->
 <section class="view active" id="view-home">
 <div class="hero">
 <div>
@@ -191,7 +177,6 @@ footer strong{color:white;font-size:16px;}
 </div>
 </section>
 
-<!-- SPAWNER -->
 <section class="view" id="view-spawner">
 <div class="section-header">
 <small>DONUT SMP</small>
@@ -225,7 +210,6 @@ footer strong{color:white;font-size:16px;}
 </div>
 </section>
 
-<!-- NETHERITE -->
 <section class="view" id="view-netherite">
 <div class="section-header">
 <small>NETHERITE GEAR</small>
@@ -235,7 +219,6 @@ footer strong{color:white;font-size:16px;}
 <div class="product-grid" id="netheriteProducts"></div>
 </section>
 
-<!-- SPECIAL -->
 <section class="view" id="view-special">
 <div class="section-header">
 <small>SPECIAL ITEMS</small>
@@ -245,7 +228,6 @@ footer strong{color:white;font-size:16px;}
 <div class="product-grid" id="specialProducts"></div>
 </section>
 
-<!-- MONEY -->
 <section class="view" id="view-money">
 <div class="section-header">
 <small>MONEY SHOP</small>
@@ -286,7 +268,6 @@ footer strong{color:white;font-size:16px;}
 </div>
 </section>
 
-<!-- INFO -->
 <section class="view" id="view-info">
 <div class="section-header">
 <small>ANLEITUNG</small>
@@ -299,7 +280,6 @@ footer strong{color:white;font-size:16px;}
 </div>
 </section>
 
-<!-- FAQ -->
 <section class="view" id="view-faq">
 <div class="section-header">
 <small>FRAGEN & ANTWORTEN</small>
@@ -344,23 +324,22 @@ footer strong{color:white;font-size:16px;}
 <div class="toast" id="toastBox">Erfolgreich hinzugefügt!</div>
 
 <script>
-/* Funktionierende, hochauflösende Minecraft-Render-Bilder via offiziellem CDN */
 const catalog = [
-    { id: "skeleton", name: "Skeleton Spawner", image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/spawner.png", category: "spawner" },
-    { id: "iron-golem", name: "Iron Golem Spawner", image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/spawner.png", category: "spawner" },
+    { id: "skeleton", name: "Skeleton Spawner", image: "💀", category: "spawner" },
+    { id: "iron-golem", name: "Iron Golem Spawner", image: "🤖", category: "spawner" },
     
-    { id: "netherite-sword", name: "Netherite Sword", price: 2.50, image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/netherite_sword.png", category: "netherite" },
-    { id: "netherite-pickaxe", name: "Netherite Pickaxe", price: 3.00, image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/netherite_pickaxe.png", category: "netherite" },
-    { id: "netherite-helmet", name: "Netherite Helmet", price: 3.50, image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/netherite_helmet.png", category: "netherite" },
-    { id: "netherite-chestplate", name: "Netherite Chestplate", price: 4.50, image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/netherite_chestplate.png", category: "netherite" },
-    { id: "netherite-leggings", name: "Netherite Leggings", price: 4.00, image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/netherite_leggings.png", category: "netherite" },
-    { id: "netherite-boots", name: "Netherite Boots", price: 3.00, image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/netherite_boots.png", category: "netherite" },
+    { id: "netherite-sword", name: "Netherite Sword", price: 2.50, image: "🗡️", category: "netherite" },
+    { id: "netherite-pickaxe", name: "Netherite Pickaxe", price: 3.00, image: "⛏️", category: "netherite" },
+    { id: "netherite-helmet", name: "Netherite Helmet", price: 3.50, image: "🪖", category: "netherite" },
+    { id: "netherite-chestplate", name: "Netherite Chestplate", price: 4.50, image: "🛡️", category: "netherite" },
+    { id: "netherite-leggings", name: "Netherite Leggings", price: 4.00, image: "👖", category: "netherite" },
+    { id: "netherite-boots", name: "Netherite Boots", price: 3.00, image: "🥾", category: "netherite" },
     
-    { id: "elytra", name: "Elytra", price: 35.00, image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/elytra.png", category: "special" },
-    { id: "dragon-head", name: "Dragon Head", price: 30.00, image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/dragon_head.png", category: "special" }
+    { id: "elytra", name: "Elytra", price: 35.00, image: "🪽", category: "special" },
+    { id: "dragon-head", name: "Dragon Head", price: 30.00, image: "🐉", category: "special" }
 ];
 
-let cart = JSON.parse(localStorage.getItem("donut_cart_v2")) || [];
+let cart = JSON.parse(localStorage.getItem("donut_cart_v3")) || [];
 let activeSpawner = catalog.find(p => p.category === "spawner");
 const moneyTable = { "1M": 0.02, "100M": 1.50, "500M": 7.50, "1B": 15.00, "2B": 23.00, "5B": 51.67, "10B": 100.00 };
 
@@ -378,7 +357,7 @@ function showView(name) {
 function renderProducts() {
     document.getElementById("spawnerProducts").innerHTML = catalog.filter(p => p.category === "spawner").map(p => `
         <div class="product-card" style="cursor:pointer;" onclick="selectSpawner('${p.id}')">
-            <div class="product-img-box"><span class="product-tag">SPAWNER</span><img class="product-img" src="${p.image}" alt=""></div>
+            <div class="product-img-box"><span class="product-tag">SPAWNER</span><div>${p.image}</div></div>
             <div class="product-content">
                 <div class="product-title">${p.name}</div>
                 <div class="product-desc">Auswählen & anpassen</div>
@@ -389,7 +368,7 @@ function renderProducts() {
 
     document.getElementById("netheriteProducts").innerHTML = catalog.filter(p => p.category === "netherite").map(p => `
         <div class="product-card">
-            <div class="product-img-box"><span class="product-tag">GEAR</span><img class="product-img" src="${p.image}" alt=""></div>
+            <div class="product-img-box"><span class="product-tag">GEAR</span><div>${p.image}</div></div>
             <div class="product-content">
                 <div class="product-title">${p.name}</div>
                 <div class="product-desc">Verzauberte Netherite Ausrüstung</div>
@@ -400,7 +379,7 @@ function renderProducts() {
 
     document.getElementById("specialProducts").innerHTML = catalog.filter(p => p.category === "special").map(p => `
         <div class="product-card">
-            <div class="product-img-box"><span class="product-tag">SPECIAL</span><img class="product-img" src="${p.image}" alt=""></div>
+            <div class="product-img-box"><span class="product-tag">SPECIAL</span><div>${p.image}</div></div>
             <div class="product-content">
                 <div class="product-title">${p.name}</div>
                 <div class="product-desc">Ultra seltenes Item</div>
@@ -482,7 +461,7 @@ function addMoneyToCart() {
     if(existing) {
         existing.quantity++;
     } else {
-        cart.push({ id: uniqueId, name: val + " Ingame Money", image: "https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/master/data/1.20.4/item/gold_ingot.png", price: price, quantity: 1 });
+        cart.push({ id: uniqueId, name: val + " Ingame Money", image: "💰", price: price, quantity: 1 });
     }
     saveAndRefresh();
     openCart();
@@ -490,7 +469,7 @@ function addMoneyToCart() {
 }
 
 function saveAndRefresh() {
-    localStorage.setItem("donut_cart_v2", JSON.stringify(cart));
+    localStorage.setItem("donut_cart_v3", JSON.stringify(cart));
     renderCart();
 }
 
@@ -507,7 +486,7 @@ function renderCart() {
 
     container.innerHTML = cart.map((item, idx) => `
         <div class="cart-item-row">
-            <img class="cart-item-img" src="${item.image}" alt="">
+            <div class="cart-item-img">${item.image}</div>
             <div>
                 <div class="cart-item-title">${item.name}</div>
                 <div class="cart-item-price">${(item.price * item.quantity).toFixed(2)} CHF</div>
@@ -564,7 +543,6 @@ function checkout() {
     showToast("Bestellung vorbereitet für: " + username);
 }
 
-// Initialisierung beim Start
 renderProducts();
 renderCart();
 updateMoneyPreview();
