@@ -3,32 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DONUT SMP // NEXUS TRADING HUB</title>
+<title>DONUT SMP // ULTIMATE NEXUS HUB v5</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root {
-    --bg: #020804;
-    --card-bg: rgba(10, 25, 15, 0.65);
-    --border: rgba(0, 255, 100, 0.18);
+    --bg: #010603;
+    --card-bg: rgba(6, 20, 11, 0.7);
+    --border: rgba(0, 255, 102, 0.2);
     --primary: #00ff66;
-    --secondary: #00bfff;
-    --text: #f0fdf4;
-    --muted: #86efac;
-    --glow: rgba(0, 255, 100, 0.25);
+    --secondary: #00e1ff;
+    --accent: #10b981;
+    --text: #ecfdf5;
+    --muted: #6ee7b7;
+    --glow: rgba(0, 255, 102, 0.3);
 }
 
 [data-theme="light"] {
     --bg: #f0fdf4;
-    --card-bg: rgba(255, 255, 255, 0.85);
-    --border: rgba(0, 150, 60, 0.2);
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --border: rgba(16, 185, 129, 0.25);
     --primary: #059669;
-    --secondary: #2563eb;
+    --secondary: #0284c7;
+    --accent: #047857;
     --text: #064e3b;
     --muted: #4b5563;
-    --glow: rgba(5, 150, 105, 0.15);
+    --glow: rgba(5, 150, 105, 0.2);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; transition: 0.2s ease; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; transition: background 0.25s, color 0.25s, border-color 0.25s; }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
 
@@ -37,18 +39,18 @@ body::before {
     position: fixed;
     inset: 0;
     background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 45px 45px;
+    background-size: 50px 50px;
     z-index: -3;
-    opacity: 0.3;
+    opacity: 0.35;
 }
 
 body::after {
     content: "";
     position: fixed;
-    top: -20%;
-    left: -10%;
-    width: 60vw;
-    height: 60vw;
+    top: -15%;
+    right: -10%;
+    width: 65vw;
+    height: 65vw;
     background: radial-gradient(circle, var(--glow), transparent 70%);
     z-index: -2;
     pointer-events: none;
@@ -68,7 +70,7 @@ header {
 
 .header-inner {
     width: 92%;
-    max-width: 1400px;
+    max-width: 1450px;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -83,7 +85,8 @@ header {
     color: var(--text);
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
-    font-size: 22px;
+    font-size: 20px;
+    letter-spacing: 0.5px;
 }
 
 .logo-box {
@@ -109,7 +112,7 @@ nav {
     background: transparent;
     border: 0;
     color: var(--muted);
-    padding: 8px 14px;
+    padding: 8px 12px;
     border-radius: 10px;
     font-size: 11px;
     font-weight: 700;
@@ -125,12 +128,12 @@ nav {
     border: 1px solid var(--primary);
 }
 
-.actions { display: flex; gap: 10px; }
+.actions { display: flex; gap: 10px; align-items: center; }
 .icon-btn {
-    width: 48px; height: 48px;
+    width: 46px; height: 46px;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: 12px;
     color: var(--text);
     font-size: 18px;
     cursor: pointer;
@@ -143,14 +146,14 @@ nav {
     position: absolute;
     top: -5px; right: -5px;
     background: var(--primary);
-    color: #000;
+    color: #010603;
     font-size: 10px;
     font-weight: 900;
     padding: 3px 7px;
     border-radius: 20px;
 }
 
-main { width: 92%; max-width: 1400px; margin: auto; padding-top: 140px; padding-bottom: 100px; }
+main { width: 92%; max-width: 1450px; margin: auto; padding-top: 140px; padding-bottom: 100px; }
 .view { display: none; }
 .view.active { display: block; animation: cyberFade 0.35s ease; }
 
@@ -170,7 +173,7 @@ main { width: 92%; max-width: 1400px; margin: auto; padding-top: 140px; padding-
 .hero-tag {
     display: inline-block;
     padding: 6px 14px;
-    background: rgba(0, 255, 100, 0.1);
+    background: rgba(0, 255, 102, 0.1);
     border: 1px solid var(--primary);
     color: var(--primary);
     font-family: 'Orbitron', sans-serif;
@@ -183,7 +186,7 @@ main { width: 92%; max-width: 1400px; margin: auto; padding-top: 140px; padding-
 
 h1 {
     font-family: 'Orbitron', sans-serif;
-    font-size: clamp(36px, 4.5vw, 60px);
+    font-size: clamp(34px, 4.5vw, 58px);
     font-weight: 900;
     line-height: 1.1;
 }
@@ -204,7 +207,7 @@ h1 {
 
 .hero-btns { display: flex; gap: 15px; margin-top: 30px; }
 .btn {
-    padding: 16px 28px;
+    padding: 15px 28px;
     border-radius: 12px;
     font-family: 'Orbitron', sans-serif;
     font-weight: 700;
@@ -216,7 +219,7 @@ h1 {
 
 .btn-cyber {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: #000;
+    color: #010603;
     box-shadow: 0 0 20px var(--glow);
 }
 .btn-cyber:hover { filter: brightness(1.15); transform: translateY(-2px); }
@@ -238,15 +241,17 @@ h1 {
     position: relative;
     overflow: hidden;
     font-size: 90px;
+    box-shadow: inset 0 0 30px rgba(0,255,102,0.05);
 }
 
+.section-header { margin-bottom: 30px; }
 .section-title {
     font-family: 'Orbitron', sans-serif;
     font-size: 28px;
     font-weight: 900;
     margin-bottom: 6px;
 }
-.section-desc { color: var(--muted); font-size: 14px; margin-bottom: 30px; }
+.section-desc { color: var(--muted); font-size: 14px; }
 
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
 .cyber-card {
@@ -301,7 +306,7 @@ h1 {
 .buy-btn {
     width: 36px; height: 36px;
     background: var(--primary);
-    color: #000;
+    color: #010603;
     border: 0;
     border-radius: 10px;
     font-weight: 900;
@@ -343,11 +348,28 @@ h1 {
 }
 
 /* FAQ Accordion */
-.faq-box { display: flex; flex-direction: column; gap: 12px; max-width: 900px; }
-.faq-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-.faq-question { width: 100%; padding: 18px 22px; background: transparent; border: 0; color: var(--text); font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 700; text-align: left; cursor: pointer; display: flex; justify-content: space-between; }
-.faq-answer { max-height: 0; overflow: hidden; padding: 0 22px; color: var(--muted); font-size: 13px; line-height: 1.6; }
-.faq-item.open .faq-answer { max-height: 150px; padding-bottom: 18px; }
+.faq-container { display: flex; flex-direction: column; gap: 12px; max-width: 950px; }
+.faq-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.faq-question { width: 100%; padding: 18px 22px; background: transparent; border: 0; color: var(--text); font-family: 'Orbitron', sans-serif; font-size: 13px; font-weight: 700; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-answer { max-height: 0; overflow: hidden; padding: 0 22px; color: var(--muted); font-size: 13px; line-height: 1.6; transition: max-height 0.3s ease, padding 0.3s ease; }
+.faq-card.open .faq-answer { max-height: 200px; padding-bottom: 18px; }
+
+/* Live Ticker Feed */
+.ticker-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 40px;
+}
+.ticker-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
 /* Sidebar */
 .overlay {
@@ -391,6 +413,7 @@ h1 {
     .grid-4 { grid-template-columns: repeat(2, 1fr); }
     .hero { grid-template-columns: 1fr; }
     .shop-layout { grid-template-columns: 1fr; }
+    .ticker-box { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -399,20 +422,20 @@ h1 {
 <header>
 <div class="header-inner">
 <a href="#" class="logo" onclick="switchView('home')">
-<div class="logo-box">🛡️</div>
-DONUT<span>MARKET</span>
+<div class="logo-box">⚡</div>
+DONUT<span>NEXUS</span>
 </a>
 <nav>
 <button class="nav-btn active" onclick="switchView('home')">Home</button>
 <button class="nav-btn" onclick="switchView('spawner')">Spawner</button>
-<button class="nav-btn" onclick="switchView('bases')">Basen</button>
+<button class="nav-btn" onclick="switchView('bases')">Basen & Farmen</button>
 <button class="nav-btn" onclick="switchView('netherite')">Gear</button>
 <button class="nav-btn" onclick="switchView('money')">Money</button>
 <button class="nav-btn" onclick="switchView('faq')">FAQ</button>
 </nav>
 <div class="actions">
-<button class="icon-btn" onclick="toggleTheme()">🌓</button>
-<button class="icon-btn" onclick="openCart()">🛒<span class="badge-count" id="cartBadge">0</span></button>
+<button class="icon-btn" onclick="toggleTheme()" title="Design wechseln">🌓</button>
+<button class="icon-btn" onclick="openCart()" title="Warenkorb">🛒<span class="badge-count" id="cartBadge">0</span></button>
 </div>
 </div>
 </header>
@@ -421,21 +444,29 @@ DONUT<span>MARKET</span>
 <section class="view active" id="view-home">
 <div class="hero">
 <div>
-<div class="hero-tag">// DER SICHERE SPIELER-MARKTPLATZ</div>
-<h1>SECURE <span class="highlight">TRADING HUB.</span></h1>
-<p>Kaufe und verkaufe Spawner, High-End Basen, Netherite-Rüstungen und Ingame-Währung vollautomatisch und blitzschnell.</p>
+<div class="hero-tag">// ULTIMATE DONUT SMP TRADING HUB</div>
+<h1>SECURE <span class="highlight">MARKETPLACE.</span></h1>
+<p>Kaufe Spawner, vollautomatische Farmen (wie Kelp- und Eisenfarmen), gesicherte Claim-Basen und Ingame-Währung vollautomatisiert.</p>
 <div class="hero-btns">
-<button class="btn btn-cyber" onclick="switchView('spawner')">Spawner durchstöbern</button>
-<button class="btn btn-outline" onclick="switchView('bases')">Basen entdecken</button>
+<button class="btn btn-cyber" onclick="switchView('spawner')">Spawner ansehen</button>
+<button class="btn btn-outline" onclick="switchView('bases')">Basen & Farmen</button>
 </div>
 </div>
-<div class="hero-visual">💎</div>
+<div class="hero-visual">🛡️</div>
+</div>
+
+<div class="ticker-box">
+<div class="ticker-item"><span style="font-size:24px;">🟢</span><div><div style="font-size:12px;font-weight:700;font-family:'Orbitron';">Server Status</div><div style="font-size:11px;color:var(--muted);">Online · 482 Spieler</div></div></div>
+<div class="ticker-item"><span style="font-size:24px;">⚡</span><div><div style="font-size:12px;font-weight:700;font-family:'Orbitron';">Automatischer Bot</div><div style="font-size:11px;color:var(--muted);">Lieferzeit &lt; 2 Minuten</div></div></div>
+<div class="ticker-item"><span style="font-size:24px;">🔒</span><div><div style="font-size:12px;font-weight:700;font-family:'Orbitron';">Treuhand Schutz</div><div style="font-size:11px;color:var(--muted);">100% Sicherer Handel</div></div></div>
 </div>
 </section>
 
 <section class="view" id="view-spawner">
+<div class="section-header">
 <div class="section-title">Spawner Matrix</div>
-<div class="section-desc">Konfiguriere deine gewünschte Menge mit automatischem Mengenrabatt.</div>
+<div class="section-desc">Wähle deinen Wunsch-Spawner und skaliere die Anzahl beliebig hoch mit Mengenrabatt.</div>
+</div>
 <div class="shop-layout">
 <div class="panel">
 <div class="grid-4" id="spawnerGrid" style="grid-template-columns:repeat(2,1fr);"></div>
@@ -454,20 +485,26 @@ DONUT<span>MARKET</span>
 </section>
 
 <section class="view" id="view-bases">
-<div class="section-title">Basen & Grundstücke</div>
-<div class="section-desc">Voll ausgestattete Claims, automatische Farmen und unterirdische Bunker.</div>
+<div class="section-header">
+<div class="section-title">Basen, Claims & Automatik-Farmen</div>
+<div class="section-desc">Fertig gebaute automatische Farmen und unterirdische Bunker direkt beanspruchen.</div>
+</div>
 <div class="grid-4" id="basesGrid"></div>
 </section>
 
 <section class="view" id="view-netherite">
-<div class="section-title">Netherite Gear</div>
-<div class="section-desc">Vollverzauberte High-End Rüstungen und Werkzeuge für maximale PvP-Power.</div>
+<div class="section-header">
+<div class="section-title">Netherite Gear & PvP Ausrüstung</div>
+<div class="section-desc">Vollverzauberte Werkzeuge und Rüstungsteile für maximale PvP-Power.</div>
+</div>
 <div class="grid-4" id="gearGrid"></div>
 </section>
 
 <section class="view" id="view-money">
-<div class="section-title">Matrix Credits (Money)</div>
-<div class="section-desc">Ingame Guthaben für deinen ultimativen Kontostand.</div>
+<div class="section-header">
+<div class="section-title">Matrix Credits (Ingame Geld)</div>
+<div class="section-desc">Wähle blitzschnell dein gewünschtes Money-Paket für den Server.</div>
+</div>
 <div class="shop-layout">
 <div class="panel">
 <input class="cyber-input" id="moneyInput" value="1B" style="margin-bottom:12px;">
@@ -483,30 +520,37 @@ DONUT<span>MARKET</span>
 <div style="font-family:'Orbitron'; font-weight:700; margin-bottom:14px;">Wechselkurs-Übersicht</div>
 <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>100M Money</span><strong>1.50 CHF</strong></div>
 <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>1B Money</span><strong>15.00 CHF</strong></div>
+<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>5B Money</span><strong>51.67 CHF</strong></div>
 <div style="display:flex; justify-content:space-between; padding:8px 0; font-size:13px;"><span>10B Money</span><strong>100.00 CHF</strong></div>
 </div>
 </div>
 </section>
 
 <section class="view" id="view-faq">
-<div class="section-title">System FAQ & Support</div>
-<div class="section-desc">Erweiterte Antworten zu allen Sicherheits- und Lieferprozessen.</div>
-<div class="faq-box">
-<div class="faq-item open">
-<button class="faq-question" onclick="toggleFaq(this)">Wie erfolgt die Übergabe der gekauften Items? <span>+</span></button>
-<div class="faq-answer">Die Auslieferung geschieht vollautomatisiert über unseren Bot direkt auf dem Donut SMP Server nach erfolgreicher Zahlungsbestätigung.</div>
+<div class="section-header">
+<div class="section-title">Erweiterte FAQ & Support</div>
+<div class="section-desc">Ausführliche Antworten zu Lieferung, Claims, Farmen und Schutz.</div>
 </div>
-<div class="faq-item">
-<button class="faq-question" onclick="toggleFaq(this)">Kann ich auch ganze Basen und Claims kaufen? <span>+</span></button>
-<div class="faq-answer">Ja! Nach dem Kauf erhältst du alle Koordinaten sowie die Owner-Rechte für die entsprechende Basis direkt übermittelt.</div>
+<div class="faq-container">
+<div class="faq-card open">
+<button class="faq-question" onclick="toggleFaq(this)">Wie werden automatische Farmen (z.B. Kelp-Farmen) übergeben? <span>+</span></button>
+<div class="faq-answer">Nach dem Kauf erhältst du alle exakten Koordinaten, die Truheninhalte sowie die vollständigen Claim- und Treuhandrechte für die jeweilige Farm direkt übertragen.</div>
 </div>
-<div class="faq-item">
-<button class="faq-question" onclick="toggleFaq(this)">Ist der Handel über diesen Store sicher? <span>+</span></button>
-<div class="faq-answer">Absolut. Ähnlich wie bei großen Treuhändern sind alle Transaktionen geschützt und garantieren eine schnelle Lieferung ohne Risiko.</div>
+<div class="faq-card">
+<button class="faq-question" onclick="toggleFaq(this)">Wie schnell ist die Lieferung im Spiel? <span>+</span></button>
+<div class="faq-answer">Unser System arbeitet vollautomatisiert. Nach erfolgreicher Zahlung übergibt der Bot die Items oder Rechte in der Regel innerhalb von 1 bis 3 Minuten ingame.</div>
 </div>
-<div class="faq-item">
-<button class="faq-question" onclick="toggleFaq(this)">Was passiert bei Problemen mit der Lieferung? <span>+</span></button>
-<div class="faq-answer">Unser Support-Team steht dir rund um die Uhr zur Verfügung, um fehlende Items innerhalb von wenigen Minuten manuell nachzuliefern.</div>
+<div class="faq-card">
+<button class="faq-question" onclick="toggleFaq(this)">Sind meine Transaktionen und der Account sicher? <span>+</span></button>
+<div class="faq-answer">Ja, absolut. Der gesamte Handel läuft über verschlüsselte Protokolle und bewährte Treuhand-Mechanismen ab, die einen sicheren Ablauf garantieren.</div>
+</div>
+<div class="faq-card">
+<button class="faq-question" onclick="toggleFaq(this)">Was passiert bei Problemen mit der Übergabe? <span>+</span></button>
+<div class="faq-answer">Sollte der Bot einmal verzögert sein, ist unser Support per Ticket rund um die Uhr erreichbar und liefert Gegenstände manuell nach.</div>
+</div>
+<div class="faq-card">
+<button class="faq-question" onclick="toggleFaq(this)">Gibt es Rabatte für Großbestellungen bei Spawnern? <span>+</span></button>
+<div class="faq-answer">Ja! Ab einer Bestellmenge von 101 Stück sinkt der automatische Stückpreis für jeden Spawner von 0.50 CHF auf 0.48 CHF.</div>
 </div>
 </div>
 </section>
@@ -534,8 +578,9 @@ DONUT<span>MARKET</span>
 const items = [
     { id: 'skel', name: 'Skeleton Spawner', cat: 'spawner', icon: '💀' },
     { id: 'golem', name: 'Iron Golem Spawner', cat: 'spawner', icon: '🤖' },
-    { id: 'base1', name: 'Auto-Farm Bunker', cat: 'bases', icon: '🏰', price: 12.50, desc: 'Vollautomatische Eisen- & Karottenfarm' },
-    { id: 'base2', name: 'High-End Claim Base', cat: 'bases', icon: '🏯', price: 24.99, desc: 'Gesicherter Bunker mit seltenen Kisten' },
+    { id: 'kelp', name: 'Auto-Kelp Farm Komplex', cat: 'bases', icon: '🌿', price: 9.99, desc: 'High-Speed Kelp-XP Farm mit Schmelzofen' },
+    { id: 'iron', name: 'Eisen-Farm Anlage', cat: 'bases', icon: '⚙️', price: 14.50, desc: 'Maximale Golem-Spawnrate mit Lagersystem' },
+    { id: 'base2', name: 'High-End Claim Bunker', cat: 'bases', icon: '🏰', price: 24.99, desc: 'Gesicherter Untergrund-Bunker mit Rüstkammer' },
     { id: 'sword', name: 'Netherite Sword', cat: 'gear', icon: '🗡️', price: 2.5 },
     { id: 'pick', name: 'Netherite Pickaxe', cat: 'gear', icon: '⛏️', price: 3.0 },
     { id: 'helm', name: 'Netherite Helmet', cat: 'gear', icon: '🪖', price: 3.5 },
@@ -543,7 +588,7 @@ const items = [
     { id: 'elytra', name: 'Elytra Pro', cat: 'gear', icon: '🪽', price: 35.0 },
 ];
 
-let cart = JSON.parse(localStorage.getItem('nexus_hub_cart')) || [];
+let cart = JSON.parse(localStorage.getItem('nexus_hub_v5')) || [];
 let activeSpawner = items[0];
 
 function switchView(id) {
@@ -621,7 +666,7 @@ function addMoneyCart() {
 }
 
 function saveCart() {
-    localStorage.setItem('nexus_hub_cart', JSON.stringify(cart));
+    localStorage.setItem('nexus_hub_v5', JSON.stringify(cart));
     renderCart();
 }
 
