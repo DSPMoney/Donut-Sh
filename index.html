@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>DonutShop — Minecraft Community Store</title>
 
 <meta name="description"
-content="DonutShop – Minecraft Spawner, Netherite, Elytra und seltene Items.">
+content="DonutShop – Minecraft Spawner, Elytra und seltene Items.">
 
 <style>
 
@@ -46,7 +47,12 @@ html {
 body {
     min-height:100vh;
     color:var(--text);
-    font-family:Inter,Arial,Helvetica,sans-serif;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
 
     background:
         radial-gradient(
@@ -87,9 +93,7 @@ button {
     border-radius:20px;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
+/* BACKGROUND */
 
 .grid-bg {
     position:fixed;
@@ -113,12 +117,18 @@ button {
 
 .glow {
     position:fixed;
+
     width:450px;
     height:450px;
+
     border-radius:50%;
+
     filter:blur(120px);
+
     opacity:.09;
+
     pointer-events:none;
+
     z-index:-4;
 }
 
@@ -134,43 +144,55 @@ button {
     top:50%;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 header {
     position:fixed;
+
     top:0;
     left:0;
     right:0;
 
-    min-height:76px;
+    height:76px;
+
     z-index:1000;
 
-    background:rgba(5,3,10,.78);
+    background:
+        rgba(5,3,10,.78);
+
     backdrop-filter:blur(20px);
 
-    border-bottom:1px solid var(--border);
+    border-bottom:
+        1px solid var(--border);
 }
 
 .header-inner {
     width:min(1450px,94%);
-    min-height:76px;
+
+    height:100%;
+
     margin:auto;
 
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
+
     gap:20px;
 }
 
 .logo {
     display:flex;
+
     align-items:center;
+
     gap:10px;
 
     text-decoration:none;
+
     color:white;
+
     font-weight:1000;
 }
 
@@ -179,6 +201,7 @@ header {
     height:44px;
 
     display:grid;
+
     place-items:center;
 
     border-radius:13px;
@@ -197,8 +220,7 @@ header {
     font-size:24px;
 }
 
-.logo span,
-footer span {
+.logo span {
     color:var(--purple2);
 }
 
@@ -211,12 +233,15 @@ nav {
     padding:10px 13px;
 
     border:0;
+
     border-radius:10px;
 
     background:transparent;
+
     color:var(--muted);
 
     font-size:12px;
+
     font-weight:900;
 
     transition:.2s;
@@ -225,7 +250,9 @@ nav {
 .nav-btn:hover,
 .nav-btn.active {
     color:white;
-    background:rgba(139,61,255,.13);
+
+    background:
+        rgba(139,61,255,.13);
 }
 
 .cart-button {
@@ -234,10 +261,14 @@ nav {
     width:44px;
     height:44px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:12px;
 
-    background:rgba(255,255,255,.04);
+    background:
+        rgba(255,255,255,.04);
+
     color:white;
 
     font-size:18px;
@@ -253,6 +284,7 @@ nav {
     height:20px;
 
     display:grid;
+
     place-items:center;
 
     border-radius:50px;
@@ -260,24 +292,27 @@ nav {
     background:var(--purple);
 
     font-size:9px;
+
     font-weight:1000;
 }
 
-/* =========================
-   MAIN
-========================= */
+/* MAIN */
 
 main {
     width:min(1450px,94%);
+
     margin:auto;
 
     padding-top:115px;
+
     padding-bottom:80px;
 }
 
 .view {
     display:none;
-    animation:fadeIn .35s ease;
+
+    animation:
+        fadeIn .35s ease;
 }
 
 .view.active {
@@ -285,6 +320,7 @@ main {
 }
 
 @keyframes fadeIn {
+
     from {
         opacity:0;
         transform:translateY(12px);
@@ -294,25 +330,30 @@ main {
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
     min-height:670px;
 
     display:grid;
-    grid-template-columns:1.05fr .95fr;
+
+    grid-template-columns:
+        1.05fr
+        .95fr;
 
     align-items:center;
+
     gap:70px;
 }
 
 .badge {
     display:inline-flex;
+
     align-items:center;
+
     gap:7px;
 
     padding:8px 13px;
@@ -321,23 +362,30 @@ main {
 
     color:#d5b9ff;
 
-    background:rgba(139,61,255,.10);
+    background:
+        rgba(139,61,255,.10);
 
-    border:1px solid
+    border:
+        1px solid
         rgba(139,61,255,.25);
 
     font-size:10px;
+
     font-weight:1000;
+
     letter-spacing:1px;
 }
 
 .hero h1 {
     margin-top:22px;
 
-    font-size:clamp(55px,7vw,100px);
+    font-size:
+        clamp(55px,7vw,100px);
 
     line-height:.9;
+
     letter-spacing:-7px;
+
     font-weight:1000;
 }
 
@@ -351,6 +399,7 @@ main {
         );
 
     -webkit-background-clip:text;
+
     background-clip:text;
 
     color:transparent;
@@ -358,19 +407,23 @@ main {
 
 .hero p {
     max-width:680px;
+
     margin-top:28px;
 
     color:#bcb1c5;
 
     line-height:1.8;
+
     font-size:16px;
 }
 
 .hero-buttons {
     display:flex;
+
     flex-wrap:wrap;
 
     gap:10px;
+
     margin-top:30px;
 }
 
@@ -378,9 +431,11 @@ main {
     padding:14px 20px;
 
     border-radius:12px;
+
     border:0;
 
     color:white;
+
     font-weight:1000;
 
     transition:.2s;
@@ -404,32 +459,36 @@ main {
 }
 
 .secondary {
-    background:rgba(255,255,255,.045);
+    background:
+        rgba(255,255,255,.045);
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
 }
 
 .hero-stats {
     display:flex;
+
     flex-wrap:wrap;
 
     gap:35px;
+
     margin-top:45px;
 }
 
 .stat strong {
     display:block;
+
     font-size:23px;
 }
 
 .stat span {
     color:var(--muted);
+
     font-size:11px;
 }
 
-/* =========================
-   HERO CARD
-========================= */
+/* HERO CARD */
 
 .hero-card {
     min-height:500px;
@@ -437,13 +496,15 @@ main {
     position:relative;
 
     display:grid;
+
     place-items:center;
 
     overflow:hidden;
 
     border-radius:32px;
 
-    border:1px solid
+    border:
+        1px solid
         rgba(183,108,255,.2);
 
     background:
@@ -473,10 +534,12 @@ main {
 
     border-radius:50%;
 
-    border:1px solid
+    border:
+        1px solid
         rgba(255,255,255,.10);
 
-    animation:rotate 18s linear infinite;
+    animation:
+        rotate 18s linear infinite;
 }
 
 .hero-card::after {
@@ -489,26 +552,32 @@ main {
 
     border-radius:50%;
 
-    border:1px dashed
+    border:
+        1px dashed
         rgba(183,108,255,.35);
 
-    animation:rotate 11s linear infinite reverse;
+    animation:
+        rotate 11s linear infinite reverse;
 }
 
 @keyframes rotate {
+
     to {
         transform:rotate(360deg);
     }
+
 }
 
 .hero-item {
     position:relative;
+
     z-index:5;
 
     width:210px;
     height:210px;
 
     display:grid;
+
     place-items:center;
 
     border-radius:50%;
@@ -527,22 +596,27 @@ main {
         0 0 100px
         rgba(139,61,255,.4);
 
-    animation:floating 4s ease-in-out infinite;
+    animation:
+        floating 4s ease-in-out infinite;
 }
 
 @keyframes floating {
+
     0%,100% {
-        transform:translateY(0) rotate(-2deg);
+        transform:
+            translateY(0)
+            rotate(-2deg);
     }
 
     50% {
-        transform:translateY(-18px) rotate(2deg);
+        transform:
+            translateY(-18px)
+            rotate(2deg);
     }
+
 }
 
-/* =========================
-   SECTIONS
-========================= */
+/* SECTIONS */
 
 .section {
     padding:80px 0;
@@ -556,14 +630,18 @@ main {
     color:var(--purple2);
 
     font-size:10px;
+
     font-weight:1000;
+
     letter-spacing:2px;
 }
 
 .heading h2 {
     margin-top:10px;
 
-    font-size:clamp(35px,5vw,58px);
+    font-size:
+        clamp(35px,5vw,58px);
+
     letter-spacing:-3px;
 }
 
@@ -573,23 +651,27 @@ main {
     max-width:700px;
 
     color:var(--muted);
+
     line-height:1.7;
 }
 
-/* =========================
-   FEATURES
-========================= */
+/* FEATURES */
 
 .feature-grid {
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
     gap:15px;
 }
 
 .feature {
     padding:25px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:var(--radius);
 
     background:var(--panel);
@@ -608,6 +690,7 @@ main {
 
 .feature-icon {
     font-size:28px;
+
     margin-bottom:18px;
 }
 
@@ -621,77 +704,56 @@ main {
     color:var(--muted);
 
     font-size:12px;
+
     line-height:1.7;
 }
 
-/* =========================
-   DEAL
-========================= */
-
-.deal {
-    margin:30px 0;
-
-    padding:22px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    gap:20px;
-
-    border-radius:18px;
-
-    border:1px solid
-        rgba(255,200,87,.18);
-
-    background:
-        linear-gradient(
-            100deg,
-            rgba(255,200,87,.10),
-            rgba(139,61,255,.08)
-        );
-}
-
-.deal strong {
-    color:var(--gold);
-}
-
-/* =========================
-   TOOLBAR
-========================= */
+/* TOOLBAR */
 
 .toolbar {
     display:flex;
+
     flex-wrap:wrap;
 
     gap:10px;
 
     padding:13px;
+
     margin-bottom:22px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:17px;
 
-    background:rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 }
 
 .search {
     flex:1;
+
     min-width:230px;
+
     position:relative;
 }
 
 .search input {
     width:100%;
 
-    padding:14px 15px 14px 42px;
+    padding:
+        14px 15px 14px 42px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:11px;
 
     outline:none;
 
-    background:rgba(0,0,0,.25);
+    background:
+        rgba(0,0,0,.25);
+
     color:white;
 }
 
@@ -699,15 +761,18 @@ main {
     position:absolute;
 
     left:15px;
+
     top:50%;
 
-    transform:translateY(-50%);
+    transform:
+        translateY(-50%);
 
     color:var(--muted);
 }
 
 .categories {
     display:flex;
+
     gap:6px;
 
     overflow-x:auto;
@@ -718,13 +783,18 @@ main {
 
     padding:12px 14px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:10px;
 
-    background:rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
+
     color:var(--muted);
 
     font-size:11px;
+
     font-weight:900;
 }
 
@@ -732,7 +802,8 @@ main {
 .category.active {
     color:white;
 
-    background:rgba(139,61,255,.13);
+    background:
+        rgba(139,61,255,.13);
 
     border-color:
         rgba(139,61,255,.35);
@@ -741,18 +812,19 @@ main {
 .sort {
     padding:12px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:10px;
 
     background:#100817;
+
     color:white;
 
     outline:none;
 }
 
-/* =========================
-   PRODUCTS
-========================= */
+/* PRODUCTS */
 
 .product-grid {
     display:grid;
@@ -765,9 +837,12 @@ main {
 
 .product {
     position:relative;
+
     overflow:hidden;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:var(--radius);
 
     background:var(--panel);
@@ -792,6 +867,7 @@ main {
     position:relative;
 
     display:grid;
+
     place-items:center;
 
     background:
@@ -831,10 +907,13 @@ main {
 
     border-radius:7px;
 
-    background:rgba(0,0,0,.45);
+    background:
+        rgba(0,0,0,.45);
+
     color:#cfc3d6;
 
     font-size:8px;
+
     font-weight:1000;
 }
 
@@ -847,12 +926,13 @@ main {
     width:34px;
     height:34px;
 
-    border:1px solid
-        rgba(255,255,255,.08);
+    border:
+        1px solid rgba(255,255,255,.08);
 
     border-radius:9px;
 
-    background:rgba(0,0,0,.35);
+    background:
+        rgba(0,0,0,.35);
 
     color:#8d8094;
 
@@ -874,27 +954,36 @@ main {
     border-radius:7px;
 
     font-size:8px;
+
     font-weight:1000;
 }
 
 .common {
     color:#ccc;
-    background:rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.08);
 }
 
 .rare {
     color:#68aaff;
-    background:rgba(80,140,255,.13);
+
+    background:
+        rgba(80,140,255,.13);
 }
 
 .epic {
     color:#c76cff;
-    background:rgba(180,70,255,.13);
+
+    background:
+        rgba(180,70,255,.13);
 }
 
 .legendary {
     color:var(--gold);
-    background:rgba(255,200,87,.13);
+
+    background:
+        rgba(255,200,87,.13);
 }
 
 .product-body {
@@ -903,6 +992,7 @@ main {
 
 .product-name {
     font-weight:1000;
+
     font-size:15px;
 }
 
@@ -914,12 +1004,15 @@ main {
     color:var(--muted);
 
     font-size:11px;
+
     line-height:1.6;
 }
 
 .product-bottom {
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     margin-top:16px;
@@ -929,13 +1022,8 @@ main {
     color:var(--purple2);
 
     font-size:18px;
-    font-weight:1000;
-}
 
-.price-small {
-    color:#888;
-    font-size:9px;
-    margin-top:3px;
+    font-weight:1000;
 }
 
 .add {
@@ -943,6 +1031,7 @@ main {
     height:40px;
 
     border:0;
+
     border-radius:10px;
 
     color:white;
@@ -967,9 +1056,142 @@ main {
         rgba(139,61,255,.35);
 }
 
-/* =========================
-   MONEY
-========================= */
+/* SPAWNER QUANTITY */
+
+.quantity-box {
+    margin-top:12px;
+
+    padding:12px;
+
+    border:
+        1px solid
+        rgba(139,61,255,.18);
+
+    border-radius:12px;
+
+    background:
+        rgba(139,61,255,.05);
+}
+
+.quantity-label {
+    color:#aaa;
+
+    font-size:10px;
+
+    margin-bottom:7px;
+}
+
+.quantity-controls {
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+}
+
+.quantity-controls button {
+    width:32px;
+    height:32px;
+
+    border:0;
+
+    border-radius:8px;
+
+    background:
+        rgba(139,61,255,.18);
+
+    color:white;
+
+    font-weight:1000;
+}
+
+.quantity-controls input {
+    width:75px;
+
+    height:32px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:8px;
+
+    background:
+        rgba(0,0,0,.3);
+
+    color:white;
+
+    text-align:center;
+
+    outline:none;
+}
+
+.quantity-price {
+    margin-top:8px;
+
+    color:var(--purple2);
+
+    font-size:12px;
+
+    font-weight:1000;
+}
+
+.buy-spawner {
+    width:100%;
+
+    margin-top:9px;
+
+    padding:10px;
+
+    border:0;
+
+    border-radius:9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--pink)
+        );
+
+    color:white;
+
+    font-weight:1000;
+}
+
+/* DEAL */
+
+.deal {
+    margin:30px 0;
+
+    padding:22px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    border-radius:18px;
+
+    border:
+        1px solid
+        rgba(255,200,87,.18);
+
+    background:
+        linear-gradient(
+            100deg,
+            rgba(255,200,87,.10),
+            rgba(139,61,255,.08)
+        );
+}
+
+.deal strong {
+    color:var(--gold);
+}
+
+/* MONEY */
 
 .money-layout {
     display:grid;
@@ -983,7 +1205,9 @@ main {
 .panel {
     padding:28px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:var(--radius);
 
     background:var(--panel);
@@ -996,25 +1220,21 @@ main {
 
     padding:20px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:14px;
 
-    background:rgba(0,0,0,.25);
+    background:
+        rgba(0,0,0,.25);
 
     color:white;
 
     outline:none;
 
     font-size:25px;
+
     font-weight:1000;
-}
-
-.money-input:focus {
-    border-color:var(--purple);
-
-    box-shadow:
-        0 0 0 4px
-        rgba(139,61,255,.08);
 }
 
 .quick {
@@ -1031,10 +1251,14 @@ main {
 .quick button {
     padding:12px 5px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:9px;
 
-    background:rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
+
     color:#c8bdcf;
 
     font-weight:900;
@@ -1070,12 +1294,11 @@ main {
     color:var(--purple2);
 
     font-size:50px;
+
     font-weight:1000;
 }
 
-/* =========================
-   INFO
-========================= */
+/* INFO */
 
 .info-grid {
     display:grid;
@@ -1089,7 +1312,9 @@ main {
 .info-card {
     padding:25px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:var(--radius);
 
     background:var(--panel);
@@ -1099,7 +1324,9 @@ main {
     color:var(--purple2);
 
     font-size:10px;
+
     font-weight:1000;
+
     letter-spacing:2px;
 }
 
@@ -1113,19 +1340,19 @@ main {
     color:var(--muted);
 
     font-size:12px;
+
     line-height:1.7;
 }
 
-/* =========================
-   FAQ
-========================= */
+/* FAQ */
 
 .faq {
     max-width:900px;
 }
 
 .faq-item {
-    border-bottom:1px solid var(--border);
+    border-bottom:
+        1px solid var(--border);
 }
 
 .faq-question {
@@ -1134,11 +1361,13 @@ main {
     padding:22px 0;
 
     display:flex;
+
     justify-content:space-between;
 
     border:0;
 
     background:transparent;
+
     color:white;
 
     text-align:left;
@@ -1154,6 +1383,7 @@ main {
     color:var(--muted);
 
     font-size:13px;
+
     line-height:1.8;
 }
 
@@ -1161,17 +1391,18 @@ main {
     display:block;
 }
 
-/* =========================
-   CART
-========================= */
+/* CART */
 
 .overlay {
     position:fixed;
+
     inset:0;
 
-    background:rgba(0,0,0,.72);
+    background:
+        rgba(0,0,0,.72);
 
     opacity:0;
+
     pointer-events:none;
 
     z-index:2000;
@@ -1181,6 +1412,7 @@ main {
 
 .overlay.active {
     opacity:1;
+
     pointer-events:auto;
 }
 
@@ -1188,7 +1420,9 @@ main {
     position:fixed;
 
     right:0;
+
     top:0;
+
     bottom:0;
 
     width:min(500px,100%);
@@ -1201,24 +1435,30 @@ main {
 
     background:#09050e;
 
-    border-left:1px solid var(--border);
+    border-left:
+        1px solid var(--border);
 
-    transform:translateX(100%);
+    transform:
+        translateX(100%);
 
-    transition:transform .35s;
+    transition:
+        transform .35s;
 }
 
 .cart.active {
-    transform:translateX(0);
+    transform:
+        translateX(0);
 }
 
 .cart-header {
     display:flex;
+
     justify-content:space-between;
 
     padding-bottom:18px;
 
-    border-bottom:1px solid var(--border);
+    border-bottom:
+        1px solid var(--border);
 }
 
 .close {
@@ -1226,9 +1466,12 @@ main {
     height:40px;
 
     border:0;
+
     border-radius:10px;
 
-    background:rgba(255,255,255,.05);
+    background:
+        rgba(255,255,255,.05);
+
     color:white;
 }
 
@@ -1243,12 +1486,16 @@ main {
     align-items:center;
 
     padding:12px;
+
     margin-top:9px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:13px;
 
-    background:rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 }
 
 .cart-icon {
@@ -1256,17 +1503,20 @@ main {
     height:55px;
 
     display:grid;
+
     place-items:center;
 
     border-radius:12px;
 
-    background:rgba(139,61,255,.1);
+    background:
+        rgba(139,61,255,.1);
 
     font-size:26px;
 }
 
 .cart-name {
     font-size:12px;
+
     font-weight:900;
 }
 
@@ -1278,19 +1528,13 @@ main {
     font-size:11px;
 }
 
-.cart-details {
-    margin-top:3px;
-
-    color:#777;
-
-    font-size:9px;
-}
-
 .qty {
     display:flex;
+
     align-items:center;
 
     gap:6px;
+
     margin-top:7px;
 }
 
@@ -1299,9 +1543,11 @@ main {
     height:24px;
 
     border:0;
+
     border-radius:6px;
 
-    background:rgba(139,61,255,.15);
+    background:
+        rgba(139,61,255,.15);
 
     color:white;
 }
@@ -1310,6 +1556,7 @@ main {
     border:0;
 
     background:transparent;
+
     color:var(--red);
 }
 
@@ -1318,14 +1565,17 @@ main {
 
     padding-top:20px;
 
-    border-top:1px solid var(--border);
+    border-top:
+        1px solid var(--border);
 }
 
 .total {
     display:flex;
+
     justify-content:space-between;
 
     font-size:23px;
+
     font-weight:1000;
 }
 
@@ -1340,10 +1590,13 @@ main {
 
     padding:14px;
 
-    border:1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius:11px;
 
-    background:rgba(255,255,255,.035);
+    background:
+        rgba(255,255,255,.035);
 
     color:white;
 
@@ -1358,6 +1611,7 @@ main {
     padding:15px;
 
     border:0;
+
     border-radius:12px;
 
     background:
@@ -1372,298 +1626,59 @@ main {
     font-weight:1000;
 }
 
-/* =========================
-   SPAWNER MODAL
-========================= */
-
-.modal-overlay {
-    position:fixed;
-    inset:0;
-
-    z-index:3000;
-
-    display:none;
-    place-items:center;
-
-    padding:20px;
-
-    background:rgba(0,0,0,.75);
-    backdrop-filter:blur(8px);
-}
-
-.modal-overlay.active {
-    display:grid;
-}
-
-.modal {
-    width:min(460px,100%);
-
-    padding:28px;
-
-    border:1px solid
-        rgba(183,108,255,.25);
-
-    border-radius:24px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #160a21,
-            #09050e
-        );
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.6);
-
-    animation:modalIn .2s ease;
-}
-
-@keyframes modalIn {
-    from {
-        opacity:0;
-        transform:scale(.95);
-    }
-
-    to {
-        opacity:1;
-        transform:scale(1);
-    }
-}
-
-.modal-top {
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.modal-icon {
-    width:65px;
-    height:65px;
-
-    display:grid;
-    place-items:center;
-
-    border-radius:16px;
-
-    background:
-        rgba(139,61,255,.15);
-
-    font-size:36px;
-}
-
-.modal-title {
-    font-size:20px;
-    font-weight:1000;
-}
-
-.modal-subtitle {
-    margin-top:4px;
-
-    color:var(--muted);
-
-    font-size:11px;
-}
-
-.amount-label {
-    display:block;
-
-    margin-top:25px;
-    margin-bottom:8px;
-
-    color:#aaa;
-
-    font-size:11px;
-    font-weight:900;
-}
-
-.amount-row {
-    display:grid;
-
-    grid-template-columns:
-        48px 1fr 48px;
-
-    gap:8px;
-}
-
-.amount-row button {
-    border:1px solid var(--border);
-    border-radius:10px;
-
-    background:rgba(139,61,255,.13);
-    color:white;
-
-    font-size:20px;
-}
-
-.amount-row input {
-    width:100%;
-
-    padding:13px;
-
-    border:1px solid var(--border);
-    border-radius:10px;
-
-    outline:none;
-
-    background:rgba(0,0,0,.3);
-    color:white;
-
-    text-align:center;
-
-    font-size:18px;
-    font-weight:1000;
-}
-
-.modal-info {
-    margin-top:15px;
-
-    padding:15px;
-
-    border-radius:13px;
-
-    background:rgba(255,255,255,.035);
-}
-
-.info-line {
-    display:flex;
-    justify-content:space-between;
-
-    margin-top:8px;
-
-    color:#999;
-
-    font-size:11px;
-}
-
-.info-line:first-child {
-    margin-top:0;
-}
-
-.info-line strong {
-    color:white;
-}
-
-.modal-total {
-    margin-top:18px;
-
-    padding:18px;
-
-    border-radius:15px;
-
-    text-align:center;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(139,61,255,.15),
-            rgba(239,76,255,.08)
-        );
-}
-
-.modal-total-label {
-    color:#999;
-    font-size:10px;
-}
-
-.modal-total-price {
-    margin-top:5px;
-
-    color:var(--purple2);
-
-    font-size:32px;
-    font-weight:1000;
-}
-
-.modal-buttons {
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:9px;
-
-    margin-top:15px;
-}
-
-.modal-cancel {
-    padding:14px;
-
-    border:1px solid var(--border);
-    border-radius:11px;
-
-    background:rgba(255,255,255,.04);
-
-    color:white;
-    font-weight:900;
-}
-
-.modal-add {
-    padding:14px;
-
-    border:0;
-    border-radius:11px;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--purple),
-            var(--pink)
-        );
-
-    color:white;
-    font-weight:1000;
-}
-
-/* =========================
-   TOAST
-========================= */
+/* TOAST */
 
 .toast {
     position:fixed;
 
     right:22px;
+
     bottom:22px;
 
     z-index:5000;
 
     padding:14px 17px;
 
-    border:1px solid
+    border:
+        1px solid
         rgba(139,61,255,.3);
 
     border-radius:12px;
 
-    background:rgba(18,8,28,.95);
+    background:
+        rgba(18,8,28,.95);
 
     box-shadow:
         0 20px 50px
         rgba(0,0,0,.4);
 
-    transform:translateY(100px);
+    transform:
+        translateY(100px);
 
     opacity:0;
 
     transition:.3s;
 
     font-size:12px;
+
     font-weight:900;
 }
 
 .toast.show {
     transform:translateY(0);
+
     opacity:1;
 }
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer {
     margin-top:50px;
 
     padding:35px 0;
 
-    border-top:1px solid var(--border);
+    border-top:
+        1px solid var(--border);
 
     text-align:center;
 
@@ -1674,12 +1689,15 @@ footer {
 
 footer strong {
     color:white;
+
     font-size:18px;
 }
 
-/* =========================
-   MOBILE
-========================= */
+footer strong span {
+    color:var(--purple2);
+}
+
+/* MOBILE */
 
 @media(max-width:1150px) {
 
@@ -1704,6 +1722,7 @@ footer strong {
     .money-layout {
         grid-template-columns:1fr;
     }
+
 }
 
 @media(max-width:800px) {
@@ -1714,12 +1733,15 @@ footer strong {
 
     .header-inner {
         flex-wrap:wrap;
+
         padding:9px 0;
     }
 
     nav {
         width:100%;
+
         order:3;
+
         overflow-x:auto;
     }
 
@@ -1740,6 +1762,7 @@ footer strong {
         grid-template-columns:
             repeat(2,1fr);
     }
+
 }
 
 @media(max-width:550px) {
@@ -1750,6 +1773,7 @@ footer strong {
 
     .hero h1 {
         font-size:52px;
+
         letter-spacing:-4px;
     }
 
@@ -1760,6 +1784,7 @@ footer strong {
     .hero-item {
         width:170px;
         height:170px;
+
         font-size:65px;
     }
 
@@ -1788,11 +1813,14 @@ footer strong {
 
     .deal {
         flex-direction:column;
+
         align-items:flex-start;
     }
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -1805,53 +1833,63 @@ footer strong {
 
 <div class="header-inner">
 
-<a class="logo"
-   href="#"
-   onclick="showView('home');return false">
+<a
+class="logo"
+href="#"
+onclick="showView('home');return false">
 
-    <div class="logo-icon">🍩</div>
+<div class="logo-icon">
+🍩
+</div>
 
-    <div>
-        DONUT<span>SHOP</span>
-    </div>
+<div>
+DONUT<span>SHOP</span>
+</div>
 
 </a>
 
 <nav>
 
-<button class="nav-btn active"
+<button
+class="nav-btn active"
 onclick="showView('home')">
 🏠 Start
 </button>
 
-<button class="nav-btn"
+<button
+class="nav-btn"
 onclick="showView('shop')">
-🧟 Shop
+🧟 Spawner
 </button>
 
-<button class="nav-btn"
+<button
+class="nav-btn"
 onclick="showView('special')">
 💎 Special
 </button>
 
-<button class="nav-btn"
+<button
+class="nav-btn"
 onclick="showView('money')">
 💰 Money
 </button>
 
-<button class="nav-btn"
+<button
+class="nav-btn"
 onclick="showView('info')">
 📖 Infos
 </button>
 
-<button class="nav-btn"
+<button
+class="nav-btn"
 onclick="showView('faq')">
 ❓ FAQ
 </button>
 
 </nav>
 
-<button class="cart-button"
+<button
+class="cart-button"
 onclick="openCart()">
 
 🛒
@@ -1870,9 +1908,7 @@ id="cartCount">
 
 <main>
 
-<!-- =========================
-     HOME
-========================= -->
+<!-- HOME -->
 
 <section
 class="view active"
@@ -1883,7 +1919,7 @@ id="view-home">
 <div>
 
 <div class="badge">
-🟣 DONUT SMP COMMUNITY SHOP
+🟣 MINECRAFT COMMUNITY SHOP
 </div>
 
 <h1>
@@ -1916,9 +1952,9 @@ ITEMS.
 
 Willkommen im DonutShop.
 
-Kaufe Spawner, Netherite-Items,
-Elytra, seltene Items und Money
-für deinen Donut SMP Server.
+Entdecke wertvolle Minecraft-Spawner,
+seltene Items und Money-Pakete in einem
+modernen und schnellen Community-Shop.
 
 </p>
 
@@ -1928,7 +1964,7 @@ für deinen Donut SMP Server.
 class="btn primary"
 onclick="showView('shop')">
 
-🛒 Shop öffnen
+🧟 Spawner entdecken
 
 </button>
 
@@ -1945,23 +1981,51 @@ onclick="showView('special')">
 <div class="hero-stats">
 
 <div class="stat">
-<strong>20+</strong>
-<span>Spawner</span>
+
+<strong id="spawnerCount">
+17+
+</strong>
+
+<span>
+Spawner
+</span>
+
 </div>
 
 <div class="stat">
-<strong>11+</strong>
-<span>Netherite Items</span>
+
+<strong>
+4
+</strong>
+
+<span>
+Special Items
+</span>
+
 </div>
 
 <div class="stat">
-<strong>10B</strong>
-<span>Max. Money</span>
+
+<strong>
+10B
+</strong>
+
+<span>
+Max. Money
+</span>
+
 </div>
 
 <div class="stat">
-<strong>24/7</strong>
-<span>Shop</span>
+
+<strong>
+24/7
+</strong>
+
+<span>
+Shop
+</span>
+
 </div>
 
 </div>
@@ -1982,15 +2046,22 @@ onclick="showView('special')">
 
 <div class="heading">
 
-<small>SHOP FEATURES</small>
+<small>
+SHOP FEATURES
+</small>
 
 <h2>
+
 Alles, was du
-<span class="gradient">brauchst.</span>
+<span class="gradient">
+brauchst.
+</span>
+
 </h2>
 
 <p>
-Alles übersichtlich in einem Shop.
+Ein moderner Shop mit Funktionen,
+die das Einkaufen einfacher machen.
 </p>
 
 </div>
@@ -1998,36 +2069,71 @@ Alles übersichtlich in einem Shop.
 <div class="feature-grid">
 
 <div class="feature">
-<div class="feature-icon">🧟</div>
-<h3>Spawner</h3>
+
+<div class="feature-icon">
+🧟
+</div>
+
+<h3>
+Spawner Shop
+</h3>
+
 <p>
-Jeder Spawner kostet 0.50 CHF.
-Ab 101 Stück kostet jeder 0.48 CHF.
+Viele verschiedene Mob-Spawner
+übersichtlich an einem Ort.
 </p>
+
 </div>
 
 <div class="feature">
-<div class="feature-icon">⚔️</div>
-<h3>Netherite</h3>
+
+<div class="feature-icon">
+❤️
+</div>
+
+<h3>
+Favoriten
+</h3>
+
 <p>
-Netherite-Rüstung, Waffen und Werkzeuge.
+Markiere deine Lieblingsprodukte
+und finde sie später schneller.
 </p>
+
 </div>
 
 <div class="feature">
-<div class="feature-icon">❤️</div>
-<h3>Favoriten</h3>
+
+<div class="feature-icon">
+💾
+</div>
+
+<h3>
+Speicherfunktion
+</h3>
+
 <p>
-Speichere deine Lieblingsprodukte.
+Warenkorb und Favoriten werden
+lokal im Browser gespeichert.
 </p>
+
 </div>
 
 <div class="feature">
-<div class="feature-icon">💾</div>
-<h3>Gespeichert</h3>
+
+<div class="feature-icon">
+🎁
+</div>
+
+<h3>
+Rabattcodes
+</h3>
+
 <p>
-Warenkorb und Favoriten bleiben gespeichert.
+Aktiviere Rabattcodes direkt
+im Warenkorb.
 </p>
+
 </div>
 
 </div>
@@ -2038,21 +2144,21 @@ Warenkorb und Favoriten bleiben gespeichert.
 
 <div>
 
-<strong>🔥 WEEKEND DEAL</strong>
+<strong>
+🔥 WEEKEND DEAL
+</strong>
 
-<div style="
-margin-top:5px;
-color:#aaa">
+<div
+style="margin-top:5px;color:#aaa">
 
-10% Rabatt mit dem Code DONUT10
+10% Rabatt auf deine Bestellung
 
 </div>
 
 </div>
 
-<div style="
-color:#ffc857;
-font-weight:1000">
+<div
+style="color:#ffc857;font-weight:1000">
 
 Code: DONUT10
 
@@ -2062,9 +2168,8 @@ Code: DONUT10
 
 </section>
 
-<!-- =========================
-     SHOP
-========================= -->
+
+<!-- SHOP -->
 
 <section
 class="view"
@@ -2074,15 +2179,27 @@ id="view-shop">
 
 <div class="heading">
 
-<small>MINECRAFT SHOP</small>
+<small>
+SPAWNER SHOP
+</small>
 
 <h2>
-Dein
-<span class="gradient">Shop.</span>
+
+Minecraft
+<span class="gradient">
+Spawner.
+</span>
+
 </h2>
 
 <p>
-Spawner, Netherite und weitere Items.
+
+Jeder Spawner kostet
+<strong>0.50 Fr</strong>.
+
+Ab mehr als 100 Spawnern kostet jeder
+Spawner nur noch <strong>0.48 Fr</strong>.
+
 </p>
 
 </div>
@@ -2097,7 +2214,7 @@ Spawner, Netherite und weitere Items.
 
 <input
 id="search"
-placeholder="Produkt suchen..."
+placeholder="Spawner suchen..."
 oninput="filterProducts()">
 
 </div>
@@ -2108,28 +2225,27 @@ oninput="filterProducts()">
 class="category active"
 data-category="all"
 onclick="setCategory('all')">
+
 Alle
+
 </button>
 
 <button
 class="category"
 data-category="spawner"
 onclick="setCategory('spawner')">
-🧟 Spawner
-</button>
 
-<button
-class="category"
-data-category="netherite"
-onclick="setCategory('netherite')">
-⚔️ Netherite
+🧟 Spawner
+
 </button>
 
 <button
 class="category"
 data-category="special"
 onclick="setCategory('special')">
+
 💎 Special
+
 </button>
 
 </div>
@@ -2155,10 +2271,6 @@ Preis hoch
 Name A-Z
 </option>
 
-<option value="rarity">
-Seltenheit
-</option>
-
 </select>
 
 </div>
@@ -2172,9 +2284,8 @@ id="products">
 
 </section>
 
-<!-- =========================
-     SPECIAL
-========================= -->
+
+<!-- SPECIAL -->
 
 <section
 class="view"
@@ -2184,15 +2295,21 @@ id="view-special">
 
 <div class="heading">
 
-<small>SPECIAL ITEMS</small>
+<small>
+SPECIAL ITEMS
+</small>
 
 <h2>
+
 Seltene
-<span class="gradient">Items.</span>
+<span class="gradient">
+Items.
+</span>
+
 </h2>
 
 <p>
-Besondere Items für deinen Minecraft-Account.
+Besondere Minecraft-Items für deine Sammlung.
 </p>
 
 </div>
@@ -2206,9 +2323,8 @@ id="specialProducts">
 
 </section>
 
-<!-- =========================
-     MONEY
-========================= -->
+
+<!-- MONEY -->
 
 <section
 class="view"
@@ -2218,15 +2334,21 @@ id="view-money">
 
 <div class="heading">
 
-<small>MONEY SHOP</small>
+<small>
+MONEY SHOP
+</small>
 
 <h2>
+
 Dein
-<span class="gradient">Money.</span>
+<span class="gradient">
+Money.
+</span>
+
 </h2>
 
 <p>
-Wähle deinen gewünschten Money-Betrag.
+Wähle deinen gewünschten Betrag.
 </p>
 
 </div>
@@ -2235,7 +2357,9 @@ Wähle deinen gewünschten Money-Betrag.
 
 <div class="panel">
 
-<h3>💰 Money auswählen</h3>
+<h3>
+💰 Money auswählen
+</h3>
 
 <input
 class="money-input"
@@ -2243,7 +2367,8 @@ id="moneyInput"
 value="1B"
 oninput="updateMoney()">
 
-<div style="
+<div
+style="
 margin-top:8px;
 color:#777;
 font-size:11px">
@@ -2293,7 +2418,9 @@ Erlaubt: 1M bis 10B
 <div
 class="money-value"
 id="moneyValue">
+
 1B
+
 </div>
 
 <div
@@ -2324,9 +2451,12 @@ onclick="addMoney()">
 
 <div class="panel">
 
-<h3>💵 Money Preise</h3>
+<h3>
+💵 Preise
+</h3>
 
-<div style="
+<div
+style="
 margin-top:20px;
 display:flex;
 flex-direction:column;
@@ -2377,9 +2507,8 @@ gap:8px">
 
 </section>
 
-<!-- =========================
-     INFO
-========================= -->
+
+<!-- INFO -->
 
 <section
 class="view"
@@ -2389,11 +2518,17 @@ id="view-info">
 
 <div class="heading">
 
-<small>SO FUNKTIONIERT ES</small>
+<small>
+SO FUNKTIONIERT ES
+</small>
 
 <h2>
+
 Einfach.
-<span class="gradient">Schnell.</span>
+<span class="gradient">
+Schnell.
+</span>
+
 </h2>
 
 </div>
@@ -2401,55 +2536,101 @@ Einfach.
 <div class="info-grid">
 
 <div class="info-card">
-<div class="info-number">01</div>
-<h3>Produkt wählen</h3>
+
+<div class="info-number">
+01
+</div>
+
+<h3>
+Spawner auswählen
+</h3>
+
 <p>
-Wähle einen Spawner, ein Netherite-Item
-oder ein Special Item.
+Wähle deinen gewünschten Spawner und die Anzahl.
 </p>
+
 </div>
 
 <div class="info-card">
-<div class="info-number">02</div>
-<h3>Spawner-Menge</h3>
+
+<div class="info-number">
+02
+</div>
+
+<h3>
+Preis berechnen
+</h3>
+
 <p>
-Bei Spawnern kannst du direkt auswählen,
-wie viele du kaufen möchtest.
+Bis 100 Stück kostet jeder Spawner 0.50 Fr.
+Ab 101 Stück kostet jeder 0.48 Fr.
 </p>
+
 </div>
 
 <div class="info-card">
-<div class="info-number">03</div>
-<h3>Preis</h3>
+
+<div class="info-number">
+03
+</div>
+
+<h3>
+In den Warenkorb
+</h3>
+
 <p>
-Bis 100 Spawner kostet einer 0.50 CHF.
-Ab 101 kostet einer 0.48 CHF.
+Klicke auf Kaufen und die Spawner werden
+in deinen Warenkorb gelegt.
 </p>
+
 </div>
 
 <div class="info-card">
-<div class="info-number">04</div>
-<h3>Warenkorb</h3>
+
+<div class="info-number">
+04
+</div>
+
+<h3>
+Username
+</h3>
+
 <p>
-Kontrolliere Produkte und Mengen
-im Warenkorb.
+Gib deinen Minecraft-Namen im Checkout ein.
 </p>
+
 </div>
 
 <div class="info-card">
-<div class="info-number">05</div>
-<h3>Username</h3>
+
+<div class="info-number">
+05
+</div>
+
+<h3>
+Rabattcode
+</h3>
+
 <p>
-Gib deinen Minecraft-Namen beim Checkout ein.
+Nutze beispielsweise DONUT10 für 10% Rabatt.
 </p>
+
 </div>
 
 <div class="info-card">
-<div class="info-number">06</div>
-<h3>Checkout</h3>
+
+<div class="info-number">
+06
+</div>
+
+<h3>
+Checkout
+</h3>
+
 <p>
-Der aktuelle Checkout ist eine Demo.
+Die aktuelle Version besitzt einen Demo-Checkout.
 </p>
+
 </div>
 
 </div>
@@ -2458,9 +2639,8 @@ Der aktuelle Checkout ist eine Demo.
 
 </section>
 
-<!-- =========================
-     FAQ
-========================= -->
+
+<!-- FAQ -->
 
 <section
 class="view"
@@ -2470,11 +2650,17 @@ id="view-faq">
 
 <div class="heading">
 
-<small>FAQ</small>
+<small>
+FAQ
+</small>
 
 <h2>
+
 Häufige
-<span class="gradient">Fragen.</span>
+<span class="gradient">
+Fragen.
+</span>
+
 </h2>
 
 </div>
@@ -2487,17 +2673,43 @@ Häufige
 class="faq-question"
 onclick="toggleFAQ(this)">
 
-Wie viel kostet ein Spawner?
+Was kann ich kaufen?
 
-<span>+</span>
+<span>
++
+</span>
 
 </button>
 
 <div class="faq-answer">
 
-1 bis 100 Spawner kosten 0.50 CHF
-pro Stück. Ab 101 Spawner kostet jeder
-Spawner 0.48 CHF.
+Im Shop findest du verschiedene Spawner,
+Elytra, Dragon Head, Ancient Debris
+und Gilded Blackstone.
+
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button
+class="faq-question"
+onclick="toggleFAQ(this)">
+
+Wie funktioniert der Spawner-Preis?
+
+<span>
++
+</span>
+
+</button>
+
+<div class="faq-answer">
+
+Von 1 bis 100 Spawner kostet ein Spawner
+0.50 Fr. Ab 101 Spawner kostet jeder
+Spawner 0.48 Fr.
 
 </div>
 
@@ -2511,14 +2723,16 @@ onclick="toggleFAQ(this)">
 
 Kann ich mehrere Spawner kaufen?
 
-<span>+</span>
+<span>
++
+</span>
 
 </button>
 
 <div class="faq-answer">
 
-Ja. Du kannst beim Kauf direkt die
-gewünschte Anzahl eingeben.
+Ja. Du kannst bei jedem Spawner selbst
+die gewünschte Anzahl eingeben.
 
 </div>
 
@@ -2530,60 +2744,19 @@ gewünschte Anzahl eingeben.
 class="faq-question"
 onclick="toggleFAQ(this)">
 
-Gibt es Netherite?
+Gibt es echte Zahlungen?
 
-<span>+</span>
-
-</button>
-
-<div class="faq-answer">
-
-Ja. Im Shop findest du Netherite Ingots,
-Scraps, Rüstung, Waffen und Werkzeuge.
-
-</div>
-
-</div>
-
-<div class="faq-item">
-
-<button
-class="faq-question"
-onclick="toggleFAQ(this)">
-
-Gibt es einen Rabattcode?
-
-<span>+</span>
+<span>
++
+</span>
 
 </button>
 
 <div class="faq-answer">
 
-Ja. Der Demo-Code DONUT10 gibt 10%
-Rabatt auf die Bestellung.
-
-</div>
-
-</div>
-
-<div class="faq-item">
-
-<button
-class="faq-question"
-onclick="toggleFAQ(this)">
-
-Sind echte Zahlungen möglich?
-
-<span>+</span>
-
-</button>
-
-<div class="faq-answer">
-
-Noch nicht. Dieser Shop besitzt aktuell
-nur einen Demo-Checkout. Für echte Zahlungen
-brauchst du später ein Backend und einen
-Zahlungsanbieter.
+Der Checkout ist aktuell eine Demo.
+Für echte Zahlungen brauchst du später
+ein Backend und einen Zahlungsanbieter.
 
 </div>
 
@@ -2595,6 +2768,7 @@ Zahlungsanbieter.
 
 </section>
 
+
 <footer>
 
 <strong>
@@ -2602,7 +2776,7 @@ Zahlungsanbieter.
 </strong>
 
 <div style="margin-top:8px">
-Donut SMP Community Store
+Minecraft Community Store
 </div>
 
 <div style="margin-top:5px">
@@ -2613,9 +2787,8 @@ Inoffizielles Community-Projekt · 2026
 
 </main>
 
-<!-- =========================
-     CART
-========================= -->
+
+<!-- CART -->
 
 <div
 class="overlay"
@@ -2631,9 +2804,12 @@ id="cart">
 
 <div>
 
-<h2>🛒 Warenkorb</h2>
+<h2>
+🛒 Warenkorb
+</h2>
 
-<div style="
+<div
+style="
 margin-top:4px;
 color:#777;
 font-size:10px">
@@ -2654,17 +2830,21 @@ onclick="closeCart()">
 
 </div>
 
-<div id="cartItems"></div>
+<div id="cartItems">
+</div>
 
 <div class="cart-total">
 
-<div style="
+<div
+style="
 display:flex;
 justify-content:space-between;
 color:#777;
 font-size:12px">
 
-<span>Produkte</span>
+<span>
+Produkte
+</span>
 
 <span id="cartProducts">
 0
@@ -2672,14 +2852,17 @@ font-size:12px">
 
 </div>
 
-<div style="
+<div
+style="
 display:flex;
 justify-content:space-between;
 margin-top:8px;
 color:#777;
 font-size:12px">
 
-<span>Rabatt</span>
+<span>
+Rabatt
+</span>
 
 <span id="discount">
 0%
@@ -2687,10 +2870,13 @@ font-size:12px">
 
 </div>
 
-<div class="total"
+<div
+class="total"
 style="margin-top:15px">
 
-<span>Gesamt</span>
+<span>
+Gesamt
+</span>
 
 <strong id="total">
 0.00 CHF
@@ -2720,127 +2906,6 @@ onclick="checkout()">
 
 </aside>
 
-<!-- =========================
-     SPAWNER MODAL
-========================= -->
-
-<div
-class="modal-overlay"
-id="spawnerModal">
-
-<div class="modal">
-
-<div class="modal-top">
-
-<div
-class="modal-icon"
-id="modalIcon">
-🧟
-</div>
-
-<div>
-
-<div
-class="modal-title"
-id="modalTitle">
-Spawner
-</div>
-
-<div
-class="modal-subtitle">
-
-Wähle deine gewünschte Anzahl
-
-</div>
-
-</div>
-
-</div>
-
-<label class="amount-label">
-ANZAHL SPAWNER
-</label>
-
-<div class="amount-row">
-
-<button onclick="changeSpawnerAmount(-1)">
-−
-</button>
-
-<input
-id="spawnerAmount"
-type="number"
-min="1"
-value="1"
-oninput="updateSpawnerModal()">
-
-<button onclick="changeSpawnerAmount(1)">
-+
-</button>
-
-</div>
-
-<div class="modal-info">
-
-<div class="info-line">
-
-<span>Preis pro Stück</span>
-
-<strong id="spawnerUnitPrice">
-0.50 CHF
-</strong>
-
-</div>
-
-<div class="info-line">
-
-<span>Rabatt ab 101 Stück</span>
-
-<strong>
-0.48 CHF/Stück
-</strong>
-
-</div>
-
-</div>
-
-<div class="modal-total">
-
-<div class="modal-total-label">
-GESAMTPREIS
-</div>
-
-<div
-class="modal-total-price"
-id="spawnerTotal">
-0.50 CHF
-</div>
-
-</div>
-
-<div class="modal-buttons">
-
-<button
-class="modal-cancel"
-onclick="closeSpawnerModal()">
-
-Abbrechen
-
-</button>
-
-<button
-class="modal-add"
-onclick="confirmSpawner()">
-
-🛒 In den Warenkorb
-
-</button>
-
-</div>
-
-</div>
-
-</div>
 
 <div
 class="toast"
@@ -2850,40 +2915,32 @@ Produkt hinzugefügt.
 
 </div>
 
+
 <script>
 
 /* =========================================================
    PRODUCTS
-========================================================= */
+   ========================================================= */
 
 const products = [
 
-/* =========================
-   SPAWNER
-========================= */
+/* SPAWNERS */
 
 {
 id:"zombie",
 name:"Zombie Spawner",
 icon:"🧟",
+price:0.50,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Zombies."
 },
 
 {
-id:"skeleton",
-name:"Skeleton Spawner",
-icon:"💀",
-category:"spawner",
-rarity:"common",
-description:"Spawner für Skelette."
-},
-
-{
 id:"spider",
 name:"Spider Spawner",
 icon:"🕷️",
+price:0.50,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Spinnen."
@@ -2893,6 +2950,7 @@ description:"Spawner für Spinnen."
 id:"cave-spider",
 name:"Cave Spider Spawner",
 icon:"🕸️",
+price:0.50,
 category:"spawner",
 rarity:"rare",
 description:"Spawner für Cave Spiders."
@@ -2902,6 +2960,7 @@ description:"Spawner für Cave Spiders."
 id:"creeper",
 name:"Creeper Spawner",
 icon:"💚",
+price:0.50,
 category:"spawner",
 rarity:"epic",
 description:"Perfekt für Gunpowder-Farmen."
@@ -2911,15 +2970,17 @@ description:"Perfekt für Gunpowder-Farmen."
 id:"enderman",
 name:"Enderman Spawner",
 icon:"👾",
+price:0.50,
 category:"spawner",
 rarity:"epic",
-description:"Spawner für Ender Pearls."
+description:"Enderman-Spawner für Ender Pearls."
 },
 
 {
 id:"blaze",
 name:"Blaze Spawner",
 icon:"🔥",
+price:0.50,
 category:"spawner",
 rarity:"epic",
 description:"Starker Nether-Spawner."
@@ -2929,6 +2990,7 @@ description:"Starker Nether-Spawner."
 id:"magma",
 name:"Magma Cube Spawner",
 icon:"🟥",
+price:0.50,
 category:"spawner",
 rarity:"epic",
 description:"Spawner für Magma Cubes."
@@ -2938,6 +3000,7 @@ description:"Spawner für Magma Cubes."
 id:"slime",
 name:"Slime Spawner",
 icon:"🟢",
+price:0.50,
 category:"spawner",
 rarity:"rare",
 description:"Perfekt für Slime-Farmen."
@@ -2947,6 +3010,7 @@ description:"Perfekt für Slime-Farmen."
 id:"witch",
 name:"Witch Spawner",
 icon:"🧙",
+price:0.50,
 category:"spawner",
 rarity:"rare",
 description:"Spawner für Hexen."
@@ -2956,51 +3020,37 @@ description:"Spawner für Hexen."
 id:"guardian",
 name:"Guardian Spawner",
 icon:"👁️",
+price:0.50,
 category:"spawner",
 rarity:"legendary",
-description:"Extrem wertvoller Spawner."
-},
-
-{
-id:"iron-golem",
-name:"Iron Golem Spawner",
-icon:"🤖",
-category:"spawner",
-rarity:"legendary",
-description:"Starker Eisenfarm-Spawner."
-},
-
-{
-id:"pig",
-name:"Pig Spawner",
-icon:"🐷",
-category:"spawner",
-rarity:"common",
-description:"Spawner für Schweine."
-},
-
-{
-id:"cow",
-name:"Cow Spawner",
-icon:"🐄",
-category:"spawner",
-rarity:"common",
-description:"Spawner für Kühe."
+description:"Extrem wertvoller Guardian-Spawner."
 },
 
 {
 id:"sheep",
 name:"Sheep Spawner",
 icon:"🐑",
+price:0.50,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Schafe."
 },
 
 {
+id:"cow",
+name:"Cow Spawner",
+icon:"🐄",
+price:0.50,
+category:"spawner",
+rarity:"common",
+description:"Spawner für Kühe."
+},
+
+{
 id:"chicken",
 name:"Chicken Spawner",
 icon:"🐔",
+price:0.50,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Hühner."
@@ -3010,6 +3060,7 @@ description:"Spawner für Hühner."
 id:"piglin",
 name:"Piglin Spawner",
 icon:"🐗",
+price:0.50,
 category:"spawner",
 rarity:"epic",
 description:"Seltener Nether-Spawner."
@@ -3019,6 +3070,7 @@ description:"Seltener Nether-Spawner."
 id:"zombified-piglin",
 name:"Zombified Piglin Spawner",
 icon:"🧟‍♂️",
+price:0.50,
 category:"spawner",
 rarity:"epic",
 description:"Gold- und XP-Farm Spawner."
@@ -3028,6 +3080,7 @@ description:"Gold- und XP-Farm Spawner."
 id:"wither-skeleton",
 name:"Wither Skeleton Spawner",
 icon:"☠️",
+price:0.50,
 category:"spawner",
 rarity:"legendary",
 description:"Extrem seltener Spawner."
@@ -3037,128 +3090,13 @@ description:"Extrem seltener Spawner."
 id:"shulker",
 name:"Shulker Spawner",
 icon:"📦",
+price:0.50,
 category:"spawner",
 rarity:"legendary",
 description:"Legendärer Shulker-Spawner."
 },
 
-/* =========================
-   NETHERITE
-========================= */
-
-{
-id:"netherite-ingot",
-name:"Netherite Ingot",
-icon:"⬛",
-price:2.50,
-category:"netherite",
-rarity:"legendary",
-description:"Ein Netherite Ingot."
-},
-
-{
-id:"netherite-scrap",
-name:"Netherite Scrap",
-icon:"🪨",
-price:1.00,
-category:"netherite",
-rarity:"epic",
-description:"Netherite Scrap."
-},
-
-{
-id:"netherite-helmet",
-name:"Netherite Helmet",
-icon:"🪖",
-price:8.00,
-category:"netherite",
-rarity:"legendary",
-description:"Netherite Helm."
-},
-
-{
-id:"netherite-chestplate",
-name:"Netherite Chestplate",
-icon:"🛡️",
-price:12.00,
-category:"netherite",
-rarity:"legendary",
-description:"Netherite Brustplatte."
-},
-
-{
-id:"netherite-leggings",
-name:"Netherite Leggings",
-icon:"👖",
-price:10.00,
-category:"netherite",
-rarity:"legendary",
-description:"Netherite Hose."
-},
-
-{
-id:"netherite-boots",
-name:"Netherite Boots",
-icon:"🥾",
-price:7.00,
-category:"netherite",
-rarity:"legendary",
-description:"Netherite Schuhe."
-},
-
-{
-id:"netherite-sword",
-name:"Netherite Sword",
-icon:"⚔️",
-price:9.00,
-category:"netherite",
-rarity:"legendary",
-description:"Starkes Netherite-Schwert."
-},
-
-{
-id:"netherite-pickaxe",
-name:"Netherite Pickaxe",
-icon:"⛏️",
-price:9.00,
-category:"netherite",
-rarity:"legendary",
-description:"Netherite Spitzhacke."
-},
-
-{
-id:"netherite-axe",
-name:"Netherite Axe",
-icon:"🪓",
-price:9.00,
-category:"netherite",
-rarity:"legendary",
-description:"Netherite Axt."
-},
-
-{
-id:"netherite-shovel",
-name:"Netherite Shovel",
-icon:"🛠️",
-price:6.00,
-category:"netherite",
-rarity:"epic",
-description:"Netherite Schaufel."
-},
-
-{
-id:"netherite-hoe",
-name:"Netherite Hoe",
-icon:"🌾",
-price:6.00,
-category:"netherite",
-rarity:"epic",
-description:"Netherite Hacke."
-},
-
-/* =========================
-   SPECIAL
-========================= */
+/* SPECIAL */
 
 {
 id:"elytra",
@@ -3184,7 +3122,7 @@ description:"Kopf des Enderdrachen."
 id:"ancient-debris",
 name:"Ancient Debris",
 icon:"🪨",
-price:10,
+price:1.25,
 category:"special",
 rarity:"rare",
 description:"Seltenes Nether-Material."
@@ -3194,7 +3132,7 @@ description:"Seltenes Nether-Material."
 id:"gilded-blackstone",
 name:"Gilded Blackstone",
 icon:"🟨",
-price:8,
+price:0.75,
 category:"special",
 rarity:"rare",
 description:"Goldhaltiger Blackstone."
@@ -3205,7 +3143,7 @@ description:"Goldhaltiger Blackstone."
 
 /* =========================================================
    STATE
-========================================================= */
+   ========================================================= */
 
 let cart =
     JSON.parse(
@@ -3221,12 +3159,10 @@ let favorites =
 
 let category = "all";
 
-let selectedSpawner = null;
-
 
 /* =========================================================
    SAVE
-========================================================= */
+   ========================================================= */
 
 function save() {
 
@@ -3246,7 +3182,7 @@ function save() {
 
 /* =========================================================
    NAVIGATION
-========================================================= */
+   ========================================================= */
 
 function showView(name) {
 
@@ -3268,7 +3204,10 @@ function showView(name) {
             btn.classList.remove("active")
         );
 
-    const navMap = {
+    const buttons =
+        document.querySelectorAll(".nav-btn");
+
+    const index = {
         home:0,
         shop:1,
         special:2,
@@ -3277,12 +3216,11 @@ function showView(name) {
         faq:5
     };
 
-    if(navMap[name] !== undefined) {
+    if(index[name] !== undefined) {
 
-        document
-            .querySelectorAll(".nav-btn")
-            [navMap[name]]
+        buttons[index[name]]
             .classList.add("active");
+
     }
 
     window.scrollTo({
@@ -3293,8 +3231,30 @@ function showView(name) {
 
 
 /* =========================================================
-   RENDER PRODUCTS
-========================================================= */
+   SPAWNER PRICE
+   ========================================================= */
+
+function getSpawnerPrice(quantity) {
+
+    quantity =
+        Math.max(
+            1,
+            parseInt(quantity) || 1
+        );
+
+    if(quantity > 100) {
+
+        return quantity * 0.48;
+
+    }
+
+    return quantity * 0.50;
+}
+
+
+/* =========================================================
+   RENDER
+   ========================================================= */
 
 function renderProducts(
     list,
@@ -3304,24 +3264,11 @@ function renderProducts(
     const element =
         document.getElementById(target);
 
-    if(!element) return;
-
     element.innerHTML =
         list.map(product => {
 
             const isSpawner =
                 product.category === "spawner";
-
-            const priceText =
-                isSpawner
-                    ? "ab 0.50 CHF"
-                    : product.price.toFixed(2) +
-                      " CHF";
-
-            const smallText =
-                isSpawner
-                    ? "101+ Stück: 0.48 CHF/Stück"
-                    : "";
 
             return `
 
@@ -3331,31 +3278,24 @@ function renderProducts(
 
                     <div class="product-tag">
 
-                        ${
-                            product.category === "spawner"
-                                ? "SPAWNER"
-                                : product.category === "netherite"
-                                    ? "NETHERITE"
-                                    : "SPECIAL"
-                        }
+                        ${isSpawner
+                            ? "SPAWNER"
+                            : "SPECIAL"}
 
                     </div>
 
                     <button
-                        class="favorite ${
-                            favorites.has(product.id)
-                                ? "active"
-                                : ""
-                        }"
+                        class="favorite
+                        ${favorites.has(product.id)
+                            ? "active"
+                            : ""}"
                         onclick="
                             toggleFavorite('${product.id}')
                         ">
 
-                        ${
-                            favorites.has(product.id)
-                                ? "♥"
-                                : "♡"
-                        }
+                        ${favorites.has(product.id)
+                            ? "♥"
+                            : "♡"}
 
                     </button>
 
@@ -3367,8 +3307,7 @@ function renderProducts(
 
                     <div class="
                         rarity
-                        ${product.rarity}
-                    ">
+                        ${product.rarity}">
 
                         ${product.rarity}
 
@@ -3390,35 +3329,104 @@ function renderProducts(
 
                     </div>
 
-                    <div class="product-bottom">
+                    ${
+                        isSpawner
 
-                        <div>
+                        ? `
 
-                            <div class="price">
+                        <div class="quantity-box">
 
-                                ${priceText}
+                            <div class="quantity-label">
+
+                                ANZAHL SPAWNER
+
+                            </div>
+
+                            <div class="quantity-controls">
+
+                                <button
+                                    onclick="
+                                        changeSpawnerInput(
+                                            '${product.id}',
+                                            -1
+                                        )">
+
+                                    −
+
+                                </button>
+
+                                <input
+                                    id="qty-${product.id}"
+                                    type="number"
+                                    min="1"
+                                    value="1"
+                                    onchange="
+                                        updateSpawnerPrice(
+                                            '${product.id}'
+                                        )">
+
+                                <button
+                                    onclick="
+                                        changeSpawnerInput(
+                                            '${product.id}',
+                                            1
+                                        )">
+
+                                    +
+
+                                </button>
 
                             </div>
 
-                            <div class="price-small">
+                            <div
+                                class="quantity-price"
+                                id="spawner-price-${product.id}">
 
-                                ${smallText}
+                                0.50 CHF
 
                             </div>
+
+                            <button
+                                class="buy-spawner"
+                                onclick="
+                                    addSpawner(
+                                        '${product.id}'
+                                    )">
+
+                                🛒 Spawner kaufen
+
+                            </button>
 
                         </div>
 
-                        <button
-                            class="add"
-                            onclick="
-                                addProduct('${product.id}')
-                            ">
+                        `
 
-                            +
+                        : `
 
-                        </button>
+                        <div class="product-bottom">
 
-                    </div>
+                            <div class="price">
+
+                                ${product.price.toFixed(2)}
+                                CHF
+
+                            </div>
+
+                            <button
+                                class="add"
+                                onclick="
+                                    addProduct(
+                                        '${product.id}'
+                                    )">
+
+                                +
+
+                            </button>
+
+                        </div>
+
+                        `
+                    }
 
                 </div>
 
@@ -3431,81 +3439,225 @@ function renderProducts(
 
 
 /* =========================================================
+   SPAWNER INPUT
+   ========================================================= */
+
+function changeSpawnerInput(
+    id,
+    amount
+) {
+
+    const input =
+        document.getElementById(
+            "qty-" + id
+        );
+
+    if(!input) return;
+
+    let quantity =
+        parseInt(input.value) || 1;
+
+    quantity += amount;
+
+    if(quantity < 1)
+        quantity = 1;
+
+    input.value = quantity;
+
+    updateSpawnerPrice(id);
+}
+
+
+function updateSpawnerPrice(id) {
+
+    const input =
+        document.getElementById(
+            "qty-" + id
+        );
+
+    const price =
+        document.getElementById(
+            "spawner-price-" + id
+        );
+
+    if(!input || !price)
+        return;
+
+    let quantity =
+        parseInt(input.value) || 1;
+
+    if(quantity < 1)
+        quantity = 1;
+
+    if(quantity > 100) {
+
+        price.innerHTML =
+            getSpawnerPrice(quantity)
+                .toFixed(2)
+            +
+            " CHF"
+            +
+            '<br><span style="font-size:9px;color:#35e58d">0.48 CHF pro Stück</span>';
+
+    } else {
+
+        price.innerHTML =
+            getSpawnerPrice(quantity)
+                .toFixed(2)
+            +
+            " CHF"
+            +
+            '<br><span style="font-size:9px;color:#aaa">0.50 CHF pro Stück</span>';
+
+    }
+
+}
+
+
+/* =========================================================
+   ADD SPAWNER
+   ========================================================= */
+
+function addSpawner(id) {
+
+    const product =
+        products.find(
+            p => p.id === id
+        );
+
+    if(!product)
+        return;
+
+    const input =
+        document.getElementById(
+            "qty-" + id
+        );
+
+    let quantity =
+        parseInt(input.value) || 1;
+
+    if(quantity < 1)
+        quantity = 1;
+
+    const total =
+        getSpawnerPrice(quantity);
+
+    const existing =
+        cart.find(
+            item =>
+                item.id ===
+                "spawner-" + id
+        );
+
+    if(existing) {
+
+        existing.quantity += quantity;
+
+    } else {
+
+        cart.push({
+
+            id:"spawner-" + id,
+
+            productId:id,
+
+            name:
+                product.name,
+
+            icon:
+                product.icon,
+
+            price:
+                quantity > 100
+                    ? 0.48
+                    : 0.50,
+
+            quantity:quantity,
+
+            spawner:true
+
+        });
+
+    }
+
+    save();
+
+    updateCart();
+
+    openCart();
+
+    toast(
+        quantity +
+        "x " +
+        product.name +
+        " hinzugefügt."
+    );
+}
+
+
+/* =========================================================
    FILTER
-========================================================= */
+   ========================================================= */
 
 function filterProducts() {
 
-    const searchElement =
-        document.getElementById("search");
-
     const search =
-        searchElement
-            ? searchElement.value.toLowerCase()
-            : "";
+        document
+            .getElementById("search")
+            .value
+            .toLowerCase();
 
     let list =
-        products.filter(product => {
+        products.filter(p => {
 
             const matchesSearch =
-                product.name
+                p.name
                     .toLowerCase()
                     .includes(search);
 
             const matchesCategory =
                 category === "all" ||
-                product.category === category;
+                p.category === category;
 
             return (
                 matchesSearch &&
                 matchesCategory
             );
+
         });
 
-    const sortElement =
-        document.getElementById("sort");
-
     const sort =
-        sortElement
-            ? sortElement.value
-            : "default";
+        document
+            .getElementById("sort")
+            .value;
 
     if(sort === "low") {
 
-        list.sort((a,b) =>
-            getProductPrice(a) -
-            getProductPrice(b)
+        list.sort(
+            (a,b) =>
+                a.price-b.price
         );
+
     }
 
     if(sort === "high") {
 
-        list.sort((a,b) =>
-            getProductPrice(b) -
-            getProductPrice(a)
+        list.sort(
+            (a,b) =>
+                b.price-a.price
         );
+
     }
 
     if(sort === "name") {
 
-        list.sort((a,b) =>
-            a.name.localeCompare(b.name)
+        list.sort(
+            (a,b) =>
+                a.name.localeCompare(
+                    b.name
+                )
         );
-    }
 
-    if(sort === "rarity") {
-
-        const order = {
-            common:1,
-            rare:2,
-            epic:3,
-            legendary:4
-        };
-
-        list.sort((a,b) =>
-            order[b.rarity] -
-            order[a.rarity]
-        );
     }
 
     renderProducts(list);
@@ -3513,22 +3665,8 @@ function filterProducts() {
 
 
 /* =========================================================
-   PRODUCT PRICE
-========================================================= */
-
-function getProductPrice(product) {
-
-    if(product.category === "spawner") {
-        return 0.50;
-    }
-
-    return product.price || 0;
-}
-
-
-/* =========================================================
    CATEGORY
-========================================================= */
+   ========================================================= */
 
 function setCategory(value) {
 
@@ -3551,7 +3689,7 @@ function setCategory(value) {
 
 /* =========================================================
    FAVORITES
-========================================================= */
+   ========================================================= */
 
 function toggleFavorite(id) {
 
@@ -3570,6 +3708,7 @@ function toggleFavorite(id) {
         toast(
             "Zu Favoriten hinzugefügt."
         );
+
     }
 
     save();
@@ -3578,7 +3717,8 @@ function toggleFavorite(id) {
 
     renderProducts(
         products.filter(
-            p => p.category === "special"
+            p =>
+                p.category === "special"
         ),
         "specialProducts"
     );
@@ -3586,8 +3726,8 @@ function toggleFavorite(id) {
 
 
 /* =========================================================
-   ADD PRODUCT
-========================================================= */
+   ADD NORMAL PRODUCT
+   ========================================================= */
 
 function addProduct(id) {
 
@@ -3596,22 +3736,13 @@ function addProduct(id) {
             p => p.id === id
         );
 
-    if(!product) return;
-
-    /* SPAWNER */
-
-    if(product.category === "spawner") {
-
-        openSpawnerModal(product);
-
+    if(!product)
         return;
-    }
-
-    /* NORMALE PRODUKTE */
 
     const existing =
         cart.find(
-            item => item.id === id
+            item =>
+                item.id === id
         );
 
     if(existing) {
@@ -3624,15 +3755,19 @@ function addProduct(id) {
 
             id:id,
 
-            name:product.name,
+            name:
+                product.name,
 
-            icon:product.icon,
+            icon:
+                product.icon,
 
-            price:product.price,
+            price:
+                product.price,
 
             quantity:1
 
         });
+
     }
 
     save();
@@ -3649,223 +3784,8 @@ function addProduct(id) {
 
 
 /* =========================================================
-   SPAWNER MODAL
-========================================================= */
-
-function openSpawnerModal(product) {
-
-    selectedSpawner = product;
-
-    document
-        .getElementById("modalIcon")
-        .textContent =
-        product.icon;
-
-    document
-        .getElementById("modalTitle")
-        .textContent =
-        product.name;
-
-    document
-        .getElementById("spawnerAmount")
-        .value = 1;
-
-    updateSpawnerModal();
-
-    document
-        .getElementById("spawnerModal")
-        .classList.add("active");
-}
-
-
-function closeSpawnerModal() {
-
-    document
-        .getElementById("spawnerModal")
-        .classList.remove("active");
-
-    selectedSpawner = null;
-}
-
-
-function changeSpawnerAmount(amount) {
-
-    const input =
-        document
-            .getElementById(
-                "spawnerAmount"
-            );
-
-    let value =
-        parseInt(input.value) || 1;
-
-    value += amount;
-
-    if(value < 1)
-        value = 1;
-
-    input.value = value;
-
-    updateSpawnerModal();
-}
-
-
-function getSpawnerUnitPrice(amount) {
-
-    if(amount > 100) {
-
-        return 0.48;
-    }
-
-    return 0.50;
-}
-
-
-function updateSpawnerModal() {
-
-    const input =
-        document
-            .getElementById(
-                "spawnerAmount"
-            );
-
-    let amount =
-        parseInt(input.value);
-
-    if(
-        isNaN(amount) ||
-        amount < 1
-    ) {
-
-        amount = 1;
-        input.value = 1;
-    }
-
-    const unitPrice =
-        getSpawnerUnitPrice(amount);
-
-    const total =
-        amount *
-        unitPrice;
-
-    document
-        .getElementById(
-            "spawnerUnitPrice"
-        )
-        .textContent =
-        unitPrice.toFixed(2) +
-        " CHF";
-
-    document
-        .getElementById(
-            "spawnerTotal"
-        )
-        .textContent =
-        total.toFixed(2) +
-        " CHF";
-}
-
-
-function confirmSpawner() {
-
-    if(!selectedSpawner)
-        return;
-
-    const input =
-        document
-            .getElementById(
-                "spawnerAmount"
-            );
-
-    let amount =
-        parseInt(input.value);
-
-    if(
-        isNaN(amount) ||
-        amount < 1
-    ) {
-
-        toast(
-            "Bitte eine gültige Anzahl eingeben."
-        );
-
-        return;
-    }
-
-    const unitPrice =
-        getSpawnerUnitPrice(amount);
-
-    const total =
-        amount *
-        unitPrice;
-
-    /*
-       Jeder unterschiedliche Kauf
-       wird als eigene Position gespeichert.
-    */
-
-    const cartId =
-        "spawner-" +
-        selectedSpawner.id +
-        "-" +
-        amount;
-
-    const existing =
-        cart.find(
-            item =>
-                item.id === cartId
-        );
-
-    if(existing) {
-
-        existing.quantity++;
-
-    } else {
-
-        cart.push({
-
-            id:cartId,
-
-            name:
-                amount +
-                "x " +
-                selectedSpawner.name,
-
-            icon:
-                selectedSpawner.icon,
-
-            price:total,
-
-            quantity:1,
-
-            spawner:true,
-
-            spawnerAmount:amount,
-
-            pricePerSpawner:unitPrice
-        });
-    }
-
-    save();
-
-    updateCart();
-
-    closeSpawnerModal();
-
-    openCart();
-
-    toast(
-        amount +
-        "x " +
-        selectedSpawner.name +
-        " hinzugefügt."
-    );
-}
-
-
-/* =========================================================
    CART
-========================================================= */
+   ========================================================= */
 
 function updateCart() {
 
@@ -3886,15 +3806,13 @@ function updateCart() {
         .getElementById(
             "cartCount"
         )
-        .textContent =
-        count;
+        .textContent = count;
 
     document
         .getElementById(
             "cartProducts"
         )
-        .textContent =
-        count;
+        .textContent = count;
 
     if(!cart.length) {
 
@@ -3924,17 +3842,15 @@ function updateCart() {
         cart.map(
             (item,index) => {
 
-                let details = "";
+                const itemTotal =
+                    item.spawner
 
-                if(item.spawner) {
+                    ? getSpawnerPrice(
+                        item.quantity
+                    )
 
-                    details =
-                        item.spawnerAmount +
-                        " Spawner × " +
-                        item.pricePerSpawner
-                            .toFixed(2) +
-                        " CHF";
-                }
+                    : item.price *
+                      item.quantity;
 
                 return `
 
@@ -3952,39 +3868,35 @@ function updateCart() {
 
                             ${item.name}
 
+                            ${
+                                item.spawner
+                                ? `
+                                <span style="
+                                    color:#8b3dff;
+                                    font-size:9px">
+                                    × ${item.quantity}
+                                </span>
+                                `
+                                : ""
+                            }
+
                         </div>
 
                         <div class="cart-price">
 
-                            ${
-                                (
-                                    item.price *
-                                    item.quantity
-                                ).toFixed(2)
-                            }
-
+                            ${itemTotal.toFixed(2)}
                             CHF
 
                         </div>
 
-                        ${
-                            details
-                                ? `
-                                <div class="cart-details">
-                                    ${details}
-                                </div>
-                                `
-                                : ""
-                        }
-
                         <div class="qty">
 
                             <button
-                            onclick="
-                                changeQuantity(
-                                    ${index},
-                                    -1
-                                )">
+                                onclick="
+                                    changeQuantity(
+                                        ${index},
+                                        -1
+                                    )">
 
                                 −
 
@@ -3997,11 +3909,11 @@ function updateCart() {
                             </span>
 
                             <button
-                            onclick="
-                                changeQuantity(
-                                    ${index},
-                                    1
-                                )">
+                                onclick="
+                                    changeQuantity(
+                                        ${index},
+                                        1
+                                    )">
 
                                 +
 
@@ -4012,10 +3924,10 @@ function updateCart() {
                     </div>
 
                     <button
-                    class="remove"
-                    onclick="
-                        removeItem(${index})
-                    ">
+                        class="remove"
+                        onclick="
+                            removeItem(${index})
+                        ">
 
                         ✕
 
@@ -4024,6 +3936,7 @@ function updateCart() {
                 </div>
 
                 `;
+
             }
         ).join("");
 
@@ -4033,7 +3946,7 @@ function updateCart() {
 
 /* =========================================================
    QUANTITY
-========================================================= */
+   ========================================================= */
 
 function changeQuantity(
     index,
@@ -4045,11 +3958,10 @@ function changeQuantity(
 
     cart[index].quantity += amount;
 
-    if(
-        cart[index].quantity <= 0
-    ) {
+    if(cart[index].quantity <= 0) {
 
         cart.splice(index,1);
+
     }
 
     save();
@@ -4060,7 +3972,7 @@ function changeQuantity(
 
 /* =========================================================
    REMOVE
-========================================================= */
+   ========================================================= */
 
 function removeItem(index) {
 
@@ -4083,21 +3995,16 @@ function removeItem(index) {
 
 /* =========================================================
    DISCOUNT
-========================================================= */
+   ========================================================= */
 
 function getDiscount() {
 
-    const coupon =
+    const code =
         document
             .getElementById(
                 "coupon"
-            );
-
-    if(!coupon)
-        return 0;
-
-    const code =
-        coupon.value
+            )
+            .value
             .trim()
             .toUpperCase();
 
@@ -4110,18 +4017,30 @@ function getDiscount() {
 
 /* =========================================================
    TOTAL
-========================================================= */
+   ========================================================= */
 
 function updateTotal() {
 
-    let total =
-        cart.reduce(
-            (sum,item) =>
-                sum +
+    let total = 0;
+
+    cart.forEach(item => {
+
+        if(item.spawner) {
+
+            total +=
+                getSpawnerPrice(
+                    item.quantity
+                );
+
+        } else {
+
+            total +=
                 item.price *
-                item.quantity,
-            0
-        );
+                item.quantity;
+
+        }
+
+    });
 
     const discount =
         getDiscount();
@@ -4135,8 +4054,7 @@ function updateTotal() {
             "discount"
         )
         .textContent =
-        discount +
-        "%";
+        discount + "%";
 
     document
         .getElementById(
@@ -4150,7 +4068,7 @@ function updateTotal() {
 
 /* =========================================================
    CART OPEN
-========================================================= */
+   ========================================================= */
 
 function openCart() {
 
@@ -4158,18 +4076,26 @@ function openCart() {
         .getElementById(
             "cart"
         )
-        .classList.add("active");
+        .classList.add(
+            "active"
+        );
 
     document
         .getElementById(
             "overlay"
         )
-        .classList.add("active");
+        .classList.add(
+            "active"
+        );
 
     document.body.style.overflow =
         "hidden";
 }
 
+
+/* =========================================================
+   CART CLOSE
+   ========================================================= */
 
 function closeCart() {
 
@@ -4177,13 +4103,17 @@ function closeCart() {
         .getElementById(
             "cart"
         )
-        .classList.remove("active");
+        .classList.remove(
+            "active"
+        );
 
     document
         .getElementById(
             "overlay"
         )
-        .classList.remove("active");
+        .classList.remove(
+            "active"
+        );
 
     document.body.style.overflow =
         "";
@@ -4192,14 +4122,14 @@ function closeCart() {
 
 /* =========================================================
    MONEY
-========================================================= */
+   ========================================================= */
 
 function parseMoney(value) {
 
     let text =
         value
             .toUpperCase()
-            .replace(",", ".")
+            .replace(",",".")
             .replace(/\s/g,"");
 
     let number =
@@ -4238,7 +4168,8 @@ function formatMoney(value) {
             1000000000
         )
         .toFixed(2)
-        .replace(".00","") +
+        .replace(".00","")
+        +
         "B";
 
     if(value >= 1000000)
@@ -4248,7 +4179,8 @@ function formatMoney(value) {
             1000000
         )
         .toFixed(2)
-        .replace(".00","") +
+        .replace(".00","")
+        +
         "M";
 
     return value;
@@ -4315,7 +4247,8 @@ function updateMoney() {
         )
         .textContent =
         moneyPrice(amount)
-            .toFixed(2) +
+            .toFixed(2)
+        +
         " CHF";
 }
 
@@ -4326,8 +4259,7 @@ function setMoney(value) {
         .getElementById(
             "moneyInput"
         )
-        .value =
-        value;
+        .value = value;
 
     updateMoney();
 }
@@ -4377,7 +4309,9 @@ function addMoney() {
 
         cart.push({
 
-            id:"money-" + amount,
+            id:
+                "money-" +
+                amount,
 
             name:name,
 
@@ -4388,7 +4322,9 @@ function addMoney() {
             quantity:1,
 
             money:amount
+
         });
+
     }
 
     save();
@@ -4406,7 +4342,7 @@ function addMoney() {
 
 /* =========================================================
    CHECKOUT
-========================================================= */
+   ========================================================= */
 
 function checkout() {
 
@@ -4450,14 +4386,26 @@ function checkout() {
             ? 10
             : 0;
 
-    let total =
-        cart.reduce(
-            (sum,item) =>
-                sum +
+    let total = 0;
+
+    cart.forEach(item => {
+
+        if(item.spawner) {
+
+            total +=
+                getSpawnerPrice(
+                    item.quantity
+                );
+
+        } else {
+
+            total +=
                 item.price *
-                item.quantity,
-            0
-        );
+                item.quantity;
+
+        }
+
+    });
 
     total *=
         1 -
@@ -4499,19 +4447,21 @@ function checkout() {
 
 /* =========================================================
    FAQ
-========================================================= */
+   ========================================================= */
 
 function toggleFAQ(button) {
 
     button
         .parentElement
-        .classList.toggle("open");
+        .classList.toggle(
+            "open"
+        );
 }
 
 
 /* =========================================================
    TOAST
-========================================================= */
+   ========================================================= */
 
 let toastTimer;
 
@@ -4525,16 +4475,22 @@ function toast(message) {
     element.textContent =
         message;
 
-    element.classList.add("show");
+    element.classList.add(
+        "show"
+    );
 
-    clearTimeout(toastTimer);
+    clearTimeout(
+        toastTimer
+    );
 
     toastTimer =
         setTimeout(
             () =>
                 element
                     .classList
-                    .remove("show"),
+                    .remove(
+                        "show"
+                    ),
             2500
         );
 }
@@ -4542,57 +4498,36 @@ function toast(message) {
 
 /* =========================================================
    KEYBOARD
-========================================================= */
+   ========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        if(event.key === "Escape") {
+        if(
+            event.key ===
+            "Escape"
+        )
 
             closeCart();
-            closeSpawnerModal();
-
-        }
 
     }
 );
 
 
 /* =========================================================
-   MODAL CLICK OUTSIDE
-========================================================= */
-
-document
-    .getElementById(
-        "spawnerModal"
-    )
-    .addEventListener(
-        "click",
-        event => {
-
-            if(
-                event.target.id ===
-                "spawnerModal"
-            ) {
-
-                closeSpawnerModal();
-            }
-
-        }
-    );
-
-
-/* =========================================================
    INITIALIZE
-========================================================= */
+   ========================================================= */
 
-renderProducts(products);
+renderProducts(
+    products
+);
 
 renderProducts(
     products.filter(
         p =>
-            p.category === "special"
+            p.category ===
+            "special"
     ),
     "specialProducts"
 );
