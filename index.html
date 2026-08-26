@@ -3,188 +3,422 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DonutShop – Pro Version</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>DONUT SMP // NEXUS SHOP</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root {
-    --bg-main: #06040b;
-    --bg-card: rgba(255, 255, 255, 0.025);
-    --border-color: rgba(255, 255, 255, 0.07);
-    --primary: #8b5cf6;
-    --primary-glow: rgba(139, 92, 246, 0.4);
-    --accent: #ec4899;
-    --text-main: #ffffff;
-    --text-muted: #9ca3af;
-    --success: #10b981;
+    --bg: #030308;
+    --card-bg: rgba(15, 15, 30, 0.6);
+    --border: rgba(0, 240, 255, 0.15);
+    --primary: #00f0ff;
+    --secondary: #ff007f;
+    --text: #f0f0f5;
+    --muted: #8b8ba7;
+    --glow: rgba(0, 240, 255, 0.3);
 }
 
 [data-theme="light"] {
-    --bg-main: #f3f4f6;
-    --bg-card: rgba(0, 0, 0, 0.03);
-    --border-color: rgba(0, 0, 0, 0.08);
-    --text-main: #1f2937;
-    --text-muted: #4b5563;
+    --bg: #f4f6fa;
+    --card-bg: rgba(255, 255, 255, 0.8);
+    --border: rgba(0, 100, 255, 0.15);
+    --primary: #0066ff;
+    --secondary: #ff0055;
+    --text: #111827;
+    --muted: #6b7280;
+    --glow: rgba(0, 102, 255, 0.2);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; transition: background 0.3s, color 0.3s; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; transition: 0.25s ease; }
 html { scroll-behavior: smooth; }
-body { background: var(--bg-main); color: var(--text-main); overflow-x: hidden; min-height: 100vh; }
+body { background: var(--bg); color: var(--text); overflow-x: hidden; min-height: 100vh; }
 
-body::before { content: ""; position: fixed; top: -20%; left: -10%; width: 55vw; height: 55vw; background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent 70%); z-index: -2; pointer-events: none; }
-body::after { content: ""; position: fixed; bottom: -20%; right: -10%; width: 55vw; height: 55vw; background: radial-gradient(circle, rgba(236, 72, 153, 0.1), transparent 70%); z-index: -2; pointer-events: none; }
+/* Cyber Grid Background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: -3;
+    opacity: 0.4;
+}
 
-header { position: fixed; top: 0; left: 0; right: 0; height: 85px; z-index: 1000; background: var(--bg-main); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-color); display: flex; align-items: center; }
-.header-container { width: 92%; max-width: 1400px; margin: auto; display: flex; align-items: center; justify-content: space-between; }
-.logo { display: flex; align-items: center; gap: 14px; font-size: 20px; font-weight: 800; text-decoration: none; color: var(--text-main); }
-.logo-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 16px; background: linear-gradient(135deg, var(--primary), var(--accent)); font-size: 24px; box-shadow: 0 8px 25px var(--primary-glow); }
-.logo span { color: var(--primary); }
+body::after {
+    content: "";
+    position: fixed;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, var(--glow), transparent 70%);
+    z-index: -2;
+    pointer-events: none;
+}
 
-nav { display: flex; gap: 6px; background: var(--bg-card); padding: 6px; border-radius: 16px; border: 1px solid var(--border-color); }
-.nav-btn { border: 0; background: transparent; color: var(--text-muted); padding: 10px 18px; border-radius: 12px; font-size: 13px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
-.nav-btn:hover, .nav-btn.active { color: var(--text-main); background: rgba(139, 92, 246, 0.2); box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2); }
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 90px;
+    z-index: 1000;
+    background: var(--card-bg);
+    backdrop-filter: blur(25px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+}
 
-.header-actions { display: flex; gap: 10px; align-items: center; }
-.theme-toggle, .cart-btn { position: relative; width: 48px; height: 48px; border-radius: 16px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-size: 20px; cursor: pointer; display: grid; place-items: center; transition: 0.2s; }
-.theme-toggle:hover, .cart-btn:hover { border-color: var(--primary); background: rgba(139, 92, 246, 0.15); }
-.cart-count { position: absolute; top: -6px; right: -6px; min-width: 24px; height: 24px; border-radius: 50px; display: grid; place-items: center; background: var(--primary); color: white; font-size: 11px; font-weight: 800; border: 2px solid var(--bg-main); }
+.header-inner {
+    width: 92%;
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-main { width: 92%; max-width: 1400px; margin: auto; padding-top: 130px; padding-bottom: 90px; }
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.logo-box {
+    width: 50px; height: 50px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 26px;
+    box-shadow: 0 0 20px var(--glow);
+    transform: rotate(-5deg);
+}
+
+nav {
+    display: flex;
+    gap: 6px;
+    background: var(--bg);
+    padding: 6px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+}
+
+.nav-btn {
+    background: transparent;
+    border: 0;
+    color: var(--muted);
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    cursor: pointer;
+}
+
+.nav-btn:hover, .nav-btn.active {
+    color: var(--text);
+    background: var(--card-bg);
+    box-shadow: 0 0 15px var(--glow);
+    border: 1px solid var(--primary);
+}
+
+.actions { display: flex; gap: 10px; }
+.icon-btn {
+    width: 48px; height: 48px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+.icon-btn:hover { border-color: var(--primary); box-shadow: 0 0 15px var(--glow); }
+.badge-count {
+    position: absolute;
+    top: -5px; right: -5px;
+    background: var(--secondary);
+    color: white;
+    font-size: 10px;
+    font-weight: 900;
+    padding: 3px 7px;
+    border-radius: 20px;
+}
+
+main { width: 92%; max-width: 1400px; margin: auto; padding-top: 140px; padding-bottom: 100px; }
 .view { display: none; }
-.view.active { display: block; animation: fadeIn 0.35s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.view.active { display: block; animation: cyberFade 0.4s ease; }
 
-/* Hero Section */
-.hero { min-height: 520px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
-.badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 50px; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); color: #d8b4fe; font-size: 11px; font-weight: 800; letter-spacing: 1px; }
-h1 { margin-top: 20px; font-size: clamp(40px, 5.5vw, 75px); line-height: 0.98; letter-spacing: -2.5px; font-weight: 800; }
-.gradient { background: linear-gradient(135deg, var(--text-main), #c084fc, #e879f9); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero p { max-width: 580px; margin-top: 20px; color: var(--text-muted); line-height: 1.7; font-size: 15px; }
-.hero-btns { display: flex; gap: 12px; margin-top: 30px; }
-.btn { border: 0; padding: 14px 28px; border-radius: 16px; color: white; font-weight: 700; cursor: pointer; font-size: 14px; transition: 0.2s; text-decoration: none; display: inline-grid; place-items: center; }
-.btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); box-shadow: 0 8px 25px var(--primary-glow); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 35px rgba(139, 92, 246, 0.5); }
-.btn-secondary { background: var(--bg-card); border: 1px solid var(--border-color); color: var(--text-main); }
-.btn-secondary:hover { border-color: var(--primary); }
+@keyframes cyberFade {
+    from { opacity: 0; transform: scale(0.98) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
 
-.hero-visual { position: relative; height: 440px; border-radius: 36px; background: radial-gradient(circle, rgba(139, 92, 246, 0.25), transparent 70%), var(--bg-card); border: 1px solid var(--border-color); display: grid; place-items: center; overflow: hidden; }
-.hero-visual::before { content: "🍩"; font-size: 140px; filter: drop-shadow(0 25px 50px rgba(139, 92, 246, 0.5)); animation: float 4s ease-in-out infinite; }
-@keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-18px) rotate(6deg); } }
+.hero {
+    min-height: 500px;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+}
 
-/* Section Header */
-.section-header { margin-bottom: 35px; }
-.section-header small { color: var(--primary); font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
-.section-header h2 { margin-top: 8px; font-size: 38px; letter-spacing: -1.5px; font-weight: 800; }
-.section-header p { margin-top: 6px; color: var(--text-muted); font-size: 14px; }
+.hero-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px var(--glow);
+}
 
-/* Grid & Cards */
-.product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.product-card { border-radius: 24px; border: 1px solid var(--border-color); background: var(--bg-card); overflow: hidden; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; justify-content: space-between; }
-.product-card:hover { transform: translateY(-6px); border-color: rgba(139, 92, 246, 0.4); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-.product-img-box { height: 180px; display: grid; place-items: center; position: relative; background: radial-gradient(circle, rgba(139, 92, 246, 0.1), transparent 70%); font-size: 65px; }
-.product-tag { position: absolute; top: 12px; left: 12px; padding: 5px 10px; border-radius: 8px; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); font-size: 9px; font-weight: 800; border: 1px solid var(--border-color); color: white; }
-.product-content { padding: 22px; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
-.product-title { font-weight: 800; font-size: 16px; }
-.product-desc { margin-top: 6px; color: var(--text-muted); font-size: 12px; line-height: 1.5; }
-.product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
-.product-price { color: var(--primary); font-size: 18px; font-weight: 800; }
-.add-btn { width: 40px; height: 40px; border: 0; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; font-size: 18px; cursor: pointer; display: grid; place-items: center; transition: 0.2s; box-shadow: 0 4px 15px rgba(139,92,246,0.3); }
-.add-btn:hover { transform: scale(1.1); }
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(38px, 5vw, 65px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
 
-/* Layouts & Panels */
-.shop-layout { display: grid; grid-template-columns: 1fr 400px; gap: 24px; }
-.panel { padding: 30px; border-radius: 28px; border: 1px solid var(--border-color); background: var(--bg-card); }
-.panel h3 { font-size: 18px; font-weight: 800; margin-bottom: 16px; }
-.qty-input, .username-input, .coupon-input { width: 100%; margin-top: 10px; padding: 16px; border-radius: 16px; border: 1px solid var(--border-color); background: var(--bg-main); color: var(--text-main); outline: none; font-size: 20px; font-weight: 800; }
-.qty-btns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
-.qty-btns button { padding: 10px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); cursor: pointer; font-weight: 700; transition: 0.2s; }
-.qty-btns button:hover { border-color: var(--primary); background: rgba(139, 92, 246, 0.15); }
+.highlight {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-.price-display-box { margin-top: 20px; padding: 24px; text-align: center; border-radius: 20px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(236, 72, 153, 0.05)); border: 1px solid rgba(139, 92, 246, 0.25); }
-.big-qty { color: var(--primary); font-size: 42px; font-weight: 800; }
-.unit-note { margin-top: 4px; color: var(--text-muted); font-size: 12px; }
-.total-sum { margin-top: 8px; font-size: 28px; font-weight: 800; }
-.discount-hint { margin-top: 8px; color: var(--success); font-size: 11px; font-weight: 700; }
+.hero p {
+    color: var(--muted);
+    font-size: 15px;
+    margin-top: 20px;
+    line-height: 1.6;
+    max-width: 550px;
+}
 
-.money-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px; }
-.money-grid button { padding: 14px; border-radius: 14px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); cursor: pointer; font-weight: 800; font-size: 14px; transition: 0.2s; }
-.money-grid button:hover { border-color: var(--primary); background: rgba(139, 92, 246, 0.2); }
+.hero-btns { display: flex; gap: 15px; margin-top: 30px; }
+.btn {
+    padding: 16px 30px;
+    border-radius: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    border: 0;
+    text-transform: uppercase;
+}
 
-/* Info & FAQ */
-.info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.info-card { padding: 28px; border-radius: 24px; border: 1px solid var(--border-color); background: var(--bg-card); }
-.info-num { color: var(--primary); font-size: 12px; font-weight: 800; margin-bottom: 10px; }
-.info-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
-.info-card p { color: var(--text-muted); font-size: 13px; line-height: 1.6; }
+.btn-cyber {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    box-shadow: 0 0 25px var(--glow);
+}
+.btn-cyber:hover { filter: brightness(1.2); transform: translateY(-2px); }
 
-.faq-list { max-width: 900px; }
-.faq-card { border-bottom: 1px solid var(--border-color); }
-.faq-question { width: 100%; padding: 22px 0; border: 0; background: transparent; color: var(--text-main); display: flex; justify-content: space-between; align-items: center; font-weight: 800; font-size: 15px; cursor: pointer; text-align: left; }
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-muted); font-size: 13px; line-height: 1.7; }
-.faq-card.open .faq-answer { max-height: 150px; padding-bottom: 20px; }
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+.btn-outline:hover { border-color: var(--primary); background: var(--card-bg); }
 
-/* Cart Sidebar */
-.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); opacity: 0; pointer-events: none; z-index: 2000; transition: 0.3s; }
+.hero-visual {
+    height: 400px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-visual::before {
+    content: "⚡";
+    font-size: 130px;
+    filter: drop-shadow(0 0 30px var(--primary));
+    animation: floatAnim 3s ease-in-out infinite;
+}
+
+@keyframes floatAnim {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.section-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 8px;
+}
+.section-desc { color: var(--muted); font-size: 14px; margin-bottom: 35px; }
+
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.cyber-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.cyber-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 0 25px var(--glow);
+    transform: translateY(-5px);
+}
+
+.card-img {
+    height: 170px;
+    background: rgba(0,0,0,0.2);
+    display: grid;
+    place-items: center;
+    font-size: 60px;
+    position: relative;
+}
+
+.card-tag {
+    position: absolute;
+    top: 10px; left: 10px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 9px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+}
+
+.card-body { padding: 20px; }
+.card-title { font-family: 'Orbitron', sans-serif; font-size: 15px; font-weight: 700; }
+.card-text { color: var(--muted); font-size: 12px; margin-top: 6px; line-height: 1.4; }
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-top: 1px solid var(--border);
+}
+.card-price { font-family: 'Orbitron', sans-serif; font-size: 16px; font-weight: 900; color: var(--primary); }
+.buy-btn {
+    width: 36px; height: 36px;
+    background: var(--primary);
+    color: var(--bg);
+    border: 0;
+    border-radius: 10px;
+    font-weight: 900;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+.buy-btn:hover { background: var(--secondary); color: white; box-shadow: 0 0 15px var(--secondary); }
+
+.shop-layout { display: grid; grid-template-columns: 1fr 380px; gap: 24px; }
+.panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 30px;
+}
+.cyber-input {
+    width: 100%;
+    padding: 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    outline: none;
+    margin-top: 10px;
+}
+.cyber-input:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--glow); }
+
+.price-box {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    text-align: center;
+}
+
+/* Sidebar */
+.overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(8px);
+    opacity: 0; pointer-events: none;
+    z-index: 2000;
+}
 .overlay.active { opacity: 1; pointer-events: auto; }
-.cart-sidebar { position: fixed; top: 0; right: 0; bottom: 0; width: min(460px, 100%); background: var(--bg-main); border-left: 1px solid var(--border-color); z-index: 2100; padding: 30px; display: flex; flex-direction: column; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: -20px 0 50px rgba(0,0,0,0.5); }
-.cart-sidebar.active { transform: translateX(0); }
-.cart-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); }
-.close-cart { width: 40px; height: 40px; border: 0; border-radius: 12px; background: var(--bg-card); color: var(--text-main); cursor: pointer; display: grid; place-items: center; border: 1px solid var(--border-color); }
-.cart-items-container { flex: 1; overflow-y: auto; padding: 15px 0; }
-.cart-item-row { display: grid; grid-template-columns: 55px 1fr auto; gap: 14px; align-items: center; padding: 14px; margin-bottom: 12px; border-radius: 16px; background: var(--bg-card); border: 1px solid var(--border-color); }
-.cart-item-img { width: 55px; height: 55px; display: grid; place-items: center; background: rgba(139, 92, 246, 0.1); border-radius: 12px; font-size: 26px; }
-.cart-item-title { font-size: 14px; font-weight: 800; }
-.cart-item-price { color: var(--primary); font-size: 13px; margin-top: 2px; font-weight: 700; }
-.cart-item-qty { display: flex; align-items: center; gap: 8px; margin-top: 8px; }
-.cart-item-qty button { width: 24px; height: 24px; border: 0; border-radius: 6px; background: rgba(139, 92, 246, 0.3); color: white; cursor: pointer; font-weight: 800; }
-.remove-item { border: 0; background: transparent; color: #f43f5e; cursor: pointer; font-size: 18px; padding: 5px; }
-.cart-footer { border-top: 1px solid var(--border-color); padding-top: 20px; }
-.coupon-box { display: flex; gap: 8px; margin-bottom: 12px; }
-.coupon-input { margin-top: 0; padding: 12px; font-size: 14px; text-transform: uppercase; }
-.coupon-btn { padding: 0 16px; border-radius: 12px; border: 1px solid var(--border-color); background: var(--bg-card); color: var(--text-main); font-weight: 800; cursor: pointer; }
-.total-row { display: flex; justify-content: space-between; font-size: 20px; font-weight: 800; margin-bottom: 15px; }
-.total-row strong { color: var(--primary); }
-.checkout-btn { width: 100%; padding: 18px; border: 0; border-radius: 14px; background: linear-gradient(135deg, var(--success), #059669); color: white; font-weight: 800; cursor: pointer; font-size: 16px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3); }
 
-/* Toast Notification */
-.toast { position: fixed; bottom: 30px; right: 30px; padding: 16px 24px; border-radius: 16px; background: var(--bg-card); border: 1px solid rgba(139, 92, 246, 0.4); color: var(--text-main); font-weight: 800; font-size: 14px; z-index: 3000; box-shadow: 0 15px 35px rgba(0,0,0,0.5); backdrop-filter: blur(10px); opacity: 0; transform: translateY(40px); transition: 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+.sidebar {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: min(440px, 100%);
+    background: var(--card-bg);
+    border-left: 1px solid var(--border);
+    z-index: 2100;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+}
+.sidebar.active { transform: translateX(0); }
+
+.toast {
+    position: fixed; bottom: 30px; right: 30px;
+    background: var(--card-bg);
+    border: 1px solid var(--primary);
+    padding: 16px 24px;
+    border-radius: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    z-index: 3000;
+    box-shadow: 0 0 25px var(--glow);
+    opacity: 0; transform: translateY(30px);
+}
 .toast.show { opacity: 1; transform: translateY(0); }
 
-footer { margin-top: 80px; padding: 50px 0; text-align: center; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 13px; }
-footer strong { color: var(--text-main); font-size: 16px; }
-
-@media(max-width: 1100px) {
-    .product-grid { grid-template-columns: repeat(3, 1fr); }
-    .hero { grid-template-columns: 1fr; min-height: auto; }
+@media(max-width:1100px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .hero { grid-template-columns: 1fr; }
     .shop-layout { grid-template-columns: 1fr; }
-}
-@media(max-width: 768px) {
-    nav { display: none; }
-    .product-grid { grid-template-columns: repeat(2, 1fr); }
-    .info-grid { grid-template-columns: 1fr; }
-    .money-grid { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
 <body>
 
 <header>
-<div class="header-container">
-<a href="#" class="logo" onclick="showView('home')">
-<div class="logo-icon">🍩</div>
-<div>DONUT<span>SHOP</span></div>
+<div class="header-inner">
+<a href="#" class="logo" onclick="switchView('home')">
+<div class="logo-box">⚡</div>
+DONUT<span>NEXUS</span>
 </a>
 <nav>
-<button class="nav-btn active" onclick="showView('home')">🏠 Start</button>
-<button class="nav-btn" onclick="showView('spawner')">🧟 Spawner</button>
-<button class="nav-btn" onclick="showView('netherite')">🛡️ Netherite</button>
-<button class="nav-btn" onclick="showView('special')">💎 Items</button>
-<button class="nav-btn" onclick="showView('money')">💰 Money</button>
-<button class="nav-btn" onclick="showView('info')">📖 Infos</button>
-<button class="nav-btn" onclick="showView('faq')">❓ FAQ</button>
+<button class="nav-btn active" onclick="switchView('home')">Home</button>
+<button class="nav-btn" onclick="switchView('spawner')">Spawner</button>
+<button class="nav-btn" onclick="switchView('netherite')">Gear</button>
+<button class="nav-btn" onclick="switchView('money')">Money</button>
+<button class="nav-btn" onclick="switchView('faq')">FAQ</button>
 </nav>
-<div class="header-actions">
-<button class="theme-toggle" onclick="toggleTheme()" title="Design wechseln">🌓</button>
-<button class="cart-btn" onclick="openCart()" title="Warenkorb">🛒<span class="cart-count" id="cartCount">0</span></button>
+<div class="actions">
+<button class="icon-btn" onclick="toggleTheme()">🌓</button>
+<button class="icon-btn" onclick="openCart()">🛒<span class="badge-count" id="cartBadge">0</span></button>
 </div>
 </div>
 </header>
@@ -193,17 +427,12 @@ footer strong { color: var(--text-main); font-size: 16px; }
 <section class="view active" id="view-home">
 <div class="hero">
 <div>
-<div class="badge">✨ OFFIZIELLER DONUT SMP COMMUNITY SHOP</div>
-<h1>DEIN <span class="gradient">DONUT</span><br>DEIN <span class="gradient">VORSPRUNG.</span></h1>
-<p>Hole dir epische Spawner, perfekte Netherite-Ausstattung und Ingame-Geld direkt und vollautomatisch für den Donut SMP Server.</p>
+<div class="hero-tag">// NEXT GEN DONUT SMP STORE</div>
+<h1>THE ULTIMATE <span class="highlight">GRID SHOP.</span></h1>
+<p>Hole dir High-Tech Spawner, mächtige Ausrüstung und sofortiges Ingame-Geld auf dem modernsten Server-Store.</p>
 <div class="hero-btns">
-<button class="btn btn-primary" onclick="showView('spawner')">🧟 Spawner kaufen</button>
-<button class="btn btn-secondary" onclick="showView('netherite')">🛡️ Netherite Shop</button>
-</div>
-<div style="display:flex;gap:40px;margin-top:45px;border-top:1px solid var(--border-color);padding-top:30px;">
-<div><strong style="font-size:24px;color:var(--text-main);">0.50 CHF</strong><br><span style="color:var(--text-muted);font-size:12px;font-weight:600;">Startpreis pro Spawner</span></div>
-<div><strong style="font-size:24px;color:var(--text-main);">Instant</strong><br><span style="color:var(--text-muted);font-size:12px;font-weight:600;">Sofortige Lieferung im Spiel</span></div>
-<div><strong style="font-size:24px;color:var(--text-main);">10B+</strong><br><span style="color:var(--text-muted);font-size:12px;font-weight:600;">Maximales Money verfügbar</span></div>
+<button class="btn btn-cyber" onclick="switchView('spawner')">Spawner Konfigurator</button>
+<button class="btn btn-outline" onclick="switchView('netherite')">Netherite Items</button>
 </div>
 </div>
 <div class="hero-visual"></div>
@@ -211,418 +440,222 @@ footer strong { color: var(--text-main); font-size: 16px; }
 </section>
 
 <section class="view" id="view-spawner">
-<div class="section-header">
-<small>DONUT SMP SPIELVORTEILE</small>
-<h2>Spawner <span class="gradient">Konfigurator.</span></h2>
-<p>Wähle deinen Wunsch-Spawner und skaliere die Anzahl beliebig hoch.</p>
-</div>
+<div class="section-title">Spawner Matrix</div>
+<div class="section-desc">Konfiguriere deine Mengen mit automatischem Mengenrabatt.</div>
 <div class="shop-layout">
 <div class="panel">
-<h3>🧟 Spawner Typ wählen</h3>
-<div class="product-grid" id="spawnerProducts" style="grid-template-columns:repeat(2,1fr);"></div>
+<div class="grid-4" id="spawnerGrid" style="grid-template-columns:repeat(2,1fr);"></div>
 </div>
 <div class="panel">
-<h3>📦 Menge & Mengenrabatt</h3>
-<input class="qty-input" id="spawnerQuantity" type="number" min="1" value="1" oninput="updateSpawnerPrice()">
-<div class="qty-btns">
-<button onclick="setSpawnerQty(1)">1x</button>
-<button onclick="setSpawnerQty(10)">10x</button>
-<button onclick="setSpawnerQty(50)">50x</button>
-<button onclick="setSpawnerQty(100)">100x</button>
-<button onclick="setSpawnerQty(101)">101x</button>
-<button onclick="setSpawnerQty(250)">250x</button>
+<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:10px;">Menge & Skalierung</div>
+<input class="cyber-input" id="spawnerQty" type="number" min="1" value="1" oninput="calcSpawner()">
+<div class="price-box">
+<div id="spawnerDisplayQty" style="font-family:'Orbitron'; font-size:32px; font-weight:900; color:var(--primary);">1x</div>
+<div id="spawnerTotalPrice" style="font-size:20px; font-weight:800; margin-top:5px;">0.50 CHF</div>
+<div style="font-size:11px; color:var(--muted); margin-top:4px;">Ab 101 Stk. nur 0.48 CHF/Stk.</div>
 </div>
-<div class="price-display-box">
-<div class="big-qty" id="spawnerDisplay">1x</div>
-<div class="unit-note" id="unitPrice">0.50 CHF pro Stück</div>
-<div class="total-sum" id="spawnerTotal">0.50 CHF</div>
-<div class="discount-hint" id="spawnerDiscount">Ab 101 Spawner: nur 0.48 CHF/Stück!</div>
-</div>
-<button class="btn btn-primary" style="width:100%;margin-top:18px;" onclick="addSpawnerToCart()">🛒 Spawner in den Korb</button>
+<button class="btn btn-cyber" style="width:100%; margin-top:20px;" onclick="addSpawnerCart()">In den Warenkorb</button>
 </div>
 </div>
 </section>
 
 <section class="view" id="view-netherite">
-<div class="section-header">
-<small>TOP AUSRÜSTUNG</small>
-<h2>Netherite <span class="gradient">Equipment.</span></h2>
-<p>Perfekt verzauberte Werkzeuge und Rüstungsteile für maximale PvP-Power.</p>
-</div>
-<div class="product-grid" id="netheriteProducts"></div>
-</section>
-
-<section class="view" id="view-special">
-<div class="section-header">
-<small>EXKLUSIVE SCHÄTZE</small>
-<h2>Special <span class="gradient">Items.</span></h2>
-<p>Die seltensten Sammlerstücke für absolute Profi-Spieler.</p>
-</div>
-<div class="product-grid" id="specialProducts"></div>
+<div class="section-title">Netherite Gear</div>
+<div class="section-desc">Vollverzauberte High-End Rüstungen und Werkzeuge.</div>
+<div class="grid-4" id="gearGrid"></div>
 </section>
 
 <section class="view" id="view-money">
-<div class="section-header">
-<small>FINANZIERUNG</small>
-<h2>Ingame <span class="gradient">Guthaben.</span></h2>
-<p>Wähle blitzschnell dein gewünschtes Money-Paket für den Server.</p>
-</div>
+<div class="section-title">Matrix Credits</div>
+<div class="section-desc">Ingame Guthaben für den ultimativen Kontostand.</div>
 <div class="shop-layout">
 <div class="panel">
-<h3>💰 Betrag aussuchen</h3>
-<input class="qty-input" id="moneyInput" value="1B" oninput="updateMoneyPreview()">
-<div class="money-grid">
-<button onclick="setMoney('1M')">1M</button>
-<button onclick="setMoney('100M')">100M</button>
-<button onclick="setMoney('500M')">500M</button>
-<button onclick="setMoney('1B')">1B</button>
-<button onclick="setMoney('2B')">2B</button>
-<button onclick="setMoney('5B')">5B</button>
-<button onclick="setMoney('10B')">10B</button>
+<input class="cyber-input" id="moneyInput" value="1B" style="margin-bottom:15px;">
+<div style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px;">
+<button class="btn btn-outline" onclick="setMoney('100M')">100M</button>
+<button class="btn btn-outline" onclick="setMoney('1B')">1B</button>
+<button class="btn btn-outline" onclick="setMoney('5B')">5B</button>
+<button class="btn btn-outline" onclick="setMoney('10B')">10B</button>
 </div>
-<div class="price-display-box" style="margin-top:20px;">
-<div class="big-qty" id="moneyValueDisplay">1B</div>
-<div class="total-sum" id="moneyPriceDisplay" style="margin-top:6px;">15.00 CHF</div>
-</div>
-<button class="btn btn-primary" style="width:100%;margin-top:18px;" onclick="addMoneyToCart()">🛒 Money hinzufügen</button>
+<button class="btn btn-cyber" style="width:100%; margin-top:20px;" onclick="addMoneyCart()">Money buchen</button>
 </div>
 <div class="panel">
-<h3>💵 Komplette Preisliste</h3>
-<div style="margin-top:15px;color:var(--text-muted);font-size:13px;line-height:2.3;">
-<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border-color);"><span>1M Money</span><strong style="color:var(--text-main);">0.02 CHF</strong></div>
-<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border-color);"><span>100M Money</span><strong style="color:var(--text-main);">1.50 CHF</strong></div>
-<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border-color);"><span>500M Money</span><strong style="color:var(--text-main);">7.50 CHF</strong></div>
-<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border-color);"><span>1B Money</span><strong style="color:var(--text-main);">15.00 CHF</strong></div>
-<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border-color);"><span>2B Money</span><strong style="color:var(--text-main);">23.00 CHF</strong></div>
-<div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--border-color);"><span>5B Money</span><strong style="color:var(--text-main);">51.67 CHF</strong></div>
-<div style="display:flex;justify-content:space-between;"><span>10B Money</span><strong style="color:var(--text-main);">100.00 CHF</strong></div>
+<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:15px;">Wechselkurs-Übersicht</div>
+<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>100M Money</span><strong>1.50 CHF</strong></div>
+<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>1B Money</span><strong>15.00 CHF</strong></div>
+<div style="display:flex; justify-content:space-between; padding:8px 0; font-size:13px;"><span>10B Money</span><strong>100.00 CHF</strong></div>
 </div>
-</div>
-</div>
-</section>
-
-<section class="view" id="view-info">
-<div class="section-header">
-<small>ANLEITUNG</small>
-<h2>Wie funktioniert <span class="gradient">der Kauf?</span></h2>
-</div>
-<div class="info-grid">
-<div class="info-card"><div class="info-num">01 / SCHRITT</div><h3>Artikel auswählen</h3><p>Füge Spawner, Rüstung oder Money ganz nach Wunsch deinem Warenkorb hinzu.</p></div>
-<div class="info-card"><div class="info-num">02 / SCHRITT</div><h3>Namen eintragen</h3><p>Gebe im Warenkorb exakt deinen Minecraft-Ingamenamen an, damit die Items ankommen.</p></div>
-<div class="info-card"><div class="info-num">03 / SCHRITT</div><h3>Ausliefern lassen</h3><p>Nach erfolgreicher Bestätigung werden die Gegenstände dir direkt im Spiel gutgeschrieben.</p></div>
 </div>
 </section>
 
 <section class="view" id="view-faq">
-<div class="section-header">
-<small>FRAGEN & ANTWORTEN</small>
-<h2>Häufige <span class="gradient">Fragen.</span></h2>
-</div>
-<div class="faq-list">
-<div class="faq-card open">
-<button class="faq-question" onclick="toggleFaq(this)">Welche Spawner-Arten stehen im Shop zur Verfügung?<span>+</span></button>
-<div class="faq-answer">Aktuell bieten wir hocheffiziente Skeleton Spawner sowie Iron Golem Spawner an.</div>
-</div>
-<div class="faq-card">
-<button class="faq-question" onclick="toggleFaq(this)">Wie schnell erhalte ich meine gekauften Gegenstände?<span>+</span></button>
-<div class="faq-answer">Der Prozess ist vollautomatisiert. Nach dem Checkout sind die Sachen in der Regel innerhalb weniger Minuten da.</div>
-</div>
-<div class="faq-card">
-<button class="faq-question" onclick="toggleFaq(this)">Gibt es Rabatte für Großbestellungen?<span>+</span></button>
-<div class="faq-answer">Ja! Ab einer Menge von 101 Spawnern sinkt der Stückpreis automatisch auf 0.48 CHF.</div>
-</div>
+<div class="section-title">System FAQ</div>
+<div class="section-desc">Häufige Fragen und Antworten zur Lieferung.</div>
+<div style="max-width:800px; background:var(--card-bg); border:1px solid var(--border); border-radius:20px; padding:25px;">
+<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:10px;">Wie erfolgt die Übergabe?</div>
+<div style="color:var(--muted); font-size:13px; line-height:1.6;">Vollautomatisch über unseren Bot direkt nach Zahlungseingang auf dem Server.</div>
 </div>
 </section>
-
-<footer>
-<strong>🍩 DONUT<span>SHOP</span></strong>
-<div style="margin-top:6px;">Offizieller Donut SMP Community Store</div>
-<div style="margin-top:4px;color:var(--text-muted);font-size:12px;">Inoffizielles Fan-Projekt · 2026</div>
-</footer>
 </main>
 
 <div class="overlay" id="overlay" onclick="closeCart()"></div>
-<aside class="cart-sidebar" id="cartSidebar">
-<div class="cart-header">
-<div>
-<h3 style="font-size:18px;font-weight:800;">🛒 Dein Warenkorb</h3>
-<div style="color:var(--text-muted);font-size:11px;margin-top:2px;">Prüfe deine ausgewählten Artikel</div>
+<aside class="sidebar" id="sidebar">
+<div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:20px;">
+<div style="font-family:'Orbitron'; font-weight:900; font-size:18px;">Warenkorb</div>
+<button class="icon-btn" onclick="closeCart()" style="width:36px; height:36px;">✕</button>
 </div>
-<button class="close-cart" onclick="closeCart()">✕</button>
+<div id="cartList" style="flex:1; overflow-y:auto; padding:15px 0;"></div>
+<div style="border-top:1px solid var(--border); padding-top:20px;">
+<div style="display:flex; justify-content:space-between; font-family:'Orbitron'; font-weight:900; font-size:18px; margin-bottom:15px;">
+<span>Gesamt:</span><span id="cartSum" style="color:var(--primary);">0.00 CHF</span>
 </div>
-<div class="cart-items-container" id="cartItemsContainer"></div>
-<div class="cart-footer">
-<div class="coupon-box">
-<input class="coupon-input" id="couponInput" placeholder="Gutscheincode (z.B. DONUT10)">
-<button class="coupon-btn" onclick="applyCoupon()">Einlösen</button>
-</div>
-<div class="total-row"><span>Gesamtpreis:</span><strong id="cartTotalSum">0.00 CHF</strong></div>
-<input class="username-input" id="minecraftUsername" placeholder="🎮 Dein Minecraft Name">
-<button class="checkout-btn" onclick="checkout()">💳 Sicher bezahlen & Bestellen</button>
+<input class="cyber-input" id="mcName" placeholder="Minecraft Name" style="font-size:14px; margin-bottom:10px;">
+<button class="btn btn-cyber" style="width:100%;" onclick="checkout()">Checkout ausführen</button>
 </div>
 </aside>
 
-<div class="toast" id="toastBox">Benachrichtigung</div>
+<div class="toast" id="toast">Aktion erfolgreich</div>
 
 <script>
-const catalog = [
-    { id: "skeleton", name: "Skeleton Spawner", image: "💀", category: "spawner" },
-    { id: "iron-golem", name: "Iron Golem Spawner", image: "🤖", category: "spawner" },
-    
-    { id: "netherite-sword", name: "Netherite Sword", price: 2.50, image: "🗡️", category: "netherite" },
-    { id: "netherite-pickaxe", name: "Netherite Pickaxe", price: 3.00, image: "⛏️", category: "netherite" },
-    { id: "netherite-helmet", name: "Netherite Helmet", price: 3.50, image: "🪖", category: "netherite" },
-    { id: "netherite-chestplate", name: "Netherite Chestplate", price: 4.50, image: "🛡️", category: "netherite" },
-    { id: "netherite-leggings", name: "Netherite Leggings", price: 4.00, image: "👖", category: "netherite" },
-    { id: "netherite-boots", name: "Netherite Boots", price: 3.00, image: "🥾", category: "netherite" },
-    
-    { id: "elytra", name: "Elytra Pro", price: 35.00, image: "🪽", category: "special" },
-    { id: "dragon-head", name: "Dragon Head", price: 30.00, image: "🐉", category: "special" }
+const items = [
+    { id: 'skel', name: 'Skeleton Spawner', cat: 'spawner', icon: '💀' },
+    { id: 'golem', name: 'Iron Golem Spawner', cat: 'spawner', icon: '🤖' },
+    { id: 'sword', name: 'Netherite Sword', cat: 'gear', icon: '🗡️', price: 2.5 },
+    { id: 'pick', name: 'Netherite Pickaxe', cat: 'gear', icon: '⛏️', price: 3.0 },
+    { id: 'helm', name: 'Netherite Helmet', cat: 'gear', icon: '🪖', price: 3.5 },
+    { id: 'chest', name: 'Netherite Chest', cat: 'gear', icon: '🛡️', price: 4.5 },
+    { id: 'elytra', name: 'Elytra Pro', cat: 'gear', icon: '🪽', price: 35.0 },
 ];
 
-let cart = JSON.parse(localStorage.getItem("donut_cart_v4")) || [];
-let activeSpawner = catalog.find(p => p.category === "spawner");
-let discountMultiplier = 1.0;
-const moneyTable = { "1M": 0.02, "100M": 1.50, "500M": 7.50, "1B": 15.00, "2B": 23.00, "5B": 51.67, "10B": 100.00 };
+let cart = JSON.parse(localStorage.getItem('nexus_cart')) || [];
+let activeSpawner = items[0];
+
+function switchView(id) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById('view-' + id).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 function toggleTheme() {
-    let current = document.documentElement.getAttribute("data-theme");
-    let next = current === "light" ? "" : "light";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("donut_theme", next);
+    let curr = document.documentElement.getAttribute('data-theme');
+    let next = curr === 'light' ? '' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
 }
 
-if(localStorage.getItem("donut_theme") === "light") {
-    document.documentElement.setAttribute("data-theme", "light");
-}
-
-function showView(name) {
-    document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
-    document.getElementById("view-" + name).classList.add("active");
-    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
-    
-    const views = ["home", "spawner", "netherite", "special", "money", "info", "faq"];
-    const idx = views.indexOf(name);
-    if(idx >= 0) document.querySelectorAll(".nav-btn")[idx].classList.add("active");
-    window.scrollTo({top: 0, behavior: "smooth"});
-}
-
-function renderProducts() {
-    document.getElementById("spawnerProducts").innerHTML = catalog.filter(p => p.category === "spawner").map(p => `
-        <div class="product-card" style="cursor:pointer;" onclick="selectSpawner('${p.id}')">
-            <div class="product-img-box"><span class="product-tag">SPAWNER</span><div>${p.image}</div></div>
-            <div class="product-content">
-                <div>
-                    <div class="product-title">${p.name}</div>
-                    <div class="product-desc">Klicken zum Konfigurieren</div>
-                </div>
-                <div class="product-footer"><div class="product-price">0.50 CHF</div><div class="add-btn">⚡</div></div>
-            </div>
+function renderCatalog() {
+    document.getElementById('spawnerGrid').innerHTML = items.filter(i => i.cat === 'spawner').map(i => `
+        <div class="cyber-card" style="cursor:pointer;" onclick="activeSpawner = items.find(x => x.id === '${i.id}'); showToast(i.name + ' gewählt!');">
+            <div class="card-img"><span class="card-tag">SPAWNER</span>${i.icon}</div>
+            <div class="card-body"><div class="card-title">${i.name}</div></div>
+            <div class="card-footer"><div class="card-price">0.50 CHF</div><div class="buy-btn">⚡</div></div>
         </div>
-    `).join("");
+    `).join('');
 
-    document.getElementById("netheriteProducts").innerHTML = catalog.filter(p => p.category === "netherite").map(p => `
-        <div class="product-card">
-            <div class="product-img-box"><span class="product-tag">GEAR</span><div>${p.image}</div></div>
-            <div class="product-content">
-                <div>
-                    <div class="product-title">${p.name}</div>
-                    <div class="product-desc">Voll verzauberte Rüstung/Tool</div>
-                </div>
-                <div class="product-footer"><div class="product-price">${p.price.toFixed(2)} CHF</div><button class="add-btn" onclick="addSimple('${p.id}')">+</button></div>
-            </div>
+    document.getElementById('gearGrid').innerHTML = items.filter(i => i.cat === 'gear').map(i => `
+        <div class="cyber-card">
+            <div class="card-img"><span class="card-tag">GEAR</span>${i.icon}</div>
+            <div class="card-body"><div class="card-title">${i.name}</div><div class="card-text">Verzaubert & Bereit</div></div>
+            <div class="card-footer"><div class="card-price">${i.price.toFixed(2)} CHF</div><button class="buy-btn" onclick="addSimple('${i.id}')">+</button></div>
         </div>
-    `).join("");
-
-    document.getElementById("specialProducts").innerHTML = catalog.filter(p => p.category === "special").map(p => `
-        <div class="product-card">
-            <div class="product-img-box"><span class="product-tag">SPECIAL</span><div>${p.image}</div></div>
-            <div class="product-content">
-                <div>
-                    <div class="product-title">${p.name}</div>
-                    <div class="product-desc">Limitierter Seltenheitsgrad</div>
-                </div>
-                <div class="product-footer"><div class="product-price">${p.price.toFixed(2)} CHF</div><button class="add-btn" onclick="addSimple('${p.id}')">+</button></div>
-            </div>
-        </div>
-    `).join("");
+    `).join('');
 }
 
-function selectSpawner(id) {
-    activeSpawner = catalog.find(p => p.id === id);
-    showToast(activeSpawner.name + " ausgewählt!");
+function calcSpawner() {
+    let q = parseInt(document.getElementById('spawnerQty').value) || 1;
+    let unit = q > 100 ? 0.48 : 0.50;
+    document.getElementById('spawnerDisplayQty').textContent = q + 'x';
+    document.getElementById('spawnerTotalPrice').textContent = (q * unit).toFixed(2) + ' CHF';
 }
 
-function updateSpawnerPrice() {
-    let qty = parseInt(document.getElementById("spawnerQuantity").value);
-    if(isNaN(qty) || qty < 1) qty = 1;
-    document.getElementById("spawnerQuantity").value = qty;
-    let unit = qty > 100 ? 0.48 : 0.50;
-    let total = qty * unit;
-    document.getElementById("spawnerDisplay").textContent = qty + "x";
-    document.getElementById("unitPrice").textContent = unit.toFixed(2) + " CHF pro Stück";
-    document.getElementById("spawnerTotal").textContent = total.toFixed(2) + " CHF";
-}
-
-function setSpawnerQty(val) {
-    document.getElementById("spawnerQuantity").value = val;
-    updateSpawnerPrice();
-}
-
-function addSpawnerToCart() {
-    if(!activeSpawner) return;
-    let qty = parseInt(document.getElementById("spawnerQuantity").value);
-    let unit = qty > 100 ? 0.48 : 0.50;
-    let uniqueId = "spawner-" + activeSpawner.id + "-" + unit;
-    
-    let existing = cart.find(i => i.id === uniqueId);
-    if(existing) {
-        existing.quantity += qty;
-    } else {
-        cart.push({ id: uniqueId, name: activeSpawner.name + " (" + qty + "x)", image: activeSpawner.image, price: unit * qty, quantity: 1 });
-    }
-    saveAndRefresh();
+function addSpawnerCart() {
+    let q = parseInt(document.getElementById('spawnerQty').value) || 1;
+    let unit = q > 100 ? 0.48 : 0.50;
+    cart.push({ id: 'spawner-' + activeSpawner.id, name: activeSpawner.name + ' (' + q + 'x)', icon: activeSpawner.icon, price: q * unit, qty: 1 });
+    saveCart();
     openCart();
-    showToast(qty + "x " + activeSpawner.name + " in den Korb gelegt!");
 }
 
 function addSimple(id) {
-    let prod = catalog.find(p => p.id === id);
-    let existing = cart.find(i => i.id === id);
-    if(existing) {
-        existing.quantity++;
-    } else {
-        cart.push({ id: prod.id, name: prod.name, image: prod.image, price: prod.price, quantity: 1 });
-    }
-    saveAndRefresh();
+    let item = items.find(x => x.id === id);
+    cart.push({ id: item.id, name: item.name, icon: item.icon, price: item.price, qty: 1 });
+    saveCart();
     openCart();
-    showToast(prod.name + " hinzugefügt!");
 }
 
 function setMoney(val) {
-    document.getElementById("moneyInput").value = val;
-    updateMoneyPreview();
+    document.getElementById('moneyInput').value = val;
 }
 
-function updateMoneyPreview() {
-    let val = document.getElementById("moneyInput").value.trim().toUpperCase();
-    let price = moneyTable[val] || 15.00;
-    document.getElementById("moneyValueDisplay").textContent = val;
-    document.getElementById("moneyPriceDisplay").textContent = price.toFixed(2) + " CHF";
-}
-
-function addMoneyToCart() {
-    let val = document.getElementById("moneyInput").value.trim().toUpperCase();
-    let price = moneyTable[val] || 15.00;
-    let uniqueId = "money-" + val;
-    
-    let existing = cart.find(i => i.id === uniqueId);
-    if(existing) {
-        existing.quantity++;
-    } else {
-        cart.push({ id: uniqueId, name: val + " Ingame Money", image: "💰", price: price, quantity: 1 });
-    }
-    saveAndRefresh();
+function addMoneyCart() {
+    let val = document.getElementById('moneyInput').value;
+    let prices = { '100M': 1.5, '1B': 15.0, '5B': 51.67, '10B': 100.0 };
+    let price = prices[val] || 15.0;
+    cart.push({ id: 'money-' + val, name: val + ' Money', icon: '💰', price: price, qty: 1 });
+    saveCart();
     openCart();
-    showToast(val + " Money hinzugefügt!");
 }
 
-function applyCoupon() {
-    let code = document.getElementById("couponInput").value.trim().toUpperCase();
-    if(code === "DONUT10") {
-        discountMultiplier = 0.9;
-        showToast("Gutschein DONUT10 angewendet (-10%)!");
-    } else {
-        discountMultiplier = 1.0;
-        showToast("Ungültiger Gutscheincode!");
-    }
-    renderCart();
-}
-
-function saveAndRefresh() {
-    localStorage.setItem("donut_cart_v4", JSON.stringify(cart));
+function saveCart() {
+    localStorage.setItem('nexus_cart', JSON.stringify(cart));
     renderCart();
 }
 
 function renderCart() {
-    let totalCount = cart.reduce((acc, item) => acc + item.quantity, 0);
-    document.getElementById("cartCount").textContent = totalCount;
+    let totalCount = cart.reduce((acc, i) => acc + i.qty, 0);
+    document.getElementById('cartBadge').textContent = totalCount;
     
-    let container = document.getElementById("cartItemsContainer");
+    let list = document.getElementById('cartList');
     if(!cart.length) {
-        container.innerHTML = `<div style="text-align:center;padding:100px 20px;color:var(--text-muted);font-size:15px;">🛒<br><br>Dein Warenkorb ist aktuell leer.</div>`;
-        document.getElementById("cartTotalSum").textContent = "0.00 CHF";
+        list.innerHTML = '<div style="color:var(--muted); text-align:center; padding:50px;">Warenkorb leer</div>';
+        document.getElementById('cartSum').textContent = '0.00 CHF';
         return;
     }
 
-    container.innerHTML = cart.map((item, idx) => `
-        <div class="cart-item-row">
-            <div class="cart-item-img">${item.image}</div>
-            <div>
-                <div class="cart-item-title">${item.name}</div>
-                <div class="cart-item-price">${(item.price * item.quantity).toFixed(2)} CHF</div>
-                <div class="cart-item-qty">
-                    <button onclick="changeQty(${idx}, -1)">-</button>
-                    <span>${item.quantity}</span>
-                    <button onclick="changeQty(${idx}, 1)">+</button>
+    list.innerHTML = cart.map((i, idx) => `
+        <div style="display:flex; justify-content:space-between; align-items:center; background:var(--bg); border:1px solid var(--border); padding:12px; border-radius:12px; margin-bottom:10px;">
+            <div style="display:flex; gap:10px; align-items:center;">
+                <span style="font-size:22px;">${i.icon}</span>
+                <div>
+                    <div style="font-family:'Orbitron'; font-size:12px; font-weight:700;">${i.name}</div>
+                    <div style="color:var(--primary); font-size:12px; font-weight:900;">${i.price.toFixed(2)} CHF</div>
                 </div>
             </div>
-            <button class="remove-item" onclick="removeItem(${idx})">✕</button>
+            <button onclick="cart.splice(${idx},1);saveCart();" style="background:transparent; border:0; color:var(--secondary); font-weight:900; cursor:pointer;">✕</button>
         </div>
-    `).join("");
+    `).join('');
 
-    let baseSum = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    let finalSum = baseSum * discountMultiplier;
-    document.getElementById("cartTotalSum").textContent = finalSum.toFixed(2) + " CHF";
-}
-
-function changeQty(idx, amount) {
-    cart[idx].quantity += amount;
-    if(cart[idx].quantity <= 0) cart.splice(idx, 1);
-    saveAndRefresh();
-}
-
-function removeItem(idx) {
-    cart.splice(idx, 1);
-    saveAndRefresh();
+    let sum = cart.reduce((acc, i) => acc + i.price, 0);
+    document.getElementById('cartSum').textContent = sum.toFixed(2) + ' CHF';
 }
 
 function openCart() {
-    document.getElementById("cartSidebar").classList.add("active");
-    document.getElementById("overlay").classList.add("active");
+    document.getElementById('sidebar').classList.add('active');
+    document.getElementById('overlay').classList.add('active');
 }
 
 function closeCart() {
-    document.getElementById("cartSidebar").classList.remove("active");
-    document.getElementById("overlay").classList.remove("active");
+    document.getElementById('sidebar').classList.remove('active');
+    document.getElementById('overlay').classList.remove('active');
 }
 
 function showToast(msg) {
-    let box = document.getElementById("toastBox");
-    box.textContent = msg;
-    box.classList.add("show");
-    setTimeout(() => box.classList.remove("show"), 2600);
-}
-
-function toggleFaq(btn) {
-    btn.parentElement.classList.toggle("open");
+    let t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2000);
 }
 
 function checkout() {
-    let username = document.getElementById("minecraftUsername").value.trim();
-    if(!username) return showToast("Bitte gib deinen Minecraft-Namen ein!");
-    if(!cart.length) return showToast("Dein Warenkorb ist leer!");
-    showToast("Bestellung erfolgreich für: " + username);
-    setTimeout(() => {
-        cart = [];
-        saveAndRefresh();
-        closeCart();
-    }, 1500);
+    let name = document.getElementById('mcName').value;
+    if(!name) return showToast('Minecraft Name erforderlich!');
+    showToast('Bestellung gesendet für ' + name);
+    setTimeout(() => { cart = []; saveCart(); closeCart(); }, 1500);
 }
 
-renderProducts();
+renderCatalog();
 renderCart();
-updateMoneyPreview();
+calcSpawner();
 </script>
 </body>
 </html>
