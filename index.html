@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DONUT SMP // ULTIMATE NEXUS HUB v7 (MASSIVE EDITION)</title>
+<title>DONUT SMP // ULTIMATE NEXUS HUB v8 (MASSIVE & CHEAP)</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -151,7 +151,7 @@ main { width: 94%; max-width: 1550px; margin: auto; padding-top: 150px; padding-
 }
 
 .hero {
-    min-height: 460px;
+    min-height: 440px;
     display: grid;
     grid-template-columns: 1.3fr 0.7fr;
     gap: 40px;
@@ -160,8 +160,6 @@ main { width: 94%; max-width: 1550px; margin: auto; padding-top: 150px; padding-
     border: 1px solid var(--border);
     border-radius: 30px;
     padding: 50px;
-    position: relative;
-    overflow: hidden;
 }
 
 .hero-tag {
@@ -272,11 +270,11 @@ h1 {
 .cyber-card:hover { border-color: var(--primary); box-shadow: 0 0 25px var(--glow); transform: translateY(-4px); }
 
 .card-img {
-    height: 140px;
+    height: 130px;
     background: rgba(0,0,0,0.3);
     display: grid;
     place-items: center;
-    font-size: 45px;
+    font-size: 40px;
     position: relative;
 }
 
@@ -293,21 +291,21 @@ h1 {
     color: var(--primary);
 }
 
-.card-body { padding: 18px; }
-.card-title { font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 700; }
-.card-text { color: var(--muted); font-size: 12px; margin-top: 6px; display: flex; justify-content: space-between; }
+.card-body { padding: 16px; }
+.card-title { font-family: 'Orbitron', sans-serif; font-size: 13px; font-weight: 700; }
+.card-text { color: var(--muted); font-size: 11px; margin-top: 5px; display: flex; justify-content: space-between; }
 
 .card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 18px;
+    padding: 12px 16px;
     border-top: 1px solid var(--border);
 }
 .action-btns { display: flex; gap: 8px; width: 100%; }
 .mini-btn {
     flex: 1;
-    padding: 10px;
+    padding: 9px;
     border-radius: 10px;
     font-size: 11px;
     font-weight: 900;
@@ -317,9 +315,7 @@ h1 {
     text-align: center;
 }
 .btn-buy-mini { background: var(--primary); color: #010603; }
-.btn-buy-mini:hover { filter: brightness(1.1); }
 .btn-sell-mini { background: var(--accent); color: #010603; }
-.btn-sell-mini:hover { filter: brightness(1.1); }
 
 .shop-layout { display: grid; grid-template-columns: 1fr 400px; gap: 24px; }
 .panel { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 30px; }
@@ -404,41 +400,41 @@ DONUT<span>MARKET</span>
 <section class="view active" id="view-home">
 <div class="hero">
 <div>
-<div class="hero-tag">// ULTIMATE DONUT SMP MARKETPLACE v7</div>
-<h1>JEDES ITEM KAUFEN & <span class="highlight">VERKAUFEN.</span></h1>
-<p>Der offizielle Marktplatz für Spawner, Basen, Geld und hunderte Minecraft-Items. Verkaufe Spawner & Geld für 35% weniger oder jedes beliebige Item für 50% weniger an den Bot. Günstigstes Basis-Item: Gold Ingot.</p>
+<div class="hero-tag">// ULTIMATE DONUT SMP MARKETPLACE v8</div>
+<h1>MASSIV ERWEITERT & <span class="highlight">EXTREM GÜNSTIG.</span></h1>
+<p>Jetzt mit über 35 brandneuen Items! Häufige Ressourcen wie Iron Ingots, Coal und Baublöcke sind extrem günstig. Verkaufen kannst du alles im Shop (-50% für Items, -35% für Spawner & Geld).</p>
 <div class="hero-btns">
-<button class="btn btn-cyber" onclick="switchView('catalog')">Item-Katalog öffnen</button>
-<button class="btn btn-sell" onclick="switchView('money')">Geld verkaufen (-35%)</button>
+<button class="btn btn-cyber" onclick="switchView('catalog')">Riesen Item-Katalog</button>
+<button class="btn btn-sell" onclick="switchView('money')">Geld verkaufen</button>
 </div>
 </div>
 <div class="hero-stats">
 <div class="stat-box">
-<div class="stat-val">50+</div>
-<div class="stat-lbl">Verfügbare Items</div>
+<div class="stat-val">40+</div>
+<div class="stat-lbl">Minecraft Items</div>
 </div>
 <div class="stat-box">
-<div class="stat-val">50%</div>
-<div class="stat-lbl">Item-Verkauf</div>
+<div class="stat-val">-50%</div>
+<div class="stat-lbl">Item Verkauf</div>
 </div>
 <div class="stat-box">
-<div class="stat-val">35%</div>
+<div class="stat-val">-35%</div>
 <div class="stat-lbl">Spawner & Geld</div>
 </div>
 <div class="stat-box">
-<div class="stat-val">24/7</div>
-<div class="stat-lbl">Server Bot</div>
+<div class="stat-val">0.05 CHF</div>
+<div class="stat-lbl">Startpreis (Ultra Billig)</div>
 </div>
 </div>
 </div>
 </section>
 
-<!-- CATALOG VIEW (ALL ITEMS) -->
+<!-- CATALOG VIEW -->
 <section class="view" id="view-catalog">
 <div class="section-header">
 <div>
-<div class="section-title">Vollständiger Minecraft Item-Katalog</div>
-<div class="section-desc">Günstigstes Item ist der Goldbarren (Gold Ingot). Preise berechnen sich nach Seltenheit. Kaufen & Verkaufen (-50%) aktiv!</div>
+<div class="section-title">Vollständiger Item-Katalog (Ultra Günstig)</div>
+<div class="section-desc">Günstige Startpreise für Steine, Erze und Baublöcke. Gold Ingot = 0.20 CHF.</div>
 </div>
 <div class="filter-bar">
 <button class="filter-btn active" onclick="filterCatalog('all', this)">Alle</button>
@@ -451,12 +447,12 @@ DONUT<span>MARKET</span>
 <div class="grid-4" id="catalogGrid"></div>
 </section>
 
-<!-- SPAWNER & BASES VIEW -->
+<!-- SPAWNER VIEW -->
 <section class="view" id="view-spawner">
 <div class="section-header">
 <div>
 <div class="section-title">Spawner & Automatik-Basen</div>
-<div class="section-desc">Spawner und Basen handeln. Der Verkauf bringt dir exakt 35% weniger als der Kaufpreis ein.</div>
+<div class="section-desc">Spawner kaufen oder für 35% weniger als den Kaufpreis an den Server verkaufen.</div>
 </div>
 </div>
 <div class="grid-4" id="spawnerGrid"></div>
@@ -467,12 +463,12 @@ DONUT<span>MARKET</span>
 <div class="section-header">
 <div>
 <div class="section-title">Ingame-Geld (Money) Markt</div>
-<div class="section-desc">Kaufe Guthaben oder verkaufe dein Geld direkt an den Server (35% Abzug).</div>
+<div class="section-desc">Guthaben kaufen oder direkt für 35% weniger an den Bot verkaufen.</div>
 </div>
 </div>
 <div class="shop-layout">
 <div class="panel">
-<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:8px;">Geld-Betrag auswählen</div>
+<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:8px;">Geld-Betrag wählen</div>
 <input class="cyber-input" id="moneyInput" value="1B" style="margin-bottom:14px;">
 <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px;">
 <button class="btn btn-outline" onclick="setMoney('100M')">100M</button>
@@ -486,11 +482,10 @@ DONUT<span>MARKET</span>
 </div>
 </div>
 <div class="panel">
-<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:14px;">Handels-Tabelle & Konditionen</div>
+<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:14px;">Übersicht Konditionen</div>
 <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>100M Money</span><strong style="color:var(--primary);">1.50 CHF</strong></div>
 <div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>1B Money (Kauf)</span><strong style="color:var(--primary);">15.00 CHF</strong></div>
-<div style="display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>1B Money (Verkauf -35%)</span><strong style="color:var(--accent);">9.75 CHF</strong></div>
-<div style="display:flex; justify-content:space-between; padding:10px 0; font-size:13px;"><span>5B Money (Verkauf -35%)</span><strong style="color:var(--accent);">33.58 CHF</strong></div>
+<div style="display:flex; justify-content:space-between; padding:10px 0; font-size:13px;"><span>1B Money (Verkauf -35%)</span><strong style="color:var(--accent);">9.75 CHF</strong></div>
 </div>
 </div>
 </section>
@@ -515,23 +510,35 @@ DONUT<span>MARKET</span>
 <div class="toast" id="toast">Aktion erfolgreich ausgeführt</div>
 
 <script>
-// Massive Item-Datenbank (Günstigstes Item = Gold Ingot mit 0.20 CHF)
+// Massiv erweiterte Item-Liste mit extrem billigen Standard-Items (Iron Ingot, Coal, Cobblestone etc.)
 const allItems = [
+    { id: 'cobblestone', name: 'Cobblestone (64x)', cat: 'catalog', icon: '🪨', price: 0.05, rarity: 'Häufig' },
+    { id: 'dirt', name: 'Dirt Block (64x)', cat: 'catalog', icon: '🟫', price: 0.05, rarity: 'Häufig' },
+    { id: 'oak_wood', name: 'Oak Wood (64x)', cat: 'catalog', icon: '🪵', price: 0.08, rarity: 'Häufig' },
+    { id: 'coal', name: 'Coal (64x)', cat: 'catalog', icon: '⬛', price: 0.10, rarity: 'Häufig' },
+    { id: 'iron_ingot', name: 'Iron Ingot', cat: 'catalog', icon: '🔩', price: 0.12, rarity: 'Häufig' },
+    { id: 'redstone', name: 'Redstone Dust', cat: 'catalog', icon: '🔴', price: 0.10, rarity: 'Häufig' },
+    { id: 'lapis', name: 'Lapis Lazuli', cat: 'catalog', icon: '🔵', price: 0.15, rarity: 'Häufig' },
+    { id: 'glass', name: 'Glass (64x)', cat: 'catalog', icon: '🪟', price: 0.10, rarity: 'Häufig' },
+    { id: 'wheat', name: 'Wheat (64x)', cat: 'catalog', icon: '🌾', price: 0.08, rarity: 'Häufig' },
+    { id: 'bread', name: 'Bread (64x)', cat: 'catalog', icon: '🍞', price: 0.10, rarity: 'Häufig' },
     { id: 'gold', name: 'Gold Ingot', cat: 'catalog', icon: '🟡', price: 0.20, rarity: 'Häufig' },
-    { id: 'coal', name: 'Coal', cat: 'catalog', icon: '⬛', price: 0.10, rarity: 'Häufig' },
-    { id: 'iron_ingot', name: 'Iron Ingot', cat: 'catalog', icon: '🔩', price: 0.30, rarity: 'Häufig' },
-    { id: 'redstone', name: 'Redstone Dust', cat: 'catalog', icon: '🔴', price: 0.25, rarity: 'Häufig' },
-    { id: 'lapis', name: 'Lapis Lazuli', cat: 'catalog', icon: '🔵', price: 0.35, rarity: 'Häufig' },
-    { id: 'emerald', name: 'Emerald', cat: 'catalog', icon: '🟢', price: 0.80, rarity: 'Selten' },
-    { id: 'diamond', name: 'Diamond', cat: 'catalog', icon: '💎', price: 1.20, rarity: 'Selten' },
-    { id: 'obsidian', name: 'Obsidian Block', cat: 'catalog', icon: '🔲', price: 0.60, rarity: 'Selten' },
-    { id: 'ender_pearl', name: 'Ender Pearl', cat: 'catalog', icon: '🧿', price: 0.90, rarity: 'Selten' },
-    { id: 'netherite_scrap', name: 'Netherite Scrap', cat: 'catalog', icon: '🧱', price: 3.50, rarity: 'Episch' },
-    { id: 'netherite_ingot', name: 'Netherite Ingot', cat: 'catalog', icon: '🛡️', price: 14.00, rarity: 'Episch' },
-    { id: 'totem', name: 'Totem of Undying', cat: 'catalog', icon: '🗿', price: 5.00, rarity: 'Episch' },
-    { id: 'beacon', name: 'Beacon', cat: 'catalog', icon: '🌟', price: 12.50, rarity: 'Legendär' },
-    { id: 'elytra', name: 'Elytra', cat: 'catalog', icon: '🪽', price: 29.99, rarity: 'Legendär' },
-    { id: 'nether_star', name: 'Nether Star', cat: 'catalog', icon: '✨', price: 18.00, rarity: 'Legendär' },
+    { id: 'string', name: 'String', cat: 'catalog', icon: '🧵', price: 0.15, rarity: 'Häufig' },
+    { id: 'leather', name: 'Leather', cat: 'catalog', icon: '🟤', price: 0.15, rarity: 'Häufig' },
+    { id: 'feather', name: 'Feather', cat: 'catalog', icon: '🪶', price: 0.12, rarity: 'Häufig' },
+    { id: 'gunpowder', name: 'Gunpowder', cat: 'catalog', icon: '💣', price: 0.25, rarity: 'Selten' },
+    { id: 'ender_pearl', name: 'Ender Pearl', cat: 'catalog', icon: '🧿', price: 0.40, rarity: 'Selten' },
+    { id: 'emerald', name: 'Emerald', cat: 'catalog', icon: '🟢', price: 0.50, rarity: 'Selten' },
+    { id: 'diamond', name: 'Diamond', cat: 'catalog', icon: '💎', price: 0.75, rarity: 'Selten' },
+    { id: 'obsidian', name: 'Obsidian Block', cat: 'catalog', icon: '🔲', price: 0.30, rarity: 'Selten' },
+    { id: 'blaze_rod', name: 'Blaze Rod', cat: 'catalog', icon: '🔥', price: 0.60, rarity: 'Selten' },
+    { id: 'netherite_scrap', name: 'Netherite Scrap', cat: 'catalog', icon: '🧱', price: 2.00, rarity: 'Episch' },
+    { id: 'netherite_ingot', name: 'Netherite Ingot', cat: 'catalog', icon: '🛡️', price: 8.50, rarity: 'Episch' },
+    { id: 'totem', name: 'Totem of Undying', cat: 'catalog', icon: '🗿', price: 3.50, rarity: 'Episch' },
+    { id: 'shulker_box', name: 'Shulker Box', cat: 'catalog', icon: '📦', price: 2.50, rarity: 'Episch' },
+    { id: 'beacon', name: 'Beacon', cat: 'catalog', icon: '🌟', price: 7.50, rarity: 'Legendär' },
+    { id: 'elytra', name: 'Elytra', cat: 'catalog', icon: '🪽', price: 18.00, rarity: 'Legendär' },
+    { id: 'nether_star', name: 'Nether Star', cat: 'catalog', icon: '✨', price: 10.00, rarity: 'Legendär' },
 
     { id: 'skel', name: 'Skeleton Spawner', cat: 'spawner', icon: '💀', price: 0.50, rarity: 'Spawner' },
     { id: 'zombie', name: 'Zombie Spawner', cat: 'spawner', icon: '🧟', price: 0.50, rarity: 'Spawner' },
@@ -543,7 +550,7 @@ const allItems = [
     { id: 'base_claim', name: 'Claim Bunker Base', cat: 'spawner', icon: '🏰', price: 24.99, rarity: 'Base' }
 ];
 
-let cart = JSON.parse(localStorage.getItem('nexus_hub_v7')) || [];
+let cart = JSON.parse(localStorage.getItem('nexus_hub_v8')) || [];
 let currentFilter = 'all';
 
 function switchView(id) {
@@ -566,7 +573,6 @@ function filterCatalog(rarity, btn) {
 }
 
 function renderShops() {
-    // Katalog-Ansicht (Verkaufspreis = -50% für normale Items)
     let filteredItems = allItems.filter(i => i.cat === 'catalog' && (currentFilter === 'all' || i.rarity === currentFilter));
     document.getElementById('catalogGrid').innerHTML = filteredItems.map(i => {
         let sellPrice = (i.price * 0.50).toFixed(2);
@@ -575,7 +581,7 @@ function renderShops() {
                 <div class="card-img"><span class="card-tag">${i.rarity}</span>${i.icon}</div>
                 <div class="card-body">
                     <div class="card-title">${i.name}</div>
-                    <div class="card-text"><span>Kaufpreis:</span><strong style="color:var(--primary);">${i.price.toFixed(2)} CHF</strong></div>
+                    <div class="card-text"><span>Kauf:</span><strong style="color:var(--primary);">${i.price.toFixed(2)} CHF</strong></div>
                     <div class="card-text"><span>Verkauf (-50%):</span><strong style="color:var(--accent);">${sellPrice} CHF</strong></div>
                 </div>
                 <div class="card-footer">
@@ -588,7 +594,6 @@ function renderShops() {
         `;
     }).join('');
 
-    // Spawner & Basen Ansicht (Verkaufspreis = -35%)
     document.getElementById('spawnerGrid').innerHTML = allItems.filter(i => i.cat === 'spawner').map(i => {
         let sellPrice = (i.price * 0.65).toFixed(2);
         return `
@@ -596,7 +601,7 @@ function renderShops() {
                 <div class="card-img"><span class="card-tag">${i.rarity}</span>${i.icon}</div>
                 <div class="card-body">
                     <div class="card-title">${i.name}</div>
-                    <div class="card-text"><span>Kaufpreis:</span><strong style="color:var(--primary);">${i.price.toFixed(2)} CHF</strong></div>
+                    <div class="card-text"><span>Kauf:</span><strong style="color:var(--primary);">${i.price.toFixed(2)} CHF</strong></div>
                     <div class="card-text"><span>Verkauf (-35%):</span><strong style="color:var(--accent);">${sellPrice} CHF</strong></div>
                 </div>
                 <div class="card-footer">
@@ -619,7 +624,6 @@ function handleMoneyAction(type) {
     let prices = { '100M': 1.5, '1B': 15.0, '5B': 51.67, '10B': 100.0 };
     let basePrice = prices[val] || 15.0;
     
-    // Geld hat 35% Abzug beim Verkauf
     let finalPrice = type === 'buy' ? basePrice : basePrice * 0.65;
     let name = type === 'buy' ? val + ' Money (Kauf)' : val + ' Money (Verkauf -35%)';
     
@@ -632,7 +636,6 @@ function addToCart(id, type) {
     let item = allItems.find(x => x.id === id);
     let isSpawnerOrBase = item.cat === 'spawner';
     
-    // Spawner/Basen = 35% Abzug beim Verkauf, normale Items = 50% Abzug
     let mult = type === 'buy' ? 1.0 : (isSpawnerOrBase ? 0.65 : 0.50);
     let finalPrice = item.price * mult;
     let name = type === 'buy' ? item.name + ' (Kauf)' : item.name + ' (Verkauf -' + (isSpawnerOrBase ? '35%' : '50%') + ')';
@@ -643,7 +646,7 @@ function addToCart(id, type) {
 }
 
 function saveCart() {
-    localStorage.setItem('nexus_hub_v7', JSON.stringify(cart));
+    localStorage.setItem('nexus_hub_v8', JSON.stringify(cart));
     renderCart();
 }
 
@@ -652,7 +655,7 @@ function renderCart() {
     let list = document.getElementById('cartList');
     
     if(!cart.length) {
-        list.innerHTML = '<div style="color:var(--muted); text-align:center; padding:60px 20px;">Dein Warenkorb / Transaktions-Log ist leer.</div>';
+        list.innerHTML = '<div style="color:var(--muted); text-align:center; padding:60px 20px;">Dein Warenkorb ist leer.</div>';
         document.getElementById('cartSum').textContent = '0.00 CHF';
         return;
     }
@@ -694,7 +697,7 @@ function showToast(msg) {
 function checkout() {
     let name = document.getElementById('mcName').value;
     if(!name) return showToast('Bitte gib deinen Minecraft Namen ein!');
-    showToast('Erfolgreich eingereicht für Ingame-Abwicklung: ' + name);
+    showToast('Erfolgreich eingereicht für: ' + name);
     setTimeout(() => { cart = []; saveCart(); closeCart(); }, 1600);
 }
 
