@@ -7,57 +7,46 @@
 <title>DonutShop — Minecraft Community Store</title>
 
 <meta name="description"
-content="DonutShop – Minecraft Spawner, Elytra und seltene Items.">
+content="DonutShop – Minecraft Spawner, Netherite, Elytra und seltene Items.">
 
 <style>
 
-/* =========================================================
-   DONUTSHOP
-   MODERN MINECRAFT COMMUNITY SHOP
-   ========================================================= */
-
 :root {
-    --bg: #05030a;
-    --bg2: #0a0611;
-    --panel: rgba(255,255,255,.045);
-    --panel2: rgba(255,255,255,.07);
+    --bg:#05030a;
+    --bg2:#0a0611;
+    --panel:rgba(255,255,255,.045);
+    --panel2:rgba(255,255,255,.07);
+    --border:rgba(255,255,255,.09);
 
-    --border: rgba(255,255,255,.09);
+    --purple:#8b3dff;
+    --purple2:#b76cff;
+    --pink:#ef4cff;
 
-    --purple: #8b3dff;
-    --purple2: #b76cff;
-    --pink: #ef4cff;
+    --green:#35e58d;
+    --red:#ff5475;
+    --gold:#ffc857;
+    --blue:#5c9dff;
 
-    --green: #35e58d;
-    --red: #ff5475;
-    --gold: #ffc857;
-    --blue: #5c9dff;
+    --text:#fff;
+    --muted:#95899f;
 
-    --text: #fff;
-    --muted: #95899f;
-
-    --radius: 20px;
+    --radius:20px;
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior:smooth;
 }
 
 body {
-    min-height: 100vh;
-    color: var(--text);
-
-    font-family:
-        Inter,
-        Arial,
-        Helvetica,
-        sans-serif;
+    min-height:100vh;
+    color:var(--text);
+    font-family:Inter,Arial,Helvetica,sans-serif;
 
     background:
         radial-gradient(
@@ -72,41 +61,41 @@ body {
         ),
         var(--bg);
 
-    overflow-x: hidden;
+    overflow-x:hidden;
 }
 
 button,
 input,
 select {
-    font: inherit;
+    font:inherit;
 }
 
 button {
-    cursor: pointer;
+    cursor:pointer;
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width:8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #05030a;
+    background:#05030a;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #4a2070;
-    border-radius: 20px;
+    background:#4a2070;
+    border-radius:20px;
 }
 
-/* =========================================================
+/* =========================
    BACKGROUND
-   ========================================================= */
+========================= */
 
 .grid-bg {
-    position: fixed;
-    inset: 0;
-    z-index: -5;
-    opacity: .18;
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    opacity:.18;
 
     background-image:
         linear-gradient(
@@ -119,86 +108,80 @@ button {
             transparent 1px
         );
 
-    background-size: 55px 55px;
+    background-size:55px 55px;
 }
 
 .glow {
-    position: fixed;
-    width: 450px;
-    height: 450px;
-
-    border-radius: 50%;
-    filter: blur(120px);
-
-    opacity: .09;
-    pointer-events: none;
-    z-index: -4;
+    position:fixed;
+    width:450px;
+    height:450px;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:.09;
+    pointer-events:none;
+    z-index:-4;
 }
 
 .glow.one {
-    background: var(--purple);
-    left: -220px;
-    top: 20%;
+    background:var(--purple);
+    left:-220px;
+    top:20%;
 }
 
 .glow.two {
-    background: var(--pink);
-    right: -220px;
-    top: 50%;
+    background:var(--pink);
+    right:-220px;
+    top:50%;
 }
 
-/* =========================================================
+/* =========================
    HEADER
-   ========================================================= */
+========================= */
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
 
-    height: 76px;
-    z-index: 1000;
+    min-height:76px;
+    z-index:1000;
 
-    background:
-        rgba(5,3,10,.78);
+    background:rgba(5,3,10,.78);
+    backdrop-filter:blur(20px);
 
-    backdrop-filter: blur(20px);
-
-    border-bottom:
-        1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
 .header-inner {
-    width: min(1450px, 94%);
-    height: 100%;
-    margin: auto;
+    width:min(1450px,94%);
+    min-height:76px;
+    margin:auto;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display:flex;
+    align-items:center;
+    gap:10px;
 
-    text-decoration: none;
-    color: white;
-
-    font-weight: 1000;
+    text-decoration:none;
+    color:white;
+    font-weight:1000;
 }
 
 .logo-icon {
-    width: 44px;
-    height: 44px;
+    width:44px;
+    height:44px;
 
-    display: grid;
-    place-items: center;
+    display:grid;
+    place-items:center;
 
-    border-radius: 13px;
+    border-radius:13px;
 
     background:
         linear-gradient(
@@ -211,161 +194,151 @@ header {
         0 0 35px
         rgba(139,61,255,.3);
 
-    font-size: 24px;
+    font-size:24px;
 }
 
-.logo span {
-    color: var(--purple2);
+.logo span,
+footer span {
+    color:var(--purple2);
 }
 
 nav {
-    display: flex;
-    gap: 4px;
+    display:flex;
+    gap:4px;
 }
 
 .nav-btn {
-    padding: 10px 13px;
+    padding:10px 13px;
 
-    border: 0;
-    border-radius: 10px;
+    border:0;
+    border-radius:10px;
 
-    background: transparent;
-    color: var(--muted);
+    background:transparent;
+    color:var(--muted);
 
-    font-size: 12px;
-    font-weight: 900;
+    font-size:12px;
+    font-weight:900;
 
-    transition: .2s;
+    transition:.2s;
 }
 
 .nav-btn:hover,
 .nav-btn.active {
-    color: white;
-    background:
-        rgba(139,61,255,.13);
+    color:white;
+    background:rgba(139,61,255,.13);
 }
 
 .cart-button {
-    position: relative;
+    position:relative;
 
-    width: 44px;
-    height: 44px;
+    width:44px;
+    height:44px;
 
-    border:
-        1px solid var(--border);
+    border:1px solid var(--border);
+    border-radius:12px;
 
-    border-radius: 12px;
+    background:rgba(255,255,255,.04);
+    color:white;
 
-    background:
-        rgba(255,255,255,.04);
-
-    color: white;
-
-    font-size: 18px;
+    font-size:18px;
 }
 
 .cart-count {
-    position: absolute;
+    position:absolute;
 
-    top: -7px;
-    right: -6px;
+    top:-7px;
+    right:-6px;
 
-    min-width: 20px;
-    height: 20px;
+    min-width:20px;
+    height:20px;
 
-    display: grid;
-    place-items: center;
+    display:grid;
+    place-items:center;
 
-    border-radius: 50px;
+    border-radius:50px;
 
-    background: var(--purple);
+    background:var(--purple);
 
-    font-size: 9px;
-    font-weight: 1000;
+    font-size:9px;
+    font-weight:1000;
 }
 
-/* =========================================================
+/* =========================
    MAIN
-   ========================================================= */
+========================= */
 
 main {
-    width: min(1450px, 94%);
-    margin: auto;
+    width:min(1450px,94%);
+    margin:auto;
 
-    padding-top: 115px;
-    padding-bottom: 80px;
+    padding-top:115px;
+    padding-bottom:80px;
 }
 
 .view {
-    display: none;
-    animation: fadeIn .35s ease;
+    display:none;
+    animation:fadeIn .35s ease;
 }
 
 .view.active {
-    display: block;
+    display:block;
 }
 
 @keyframes fadeIn {
     from {
-        opacity: 0;
-        transform: translateY(12px);
+        opacity:0;
+        transform:translateY(12px);
     }
 
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity:1;
+        transform:translateY(0);
     }
 }
 
-/* =========================================================
+/* =========================
    HERO
-   ========================================================= */
+========================= */
 
 .hero {
-    min-height: 670px;
+    min-height:670px;
 
-    display: grid;
-    grid-template-columns:
-        1.05fr
-        .95fr;
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
 
-    align-items: center;
-    gap: 70px;
+    align-items:center;
+    gap:70px;
 }
 
 .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
 
-    padding: 8px 13px;
+    padding:8px 13px;
 
-    border-radius: 50px;
+    border-radius:50px;
 
-    color: #d5b9ff;
+    color:#d5b9ff;
 
-    background:
-        rgba(139,61,255,.10);
+    background:rgba(139,61,255,.10);
 
-    border:
-        1px solid
+    border:1px solid
         rgba(139,61,255,.25);
 
-    font-size: 10px;
-    font-weight: 1000;
-    letter-spacing: 1px;
+    font-size:10px;
+    font-weight:1000;
+    letter-spacing:1px;
 }
 
 .hero h1 {
-    margin-top: 22px;
+    margin-top:22px;
 
-    font-size:
-        clamp(55px, 7vw, 100px);
+    font-size:clamp(55px,7vw,100px);
 
-    line-height: .9;
-
-    letter-spacing: -7px;
-    font-weight: 1000;
+    line-height:.9;
+    letter-spacing:-7px;
+    font-weight:1000;
 }
 
 .gradient {
@@ -377,47 +350,44 @@ main {
             #ef4cff
         );
 
-    -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-background-clip:text;
+    background-clip:text;
 
-    color: transparent;
+    color:transparent;
 }
 
 .hero p {
-    max-width: 680px;
+    max-width:680px;
+    margin-top:28px;
 
-    margin-top: 28px;
+    color:#bcb1c5;
 
-    color: #bcb1c5;
-
-    line-height: 1.8;
-    font-size: 16px;
+    line-height:1.8;
+    font-size:16px;
 }
 
 .hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
+    display:flex;
+    flex-wrap:wrap;
 
-    gap: 10px;
-
-    margin-top: 30px;
+    gap:10px;
+    margin-top:30px;
 }
 
 .btn {
-    padding: 14px 20px;
+    padding:14px 20px;
 
-    border-radius: 12px;
+    border-radius:12px;
+    border:0;
 
-    border: 0;
+    color:white;
+    font-weight:1000;
 
-    color: white;
-    font-weight: 1000;
-
-    transition: .2s;
+    transition:.2s;
 }
 
 .btn:hover {
-    transform: translateY(-2px);
+    transform:translateY(-2px);
 }
 
 .primary {
@@ -434,50 +404,46 @@ main {
 }
 
 .secondary {
-    background:
-        rgba(255,255,255,.045);
+    background:rgba(255,255,255,.045);
 
-    border:
-        1px solid var(--border);
+    border:1px solid var(--border);
 }
 
 .hero-stats {
-    display: flex;
-    flex-wrap: wrap;
+    display:flex;
+    flex-wrap:wrap;
 
-    gap: 35px;
-
-    margin-top: 45px;
+    gap:35px;
+    margin-top:45px;
 }
 
 .stat strong {
-    display: block;
-    font-size: 23px;
+    display:block;
+    font-size:23px;
 }
 
 .stat span {
-    color: var(--muted);
-    font-size: 11px;
+    color:var(--muted);
+    font-size:11px;
 }
 
-/* =========================================================
-   HERO VISUAL
-   ========================================================= */
+/* =========================
+   HERO CARD
+========================= */
 
 .hero-card {
-    min-height: 500px;
+    min-height:500px;
 
-    position: relative;
+    position:relative;
 
-    display: grid;
-    place-items: center;
+    display:grid;
+    place-items:center;
 
-    overflow: hidden;
+    overflow:hidden;
 
-    border-radius: 32px;
+    border-radius:32px;
 
-    border:
-        1px solid
+    border:1px solid
         rgba(183,108,255,.2);
 
     background:
@@ -498,60 +464,56 @@ main {
 }
 
 .hero-card::before {
-    content: "";
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    width: 390px;
-    height: 390px;
+    width:390px;
+    height:390px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    border:
-        1px solid
+    border:1px solid
         rgba(255,255,255,.10);
 
-    animation:
-        rotate 18s linear infinite;
+    animation:rotate 18s linear infinite;
 }
 
 .hero-card::after {
-    content: "";
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    width: 260px;
-    height: 260px;
+    width:260px;
+    height:260px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    border:
-        1px dashed
+    border:1px dashed
         rgba(183,108,255,.35);
 
-    animation:
-        rotate 11s linear infinite reverse;
+    animation:rotate 11s linear infinite reverse;
 }
 
 @keyframes rotate {
     to {
-        transform: rotate(360deg);
+        transform:rotate(360deg);
     }
 }
 
 .hero-item {
-    position: relative;
-    z-index: 5;
+    position:relative;
+    z-index:5;
 
-    width: 210px;
-    height: 210px;
+    width:210px;
+    height:210px;
 
-    display: grid;
-    place-items: center;
+    display:grid;
+    place-items:center;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    font-size: 90px;
+    font-size:90px;
 
     background:
         radial-gradient(
@@ -565,589 +527,121 @@ main {
         0 0 100px
         rgba(139,61,255,.4);
 
-    animation:
-        floating 4s ease-in-out infinite;
+    animation:floating 4s ease-in-out infinite;
 }
 
 @keyframes floating {
     0%,100% {
-        transform:
-            translateY(0)
-            rotate(-2deg);
+        transform:translateY(0) rotate(-2deg);
     }
 
     50% {
-        transform:
-            translateY(-18px)
-            rotate(2deg);
+        transform:translateY(-18px) rotate(2deg);
     }
 }
 
-/* =========================================================
+/* =========================
    SECTIONS
-   ========================================================= */
+========================= */
 
 .section {
-    padding: 80px 0;
+    padding:80px 0;
 }
 
 .heading {
-    margin-bottom: 30px;
+    margin-bottom:30px;
 }
 
 .heading small {
-    color: var(--purple2);
+    color:var(--purple2);
 
-    font-size: 10px;
-    font-weight: 1000;
-    letter-spacing: 2px;
+    font-size:10px;
+    font-weight:1000;
+    letter-spacing:2px;
 }
 
 .heading h2 {
-    margin-top: 10px;
+    margin-top:10px;
 
-    font-size:
-        clamp(35px, 5vw, 58px);
-
-    letter-spacing: -3px;
+    font-size:clamp(35px,5vw,58px);
+    letter-spacing:-3px;
 }
 
 .heading p {
-    margin-top: 12px;
+    margin-top:12px;
 
-    max-width: 700px;
+    max-width:700px;
 
-    color: var(--muted);
-
-    line-height: 1.7;
+    color:var(--muted);
+    line-height:1.7;
 }
 
-/* =========================================================
-   FEATURE GRID
-   ========================================================= */
+/* =========================
+   FEATURES
+========================= */
 
 .feature-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 15px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
 }
 
 .feature {
-    padding: 25px;
+    padding:25px;
 
-    border:
-        1px solid var(--border);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
 
-    border-radius:
-        var(--radius);
+    background:var(--panel);
 
-    background:
-        var(--panel);
-
-    transition: .25s;
+    transition:.25s;
 }
 
 .feature:hover {
-    transform: translateY(-5px);
+    transform:translateY(-5px);
 
     border-color:
         rgba(139,61,255,.4);
 
-    background:
-        var(--panel2);
+    background:var(--panel2);
 }
 
 .feature-icon {
-    font-size: 28px;
-    margin-bottom: 18px;
+    font-size:28px;
+    margin-bottom:18px;
 }
 
 .feature h3 {
-    font-size: 16px;
+    font-size:16px;
 }
 
 .feature p {
-    margin-top: 8px;
+    margin-top:8px;
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 12px;
-    line-height: 1.7;
+    font-size:12px;
+    line-height:1.7;
 }
 
-/* =========================================================
-   SHOP TOOLBAR
-   ========================================================= */
-
-.toolbar {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    padding: 13px;
-
-    margin-bottom: 22px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 17px;
-
-    background:
-        rgba(255,255,255,.025);
-}
-
-.search {
-    flex: 1;
-    min-width: 230px;
-
-    position: relative;
-}
-
-.search input {
-    width: 100%;
-
-    padding:
-        14px 15px 14px 42px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 11px;
-
-    outline: none;
-
-    background:
-        rgba(0,0,0,.25);
-
-    color: white;
-}
-
-.search-icon {
-    position: absolute;
-
-    left: 15px;
-    top: 50%;
-
-    transform:
-        translateY(-50%);
-
-    color: var(--muted);
-}
-
-.categories {
-    display: flex;
-    gap: 6px;
-
-    overflow-x: auto;
-}
-
-.category {
-    white-space: nowrap;
-
-    padding: 12px 14px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    color: var(--muted);
-
-    font-size: 11px;
-    font-weight: 900;
-}
-
-.category:hover,
-.category.active {
-    color: white;
-
-    background:
-        rgba(139,61,255,.13);
-
-    border-color:
-        rgba(139,61,255,.35);
-}
-
-.sort {
-    padding: 12px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 10px;
-
-    background: #100817;
-
-    color: white;
-
-    outline: none;
-}
-
-/* =========================================================
-   PRODUCTS
-   ========================================================= */
-
-.product-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 15px;
-}
-
-.product {
-    position: relative;
-
-    overflow: hidden;
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        var(--radius);
-
-    background:
-        var(--panel);
-
-    transition: .25s;
-}
-
-.product:hover {
-    transform: translateY(-6px);
-
-    border-color:
-        rgba(183,108,255,.35);
-
-    box-shadow:
-        0 25px 60px
-        rgba(0,0,0,.3);
-}
-
-.product-image {
-    height: 190px;
-
-    position: relative;
-
-    display: grid;
-    place-items: center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(139,61,255,.22),
-            transparent 60%
-        ),
-        #0c0612;
-}
-
-.product-emoji {
-    font-size: 70px;
-
-    filter:
-        drop-shadow(
-            0 15px 20px
-            rgba(0,0,0,.5)
-        );
-
-    transition: .25s;
-}
-
-.product:hover .product-emoji {
-    transform:
-        scale(1.1)
-        rotate(-3deg);
-}
-
-.product-tag {
-    position: absolute;
-
-    top: 11px;
-    left: 11px;
-
-    padding: 6px 8px;
-
-    border-radius: 7px;
-
-    background:
-        rgba(0,0,0,.45);
-
-    color: #cfc3d6;
-
-    font-size: 8px;
-    font-weight: 1000;
-}
-
-.favorite {
-    position: absolute;
-
-    top: 10px;
-    right: 10px;
-
-    width: 34px;
-    height: 34px;
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    border-radius: 9px;
-
-    background:
-        rgba(0,0,0,.35);
-
-    color: #8d8094;
-
-    z-index: 5;
-}
-
-.favorite.active {
-    color: #ff5d9e;
-}
-
-.rarity {
-    position: absolute;
-
-    bottom: 10px;
-    right: 10px;
-
-    padding: 5px 8px;
-
-    border-radius: 7px;
-
-    font-size: 8px;
-    font-weight: 1000;
-}
-
-.common {
-    color: #ccc;
-    background: rgba(255,255,255,.08);
-}
-
-.rare {
-    color: #68aaff;
-    background: rgba(80,140,255,.13);
-}
-
-.epic {
-    color: #c76cff;
-    background: rgba(180,70,255,.13);
-}
-
-.legendary {
-    color: var(--gold);
-    background: rgba(255,200,87,.13);
-}
-
-.product-body {
-    padding: 17px;
-}
-
-.product-name {
-    font-weight: 1000;
-    font-size: 15px;
-}
-
-.product-description {
-    min-height: 38px;
-
-    margin-top: 7px;
-
-    color: var(--muted);
-
-    font-size: 11px;
-    line-height: 1.6;
-}
-
-.product-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-top: 16px;
-}
-
-.price {
-    color: var(--purple2);
-
-    font-size: 18px;
-    font-weight: 1000;
-}
-
-.add {
-    width: 40px;
-    height: 40px;
-
-    border: 0;
-
-    border-radius: 10px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            135deg,
-            var(--purple),
-            var(--pink)
-        );
-
-    font-size: 20px;
-
-    transition: .2s;
-}
-
-.add:hover {
-    transform: scale(1.08);
-
-    box-shadow:
-        0 10px 25px
-        rgba(139,61,255,.35);
-}
-
-/* =========================================================
-   MONEY
-   ========================================================= */
-
-.money-layout {
-    display: grid;
-
-    grid-template-columns:
-        1fr 390px;
-
-    gap: 18px;
-}
-
-.panel {
-    padding: 28px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius:
-        var(--radius);
-
-    background:
-        var(--panel);
-}
-
-.money-input {
-    width: 100%;
-
-    margin-top: 15px;
-
-    padding: 20px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 14px;
-
-    background:
-        rgba(0,0,0,.25);
-
-    color: white;
-
-    outline: none;
-
-    font-size: 25px;
-    font-weight: 1000;
-}
-
-.money-input:focus {
-    border-color: var(--purple);
-
-    box-shadow:
-        0 0 0 4px
-        rgba(139,61,255,.08);
-}
-
-.quick {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap: 8px;
-
-    margin-top: 18px;
-}
-
-.quick button {
-    padding: 12px 5px;
-
-    border:
-        1px solid var(--border);
-
-    border-radius: 9px;
-
-    background:
-        rgba(255,255,255,.025);
-
-    color: #c8bdcf;
-
-    font-weight: 900;
-}
-
-.quick button:hover {
-    color: white;
-
-    border-color:
-        var(--purple);
-
-    background:
-        rgba(139,61,255,.12);
-}
-
-.money-preview {
-    margin-top: 22px;
-
-    padding: 25px;
-
-    border-radius: 18px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(139,61,255,.15),
-            rgba(239,76,255,.06)
-        );
-}
-
-.money-value {
-    color: var(--purple2);
-
-    font-size: 50px;
-    font-weight: 1000;
-}
-
-/* =========================================================
-   DEAL BANNER
-   ========================================================= */
+/* =========================
+   DEAL
+========================= */
 
 .deal {
-    margin: 30px 0;
+    margin:30px 0;
 
-    padding: 22px;
+    padding:22px;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    gap: 20px;
+    gap:20px;
 
-    border-radius: 18px;
+    border-radius:18px;
 
-    border:
-        1px solid
+    border:1px solid
         rgba(255,200,87,.18);
 
     background:
@@ -1159,316 +653,712 @@ main {
 }
 
 .deal strong {
-    color: var(--gold);
+    color:var(--gold);
 }
 
-/* =========================================================
+/* =========================
+   TOOLBAR
+========================= */
+
+.toolbar {
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    padding:13px;
+    margin-bottom:22px;
+
+    border:1px solid var(--border);
+    border-radius:17px;
+
+    background:rgba(255,255,255,.025);
+}
+
+.search {
+    flex:1;
+    min-width:230px;
+    position:relative;
+}
+
+.search input {
+    width:100%;
+
+    padding:14px 15px 14px 42px;
+
+    border:1px solid var(--border);
+    border-radius:11px;
+
+    outline:none;
+
+    background:rgba(0,0,0,.25);
+    color:white;
+}
+
+.search-icon {
+    position:absolute;
+
+    left:15px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:var(--muted);
+}
+
+.categories {
+    display:flex;
+    gap:6px;
+
+    overflow-x:auto;
+}
+
+.category {
+    white-space:nowrap;
+
+    padding:12px 14px;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    background:rgba(255,255,255,.025);
+    color:var(--muted);
+
+    font-size:11px;
+    font-weight:900;
+}
+
+.category:hover,
+.category.active {
+    color:white;
+
+    background:rgba(139,61,255,.13);
+
+    border-color:
+        rgba(139,61,255,.35);
+}
+
+.sort {
+    padding:12px;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    background:#100817;
+    color:white;
+
+    outline:none;
+}
+
+/* =========================
+   PRODUCTS
+========================= */
+
+.product-grid {
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+}
+
+.product {
+    position:relative;
+    overflow:hidden;
+
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+
+    background:var(--panel);
+
+    transition:.25s;
+}
+
+.product:hover {
+    transform:translateY(-6px);
+
+    border-color:
+        rgba(183,108,255,.35);
+
+    box-shadow:
+        0 25px 60px
+        rgba(0,0,0,.3);
+}
+
+.product-image {
+    height:190px;
+
+    position:relative;
+
+    display:grid;
+    place-items:center;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,61,255,.22),
+            transparent 60%
+        ),
+        #0c0612;
+}
+
+.product-emoji {
+    font-size:70px;
+
+    filter:
+        drop-shadow(
+            0 15px 20px
+            rgba(0,0,0,.5)
+        );
+
+    transition:.25s;
+}
+
+.product:hover .product-emoji {
+    transform:
+        scale(1.1)
+        rotate(-3deg);
+}
+
+.product-tag {
+    position:absolute;
+
+    top:11px;
+    left:11px;
+
+    padding:6px 8px;
+
+    border-radius:7px;
+
+    background:rgba(0,0,0,.45);
+    color:#cfc3d6;
+
+    font-size:8px;
+    font-weight:1000;
+}
+
+.favorite {
+    position:absolute;
+
+    top:10px;
+    right:10px;
+
+    width:34px;
+    height:34px;
+
+    border:1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:9px;
+
+    background:rgba(0,0,0,.35);
+
+    color:#8d8094;
+
+    z-index:5;
+}
+
+.favorite.active {
+    color:#ff5d9e;
+}
+
+.rarity {
+    position:absolute;
+
+    bottom:10px;
+    right:10px;
+
+    padding:5px 8px;
+
+    border-radius:7px;
+
+    font-size:8px;
+    font-weight:1000;
+}
+
+.common {
+    color:#ccc;
+    background:rgba(255,255,255,.08);
+}
+
+.rare {
+    color:#68aaff;
+    background:rgba(80,140,255,.13);
+}
+
+.epic {
+    color:#c76cff;
+    background:rgba(180,70,255,.13);
+}
+
+.legendary {
+    color:var(--gold);
+    background:rgba(255,200,87,.13);
+}
+
+.product-body {
+    padding:17px;
+}
+
+.product-name {
+    font-weight:1000;
+    font-size:15px;
+}
+
+.product-description {
+    min-height:38px;
+
+    margin-top:7px;
+
+    color:var(--muted);
+
+    font-size:11px;
+    line-height:1.6;
+}
+
+.product-bottom {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    margin-top:16px;
+}
+
+.price {
+    color:var(--purple2);
+
+    font-size:18px;
+    font-weight:1000;
+}
+
+.price-small {
+    color:#888;
+    font-size:9px;
+    margin-top:3px;
+}
+
+.add {
+    width:40px;
+    height:40px;
+
+    border:0;
+    border-radius:10px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--pink)
+        );
+
+    font-size:20px;
+
+    transition:.2s;
+}
+
+.add:hover {
+    transform:scale(1.08);
+
+    box-shadow:
+        0 10px 25px
+        rgba(139,61,255,.35);
+}
+
+/* =========================
+   MONEY
+========================= */
+
+.money-layout {
+    display:grid;
+
+    grid-template-columns:
+        1fr 390px;
+
+    gap:18px;
+}
+
+.panel {
+    padding:28px;
+
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+
+    background:var(--panel);
+}
+
+.money-input {
+    width:100%;
+
+    margin-top:15px;
+
+    padding:20px;
+
+    border:1px solid var(--border);
+    border-radius:14px;
+
+    background:rgba(0,0,0,.25);
+
+    color:white;
+
+    outline:none;
+
+    font-size:25px;
+    font-weight:1000;
+}
+
+.money-input:focus {
+    border-color:var(--purple);
+
+    box-shadow:
+        0 0 0 4px
+        rgba(139,61,255,.08);
+}
+
+.quick {
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:8px;
+
+    margin-top:18px;
+}
+
+.quick button {
+    padding:12px 5px;
+
+    border:1px solid var(--border);
+    border-radius:9px;
+
+    background:rgba(255,255,255,.025);
+    color:#c8bdcf;
+
+    font-weight:900;
+}
+
+.quick button:hover {
+    color:white;
+
+    border-color:var(--purple);
+
+    background:
+        rgba(139,61,255,.12);
+}
+
+.money-preview {
+    margin-top:22px;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,61,255,.15),
+            rgba(239,76,255,.06)
+        );
+}
+
+.money-value {
+    color:var(--purple2);
+
+    font-size:50px;
+    font-weight:1000;
+}
+
+/* =========================
    INFO
-   ========================================================= */
+========================= */
 
 .info-grid {
-    display: grid;
+    display:grid;
 
     grid-template-columns:
         repeat(3,1fr);
 
-    gap: 15px;
+    gap:15px;
 }
 
 .info-card {
-    padding: 25px;
+    padding:25px;
 
-    border:
-        1px solid var(--border);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
 
-    border-radius: var(--radius);
-
-    background:
-        var(--panel);
+    background:var(--panel);
 }
 
 .info-number {
-    color: var(--purple2);
+    color:var(--purple2);
 
-    font-size: 10px;
-    font-weight: 1000;
-    letter-spacing: 2px;
+    font-size:10px;
+    font-weight:1000;
+    letter-spacing:2px;
 }
 
 .info-card h3 {
-    margin-top: 15px;
+    margin-top:15px;
 }
 
 .info-card p {
-    margin-top: 9px;
+    margin-top:9px;
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 12px;
-    line-height: 1.7;
+    font-size:12px;
+    line-height:1.7;
 }
 
-/* =========================================================
+/* =========================
    FAQ
-   ========================================================= */
+========================= */
 
 .faq {
-    max-width: 900px;
+    max-width:900px;
 }
 
 .faq-item {
-    border-bottom:
-        1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
 .faq-question {
-    width: 100%;
+    width:100%;
 
-    padding: 22px 0;
+    padding:22px 0;
 
-    display: flex;
-    justify-content: space-between;
+    display:flex;
+    justify-content:space-between;
 
-    border: 0;
+    border:0;
 
-    background: transparent;
+    background:transparent;
+    color:white;
 
-    color: white;
+    text-align:left;
 
-    text-align: left;
-
-    font-weight: 900;
+    font-weight:900;
 }
 
 .faq-answer {
-    display: none;
+    display:none;
 
-    padding-bottom: 20px;
+    padding-bottom:20px;
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 13px;
-    line-height: 1.8;
+    font-size:13px;
+    line-height:1.8;
 }
 
 .faq-item.open .faq-answer {
-    display: block;
+    display:block;
 }
 
-/* =========================================================
+/* =========================
    CART
-   ========================================================= */
+========================= */
 
 .overlay {
-    position: fixed;
-    inset: 0;
+    position:fixed;
+    inset:0;
 
-    background:
-        rgba(0,0,0,.72);
+    background:rgba(0,0,0,.72);
 
-    opacity: 0;
-    pointer-events: none;
+    opacity:0;
+    pointer-events:none;
 
-    z-index: 2000;
+    z-index:2000;
 
-    transition: .3s;
+    transition:.3s;
 }
 
 .overlay.active {
-    opacity: 1;
-    pointer-events: auto;
+    opacity:1;
+    pointer-events:auto;
 }
 
 .cart {
-    position: fixed;
+    position:fixed;
 
-    right: 0;
-    top: 0;
-    bottom: 0;
+    right:0;
+    top:0;
+    bottom:0;
 
-    width: min(500px,100%);
+    width:min(500px,100%);
 
-    padding: 25px;
+    padding:25px;
 
-    overflow-y: auto;
+    overflow-y:auto;
 
-    z-index: 2100;
+    z-index:2100;
 
-    background:
-        #09050e;
+    background:#09050e;
 
-    border-left:
-        1px solid var(--border);
+    border-left:1px solid var(--border);
 
-    transform:
-        translateX(100%);
+    transform:translateX(100%);
 
-    transition:
-        transform .35s;
+    transition:transform .35s;
 }
 
 .cart.active {
-    transform:
-        translateX(0);
+    transform:translateX(0);
 }
 
 .cart-header {
-    display: flex;
-    justify-content: space-between;
+    display:flex;
+    justify-content:space-between;
 
-    padding-bottom: 18px;
+    padding-bottom:18px;
 
-    border-bottom:
-        1px solid var(--border);
+    border-bottom:1px solid var(--border);
 }
 
 .close {
-    width: 40px;
-    height: 40px;
+    width:40px;
+    height:40px;
 
-    border: 0;
+    border:0;
+    border-radius:10px;
 
-    border-radius: 10px;
-
-    background:
-        rgba(255,255,255,.05);
-
-    color: white;
+    background:rgba(255,255,255,.05);
+    color:white;
 }
 
 .cart-item {
-    display: grid;
+    display:grid;
 
     grid-template-columns:
         55px 1fr auto;
 
-    gap: 12px;
+    gap:12px;
 
-    align-items: center;
+    align-items:center;
 
-    padding: 12px;
+    padding:12px;
+    margin-top:9px;
 
-    margin-top: 9px;
+    border:1px solid var(--border);
+    border-radius:13px;
 
-    border:
-        1px solid var(--border);
-
-    border-radius: 13px;
-
-    background:
-        rgba(255,255,255,.025);
+    background:rgba(255,255,255,.025);
 }
 
 .cart-icon {
-    width: 55px;
-    height: 55px;
+    width:55px;
+    height:55px;
 
-    display: grid;
-    place-items: center;
+    display:grid;
+    place-items:center;
 
-    border-radius: 12px;
+    border-radius:12px;
 
-    background:
-        rgba(139,61,255,.1);
+    background:rgba(139,61,255,.1);
 
-    font-size: 26px;
+    font-size:26px;
 }
 
 .cart-name {
-    font-size: 12px;
-    font-weight: 900;
+    font-size:12px;
+    font-weight:900;
 }
 
 .cart-price {
-    margin-top: 4px;
+    margin-top:4px;
 
-    color: var(--purple2);
+    color:var(--purple2);
 
-    font-size: 11px;
+    font-size:11px;
+}
+
+.cart-details {
+    margin-top:3px;
+
+    color:#777;
+
+    font-size:9px;
 }
 
 .qty {
-    display: flex;
-    align-items: center;
+    display:flex;
+    align-items:center;
 
-    gap: 6px;
-
-    margin-top: 7px;
+    gap:6px;
+    margin-top:7px;
 }
 
 .qty button {
-    width: 24px;
-    height: 24px;
+    width:24px;
+    height:24px;
 
-    border: 0;
+    border:0;
+    border-radius:6px;
 
-    border-radius: 6px;
+    background:rgba(139,61,255,.15);
 
-    background:
-        rgba(139,61,255,.15);
-
-    color: white;
+    color:white;
 }
 
 .remove {
-    border: 0;
+    border:0;
 
-    background: transparent;
-
-    color: var(--red);
+    background:transparent;
+    color:var(--red);
 }
 
 .cart-total {
-    margin-top: 22px;
+    margin-top:22px;
 
-    padding-top: 20px;
+    padding-top:20px;
 
-    border-top:
-        1px solid var(--border);
+    border-top:1px solid var(--border);
 }
 
 .total {
-    display: flex;
-    justify-content: space-between;
+    display:flex;
+    justify-content:space-between;
 
-    font-size: 23px;
-    font-weight: 1000;
+    font-size:23px;
+    font-weight:1000;
 }
 
 .total strong {
-    color: var(--purple2);
+    color:var(--purple2);
 }
 
 .username {
-    width: 100%;
+    width:100%;
 
-    margin-top: 18px;
+    margin-top:18px;
 
-    padding: 14px;
+    padding:14px;
 
-    border:
-        1px solid var(--border);
+    border:1px solid var(--border);
+    border-radius:11px;
 
-    border-radius: 11px;
+    background:rgba(255,255,255,.035);
 
-    background:
-        rgba(255,255,255,.035);
+    color:white;
 
-    color: white;
-
-    outline: none;
+    outline:none;
 }
 
 .checkout {
-    width: 100%;
+    width:100%;
 
-    margin-top: 9px;
+    margin-top:9px;
 
-    padding: 15px;
+    padding:15px;
 
-    border: 0;
-
-    border-radius: 12px;
+    border:0;
+    border-radius:12px;
 
     background:
         linear-gradient(
@@ -1477,94 +1367,328 @@ main {
             #138b55
         );
 
-    color: white;
+    color:white;
 
-    font-weight: 1000;
+    font-weight:1000;
 }
 
-/* =========================================================
-   TOAST
-   ========================================================= */
+/* =========================
+   SPAWNER MODAL
+========================= */
 
-.toast {
-    position: fixed;
+.modal-overlay {
+    position:fixed;
+    inset:0;
 
-    right: 22px;
-    bottom: 22px;
+    z-index:3000;
 
-    z-index: 5000;
+    display:none;
+    place-items:center;
 
-    padding: 14px 17px;
+    padding:20px;
 
-    border:
-        1px solid
-        rgba(139,61,255,.3);
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(8px);
+}
 
-    border-radius: 12px;
+.modal-overlay.active {
+    display:grid;
+}
+
+.modal {
+    width:min(460px,100%);
+
+    padding:28px;
+
+    border:1px solid
+        rgba(183,108,255,.25);
+
+    border-radius:24px;
 
     background:
-        rgba(18,8,28,.95);
+        linear-gradient(
+            145deg,
+            #160a21,
+            #09050e
+        );
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.6);
+
+    animation:modalIn .2s ease;
+}
+
+@keyframes modalIn {
+    from {
+        opacity:0;
+        transform:scale(.95);
+    }
+
+    to {
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+.modal-top {
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.modal-icon {
+    width:65px;
+    height:65px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:16px;
+
+    background:
+        rgba(139,61,255,.15);
+
+    font-size:36px;
+}
+
+.modal-title {
+    font-size:20px;
+    font-weight:1000;
+}
+
+.modal-subtitle {
+    margin-top:4px;
+
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.amount-label {
+    display:block;
+
+    margin-top:25px;
+    margin-bottom:8px;
+
+    color:#aaa;
+
+    font-size:11px;
+    font-weight:900;
+}
+
+.amount-row {
+    display:grid;
+
+    grid-template-columns:
+        48px 1fr 48px;
+
+    gap:8px;
+}
+
+.amount-row button {
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    background:rgba(139,61,255,.13);
+    color:white;
+
+    font-size:20px;
+}
+
+.amount-row input {
+    width:100%;
+
+    padding:13px;
+
+    border:1px solid var(--border);
+    border-radius:10px;
+
+    outline:none;
+
+    background:rgba(0,0,0,.3);
+    color:white;
+
+    text-align:center;
+
+    font-size:18px;
+    font-weight:1000;
+}
+
+.modal-info {
+    margin-top:15px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:rgba(255,255,255,.035);
+}
+
+.info-line {
+    display:flex;
+    justify-content:space-between;
+
+    margin-top:8px;
+
+    color:#999;
+
+    font-size:11px;
+}
+
+.info-line:first-child {
+    margin-top:0;
+}
+
+.info-line strong {
+    color:white;
+}
+
+.modal-total {
+    margin-top:18px;
+
+    padding:18px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,61,255,.15),
+            rgba(239,76,255,.08)
+        );
+}
+
+.modal-total-label {
+    color:#999;
+    font-size:10px;
+}
+
+.modal-total-price {
+    margin-top:5px;
+
+    color:var(--purple2);
+
+    font-size:32px;
+    font-weight:1000;
+}
+
+.modal-buttons {
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:9px;
+
+    margin-top:15px;
+}
+
+.modal-cancel {
+    padding:14px;
+
+    border:1px solid var(--border);
+    border-radius:11px;
+
+    background:rgba(255,255,255,.04);
+
+    color:white;
+    font-weight:900;
+}
+
+.modal-add {
+    padding:14px;
+
+    border:0;
+    border-radius:11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--purple),
+            var(--pink)
+        );
+
+    color:white;
+    font-weight:1000;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    position:fixed;
+
+    right:22px;
+    bottom:22px;
+
+    z-index:5000;
+
+    padding:14px 17px;
+
+    border:1px solid
+        rgba(139,61,255,.3);
+
+    border-radius:12px;
+
+    background:rgba(18,8,28,.95);
 
     box-shadow:
         0 20px 50px
         rgba(0,0,0,.4);
 
-    transform:
-        translateY(100px);
+    transform:translateY(100px);
 
-    opacity: 0;
+    opacity:0;
 
-    transition: .3s;
+    transition:.3s;
 
-    font-size: 12px;
-    font-weight: 900;
+    font-size:12px;
+    font-weight:900;
 }
 
 .toast.show {
-    transform: translateY(0);
-    opacity: 1;
+    transform:translateY(0);
+    opacity:1;
 }
 
-/* =========================================================
+/* =========================
    FOOTER
-   ========================================================= */
+========================= */
 
 footer {
-    margin-top: 50px;
+    margin-top:50px;
 
-    padding: 35px 0;
+    padding:35px 0;
 
-    border-top:
-        1px solid var(--border);
+    border-top:1px solid var(--border);
 
-    text-align: center;
+    text-align:center;
 
-    color: var(--muted);
+    color:var(--muted);
 
-    font-size: 11px;
+    font-size:11px;
 }
 
 footer strong {
-    color: white;
-    font-size: 18px;
+    color:white;
+    font-size:18px;
 }
 
-footer strong span {
-    color: var(--purple2);
-}
-
-/* =========================================================
+/* =========================
    MOBILE
-   ========================================================= */
+========================= */
 
 @media(max-width:1150px) {
 
     .hero {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
     }
 
     .hero-card {
-        min-height: 400px;
+        min-height:400px;
     }
 
     .product-grid {
@@ -1578,34 +1702,33 @@ footer strong span {
     }
 
     .money-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
     }
 }
 
 @media(max-width:800px) {
 
     header {
-        height: auto;
+        height:auto;
     }
 
     .header-inner {
-        flex-wrap: wrap;
-        padding: 9px 0;
+        flex-wrap:wrap;
+        padding:9px 0;
     }
 
     nav {
-        width: 100%;
-        order: 3;
-
-        overflow-x: auto;
+        width:100%;
+        order:3;
+        overflow-x:auto;
     }
 
     .nav-btn {
-        white-space: nowrap;
+        white-space:nowrap;
     }
 
     main {
-        padding-top: 135px;
+        padding-top:135px;
     }
 
     .product-grid {
@@ -1622,40 +1745,40 @@ footer strong span {
 @media(max-width:550px) {
 
     main {
-        width: 92%;
+        width:92%;
     }
 
     .hero h1 {
-        font-size: 52px;
-        letter-spacing: -4px;
+        font-size:52px;
+        letter-spacing:-4px;
     }
 
     .hero-card {
-        min-height: 320px;
+        min-height:320px;
     }
 
     .hero-item {
-        width: 170px;
-        height: 170px;
-        font-size: 65px;
+        width:170px;
+        height:170px;
+        font-size:65px;
     }
 
     .feature-grid,
     .product-grid,
     .info-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
     }
 
     .toolbar {
-        flex-direction: column;
+        flex-direction:column;
     }
 
     .search {
-        width: 100%;
+        width:100%;
     }
 
     .sort {
-        width: 100%;
+        width:100%;
     }
 
     .quick {
@@ -1664,8 +1787,8 @@ footer strong span {
     }
 
     .deal {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction:column;
+        align-items:flex-start;
     }
 }
 
@@ -1678,15 +1801,13 @@ footer strong span {
 <div class="glow one"></div>
 <div class="glow two"></div>
 
-<!-- =====================================================
-     HEADER
-     ===================================================== -->
-
 <header>
 
 <div class="header-inner">
 
-<a class="logo" href="#" onclick="showView('home');return false">
+<a class="logo"
+   href="#"
+   onclick="showView('home');return false">
 
     <div class="logo-icon">🍩</div>
 
@@ -1705,7 +1826,7 @@ onclick="showView('home')">
 
 <button class="nav-btn"
 onclick="showView('shop')">
-🧟 Spawner
+🧟 Shop
 </button>
 
 <button class="nav-btn"
@@ -1747,12 +1868,11 @@ id="cartCount">
 
 </header>
 
-
 <main>
 
-<!-- =====================================================
+<!-- =========================
      HOME
-     ===================================================== -->
+========================= -->
 
 <section
 class="view active"
@@ -1763,7 +1883,7 @@ id="view-home">
 <div>
 
 <div class="badge">
-🟣 MINECRAFT COMMUNITY SHOP
+🟣 DONUT SMP COMMUNITY SHOP
 </div>
 
 <h1>
@@ -1796,9 +1916,9 @@ ITEMS.
 
 Willkommen im DonutShop.
 
-Entdecke wertvolle Minecraft-Spawner,
-seltene Items und Money-Pakete in einem
-modernen und schnellen Community-Shop.
+Kaufe Spawner, Netherite-Items,
+Elytra, seltene Items und Money
+für deinen Donut SMP Server.
 
 </p>
 
@@ -1807,13 +1927,17 @@ modernen und schnellen Community-Shop.
 <button
 class="btn primary"
 onclick="showView('shop')">
-🧟 Spawner entdecken
+
+🛒 Shop öffnen
+
 </button>
 
 <button
 class="btn secondary"
 onclick="showView('special')">
+
 💎 Special Items
+
 </button>
 
 </div>
@@ -1826,8 +1950,8 @@ onclick="showView('special')">
 </div>
 
 <div class="stat">
-<strong>4</strong>
-<span>Special Items</span>
+<strong>11+</strong>
+<span>Netherite Items</span>
 </div>
 
 <div class="stat">
@@ -1854,7 +1978,6 @@ onclick="showView('special')">
 
 </div>
 
-
 <div class="section">
 
 <div class="heading">
@@ -1867,8 +1990,7 @@ Alles, was du
 </h2>
 
 <p>
-Ein moderner Shop mit Funktionen,
-die das Einkaufen einfacher machen.
+Alles übersichtlich in einem Shop.
 </p>
 
 </div>
@@ -1876,55 +1998,36 @@ die das Einkaufen einfacher machen.
 <div class="feature-grid">
 
 <div class="feature">
-
 <div class="feature-icon">🧟</div>
-
-<h3>Spawner Shop</h3>
-
+<h3>Spawner</h3>
 <p>
-Viele verschiedene Mob-Spawner
-übersichtlich an einem Ort.
+Jeder Spawner kostet 0.50 CHF.
+Ab 101 Stück kostet jeder 0.48 CHF.
 </p>
-
 </div>
 
 <div class="feature">
+<div class="feature-icon">⚔️</div>
+<h3>Netherite</h3>
+<p>
+Netherite-Rüstung, Waffen und Werkzeuge.
+</p>
+</div>
 
+<div class="feature">
 <div class="feature-icon">❤️</div>
-
 <h3>Favoriten</h3>
-
 <p>
-Markiere deine Lieblingsprodukte
-und finde sie später schneller.
+Speichere deine Lieblingsprodukte.
 </p>
-
 </div>
 
 <div class="feature">
-
 <div class="feature-icon">💾</div>
-
-<h3>Speicherfunktion</h3>
-
+<h3>Gespeichert</h3>
 <p>
-Warenkorb und Favoriten werden
-lokal im Browser gespeichert.
+Warenkorb und Favoriten bleiben gespeichert.
 </p>
-
-</div>
-
-<div class="feature">
-
-<div class="feature-icon">🎁</div>
-
-<h3>Rabattcodes</h3>
-
-<p>
-Aktiviere Rabattcodes direkt
-im Warenkorb.
-</p>
-
 </div>
 
 </div>
@@ -1934,25 +2037,34 @@ im Warenkorb.
 <div class="deal">
 
 <div>
+
 <strong>🔥 WEEKEND DEAL</strong>
 
-<div style="margin-top:5px;color:#aaa">
-10% Rabatt auf deine erste Bestellung
-</div>
+<div style="
+margin-top:5px;
+color:#aaa">
+
+10% Rabatt mit dem Code DONUT10
+
 </div>
 
-<div style="color:#ffc857;font-weight:1000">
+</div>
+
+<div style="
+color:#ffc857;
+font-weight:1000">
+
 Code: DONUT10
+
 </div>
 
 </div>
 
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      SHOP
-     ===================================================== -->
+========================= -->
 
 <section
 class="view"
@@ -1962,16 +2074,15 @@ id="view-shop">
 
 <div class="heading">
 
-<small>SPAWNER SHOP</small>
+<small>MINECRAFT SHOP</small>
 
 <h2>
-Minecraft
-<span class="gradient">Spawner.</span>
+Dein
+<span class="gradient">Shop.</span>
 </h2>
 
 <p>
-Finde den passenden Spawner für deine
-Farm oder dein Server-Projekt.
+Spawner, Netherite und weitere Items.
 </p>
 
 </div>
@@ -1980,11 +2091,13 @@ Farm oder dein Server-Projekt.
 
 <div class="search">
 
-<span class="search-icon">🔎</span>
+<span class="search-icon">
+🔎
+</span>
 
 <input
 id="search"
-placeholder="Spawner suchen..."
+placeholder="Produkt suchen..."
 oninput="filterProducts()">
 
 </div>
@@ -2003,6 +2116,13 @@ class="category"
 data-category="spawner"
 onclick="setCategory('spawner')">
 🧟 Spawner
+</button>
+
+<button
+class="category"
+data-category="netherite"
+onclick="setCategory('netherite')">
+⚔️ Netherite
 </button>
 
 <button
@@ -2052,10 +2172,9 @@ id="products">
 
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      SPECIAL
-     ===================================================== -->
+========================= -->
 
 <section
 class="view"
@@ -2073,7 +2192,7 @@ Seltene
 </h2>
 
 <p>
-Besondere Minecraft-Items für deine Sammlung.
+Besondere Items für deinen Minecraft-Account.
 </p>
 
 </div>
@@ -2087,10 +2206,9 @@ id="specialProducts">
 
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      MONEY
-     ===================================================== -->
+========================= -->
 
 <section
 class="view"
@@ -2108,7 +2226,7 @@ Dein
 </h2>
 
 <p>
-Wähle deinen gewünschten Betrag.
+Wähle deinen gewünschten Money-Betrag.
 </p>
 
 </div>
@@ -2129,7 +2247,9 @@ oninput="updateMoney()">
 margin-top:8px;
 color:#777;
 font-size:11px">
+
 Erlaubt: 1M bis 10B
+
 </div>
 
 <div class="quick">
@@ -2182,7 +2302,9 @@ style="
 margin-top:5px;
 font-size:20px;
 font-weight:1000">
+
 15.00 CHF
+
 </div>
 
 </div>
@@ -2202,7 +2324,7 @@ onclick="addMoney()">
 
 <div class="panel">
 
-<h3>💵 Preise</h3>
+<h3>💵 Money Preise</h3>
 
 <div style="
 margin-top:20px;
@@ -2255,10 +2377,9 @@ gap:8px">
 
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      INFO
-     ===================================================== -->
+========================= -->
 
 <section
 class="view"
@@ -2283,39 +2404,43 @@ Einfach.
 <div class="info-number">01</div>
 <h3>Produkt wählen</h3>
 <p>
-Wähle einen Spawner oder ein Special Item.
+Wähle einen Spawner, ein Netherite-Item
+oder ein Special Item.
 </p>
 </div>
 
 <div class="info-card">
 <div class="info-number">02</div>
-<h3>In den Warenkorb</h3>
+<h3>Spawner-Menge</h3>
 <p>
-Klicke auf + und das Produkt wird hinzugefügt.
+Bei Spawnern kannst du direkt auswählen,
+wie viele du kaufen möchtest.
 </p>
 </div>
 
 <div class="info-card">
 <div class="info-number">03</div>
-<h3>Username</h3>
+<h3>Preis</h3>
 <p>
-Gib deinen Minecraft-Namen im Checkout ein.
+Bis 100 Spawner kostet einer 0.50 CHF.
+Ab 101 kostet einer 0.48 CHF.
 </p>
 </div>
 
 <div class="info-card">
 <div class="info-number">04</div>
-<h3>Rabattcode</h3>
+<h3>Warenkorb</h3>
 <p>
-Nutze beispielsweise DONUT10 für 10% Rabatt.
+Kontrolliere Produkte und Mengen
+im Warenkorb.
 </p>
 </div>
 
 <div class="info-card">
 <div class="info-number">05</div>
-<h3>Bestellung prüfen</h3>
+<h3>Username</h3>
 <p>
-Kontrolliere Produkte, Mengen und Gesamtpreis.
+Gib deinen Minecraft-Namen beim Checkout ein.
 </p>
 </div>
 
@@ -2323,7 +2448,7 @@ Kontrolliere Produkte, Mengen und Gesamtpreis.
 <div class="info-number">06</div>
 <h3>Checkout</h3>
 <p>
-Die aktuelle Version besitzt einen Demo-Checkout.
+Der aktuelle Checkout ist eine Demo.
 </p>
 </div>
 
@@ -2333,10 +2458,9 @@ Die aktuelle Version besitzt einen Demo-Checkout.
 
 </section>
 
-
-<!-- =====================================================
+<!-- =========================
      FAQ
-     ===================================================== -->
+========================= -->
 
 <section
 class="view"
@@ -2362,14 +2486,19 @@ Häufige
 <button
 class="faq-question"
 onclick="toggleFAQ(this)">
-Was kann ich kaufen?
+
+Wie viel kostet ein Spawner?
+
 <span>+</span>
+
 </button>
 
 <div class="faq-answer">
-Im Shop findest du verschiedene Spawner
-sowie Elytra, Dragon Head, Ancient Debris
-und Gilded Blackstone.
+
+1 bis 100 Spawner kosten 0.50 CHF
+pro Stück. Ab 101 Spawner kostet jeder
+Spawner 0.48 CHF.
+
 </div>
 
 </div>
@@ -2379,13 +2508,18 @@ und Gilded Blackstone.
 <button
 class="faq-question"
 onclick="toggleFAQ(this)">
-Kann ich mehrere Produkte kaufen?
+
+Kann ich mehrere Spawner kaufen?
+
 <span>+</span>
+
 </button>
 
 <div class="faq-answer">
-Ja. Du kannst beliebig viele Produkte
-und Mengen in deinen Warenkorb legen.
+
+Ja. Du kannst beim Kauf direkt die
+gewünschte Anzahl eingeben.
+
 </div>
 
 </div>
@@ -2395,14 +2529,18 @@ und Mengen in deinen Warenkorb legen.
 <button
 class="faq-question"
 onclick="toggleFAQ(this)">
-Werden meine Favoriten gespeichert?
+
+Gibt es Netherite?
+
 <span>+</span>
+
 </button>
 
 <div class="faq-answer">
-Ja. Die Website verwendet localStorage,
-damit Favoriten und Warenkorb nach
-einem Neuladen erhalten bleiben.
+
+Ja. Im Shop findest du Netherite Ingots,
+Scraps, Rüstung, Waffen und Werkzeuge.
+
 </div>
 
 </div>
@@ -2412,14 +2550,41 @@ einem Neuladen erhalten bleiben.
 <button
 class="faq-question"
 onclick="toggleFAQ(this)">
-Gibt es echte Zahlungen?
+
+Gibt es einen Rabattcode?
+
 <span>+</span>
+
 </button>
 
 <div class="faq-answer">
-Der Checkout ist aktuell eine Demo.
-Für echte Zahlungen brauchst du später
-ein Backend und einen Zahlungsanbieter.
+
+Ja. Der Demo-Code DONUT10 gibt 10%
+Rabatt auf die Bestellung.
+
+</div>
+
+</div>
+
+<div class="faq-item">
+
+<button
+class="faq-question"
+onclick="toggleFAQ(this)">
+
+Sind echte Zahlungen möglich?
+
+<span>+</span>
+
+</button>
+
+<div class="faq-answer">
+
+Noch nicht. Dieser Shop besitzt aktuell
+nur einen Demo-Checkout. Für echte Zahlungen
+brauchst du später ein Backend und einen
+Zahlungsanbieter.
+
 </div>
 
 </div>
@@ -2430,7 +2595,6 @@ ein Backend und einen Zahlungsanbieter.
 
 </section>
 
-
 <footer>
 
 <strong>
@@ -2438,7 +2602,7 @@ ein Backend und einen Zahlungsanbieter.
 </strong>
 
 <div style="margin-top:8px">
-Minecraft Community Store
+Donut SMP Community Store
 </div>
 
 <div style="margin-top:5px">
@@ -2449,10 +2613,9 @@ Inoffizielles Community-Projekt · 2026
 
 </main>
 
-
-<!-- =====================================================
+<!-- =========================
      CART
-     ===================================================== -->
+========================= -->
 
 <div
 class="overlay"
@@ -2467,20 +2630,26 @@ id="cart">
 <div class="cart-header">
 
 <div>
+
 <h2>🛒 Warenkorb</h2>
 
 <div style="
 margin-top:4px;
 color:#777;
 font-size:10px">
+
 Deine Produkte
+
 </div>
+
 </div>
 
 <button
 class="close"
 onclick="closeCart()">
+
 ✕
+
 </button>
 
 </div>
@@ -2494,22 +2663,32 @@ display:flex;
 justify-content:space-between;
 color:#777;
 font-size:12px">
+
 <span>Produkte</span>
-<span id="cartProducts">0</span>
+
+<span id="cartProducts">
+0
+</span>
+
 </div>
 
-<div
-style="
+<div style="
 display:flex;
 justify-content:space-between;
 margin-top:8px;
 color:#777;
 font-size:12px">
+
 <span>Rabatt</span>
-<span id="discount">0%</span>
+
+<span id="discount">
+0%
+</span>
+
 </div>
 
-<div class="total" style="margin-top:15px">
+<div class="total"
+style="margin-top:15px">
 
 <span>Gesamt</span>
 
@@ -2532,36 +2711,161 @@ placeholder="🎁 Rabattcode">
 <button
 class="checkout"
 onclick="checkout()">
+
 💳 Bestellung vorbereiten
+
 </button>
 
 </div>
 
 </aside>
 
+<!-- =========================
+     SPAWNER MODAL
+========================= -->
+
+<div
+class="modal-overlay"
+id="spawnerModal">
+
+<div class="modal">
+
+<div class="modal-top">
+
+<div
+class="modal-icon"
+id="modalIcon">
+🧟
+</div>
+
+<div>
+
+<div
+class="modal-title"
+id="modalTitle">
+Spawner
+</div>
+
+<div
+class="modal-subtitle">
+
+Wähle deine gewünschte Anzahl
+
+</div>
+
+</div>
+
+</div>
+
+<label class="amount-label">
+ANZAHL SPAWNER
+</label>
+
+<div class="amount-row">
+
+<button onclick="changeSpawnerAmount(-1)">
+−
+</button>
+
+<input
+id="spawnerAmount"
+type="number"
+min="1"
+value="1"
+oninput="updateSpawnerModal()">
+
+<button onclick="changeSpawnerAmount(1)">
++
+</button>
+
+</div>
+
+<div class="modal-info">
+
+<div class="info-line">
+
+<span>Preis pro Stück</span>
+
+<strong id="spawnerUnitPrice">
+0.50 CHF
+</strong>
+
+</div>
+
+<div class="info-line">
+
+<span>Rabatt ab 101 Stück</span>
+
+<strong>
+0.48 CHF/Stück
+</strong>
+
+</div>
+
+</div>
+
+<div class="modal-total">
+
+<div class="modal-total-label">
+GESAMTPREIS
+</div>
+
+<div
+class="modal-total-price"
+id="spawnerTotal">
+0.50 CHF
+</div>
+
+</div>
+
+<div class="modal-buttons">
+
+<button
+class="modal-cancel"
+onclick="closeSpawnerModal()">
+
+Abbrechen
+
+</button>
+
+<button
+class="modal-add"
+onclick="confirmSpawner()">
+
+🛒 In den Warenkorb
+
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 <div
 class="toast"
 id="toast">
-Produkt hinzugefügt.
-</div>
 
+Produkt hinzugefügt.
+
+</div>
 
 <script>
 
 /* =========================================================
    PRODUCTS
-   ========================================================= */
+========================================================= */
 
 const products = [
 
-/* SPAWNERS */
+/* =========================
+   SPAWNER
+========================= */
 
 {
 id:"zombie",
 name:"Zombie Spawner",
 icon:"🧟",
-price:45,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Zombies."
@@ -2571,7 +2875,6 @@ description:"Spawner für Zombies."
 id:"skeleton",
 name:"Skeleton Spawner",
 icon:"💀",
-price:55,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Skelette."
@@ -2581,7 +2884,6 @@ description:"Spawner für Skelette."
 id:"spider",
 name:"Spider Spawner",
 icon:"🕷️",
-price:50,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Spinnen."
@@ -2591,7 +2893,6 @@ description:"Spawner für Spinnen."
 id:"cave-spider",
 name:"Cave Spider Spawner",
 icon:"🕸️",
-price:70,
 category:"spawner",
 rarity:"rare",
 description:"Spawner für Cave Spiders."
@@ -2601,7 +2902,6 @@ description:"Spawner für Cave Spiders."
 id:"creeper",
 name:"Creeper Spawner",
 icon:"💚",
-price:120,
 category:"spawner",
 rarity:"epic",
 description:"Perfekt für Gunpowder-Farmen."
@@ -2611,17 +2911,15 @@ description:"Perfekt für Gunpowder-Farmen."
 id:"enderman",
 name:"Enderman Spawner",
 icon:"👾",
-price:180,
 category:"spawner",
 rarity:"epic",
-description:"Enderman-Spawner für Ender Pearls."
+description:"Spawner für Ender Pearls."
 },
 
 {
 id:"blaze",
 name:"Blaze Spawner",
 icon:"🔥",
-price:200,
 category:"spawner",
 rarity:"epic",
 description:"Starker Nether-Spawner."
@@ -2631,7 +2929,6 @@ description:"Starker Nether-Spawner."
 id:"magma",
 name:"Magma Cube Spawner",
 icon:"🟥",
-price:175,
 category:"spawner",
 rarity:"epic",
 description:"Spawner für Magma Cubes."
@@ -2641,7 +2938,6 @@ description:"Spawner für Magma Cubes."
 id:"slime",
 name:"Slime Spawner",
 icon:"🟢",
-price:150,
 category:"spawner",
 rarity:"rare",
 description:"Perfekt für Slime-Farmen."
@@ -2651,7 +2947,6 @@ description:"Perfekt für Slime-Farmen."
 id:"witch",
 name:"Witch Spawner",
 icon:"🧙",
-price:160,
 category:"spawner",
 rarity:"rare",
 description:"Spawner für Hexen."
@@ -2661,27 +2956,24 @@ description:"Spawner für Hexen."
 id:"guardian",
 name:"Guardian Spawner",
 icon:"👁️",
-price:300,
 category:"spawner",
 rarity:"legendary",
-description:"Extrem wertvoller Guardian-Spawner."
+description:"Extrem wertvoller Spawner."
 },
 
 {
 id:"iron-golem",
 name:"Iron Golem Spawner",
 icon:"🤖",
-price:350,
 category:"spawner",
 rarity:"legendary",
-description:"Starker Spawner für Eisenfarmen."
+description:"Starker Eisenfarm-Spawner."
 },
 
 {
 id:"pig",
 name:"Pig Spawner",
 icon:"🐷",
-price:35,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Schweine."
@@ -2691,7 +2983,6 @@ description:"Spawner für Schweine."
 id:"cow",
 name:"Cow Spawner",
 icon:"🐄",
-price:40,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Kühe."
@@ -2701,7 +2992,6 @@ description:"Spawner für Kühe."
 id:"sheep",
 name:"Sheep Spawner",
 icon:"🐑",
-price:40,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Schafe."
@@ -2711,7 +3001,6 @@ description:"Spawner für Schafe."
 id:"chicken",
 name:"Chicken Spawner",
 icon:"🐔",
-price:35,
 category:"spawner",
 rarity:"common",
 description:"Spawner für Hühner."
@@ -2721,7 +3010,6 @@ description:"Spawner für Hühner."
 id:"piglin",
 name:"Piglin Spawner",
 icon:"🐗",
-price:225,
 category:"spawner",
 rarity:"epic",
 description:"Seltener Nether-Spawner."
@@ -2731,7 +3019,6 @@ description:"Seltener Nether-Spawner."
 id:"zombified-piglin",
 name:"Zombified Piglin Spawner",
 icon:"🧟‍♂️",
-price:250,
 category:"spawner",
 rarity:"epic",
 description:"Gold- und XP-Farm Spawner."
@@ -2741,7 +3028,6 @@ description:"Gold- und XP-Farm Spawner."
 id:"wither-skeleton",
 name:"Wither Skeleton Spawner",
 icon:"☠️",
-price:500,
 category:"spawner",
 rarity:"legendary",
 description:"Extrem seltener Spawner."
@@ -2751,13 +3037,128 @@ description:"Extrem seltener Spawner."
 id:"shulker",
 name:"Shulker Spawner",
 icon:"📦",
-price:650,
 category:"spawner",
 rarity:"legendary",
 description:"Legendärer Shulker-Spawner."
 },
 
-/* SPECIAL */
+/* =========================
+   NETHERITE
+========================= */
+
+{
+id:"netherite-ingot",
+name:"Netherite Ingot",
+icon:"⬛",
+price:2.50,
+category:"netherite",
+rarity:"legendary",
+description:"Ein Netherite Ingot."
+},
+
+{
+id:"netherite-scrap",
+name:"Netherite Scrap",
+icon:"🪨",
+price:1.00,
+category:"netherite",
+rarity:"epic",
+description:"Netherite Scrap."
+},
+
+{
+id:"netherite-helmet",
+name:"Netherite Helmet",
+icon:"🪖",
+price:8.00,
+category:"netherite",
+rarity:"legendary",
+description:"Netherite Helm."
+},
+
+{
+id:"netherite-chestplate",
+name:"Netherite Chestplate",
+icon:"🛡️",
+price:12.00,
+category:"netherite",
+rarity:"legendary",
+description:"Netherite Brustplatte."
+},
+
+{
+id:"netherite-leggings",
+name:"Netherite Leggings",
+icon:"👖",
+price:10.00,
+category:"netherite",
+rarity:"legendary",
+description:"Netherite Hose."
+},
+
+{
+id:"netherite-boots",
+name:"Netherite Boots",
+icon:"🥾",
+price:7.00,
+category:"netherite",
+rarity:"legendary",
+description:"Netherite Schuhe."
+},
+
+{
+id:"netherite-sword",
+name:"Netherite Sword",
+icon:"⚔️",
+price:9.00,
+category:"netherite",
+rarity:"legendary",
+description:"Starkes Netherite-Schwert."
+},
+
+{
+id:"netherite-pickaxe",
+name:"Netherite Pickaxe",
+icon:"⛏️",
+price:9.00,
+category:"netherite",
+rarity:"legendary",
+description:"Netherite Spitzhacke."
+},
+
+{
+id:"netherite-axe",
+name:"Netherite Axe",
+icon:"🪓",
+price:9.00,
+category:"netherite",
+rarity:"legendary",
+description:"Netherite Axt."
+},
+
+{
+id:"netherite-shovel",
+name:"Netherite Shovel",
+icon:"🛠️",
+price:6.00,
+category:"netherite",
+rarity:"epic",
+description:"Netherite Schaufel."
+},
+
+{
+id:"netherite-hoe",
+name:"Netherite Hoe",
+icon:"🌾",
+price:6.00,
+category:"netherite",
+rarity:"epic",
+description:"Netherite Hacke."
+},
+
+/* =========================
+   SPECIAL
+========================= */
 
 {
 id:"elytra",
@@ -2804,7 +3205,7 @@ description:"Goldhaltiger Blackstone."
 
 /* =========================================================
    STATE
-   ========================================================= */
+========================================================= */
 
 let cart =
     JSON.parse(
@@ -2820,10 +3221,12 @@ let favorites =
 
 let category = "all";
 
+let selectedSpawner = null;
+
 
 /* =========================================================
    SAVE
-   ========================================================= */
+========================================================= */
 
 function save() {
 
@@ -2843,7 +3246,7 @@ function save() {
 
 /* =========================================================
    NAVIGATION
-   ========================================================= */
+========================================================= */
 
 function showView(name) {
 
@@ -2865,155 +3268,193 @@ function showView(name) {
             btn.classList.remove("active")
         );
 
+    const navMap = {
+        home:0,
+        shop:1,
+        special:2,
+        money:3,
+        info:4,
+        faq:5
+    };
+
+    if(navMap[name] !== undefined) {
+
+        document
+            .querySelectorAll(".nav-btn")
+            [navMap[name]]
+            .classList.add("active");
+    }
+
     window.scrollTo({
         top:0,
         behavior:"smooth"
     });
-
-    if(name === "shop") {
-        document
-            .querySelectorAll(".nav-btn")[1]
-            .classList.add("active");
-    }
-
-    if(name === "special") {
-        document
-            .querySelectorAll(".nav-btn")[2]
-            .classList.add("active");
-    }
-
-    if(name === "money") {
-        document
-            .querySelectorAll(".nav-btn")[3]
-            .classList.add("active");
-    }
-
-    if(name === "info") {
-        document
-            .querySelectorAll(".nav-btn")[4]
-            .classList.add("active");
-    }
-
-    if(name === "faq") {
-        document
-            .querySelectorAll(".nav-btn")[5]
-            .classList.add("active");
-    }
-
-    if(name === "home") {
-        document
-            .querySelectorAll(".nav-btn")[0]
-            .classList.add("active");
-    }
 }
 
 
 /* =========================================================
-   RENDER
-   ========================================================= */
+   RENDER PRODUCTS
+========================================================= */
 
-function renderProducts(list, target="products") {
+function renderProducts(
+    list,
+    target="products"
+) {
 
     const element =
         document.getElementById(target);
 
+    if(!element) return;
+
     element.innerHTML =
-        list.map(product => `
+        list.map(product => {
 
-        <article class="product">
+            const isSpawner =
+                product.category === "spawner";
 
-            <div class="product-image">
+            const priceText =
+                isSpawner
+                    ? "ab 0.50 CHF"
+                    : product.price.toFixed(2) +
+                      " CHF";
 
-                <div class="product-tag">
-                    ${product.category === "spawner"
-                        ? "SPAWNER"
-                        : "SPECIAL"}
-                </div>
+            const smallText =
+                isSpawner
+                    ? "101+ Stück: 0.48 CHF/Stück"
+                    : "";
 
-                <button
-                    class="favorite
-                    ${favorites.has(product.id)
-                        ? "active"
-                        : ""}"
-                    onclick="
-                        toggleFavorite('${product.id}')
-                    ">
-                    ${favorites.has(product.id)
-                        ? "♥"
-                        : "♡"}
-                </button>
+            return `
 
-                <div class="product-emoji">
-                    ${product.icon}
-                </div>
+            <article class="product">
 
-                <div class="
-                    rarity
-                    ${product.rarity}
-                ">
-                    ${product.rarity}
-                </div>
+                <div class="product-image">
 
-            </div>
+                    <div class="product-tag">
 
-            <div class="product-body">
+                        ${
+                            product.category === "spawner"
+                                ? "SPAWNER"
+                                : product.category === "netherite"
+                                    ? "NETHERITE"
+                                    : "SPECIAL"
+                        }
 
-                <div class="product-name">
-                    ${product.name}
-                </div>
-
-                <div class="product-description">
-                    ${product.description}
-                </div>
-
-                <div class="product-bottom">
-
-                    <div class="price">
-                        ${product.price.toFixed(2)}
-                        CHF
                     </div>
 
                     <button
-                        class="add"
+                        class="favorite ${
+                            favorites.has(product.id)
+                                ? "active"
+                                : ""
+                        }"
                         onclick="
-                            addProduct('${product.id}')
+                            toggleFavorite('${product.id}')
                         ">
-                        +
+
+                        ${
+                            favorites.has(product.id)
+                                ? "♥"
+                                : "♡"
+                        }
+
                     </button>
+
+                    <div class="product-emoji">
+
+                        ${product.icon}
+
+                    </div>
+
+                    <div class="
+                        rarity
+                        ${product.rarity}
+                    ">
+
+                        ${product.rarity}
+
+                    </div>
 
                 </div>
 
-            </div>
+                <div class="product-body">
 
-        </article>
+                    <div class="product-name">
 
-    `).join("");
+                        ${product.name}
+
+                    </div>
+
+                    <div class="product-description">
+
+                        ${product.description}
+
+                    </div>
+
+                    <div class="product-bottom">
+
+                        <div>
+
+                            <div class="price">
+
+                                ${priceText}
+
+                            </div>
+
+                            <div class="price-small">
+
+                                ${smallText}
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="add"
+                            onclick="
+                                addProduct('${product.id}')
+                            ">
+
+                            +
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            `;
+
+        }).join("");
 }
 
 
 /* =========================================================
    FILTER
-   ========================================================= */
+========================================================= */
 
 function filterProducts() {
 
+    const searchElement =
+        document.getElementById("search");
+
     const search =
-        document
-            .getElementById("search")
-            .value
-            .toLowerCase();
+        searchElement
+            ? searchElement.value.toLowerCase()
+            : "";
 
     let list =
-        products.filter(p => {
+        products.filter(product => {
 
             const matchesSearch =
-                p.name
+                product.name
                     .toLowerCase()
                     .includes(search);
 
             const matchesCategory =
                 category === "all" ||
-                p.category === category;
+                product.category === category;
 
             return (
                 matchesSearch &&
@@ -3021,30 +3462,34 @@ function filterProducts() {
             );
         });
 
+    const sortElement =
+        document.getElementById("sort");
+
     const sort =
-        document.getElementById("sort").value;
+        sortElement
+            ? sortElement.value
+            : "default";
 
     if(sort === "low") {
 
-        list.sort(
-            (a,b) =>
-                a.price-b.price
+        list.sort((a,b) =>
+            getProductPrice(a) -
+            getProductPrice(b)
         );
     }
 
     if(sort === "high") {
 
-        list.sort(
-            (a,b) =>
-                b.price-a.price
+        list.sort((a,b) =>
+            getProductPrice(b) -
+            getProductPrice(a)
         );
     }
 
     if(sort === "name") {
 
-        list.sort(
-            (a,b) =>
-                a.name.localeCompare(b.name)
+        list.sort((a,b) =>
+            a.name.localeCompare(b.name)
         );
     }
 
@@ -3057,10 +3502,9 @@ function filterProducts() {
             legendary:4
         };
 
-        list.sort(
-            (a,b) =>
-                order[b.rarity] -
-                order[a.rarity]
+        list.sort((a,b) =>
+            order[b.rarity] -
+            order[a.rarity]
         );
     }
 
@@ -3069,8 +3513,22 @@ function filterProducts() {
 
 
 /* =========================================================
+   PRODUCT PRICE
+========================================================= */
+
+function getProductPrice(product) {
+
+    if(product.category === "spawner") {
+        return 0.50;
+    }
+
+    return product.price || 0;
+}
+
+
+/* =========================================================
    CATEGORY
-   ========================================================= */
+========================================================= */
 
 function setCategory(value) {
 
@@ -3084,6 +3542,7 @@ function setCategory(value) {
                 "active",
                 btn.dataset.category === value
             );
+
         });
 
     filterProducts();
@@ -3092,7 +3551,7 @@ function setCategory(value) {
 
 /* =========================================================
    FAVORITES
-   ========================================================= */
+========================================================= */
 
 function toggleFavorite(id) {
 
@@ -3100,13 +3559,17 @@ function toggleFavorite(id) {
 
         favorites.delete(id);
 
-        toast("Aus Favoriten entfernt.");
+        toast(
+            "Aus Favoriten entfernt."
+        );
 
     } else {
 
         favorites.add(id);
 
-        toast("Zu Favoriten hinzugefügt.");
+        toast(
+            "Zu Favoriten hinzugefügt."
+        );
     }
 
     save();
@@ -3124,7 +3587,7 @@ function toggleFavorite(id) {
 
 /* =========================================================
    ADD PRODUCT
-   ========================================================= */
+========================================================= */
 
 function addProduct(id) {
 
@@ -3134,6 +3597,17 @@ function addProduct(id) {
         );
 
     if(!product) return;
+
+    /* SPAWNER */
+
+    if(product.category === "spawner") {
+
+        openSpawnerModal(product);
+
+        return;
+    }
+
+    /* NORMALE PRODUKTE */
 
     const existing =
         cart.find(
@@ -3147,15 +3621,22 @@ function addProduct(id) {
     } else {
 
         cart.push({
+
             id:id,
+
             name:product.name,
+
             icon:product.icon,
+
             price:product.price,
+
             quantity:1
+
         });
     }
 
     save();
+
     updateCart();
 
     openCart();
@@ -3168,8 +3649,223 @@ function addProduct(id) {
 
 
 /* =========================================================
+   SPAWNER MODAL
+========================================================= */
+
+function openSpawnerModal(product) {
+
+    selectedSpawner = product;
+
+    document
+        .getElementById("modalIcon")
+        .textContent =
+        product.icon;
+
+    document
+        .getElementById("modalTitle")
+        .textContent =
+        product.name;
+
+    document
+        .getElementById("spawnerAmount")
+        .value = 1;
+
+    updateSpawnerModal();
+
+    document
+        .getElementById("spawnerModal")
+        .classList.add("active");
+}
+
+
+function closeSpawnerModal() {
+
+    document
+        .getElementById("spawnerModal")
+        .classList.remove("active");
+
+    selectedSpawner = null;
+}
+
+
+function changeSpawnerAmount(amount) {
+
+    const input =
+        document
+            .getElementById(
+                "spawnerAmount"
+            );
+
+    let value =
+        parseInt(input.value) || 1;
+
+    value += amount;
+
+    if(value < 1)
+        value = 1;
+
+    input.value = value;
+
+    updateSpawnerModal();
+}
+
+
+function getSpawnerUnitPrice(amount) {
+
+    if(amount > 100) {
+
+        return 0.48;
+    }
+
+    return 0.50;
+}
+
+
+function updateSpawnerModal() {
+
+    const input =
+        document
+            .getElementById(
+                "spawnerAmount"
+            );
+
+    let amount =
+        parseInt(input.value);
+
+    if(
+        isNaN(amount) ||
+        amount < 1
+    ) {
+
+        amount = 1;
+        input.value = 1;
+    }
+
+    const unitPrice =
+        getSpawnerUnitPrice(amount);
+
+    const total =
+        amount *
+        unitPrice;
+
+    document
+        .getElementById(
+            "spawnerUnitPrice"
+        )
+        .textContent =
+        unitPrice.toFixed(2) +
+        " CHF";
+
+    document
+        .getElementById(
+            "spawnerTotal"
+        )
+        .textContent =
+        total.toFixed(2) +
+        " CHF";
+}
+
+
+function confirmSpawner() {
+
+    if(!selectedSpawner)
+        return;
+
+    const input =
+        document
+            .getElementById(
+                "spawnerAmount"
+            );
+
+    let amount =
+        parseInt(input.value);
+
+    if(
+        isNaN(amount) ||
+        amount < 1
+    ) {
+
+        toast(
+            "Bitte eine gültige Anzahl eingeben."
+        );
+
+        return;
+    }
+
+    const unitPrice =
+        getSpawnerUnitPrice(amount);
+
+    const total =
+        amount *
+        unitPrice;
+
+    /*
+       Jeder unterschiedliche Kauf
+       wird als eigene Position gespeichert.
+    */
+
+    const cartId =
+        "spawner-" +
+        selectedSpawner.id +
+        "-" +
+        amount;
+
+    const existing =
+        cart.find(
+            item =>
+                item.id === cartId
+        );
+
+    if(existing) {
+
+        existing.quantity++;
+
+    } else {
+
+        cart.push({
+
+            id:cartId,
+
+            name:
+                amount +
+                "x " +
+                selectedSpawner.name,
+
+            icon:
+                selectedSpawner.icon,
+
+            price:total,
+
+            quantity:1,
+
+            spawner:true,
+
+            spawnerAmount:amount,
+
+            pricePerSpawner:unitPrice
+        });
+    }
+
+    save();
+
+    updateCart();
+
+    closeSpawnerModal();
+
+    openCart();
+
+    toast(
+        amount +
+        "x " +
+        selectedSpawner.name +
+        " hinzugefügt."
+    );
+}
+
+
+/* =========================================================
    CART
-   ========================================================= */
+========================================================= */
 
 function updateCart() {
 
@@ -3181,29 +3877,42 @@ function updateCart() {
     const count =
         cart.reduce(
             (sum,item) =>
-                sum + item.quantity,
+                sum +
+                item.quantity,
             0
         );
 
     document
-        .getElementById("cartCount")
-        .textContent = count;
+        .getElementById(
+            "cartCount"
+        )
+        .textContent =
+        count;
 
     document
-        .getElementById("cartProducts")
-        .textContent = count;
+        .getElementById(
+            "cartProducts"
+        )
+        .textContent =
+        count;
 
     if(!cart.length) {
 
         list.innerHTML = `
+
             <div style="
                 padding:60px 10px;
                 text-align:center;
                 color:#777">
+
                 🛒
+
                 <br><br>
+
                 Dein Warenkorb ist leer.
+
             </div>
+
         `;
 
         updateTotal();
@@ -3213,66 +3922,109 @@ function updateCart() {
 
     list.innerHTML =
         cart.map(
-            (item,index) => `
+            (item,index) => {
 
-            <div class="cart-item">
+                let details = "";
 
-                <div class="cart-icon">
-                    ${item.icon}
+                if(item.spawner) {
+
+                    details =
+                        item.spawnerAmount +
+                        " Spawner × " +
+                        item.pricePerSpawner
+                            .toFixed(2) +
+                        " CHF";
+                }
+
+                return `
+
+                <div class="cart-item">
+
+                    <div class="cart-icon">
+
+                        ${item.icon}
+
+                    </div>
+
+                    <div>
+
+                        <div class="cart-name">
+
+                            ${item.name}
+
+                        </div>
+
+                        <div class="cart-price">
+
+                            ${
+                                (
+                                    item.price *
+                                    item.quantity
+                                ).toFixed(2)
+                            }
+
+                            CHF
+
+                        </div>
+
+                        ${
+                            details
+                                ? `
+                                <div class="cart-details">
+                                    ${details}
+                                </div>
+                                `
+                                : ""
+                        }
+
+                        <div class="qty">
+
+                            <button
+                            onclick="
+                                changeQuantity(
+                                    ${index},
+                                    -1
+                                )">
+
+                                −
+
+                            </button>
+
+                            <span>
+
+                                ${item.quantity}
+
+                            </span>
+
+                            <button
+                            onclick="
+                                changeQuantity(
+                                    ${index},
+                                    1
+                                )">
+
+                                +
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <button
+                    class="remove"
+                    onclick="
+                        removeItem(${index})
+                    ">
+
+                        ✕
+
+                    </button>
+
                 </div>
 
-                <div>
-
-                    <div class="cart-name">
-                        ${item.name}
-                    </div>
-
-                    <div class="cart-price">
-                        ${(
-                            item.price *
-                            item.quantity
-                        ).toFixed(2)}
-                        CHF
-                    </div>
-
-                    <div class="qty">
-
-                        <button
-                        onclick="
-                            changeQuantity(
-                                ${index},
-                                -1
-                            )">
-                            −
-                        </button>
-
-                        <span>
-                            ${item.quantity}
-                        </span>
-
-                        <button
-                        onclick="
-                            changeQuantity(
-                                ${index},
-                                1
-                            )">
-                            +
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <button
-                class="remove"
-                onclick="
-                    removeItem(${index})
-                ">
-                    ✕
-                </button>
-
-            </div>
-        `
+                `;
+            }
         ).join("");
 
     updateTotal();
@@ -3281,36 +4033,45 @@ function updateCart() {
 
 /* =========================================================
    QUANTITY
-   ========================================================= */
+========================================================= */
 
-function changeQuantity(index, amount) {
+function changeQuantity(
+    index,
+    amount
+) {
 
-    if(!cart[index]) return;
+    if(!cart[index])
+        return;
 
     cart[index].quantity += amount;
 
-    if(cart[index].quantity <= 0) {
+    if(
+        cart[index].quantity <= 0
+    ) {
 
         cart.splice(index,1);
     }
 
     save();
+
     updateCart();
 }
 
 
 /* =========================================================
    REMOVE
-   ========================================================= */
+========================================================= */
 
 function removeItem(index) {
 
     const name =
-        cart[index]?.name;
+        cart[index]?.name ||
+        "Produkt";
 
     cart.splice(index,1);
 
     save();
+
     updateCart();
 
     toast(
@@ -3322,20 +4083,26 @@ function removeItem(index) {
 
 /* =========================================================
    DISCOUNT
-   ========================================================= */
+========================================================= */
 
 function getDiscount() {
 
-    const code =
+    const coupon =
         document
-            .getElementById("coupon")
-            .value
+            .getElementById(
+                "coupon"
+            );
+
+    if(!coupon)
+        return 0;
+
+    const code =
+        coupon.value
             .trim()
             .toUpperCase();
 
-    if(code === "DONUT10") {
+    if(code === "DONUT10")
         return 10;
-    }
 
     return 0;
 }
@@ -3343,7 +4110,7 @@ function getDiscount() {
 
 /* =========================================================
    TOTAL
-   ========================================================= */
+========================================================= */
 
 function updateTotal() {
 
@@ -3360,15 +4127,21 @@ function updateTotal() {
         getDiscount();
 
     total *=
-        (1 - discount / 100);
+        1 -
+        discount / 100;
 
     document
-        .getElementById("discount")
+        .getElementById(
+            "discount"
+        )
         .textContent =
-        discount + "%";
+        discount +
+        "%";
 
     document
-        .getElementById("total")
+        .getElementById(
+            "total"
+        )
         .textContent =
         total.toFixed(2) +
         " CHF";
@@ -3376,31 +4149,40 @@ function updateTotal() {
 
 
 /* =========================================================
-   CART OPEN/CLOSE
-   ========================================================= */
+   CART OPEN
+========================================================= */
 
 function openCart() {
 
     document
-        .getElementById("cart")
+        .getElementById(
+            "cart"
+        )
         .classList.add("active");
 
     document
-        .getElementById("overlay")
+        .getElementById(
+            "overlay"
+        )
         .classList.add("active");
 
     document.body.style.overflow =
         "hidden";
 }
 
+
 function closeCart() {
 
     document
-        .getElementById("cart")
+        .getElementById(
+            "cart"
+        )
         .classList.remove("active");
 
     document
-        .getElementById("overlay")
+        .getElementById(
+            "overlay"
+        )
         .classList.remove("active");
 
     document.body.style.overflow =
@@ -3410,7 +4192,7 @@ function closeCart() {
 
 /* =========================================================
    MONEY
-   ========================================================= */
+========================================================= */
 
 function parseMoney(value) {
 
@@ -3428,16 +4210,20 @@ function parseMoney(value) {
             )
         );
 
-    if(isNaN(number)) return 0;
+    if(isNaN(number))
+        return 0;
 
     if(text.includes("B"))
-        return number * 1000000000;
+        return number *
+            1000000000;
 
     if(text.includes("M"))
-        return number * 1000000;
+        return number *
+            1000000;
 
     if(text.includes("K"))
-        return number * 1000;
+        return number *
+            1000;
 
     return number;
 }
@@ -3446,6 +4232,7 @@ function parseMoney(value) {
 function formatMoney(value) {
 
     if(value >= 1000000000)
+
         return (
             value /
             1000000000
@@ -3455,6 +4242,7 @@ function formatMoney(value) {
         "B";
 
     if(value >= 1000000)
+
         return (
             value /
             1000000
@@ -3469,16 +4257,21 @@ function formatMoney(value) {
 
 function moneyPrice(value) {
 
-    const oneB = 1000000000;
-    const tenB = 10000000000;
+    const oneB =
+        1000000000;
+
+    const tenB =
+        10000000000;
 
     if(value <= oneB)
+
         return (
             value /
             oneB
         ) * 15;
 
     if(value <= tenB)
+
         return 15 +
             (
                 (value-oneB) /
@@ -3510,12 +4303,16 @@ function updateMoney() {
         );
 
     document
-        .getElementById("moneyValue")
+        .getElementById(
+            "moneyValue"
+        )
         .textContent =
         formatMoney(amount);
 
     document
-        .getElementById("moneyPrice")
+        .getElementById(
+            "moneyPrice"
+        )
         .textContent =
         moneyPrice(amount)
             .toFixed(2) +
@@ -3526,8 +4323,11 @@ function updateMoney() {
 function setMoney(value) {
 
     document
-        .getElementById("moneyInput")
-        .value = value;
+        .getElementById(
+            "moneyInput"
+        )
+        .value =
+        value;
 
     updateMoney();
 }
@@ -3576,16 +4376,23 @@ function addMoney() {
     } else {
 
         cart.push({
+
             id:"money-" + amount,
+
             name:name,
+
             icon:"💰",
+
             price:price,
+
             quantity:1,
+
             money:amount
         });
     }
 
     save();
+
     updateCart();
 
     openCart();
@@ -3599,7 +4406,7 @@ function addMoney() {
 
 /* =========================================================
    CHECKOUT
-   ========================================================= */
+========================================================= */
 
 function checkout() {
 
@@ -3614,7 +4421,9 @@ function checkout() {
 
     const username =
         document
-            .getElementById("username")
+            .getElementById(
+                "username"
+            )
             .value
             .trim();
 
@@ -3629,7 +4438,9 @@ function checkout() {
 
     const code =
         document
-            .getElementById("coupon")
+            .getElementById(
+                "coupon"
+            )
             .value
             .trim()
             .toUpperCase();
@@ -3649,7 +4460,8 @@ function checkout() {
         );
 
     total *=
-        1 - discount / 100;
+        1 -
+        discount / 100;
 
     const order =
         "DONUT-" +
@@ -3660,24 +4472,34 @@ function checkout() {
         );
 
     alert(
+
         "🍩 DONUTSHOP\n\n" +
+
         "Bestellung: " +
         order +
+
         "\n\n" +
+
         "Minecraft: " +
         username +
+
         "\n\n" +
+
         "Gesamt: " +
         total.toFixed(2) +
-        " CHF\n\n" +
+        " CHF" +
+
+        "\n\n" +
+
         "Demo-Checkout."
+
     );
 }
 
 
 /* =========================================================
    FAQ
-   ========================================================= */
+========================================================= */
 
 function toggleFAQ(button) {
 
@@ -3689,14 +4511,16 @@ function toggleFAQ(button) {
 
 /* =========================================================
    TOAST
-   ========================================================= */
+========================================================= */
 
 let toastTimer;
 
 function toast(message) {
 
     const element =
-        document.getElementById("toast");
+        document.getElementById(
+            "toast"
+        );
 
     element.textContent =
         message;
@@ -3718,37 +4542,69 @@ function toast(message) {
 
 /* =========================================================
    KEYBOARD
-   ========================================================= */
+========================================================= */
 
 document.addEventListener(
     "keydown",
     event => {
 
-        if(event.key === "Escape")
+        if(event.key === "Escape") {
+
             closeCart();
+            closeSpawnerModal();
+
+        }
 
     }
 );
 
 
 /* =========================================================
+   MODAL CLICK OUTSIDE
+========================================================= */
+
+document
+    .getElementById(
+        "spawnerModal"
+    )
+    .addEventListener(
+        "click",
+        event => {
+
+            if(
+                event.target.id ===
+                "spawnerModal"
+            ) {
+
+                closeSpawnerModal();
+            }
+
+        }
+    );
+
+
+/* =========================================================
    INITIALIZE
-   ========================================================= */
+========================================================= */
 
 renderProducts(products);
 
 renderProducts(
     products.filter(
-        p => p.category === "special"
+        p =>
+            p.category === "special"
     ),
     "specialProducts"
 );
 
 updateCart();
+
 updateMoney();
 
 document
-    .getElementById("coupon")
+    .getElementById(
+        "coupon"
+    )
     .addEventListener(
         "input",
         updateTotal
