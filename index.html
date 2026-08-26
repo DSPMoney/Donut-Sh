@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DONUT SMP // ULTIMATE NEXUS HUB v5</title>
+<title>DONUT SMP // ULTIMATE NEXUS HUB v6</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
 :root {
     --bg: #010603;
-    --card-bg: rgba(6, 20, 11, 0.7);
+    --card-bg: rgba(6, 20, 11, 0.75);
     --border: rgba(0, 255, 102, 0.2);
     --primary: #00ff66;
     --secondary: #00e1ff;
-    --accent: #10b981;
+    --danger: #ef4444;
     --text: #ecfdf5;
     --muted: #6ee7b7;
     --glow: rgba(0, 255, 102, 0.3);
@@ -24,7 +24,6 @@
     --border: rgba(16, 185, 129, 0.25);
     --primary: #059669;
     --secondary: #0284c7;
-    --accent: #047857;
     --text: #064e3b;
     --muted: #4b5563;
     --glow: rgba(5, 150, 105, 0.2);
@@ -42,18 +41,6 @@ body::before {
     background-size: 50px 50px;
     z-index: -3;
     opacity: 0.35;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    top: -15%;
-    right: -10%;
-    width: 65vw;
-    height: 65vw;
-    background: radial-gradient(circle, var(--glow), transparent 70%);
-    z-index: -2;
-    pointer-events: none;
 }
 
 header {
@@ -86,7 +73,6 @@ header {
     font-family: 'Orbitron', sans-serif;
     font-weight: 900;
     font-size: 20px;
-    letter-spacing: 0.5px;
 }
 
 .logo-box {
@@ -197,13 +183,7 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
-.hero p {
-    color: var(--muted);
-    font-size: 15px;
-    margin-top: 20px;
-    line-height: 1.6;
-    max-width: 550px;
-}
+.hero p { color: var(--muted); font-size: 15px; margin-top: 20px; line-height: 1.6; max-width: 550px; }
 
 .hero-btns { display: flex; gap: 15px; margin-top: 30px; }
 .btn {
@@ -224,6 +204,12 @@ h1 {
 }
 .btn-cyber:hover { filter: brightness(1.15); transform: translateY(-2px); }
 
+.btn-sell {
+    background: linear-gradient(135deg, #f59e0b, #ef4444);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
 .btn-outline {
     background: transparent;
     border: 1px solid var(--border);
@@ -238,19 +224,11 @@ h1 {
     border-radius: 24px;
     display: grid;
     place-items: center;
-    position: relative;
-    overflow: hidden;
     font-size: 90px;
-    box-shadow: inset 0 0 30px rgba(0,255,102,0.05);
 }
 
-.section-header { margin-bottom: 30px; }
-.section-title {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 28px;
-    font-weight: 900;
-    margin-bottom: 6px;
-}
+.section-header { margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end; }
+.section-title { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 900; margin-bottom: 6px; }
 .section-desc { color: var(--muted); font-size: 14px; }
 
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -263,18 +241,14 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
 }
-.cyber-card:hover {
-    border-color: var(--primary);
-    box-shadow: 0 0 25px var(--glow);
-    transform: translateY(-4px);
-}
+.cyber-card:hover { border-color: var(--primary); box-shadow: 0 0 25px var(--glow); transform: translateY(-4px); }
 
 .card-img {
-    height: 160px;
+    height: 150px;
     background: rgba(0,0,0,0.3);
     display: grid;
     place-items: center;
-    font-size: 50px;
+    font-size: 45px;
     position: relative;
 }
 
@@ -291,38 +265,34 @@ h1 {
     color: var(--primary);
 }
 
-.card-body { padding: 18px; }
-.card-title { font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 700; }
-.card-text { color: var(--muted); font-size: 12px; margin-top: 6px; line-height: 1.4; }
+.card-body { padding: 16px; }
+.card-title { font-family: 'Orbitron', sans-serif; font-size: 13px; font-weight: 700; }
+.card-text { color: var(--muted); font-size: 11px; margin-top: 4px; }
 
 .card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 18px;
+    padding: 12px 16px;
     border-top: 1px solid var(--border);
 }
-.card-price { font-family: 'Orbitron', sans-serif; font-size: 15px; font-weight: 900; color: var(--primary); }
-.buy-btn {
-    width: 36px; height: 36px;
-    background: var(--primary);
-    color: #010603;
-    border: 0;
-    border-radius: 10px;
+.card-price { font-family: 'Orbitron', sans-serif; font-size: 14px; font-weight: 900; color: var(--primary); }
+.card-sell-price { font-family: 'Orbitron', sans-serif; font-size: 12px; font-weight: 700; color: #f59e0b; }
+
+.action-btns { display: flex; gap: 6px; }
+.mini-btn {
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 11px;
     font-weight: 900;
     cursor: pointer;
-    display: grid;
-    place-items: center;
+    border: 0;
 }
-.buy-btn:hover { background: var(--secondary); box-shadow: 0 0 15px var(--secondary); }
+.btn-buy-mini { background: var(--primary); color: #010603; }
+.btn-sell-mini { background: #f59e0b; color: #010603; }
 
 .shop-layout { display: grid; grid-template-columns: 1fr 380px; gap: 24px; }
-.panel {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 26px;
-}
+.panel { background: var(--card-bg); border: 1px solid var(--border); border-radius: 24px; padding: 26px; }
 .cyber-input {
     width: 100%;
     padding: 14px;
@@ -338,47 +308,8 @@ h1 {
 }
 .cyber-input:focus { border-color: var(--primary); box-shadow: 0 0 15px var(--glow); }
 
-.price-box {
-    margin-top: 16px;
-    padding: 18px;
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    text-align: center;
-}
-
-/* FAQ Accordion */
-.faq-container { display: flex; flex-direction: column; gap: 12px; max-width: 950px; }
-.faq-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-.faq-question { width: 100%; padding: 18px 22px; background: transparent; border: 0; color: var(--text); font-family: 'Orbitron', sans-serif; font-size: 13px; font-weight: 700; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-.faq-answer { max-height: 0; overflow: hidden; padding: 0 22px; color: var(--muted); font-size: 13px; line-height: 1.6; transition: max-height 0.3s ease, padding 0.3s ease; }
-.faq-card.open .faq-answer { max-height: 200px; padding-bottom: 18px; }
-
-/* Live Ticker Feed */
-.ticker-box {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 40px;
-}
-.ticker-item {
-    background: var(--card-bg);
-    border: 1px solid var(--border);
-    padding: 16px;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
 /* Sidebar */
-.overlay {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(8px);
-    opacity: 0; pointer-events: none;
-    z-index: 2000;
-}
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); opacity: 0; pointer-events: none; z-index: 2000; }
 .overlay.active { opacity: 1; pointer-events: auto; }
 
 .sidebar {
@@ -413,7 +344,6 @@ h1 {
     .grid-4 { grid-template-columns: repeat(2, 1fr); }
     .hero { grid-template-columns: 1fr; }
     .shop-layout { grid-template-columns: 1fr; }
-    .ticker-box { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -423,18 +353,16 @@ h1 {
 <div class="header-inner">
 <a href="#" class="logo" onclick="switchView('home')">
 <div class="logo-box">⚡</div>
-DONUT<span>NEXUS</span>
+DONUT<span>MARKET</span>
 </a>
 <nav>
 <button class="nav-btn active" onclick="switchView('home')">Home</button>
-<button class="nav-btn" onclick="switchView('spawner')">Spawner</button>
-<button class="nav-btn" onclick="switchView('bases')">Basen & Farmen</button>
-<button class="nav-btn" onclick="switchView('netherite')">Gear</button>
-<button class="nav-btn" onclick="switchView('money')">Money</button>
-<button class="nav-btn" onclick="switchView('faq')">FAQ</button>
+<button class="nav-btn" onclick="switchView('catalog')">Alle Items</button>
+<button class="nav-btn" onclick="switchView('spawner')">Spawner & Basen</button>
+<button class="nav-btn" onclick="switchView('money')">Geld-Handel</button>
 </nav>
 <div class="actions">
-<button class="icon-btn" onclick="toggleTheme()" title="Design wechseln">🌓</button>
+<button class="icon-btn" onclick="toggleTheme()" title="Theme">🌓</button>
 <button class="icon-btn" onclick="openCart()" title="Warenkorb">🛒<span class="badge-count" id="cartBadge">0</span></button>
 </div>
 </div>
@@ -444,69 +372,48 @@ DONUT<span>NEXUS</span>
 <section class="view active" id="view-home">
 <div class="hero">
 <div>
-<div class="hero-tag">// ULTIMATE DONUT SMP TRADING HUB</div>
-<h1>SECURE <span class="highlight">MARKETPLACE.</span></h1>
-<p>Kaufe Spawner, vollautomatische Farmen (wie Kelp- und Eisenfarmen), gesicherte Claim-Basen und Ingame-Währung vollautomatisiert.</p>
+<div class="hero-tag">// ULTIMATE BUY & SELL MARKETPLACE</div>
+<h1>KAUFEN & <span class="highlight">VERKAUFEN.</span></h1>
+<p>Jedes Item aus dem Spiel direkt verfügbar. Verkaufe Spawner & Geld (35% Abzug) oder Standard-Items (50% Abzug) sekundenschnell an den Bot.</p>
 <div class="hero-btns">
-<button class="btn btn-cyber" onclick="switchView('spawner')">Spawner ansehen</button>
-<button class="btn btn-outline" onclick="switchView('bases')">Basen & Farmen</button>
+<button class="btn btn-cyber" onclick="switchView('catalog')">Item-Katalog durchstöbern</button>
+<button class="btn btn-sell" onclick="switchView('money')">Geld verkaufen</button>
 </div>
 </div>
-<div class="hero-visual">🛡️</div>
+<div class="hero-visual">📦</div>
 </div>
+</section>
 
-<div class="ticker-box">
-<div class="ticker-item"><span style="font-size:24px;">🟢</span><div><div style="font-size:12px;font-weight:700;font-family:'Orbitron';">Server Status</div><div style="font-size:11px;color:var(--muted);">Online · 482 Spieler</div></div></div>
-<div class="ticker-item"><span style="font-size:24px;">⚡</span><div><div style="font-size:12px;font-weight:700;font-family:'Orbitron';">Automatischer Bot</div><div style="font-size:11px;color:var(--muted);">Lieferzeit &lt; 2 Minuten</div></div></div>
-<div class="ticker-item"><span style="font-size:24px;">🔒</span><div><div style="font-size:12px;font-weight:700;font-family:'Orbitron';">Treuhand Schutz</div><div style="font-size:11px;color:var(--muted);">100% Sicherer Handel</div></div></div>
+<section class="view" id="view-catalog">
+<div class="section-header">
+<div>
+<div class="section-title">Minecraft Item-Katalog</div>
+<div class="section-desc">Günstigstes Item: Goldbarren (Gold Ingot). Preise basieren auf Seltenheit. Kauf & Verkauf aktiv!</div>
 </div>
+</div>
+<div class="grid-4" id="catalogGrid"></div>
 </section>
 
 <section class="view" id="view-spawner">
 <div class="section-header">
-<div class="section-title">Spawner Matrix</div>
-<div class="section-desc">Wähle deinen Wunsch-Spawner und skaliere die Anzahl beliebig hoch mit Mengenrabatt.</div>
-</div>
-<div class="shop-layout">
-<div class="panel">
-<div class="grid-4" id="spawnerGrid" style="grid-template-columns:repeat(2,1fr);"></div>
-</div>
-<div class="panel">
-<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:8px;">Menge & Skalierung</div>
-<input class="cyber-input" id="spawnerQty" type="number" min="1" value="1" oninput="calcSpawner()">
-<div class="price-box">
-<div id="spawnerDisplayQty" style="font-family:'Orbitron'; font-size:30px; font-weight:900; color:var(--primary);">1x</div>
-<div id="spawnerTotalPrice" style="font-size:18px; font-weight:800; margin-top:4px;">0.50 CHF</div>
-<div style="font-size:11px; color:var(--muted); margin-top:4px;">Ab 101 Stk. nur 0.48 CHF/Stk.</div>
-</div>
-<button class="btn btn-cyber" style="width:100%; margin-top:16px;" onclick="addSpawnerCart()">In den Warenkorb</button>
+<div>
+<div class="section-title">Spawner & Automatik-Basen</div>
+<div class="section-desc">Spawner und Basen kaufen oder für 35% weniger an den Server verkaufen.</div>
 </div>
 </div>
-</section>
-
-<section class="view" id="view-bases">
-<div class="section-header">
-<div class="section-title">Basen, Claims & Automatik-Farmen</div>
-<div class="section-desc">Fertig gebaute automatische Farmen und unterirdische Bunker direkt beanspruchen.</div>
-</div>
-<div class="grid-4" id="basesGrid"></div>
-</section>
-
-<section class="view" id="view-netherite">
-<div class="section-header">
-<div class="section-title">Netherite Gear & PvP Ausrüstung</div>
-<div class="section-desc">Vollverzauberte Werkzeuge und Rüstungsteile für maximale PvP-Power.</div>
-</div>
-<div class="grid-4" id="gearGrid"></div>
+<div class="grid-4" id="spawnerGrid"></div>
 </section>
 
 <section class="view" id="view-money">
 <div class="section-header">
-<div class="section-title">Matrix Credits (Ingame Geld)</div>
-<div class="section-desc">Wähle blitzschnell dein gewünschtes Money-Paket für den Server.</div>
+<div>
+<div class="section-title">Geld (Money) Kaufen & Verkaufen</div>
+<div class="section-desc">Ingame-Guthaben handeln. Verkauf bringt 35% weniger ein als der Kaufpreis.</div>
+</div>
 </div>
 <div class="shop-layout">
 <div class="panel">
+<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:8px;">Betrag wählen</div>
 <input class="cyber-input" id="moneyInput" value="1B" style="margin-bottom:12px;">
 <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px;">
 <button class="btn btn-outline" onclick="setMoney('100M')">100M</button>
@@ -514,43 +421,15 @@ DONUT<span>NEXUS</span>
 <button class="btn btn-outline" onclick="setMoney('5B')">5B</button>
 <button class="btn btn-outline" onclick="setMoney('10B')">10B</button>
 </div>
-<button class="btn btn-cyber" style="width:100%; margin-top:16px;" onclick="addMoneyCart()">Money buchen</button>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px;">
+<button class="btn btn-cyber" onclick="handleMoneyAction('buy')">Geld Kaufen</button>
+<button class="btn btn-sell" onclick="handleMoneyAction('sell')">Geld Verkaufen (-35%)</button>
+</div>
 </div>
 <div class="panel">
-<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:14px;">Wechselkurs-Übersicht</div>
-<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>100M Money</span><strong>1.50 CHF</strong></div>
-<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>1B Money</span><strong>15.00 CHF</strong></div>
-<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>5B Money</span><strong>51.67 CHF</strong></div>
-<div style="display:flex; justify-content:space-between; padding:8px 0; font-size:13px;"><span>10B Money</span><strong>100.00 CHF</strong></div>
-</div>
-</div>
-</section>
-
-<section class="view" id="view-faq">
-<div class="section-header">
-<div class="section-title">Erweiterte FAQ & Support</div>
-<div class="section-desc">Ausführliche Antworten zu Lieferung, Claims, Farmen und Schutz.</div>
-</div>
-<div class="faq-container">
-<div class="faq-card open">
-<button class="faq-question" onclick="toggleFaq(this)">Wie werden automatische Farmen (z.B. Kelp-Farmen) übergeben? <span>+</span></button>
-<div class="faq-answer">Nach dem Kauf erhältst du alle exakten Koordinaten, die Truheninhalte sowie die vollständigen Claim- und Treuhandrechte für die jeweilige Farm direkt übertragen.</div>
-</div>
-<div class="faq-card">
-<button class="faq-question" onclick="toggleFaq(this)">Wie schnell ist die Lieferung im Spiel? <span>+</span></button>
-<div class="faq-answer">Unser System arbeitet vollautomatisiert. Nach erfolgreicher Zahlung übergibt der Bot die Items oder Rechte in der Regel innerhalb von 1 bis 3 Minuten ingame.</div>
-</div>
-<div class="faq-card">
-<button class="faq-question" onclick="toggleFaq(this)">Sind meine Transaktionen und der Account sicher? <span>+</span></button>
-<div class="faq-answer">Ja, absolut. Der gesamte Handel läuft über verschlüsselte Protokolle und bewährte Treuhand-Mechanismen ab, die einen sicheren Ablauf garantieren.</div>
-</div>
-<div class="faq-card">
-<button class="faq-question" onclick="toggleFaq(this)">Was passiert bei Problemen mit der Übergabe? <span>+</span></button>
-<div class="faq-answer">Sollte der Bot einmal verzögert sein, ist unser Support per Ticket rund um die Uhr erreichbar und liefert Gegenstände manuell nach.</div>
-</div>
-<div class="faq-card">
-<button class="faq-question" onclick="toggleFaq(this)">Gibt es Rabatte für Großbestellungen bei Spawnern? <span>+</span></button>
-<div class="faq-answer">Ja! Ab einer Bestellmenge von 101 Stück sinkt der automatische Stückpreis für jeden Spawner von 0.50 CHF auf 0.48 CHF.</div>
+<div style="font-family:'Orbitron'; font-weight:700; margin-bottom:14px;">Preis- & Auszahlungs-Tabelle</div>
+<div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--border); font-size:13px;"><span>1B Money Kauf</span><strong style="color:var(--primary);">15.00 CHF</strong></div>
+<div style="display:flex; justify-content:space-between; padding:8px 0; font-size:13px;"><span>1B Money Verkauf</span><strong style="color:#f59e0b;">9.75 CHF</strong></div>
 </div>
 </div>
 </section>
@@ -559,37 +438,38 @@ DONUT<span>NEXUS</span>
 <div class="overlay" id="overlay" onclick="closeCart()"></div>
 <aside class="sidebar" id="sidebar">
 <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border); padding-bottom:18px;">
-<div style="font-family:'Orbitron'; font-weight:900; font-size:17px;">Dein Warenkorb</div>
+<div style="font-family:'Orbitron'; font-weight:900; font-size:17px;">Dein Warenkorb / Transaktionen</div>
 <button class="icon-btn" onclick="closeCart()" style="width:36px; height:36px;">✕</button>
 </div>
 <div id="cartList" style="flex:1; overflow-y:auto; padding:15px 0;"></div>
 <div style="border-top:1px solid var(--border); padding-top:18px;">
 <div style="display:flex; justify-content:space-between; font-family:'Orbitron'; font-weight:900; font-size:17px; margin-bottom:14px;">
-<span>Gesamt:</span><span id="cartSum" style="color:var(--primary);">0.00 CHF</span>
+<span>Summe:</span><span id="cartSum" style="color:var(--primary);">0.00 CHF</span>
 </div>
 <input class="cyber-input" id="mcName" placeholder="Minecraft Name" style="font-size:13px; margin-bottom:10px;">
-<button class="btn btn-cyber" style="width:100%;" onclick="checkout()">Sicher auschecken</button>
+<button class="btn btn-cyber" style="width:100%;" onclick="checkout()">Transaktion abschließen</button>
 </div>
 </aside>
 
 <div class="toast" id="toast">Aktion erfolgreich</div>
 
 <script>
-const items = [
-    { id: 'skel', name: 'Skeleton Spawner', cat: 'spawner', icon: '💀' },
-    { id: 'golem', name: 'Iron Golem Spawner', cat: 'spawner', icon: '🤖' },
-    { id: 'kelp', name: 'Auto-Kelp Farm Komplex', cat: 'bases', icon: '🌿', price: 9.99, desc: 'High-Speed Kelp-XP Farm mit Schmelzofen' },
-    { id: 'iron', name: 'Eisen-Farm Anlage', cat: 'bases', icon: '⚙️', price: 14.50, desc: 'Maximale Golem-Spawnrate mit Lagersystem' },
-    { id: 'base2', name: 'High-End Claim Bunker', cat: 'bases', icon: '🏰', price: 24.99, desc: 'Gesicherter Untergrund-Bunker mit Rüstkammer' },
-    { id: 'sword', name: 'Netherite Sword', cat: 'gear', icon: '🗡️', price: 2.5 },
-    { id: 'pick', name: 'Netherite Pickaxe', cat: 'gear', icon: '⛏️', price: 3.0 },
-    { id: 'helm', name: 'Netherite Helmet', cat: 'gear', icon: '🪖', price: 3.5 },
-    { id: 'chest', name: 'Netherite Chestplate', cat: 'gear', icon: '🛡️', price: 4.5 },
-    { id: 'elytra', name: 'Elytra Pro', cat: 'gear', icon: '🪽', price: 35.0 },
+// Günstigstes Item = Gold Ingot (0.20 CHF), andere Items basieren auf Seltenheit
+const allItems = [
+    { id: 'gold', name: 'Gold Ingot', cat: 'catalog', icon: '🟡', price: 0.20, rarity: 'Häufig' },
+    { id: 'iron_ingot', name: 'Iron Ingot', cat: 'catalog', icon: '🔩', price: 0.35, rarity: 'Häufig' },
+    { id: 'diamond', name: 'Diamond', cat: 'catalog', icon: '💎', price: 1.20, rarity: 'Selten' },
+    { id: 'netherite_scrap', name: 'Netherite Scrap', cat: 'catalog', icon: '🧱', price: 2.50, rarity: 'Episch' },
+    { id: 'beacon', name: 'Beacon', cat: 'catalog', icon: '🌟', price: 8.00, rarity: 'Legendär' },
+    { id: 'elytra', name: 'Elytra', cat: 'catalog', icon: '🪽', price: 25.00, rarity: 'Legendär' },
+
+    { id: 'skel', name: 'Skeleton Spawner', cat: 'spawner', icon: '💀', price: 0.50, rarity: 'Spawner' },
+    { id: 'golem', name: 'Iron Golem Spawner', cat: 'spawner', icon: '🤖', price: 0.50, rarity: 'Spawner' },
+    { id: 'kelp_farm', name: 'Auto-Kelp Farm', cat: 'spawner', icon: '🌿', price: 9.99, rarity: 'Base' },
+    { id: 'base_claim', name: 'Claim Bunker Base', cat: 'spawner', icon: '🏰', price: 24.99, rarity: 'Base' }
 ];
 
-let cart = JSON.parse(localStorage.getItem('nexus_hub_v5')) || [];
-let activeSpawner = items[0];
+let cart = JSON.parse(localStorage.getItem('nexus_hub_v6')) || [];
 
 function switchView(id) {
     document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
@@ -600,81 +480,94 @@ function switchView(id) {
 
 function toggleTheme() {
     let curr = document.documentElement.getAttribute('data-theme');
-    let next = curr === 'light' ? '' : 'light';
-    document.documentElement.setAttribute('data-theme', next);
+    document.documentElement.setAttribute('data-theme', curr === 'light' ? '' : 'light');
 }
 
-function renderCatalog() {
-    document.getElementById('spawnerGrid').innerHTML = items.filter(i => i.cat === 'spawner').map(i => `
-        <div class="cyber-card" style="cursor:pointer;" onclick="activeSpawner = items.find(x => x.id === '${i.id}'); showToast(i.name + ' ausgewählt!');">
-            <div class="card-img"><span class="card-tag">SPAWNER</span>${i.icon}</div>
-            <div class="card-body"><div class="card-title">${i.name}</div></div>
-            <div class="card-footer"><div class="card-price">0.50 CHF</div><div class="buy-btn">⚡</div></div>
-        </div>
-    `).join('');
+function renderShops() {
+    // Katalog-Ansicht (Items: Kaufpreis regulär, Verkaufspreis = -50%)
+    document.getElementById('catalogGrid').innerHTML = allItems.filter(i => i.cat === 'catalog').map(i => {
+        let sellPrice = (i.price * 0.50).toFixed(2);
+        return `
+            <div class="cyber-card">
+                <div class="card-img"><span class="card-tag">${i.rarity}</span>${i.icon}</div>
+                <div class="card-body">
+                    <div class="card-title">${i.name}</div>
+                    <div class="card-text">Kauf: <strong style="color:var(--primary);">${i.price.toFixed(2)} CHF</strong></div>
+                    <div class="card-text">Verkauf: <strong style="color:#f59e0b;">${sellPrice} CHF (-50%)</strong></div>
+                </div>
+                <div class="card-footer">
+                    <div class="action-btns">
+                        <button class="mini-btn btn-buy-mini" onclick="addToCart('${i.id}', 'buy')">Kaufen</button>
+                        <button class="mini-btn btn-sell-mini" onclick="addToCart('${i.id}', 'sell')">Verkaufen</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
 
-    document.getElementById('basesGrid').innerHTML = items.filter(i => i.cat === 'bases').map(i => `
-        <div class="cyber-card">
-            <div class="card-img"><span class="card-tag">BASE</span>${i.icon}</div>
-            <div class="card-body"><div class="card-title">${i.name}</div><div class="card-text">${i.desc}</div></div>
-            <div class="card-footer"><div class="card-price">${i.price.toFixed(2)} CHF</div><button class="buy-btn" onclick="addSimple('${i.id}')">+</button></div>
-        </div>
-    `).join('');
-
-    document.getElementById('gearGrid').innerHTML = items.filter(i => i.cat === 'gear').map(i => `
-        <div class="cyber-card">
-            <div class="card-img"><span class="card-tag">GEAR</span>${i.icon}</div>
-            <div class="card-body"><div class="card-title">${i.name}</div><div class="card-text">Voll verzaubert & bereit</div></div>
-            <div class="card-footer"><div class="card-price">${i.price.toFixed(2)} CHF</div><button class="buy-btn" onclick="addSimple('${i.id}')">+</button></div>
-        </div>
-    `).join('');
-}
-
-function calcSpawner() {
-    let q = parseInt(document.getElementById('spawnerQty').value) || 1;
-    let unit = q > 100 ? 0.48 : 0.50;
-    document.getElementById('spawnerDisplayQty').textContent = q + 'x';
-    document.getElementById('spawnerTotalPrice').textContent = (q * unit).toFixed(2) + ' CHF';
-}
-
-function addSpawnerCart() {
-    let q = parseInt(document.getElementById('spawnerQty').value) || 1;
-    let unit = q > 100 ? 0.48 : 0.50;
-    cart.push({ id: 'spawner-' + activeSpawner.id, name: activeSpawner.name + ' (' + q + 'x)', icon: activeSpawner.icon, price: q * unit, qty: 1 });
-    saveCart();
-    openCart();
-}
-
-function addSimple(id) {
-    let item = items.find(x => x.id === id);
-    cart.push({ id: item.id, name: item.name, icon: item.icon, price: item.price, qty: 1 });
-    saveCart();
-    openCart();
+    // Spawner & Basen Ansicht (Verkaufspreis = -35%)
+    document.getElementById('spawnerGrid').innerHTML = allItems.filter(i => i.cat === 'spawner').map(i => {
+        let sellPrice = (i.price * 0.65).toFixed(2);
+        return `
+            <div class="cyber-card">
+                <div class="card-img"><span class="card-tag">${i.rarity}</span>${i.icon}</div>
+                <div class="card-body">
+                    <div class="card-title">${i.name}</div>
+                    <div class="card-text">Kauf: <strong style="color:var(--primary);">${i.price.toFixed(2)} CHF</strong></div>
+                    <div class="card-text">Verkauf: <strong style="color:#f59e0b;">${sellPrice} CHF (-35%)</strong></div>
+                </div>
+                <div class="card-footer">
+                    <div class="action-btns">
+                        <button class="mini-btn btn-buy-mini" onclick="addToCart('${i.id}', 'buy')">Kaufen</button>
+                        <button class="mini-btn btn-sell-mini" onclick="addToCart('${i.id}', 'sell')">Verkaufen</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
 }
 
 function setMoney(val) {
     document.getElementById('moneyInput').value = val;
 }
 
-function addMoneyCart() {
+function handleMoneyAction(type) {
     let val = document.getElementById('moneyInput').value;
     let prices = { '100M': 1.5, '1B': 15.0, '5B': 51.67, '10B': 100.0 };
-    let price = prices[val] || 15.0;
-    cart.push({ id: 'money-' + val, name: val + ' Money', icon: '💰', price: price, qty: 1 });
+    let basePrice = prices[val] || 15.0;
+    
+    // Spawner & Geld haben 35% Rabatt beim Verkauf
+    let finalPrice = type === 'buy' ? basePrice : basePrice * 0.65;
+    let name = type === 'buy' ? val + ' Money (Kauf)' : val + ' Money (Verkauf -35%)';
+    
+    cart.push({ id: 'money-' + val + '-' + type, name: name, icon: '💰', price: finalPrice, type: type, qty: 1 });
+    saveCart();
+    openCart();
+}
+
+function addToCart(id, type) {
+    let item = allItems.find(x => x.id === id);
+    let isSpawnerOrBase = item.cat === 'spawner';
+    
+    // Spawner/Basen = 35% Abzug beim Verkauf, normale Items = 50% Abzug
+    let mult = type === 'buy' ? 1.0 : (isSpawnerOrBase ? 0.65 : 0.50);
+    let finalPrice = item.price * mult;
+    let name = type === 'buy' ? item.name + ' (Kauf)' : item.name + ' (Verkauf -' + (isSpawnerOrBase ? '35%' : '50%') + ')';
+
+    cart.push({ id: item.id + '-' + type, name: name, icon: item.icon, price: finalPrice, type: type, qty: 1 });
     saveCart();
     openCart();
 }
 
 function saveCart() {
-    localStorage.setItem('nexus_hub_v5', JSON.stringify(cart));
+    localStorage.setItem('nexus_hub_v6', JSON.stringify(cart));
     renderCart();
 }
 
 function renderCart() {
-    let totalCount = cart.reduce((acc, i) => acc + i.qty, 0);
-    document.getElementById('cartBadge').textContent = totalCount;
-    
+    document.getElementById('cartBadge').textContent = cart.length;
     let list = document.getElementById('cartList');
+    
     if(!cart.length) {
         list.innerHTML = '<div style="color:var(--muted); text-align:center; padding:50px;">Warenkorb leer</div>';
         document.getElementById('cartSum').textContent = '0.00 CHF';
@@ -687,14 +580,14 @@ function renderCart() {
                 <span style="font-size:20px;">${i.icon}</span>
                 <div>
                     <div style="font-family:'Orbitron'; font-size:11px; font-weight:700;">${i.name}</div>
-                    <div style="color:var(--primary); font-size:11px; font-weight:900;">${i.price.toFixed(2)} CHF</div>
+                    <div style="color:${i.type === 'buy' ? 'var(--primary)' : '#f59e0b'}; font-size:11px; font-weight:900;">${i.price.toFixed(2)} CHF (${i.type})</div>
                 </div>
             </div>
             <button onclick="cart.splice(${idx},1);saveCart();" style="background:transparent; border:0; color:#ef4444; font-weight:900; cursor:pointer;">✕</button>
         </div>
     `).join('');
 
-    let sum = cart.reduce((acc, i) => acc + i.price, 0);
+    let sum = cart.reduce((acc, i) => i.type === 'buy' ? acc + i.price : acc - i.price, 0);
     document.getElementById('cartSum').textContent = sum.toFixed(2) + ' CHF';
 }
 
@@ -715,21 +608,15 @@ function showToast(msg) {
     setTimeout(() => t.classList.remove('show'), 2000);
 }
 
-function toggleFaq(btn) {
-    let item = btn.parentElement;
-    item.classList.toggle('open');
-}
-
 function checkout() {
     let name = document.getElementById('mcName').value;
     if(!name) return showToast('Minecraft Name erforderlich!');
-    showToast('Bestellung gesendet für ' + name);
+    showToast('Transaktion erfolgreich für ' + name);
     setTimeout(() => { cart = []; saveCart(); closeCart(); }, 1500);
 }
 
-renderCatalog();
+renderShops();
 renderCart();
-calcSpawner();
 </script>
 </body>
 </html>
